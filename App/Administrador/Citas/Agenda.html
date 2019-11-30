@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon.png">
+    <title>Call Phone Soft</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="../../../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Mis Estilos -->
+    <link rel="stylesheet" href="../../../css/MyStyle.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../../css/style.css">
+    <!-- Tema de la plantilla -->
+    <link href="../../../css/colors/megna-dark.css" id="theme" rel="stylesheet">
+
+    <link href="../../../assets/plugins/calendar/dist/fullcalendar.css" rel="stylesheet" />
+</head>
+
+<body class="fix-header fix-sidebar card-no-border">
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header (Menú Horizontal) - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <header class="topbar" id="Navegacion_Header"></header>
+        <!-- ============================================================== -->
+        <!-- End Topbar header -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar (Menú Vertical Izquierdo) - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <aside class="left-sidebar" id="Navegacion_Aside"></aside>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+
+            <!-- Titulo página -->
+            <div class="row page-titles">
+                <div class="col-md-5 align-self-center">
+                    <h3 class="text-themecolor">Registro de usuarios</h3>
+                </div>
+                <div class="col-md-7 align-self-center">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                        <li class="breadcrumb-item">pages</li>
+                        <li class="breadcrumb-item active">Registro de usuarios</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card ">
+                            <div class="">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <h4 class="card-title m-t-10">Asignación de citas </h4>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <a href="#" data-toggle="modal" data-target="#add-new-event"
+                                                        class="btn m-t-10 btn-info btn-block waves-effect waves-light">
+                                                        <i class="fa fa-eye"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="row">
+                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <h6>Indicadores</h6>
+                                                    <div class="MyStyle_Calentar_List"><i
+                                                            class="fa fa-circle text-danger"></i> Claro
+                                                    </div>
+                                                    <div class="MyStyle_Calentar_List"><i
+                                                            class="fa fa-circle text-success"></i> Movistar
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-9">
+                                        <div class="card-body b-l calender-sidebar">
+                                            <div id="calendar"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- BEGIN MODAL -->
+                <div class="modal none-border" id="my-event">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title"><strong>Add Agenda</strong></h4>
+                                <button type="button" class="close" data-dismiss="modal"
+                                    aria-hidden="true">&times;</button>
+                            </div>
+                            <div class="modal-body"></div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-white waves-effect"
+                                    data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-success save-event waves-effect waves-light">Create
+                                    event</button>
+                                <button type="button" class="btn btn-danger delete-event waves-effect waves-light"
+                                    data-dismiss="modal">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Citas sin asignar -->
+                <div class="modal fade none-border" id="add-new-event">
+                    <div class="modal-dialog MyStyle_Modal_Dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title"><strong>Citas</strong> sin asignar</h4>
+                                <button type="button" class="close" data-dismiss="modal"
+                                    aria-hidden="true">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <table class="table color-bordered-table danger-bordered-table ">
+                                            <thead>
+                                                <tr>
+                                                    <th>Fecha</th>
+                                                    <th>Empresa</th>
+                                                    <th>Operador</th>
+                                                    <th>Barrio</th>
+                                                    <th>Líneas</th>
+                                                    <th></th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>12/12/2019</td>
+                                                    <td>Tapitas S.A.S</td>
+                                                    <td>Avantel</td>
+                                                    <td>Laureles</td>
+                                                    <td>4</td>
+                                                    <td>
+                                                        <button href="#" data-dismiss="modal" data-toggle="modal"
+                                                            data-target="#AsignarAsesor"
+                                                            class="btn  btn-outline-danger btn-block waves-effect waves-light">
+                                                            <i class="ti-plus"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END MODAL TABLE Citas -->
+                <!-- Modal Asignar Asesor a citas -->
+                <div class="modal none-border" id="AsignarAsesor">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title"><strong>Asignar Asesor</strong></h4>
+                                <button type="button" class="close" data-dismiss="modal"
+                                    aria-hidden="true">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="#">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label class="control-label">Empresa:</label>
+                                            <p>Tapitas S.A.S</p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="control-label">Asesor:</label>
+
+                                            <select class="form-control" name="Asesores">
+                                                <option disabled value="">Seleccione...</option>
+                                                <option>Juan Pérez</option>
+                                                <option>Alicia Ortega</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-white waves-effect" data-dismiss="modal">
+                                    Cancelar
+                                </button>
+                                <button type="button" class="btn btn-success save-event waves-effect waves-light">
+                                    Asignar
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- ============================================================== -->
+                <!-- End PAge Content -->
+                <!-- ============================================================== -->
+            </div>
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- All Jquery -->
+        <!-- ============================================================== -->
+        <script src="../../../assets/plugins/jquery/jquery.min.js"></script>
+
+        <!-- Navegación -->
+        <script src="../../../js/Navegacion/Navegacion_Admin.js"></script>
+
+        <!-- Bootstrap tether Core JavaScript -->
+        <script src="../../../assets/plugins/bootstrap/js/popper.min.js"></script>
+
+        <script src="../../../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+        <!-- slimscrollbar scrollbar JavaScript -->
+        <script src="../../../js/jquery.slimscroll.js"></script>
+
+        <!--Menu sidebar -->
+        <script src="../../../js/sidebarmenu.js"></script>
+
+        <!--stickey kit -->
+        <script src="../../../assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+
+        <!--Custom JavaScript -->
+        <script src="../../../js/custom.min.js"></script>
+
+        <!-- Calendar JavaScript -->
+        <script src="../../../assets/plugins/moment/moment.js"></script>
+        <script src="../../../assets/plugins/calendar/jquery-ui.min.js"></script>
+        <script src='../../../assets/plugins/calendar/dist/fullcalendar.min.js'></script>
+        <script src="../../../assets/plugins/calendar/dist/cal-init.js"></script>
+
+</body>
+
+</html>

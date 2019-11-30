@@ -1,0 +1,10 @@
+blanco:
+#eef5f9
+
+Verde:
+#00897b
+
+Gris:
+#272c33
+
+#f2f4f8

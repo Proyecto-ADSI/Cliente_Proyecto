@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon.png">
+    <title>Call Phone Soft</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="../../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Mis Estilos -->
+    <link rel="stylesheet" href="../../css/MyStyle.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/style.css">
+    <!-- Tema de la plantilla -->
+    <link href="../../css/colors/megna-dark.css" id="theme" rel="stylesheet">
+
+     <!-- Dropify -->
+     <link rel="stylesheet" href="../../assets/plugins/dropify/dist/css/dropify.min.css">
+</head>
+
+<body class="fix-header card-no-border">
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header (Menú Horizontal) - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <header class="topbar" id="Navegacion_Header"></header>
+        <!-- ============================================================== -->
+        <!-- End Topbar header -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar (Menú Vertical Izquierdo) - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <aside class="left-sidebar" id="Navegacion_Aside"></aside>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+
+            <!-- Titulo página -->
+            <div class="row page-titles">
+                <div class="col-md-5 align-self-center">
+                    <h3 class="text-themecolor">Registro de usuarios</h3>
+                </div>
+                <div class="col-md-7 align-self-center">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                        <li class="breadcrumb-item">pages</li>
+                        <li class="breadcrumb-item active">Registro de usuarios</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card card-outline-success">
+                            <div class="card-header MyStyle_Card_Header">
+                                <h4 class="m-b-0 text-white">Formulario de registro de usuarios</h4>
+                            </div>
+                            <div class="card-body">
+                                <form action="#" class="form-horizontal">
+                                    <div class="form-body">
+                                        <h3 class="box-title">Empleado:</h3>
+                                        <hr class="m-t-0 m-b-40">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+
+                                                    <label class="control-label text-right col-md-3">Tipo de
+                                                        documento</label>
+                                                    <div class="col-sm-9">
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="basic-addon1">
+                                                                    <i class="ti-user"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="custom-select col-12"
+                                                                id="inlineFormCustomSelect">
+                                                                <option selected="">Seleccione</option>
+                                                                <option value="1">Cédula de Ciudadanía</option>
+                                                                <option value="1">Tarjeta de Identidad</option>
+                                                                <option value="1">Cédula de extranjería</option>
+                                                                <option value="1">Pasaporte</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                             <!--/span-->
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="control-label text-right col-md-3">Documento</label>
+                                                    <div class="col-md-9">
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="basic-addon1">
+                                                                    <i class="ti-credit-card"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control"
+                                                                id="exampleInputuname"
+                                                                placeholder="Número de documento">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                           
+
+                                            <!--/span-->
+                                        </div>
+                                        <!--/row-->
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="control-label text-right col-md-3">Nombre</label>
+                                                    <div class="col-md-9">
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="basic-addon1">
+                                                                    <i class="ti-user"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control"
+                                                                id="exampleInputuname" placeholder="Nombre Completo">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--/span-->
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="control-label text-right col-md-3">Apellidos</label>
+                                                    <div class="col-md-9">
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="basic-addon1">
+                                                                    <i class="ti-user"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control"
+                                                                id="exampleInputuname" placeholder="Apellidos">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--/span-->
+                                        </div>
+                                        <!--/row-->
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="control-label text-right col-md-3">Correo</label>
+                                                    <div class="col-md-9">
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="basic-addon1">
+                                                                    <i class="ti-email"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="email" class="form-control"
+                                                                 placeholder="Ingresar correo">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="control-label text-right col-md-3">Sexo</label>
+                                                    <div class="col-md-9">
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="basic-addon1">
+                                                                    <i class="icon-star"></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control custom-select">
+                                                                <option value="">Masculino</option>
+                                                                <option value="">Femenino</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="control-label text-right col-md-3">Turno</label>
+                                                    <div class="col-md-9">
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="basic-addon1">
+                                                                    <i class=" icon-clock "></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control custom-select">
+                                                                <option value="">Turno 1</option>
+                                                                <option value="">Turno 2</option>
+                                                            </select>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--/span-->
+                                            <div class="col-md-6">
+                                                <div class="card">
+                                                    <div class="card-body MyStyle_File_Card">
+                                                        <h4 class="card-title">Fotografía</h4>
+                                                        <!-- <label for="input-file-now-custom-3">You can combine
+                                                            options</label> -->
+                                                        <input type="file" id="input-file-now-custom-3" class="dropify"
+                                                            data-height="100"
+                                                            />
+                                                        <!-- data-default-file="../../assets/plugins/dropify/src/images/test-image-2.jpg" -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--/span-->
+                                        </div>
+                                        <!-- /row -->
+                                        <div class="row">
+                                            <div class="col-md-6">
+
+                                            </div>
+                                        </div>
+                                        <!-- /row -->
+                                        <h3 class="box-title">Usuario:</h3>
+                                        <hr class="m-t-0 m-b-40">
+                                        <!--/row-->
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="control-label text-right col-md-3">Usuario</label>
+                                                    <div class="col-md-9">
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="basic-addon1">
+                                                                    <i class="ti-user"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control"
+                                                                id="exampleInputuname" placeholder="Nombre usuario">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="control-label text-right col-md-3">Tipo de
+                                                        usuario</label>
+                                                    <div class="col-md-9">
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="basic-addon1">
+                                                                    <i class="icon-people "></i>
+                                                                </span>
+                                                            </div>
+                                                            <select class="form-control custom-select">
+                                                                <option value="">Coordinador</option>
+                                                                <option value="">Contact Center</option>
+                                                                <option value="">Asesor</option>
+                                                                <option value="">Gestor al cliente</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="control-label text-right col-md-3">Contraseña</label>
+                                                    <div class="col-md-9">
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="basic-addon1">
+                                                                    <i class="ti-lock"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="password" class="form-control"
+                                                                id="exampleInputuname"
+                                                                placeholder="Ingresar contraseña">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--/span-->
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="control-label text-right col-md-3">Confirmar</label>
+                                                    <div class="col-md-9">
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="basic-addon1">
+                                                                    <i class="ti-lock"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="password" class="form-control"
+                                                                id="exampleInputuname"
+                                                                placeholder="Confirmar contraseña">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--/span-->
+                                        </div>
+                                        <!--/row-->
+                                    </div>
+                                    <hr>
+                                    <div class="form-actions">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="row">
+                                                    <div class="col-md-offset-3 col-md-9">
+                                                        <button type="submit" class="btn btn-success">Guardar</button>
+                                                        <a href="GestionarUsuarios.html" class="btn btn-inverse">Cancelar</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- <div class="col-md-6"> </div> -->
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End PAge Content -->
+                <!-- ============================================================== -->
+            </div>
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- All Jquery -->
+        <!-- ============================================================== -->
+        <script src="../../assets/plugins/jquery/jquery.min.js"></script>
+
+        <!-- Navegación -->
+        <script src="../../../js/Navegacion/Navegacion_Admin.js"></script>
+        
+        <!-- Bootstrap tether Core JavaScript -->
+        <script src="../../assets/plugins/bootstrap/js/popper.min.js"></script>
+
+        <script src="../../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+        <!-- slimscrollbar scrollbar JavaScript -->
+        <script src="../../js/jquery.slimscroll.js"></script>
+
+        <!--Menu sidebar -->
+        <script src="../../js/sidebarmenu.js"></script>
+
+        <!--stickey kit -->
+        <script src="../../assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+
+        <!--Custom JavaScript -->
+        <script src="../../js/custom.min.js"></script>
+
+        <!-- Dropify (Seleccionar archivos) -->
+        <script src="../../assets/plugins/dropify/dist/js/dropify.min.js"></script>
+        
+        <script src="../../js/dropify.js"></script>
+
+</body>
+
+</html>
