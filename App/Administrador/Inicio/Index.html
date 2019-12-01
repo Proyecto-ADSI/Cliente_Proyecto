@@ -19,6 +19,9 @@
     <link rel="stylesheet" href="../../../css/style.css">
     <!-- Tema de la plantilla -->
     <link href="../../../css/colors/megna-dark.css" id="theme" rel="stylesheet">
+
+    <!-- Dropify -->
+    <link rel="stylesheet" href="../../../assets/plugins/dropify/dist/css/dropify.min.css">
 </head>
 
 <body class="fix-header fix-sidebar card-no-border">
@@ -33,7 +36,7 @@
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
     <div id="main-wrapper">
-        
+
         <!-- ============================================================== -->
         <!-- Topbar header (Menú Horizontal) - style you can find in pages.scss -->
         <!-- ============================================================== -->
@@ -56,13 +59,13 @@
             <!-- Titulo página -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-themecolor">Registro de usuarios</h3>
+                    <h3 class="text-themecolor">CallPhone Soft</h3>
                 </div>
                 <div class="col-md-7 align-self-center">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                        <li class="breadcrumb-item">pages</li>
-                        <li class="breadcrumb-item active">Registro de usuarios</li>
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Inicio</a></li>
+                        <li class="breadcrumb-item active">Noticias</li>
+
                     </ol>
                 </div>
             </div>
@@ -74,93 +77,200 @@
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <!-- Column -->
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img class="card-img-top img-responsive"
-                                src="../../assets/images/background/login-register.jpg" alt="Card image cap">
-                            <div class="card-body">
-                                <ul class="list-inline font-14">
-                                    <li class="p-l-0">22 Noviembre 2019</li>
-                                    <li><a href="javascript:void(0)" class="link">3 Comment</a></li>
-                                </ul>
-                                <center>
-                                    <h3 class="font-normal">Alex reeeeeperra</h3>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                        Laudantium in illum earum optio maxime atque saepe
-                                        aut veniam quasi architecto molestiae?</p>
-                                </center>
 
-                                <center>
-                                    <button class="btn btn-success btn-rounded waves-effect waves-light m-t-20"
-                                        id="sa-success">Modificar</button>
-                                    <button class="btn btn-danger btn-rounded waves-effect waves-light m-t-20 "
-                                        id="sa-warning">Eliminar</button>
-                                </center>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header MyStyle_Card_Header">
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <h4 class="m-b-0 text-white ">Sección de noticias</h4>
+                                    </div>
+                                    <div class="col-md-2">
+
+                                        <a href="#" data-toggle="tooltip" data-original-title="Agregar"
+                                            class="btn btn-primary">
+                                            <i class="fa fa-plus"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+
+                                <!-- Ejemplo noticia 1 -->
+                                <div class="card">
+                                    <div class="card-header MyStyle_Card_Header">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <div class="row">
+                                                    <div class="col-2">
+                                                        <span class="round">
+                                                            <img src="../../../assets/images/users/2.jpg" alt="user"
+                                                                width="50">
+                                                        </span>
+                                                    </div>
+                                                    <div class="col-10">
+                                                        <h6 class="m-b-0 text-white">Andrés Fernández</h6><small
+                                                            class="text-muted">Coordinador 12/12/2019 11:30 am</small>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-6">
+                                                <h4 class="card-title text-white">Título Noticia</h4>
+                                            </div>
+
+
+                                            <div class="col-2">
+                                                <a href="#" data-toggle="tooltip" data-original-title="Editar"
+                                                    class="btn btn-info">
+                                                    <i class="fa fa-pencil"></i>
+                                                </a>
+
+                                                <a href="#" data-toggle="tooltip" data-original-title="Eliminar"
+                                                    class="btn btn-danger">
+                                                    <i class="fa fa-close"></i>
+                                                </a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+
+                                        <div class="row">
+                                            <div class="col-lg-4 col-md-3"><img
+                                                    src="../../../assets/images/big/img1.jpg" class="img-fluid" />
+                                            </div>
+                                            <div class="col-lg-8 col-md-9">
+                                                <div class="slimtest1">
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+                                                        rhoncus, felis interdum condimentum consectetur, nisl libero
+                                                        elementum eros, vehicula congue lacus eros non diam. Cum sociis
+                                                        natoque penatibus et magnis dis parturient montes, nascetur
+                                                        ridiculus mus.</p>
+                                                    <p>Vivamus mauris lorem, lacinia id tempus non, imperdiet et leo.
+                                                        Cras sit amet erat sit amet lacus egestas placerat. </p>
+                                                    <p>Aenean ultricies ultrices mauris ac congue. In vel tortor vel
+                                                        velit tristique tempus ac id nisi. Proin quis lorem velit. Nunc
+                                                        dui dui, blandit a ullamcorper vitae, congue fringilla lectus.
+                                                        Aliquam ultricies malesuada feugiat. Vestibulum placerat turpis
+                                                        et eros lobortis vel semper sapien pulvinar.</p>
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+                                                        rhoncus, felis interdum condimentum consectetur, nisl libero
+                                                        elementum eros, vehicula congue lacus eros non diam. Cum sociis
+                                                        natoque penatibus et magnis dis parturient montes, nascetur
+                                                        ridiculus mus.</p>
+                                                    <p>Vivamus mauris lorem, lacinia id tempus non, imperdiet et leo.
+                                                        Cras sit amet erat sit amet lacus egestas placerat. </p>
+                                                    <p>Aenean ultricies ultrices mauris ac congue. In vel tortor vel
+                                                        velit tristique tempus ac id nisi. Proin quis lorem velit. Nunc
+                                                        dui dui, blandit a ullamcorper vitae, congue fringilla lectus.
+                                                        Aliquam ultricies malesuada feugiat. Vestibulum placerat turpis
+                                                        et eros lobortis vel semper sapien pulvinar.</p>
+                                                    <p>Vivamus mauris lorem, lacinia id tempus non, imperdiet et leo.
+                                                        Cras sit amet erat sit amet lacus egestas placerat. </p>
+                                                    <p>Aenean ultricies ultrices mauris ac congue. In vel tortor vel
+                                                        velit tristique tempus ac id nisi. Proin quis lorem velit. Nunc
+                                                        dui dui, blandit a ullamcorper vitae, congue fringilla lectus.
+                                                        Aliquam ultricies malesuada feugiat. Vestibulum placerat turpis
+                                                        et eros lobortis vel semper sapien pulvinar.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                   <!-- Ejemplo noticia 1 -->
+                                   <div class="card">
+                                        <div class="card-header MyStyle_Card_Header">
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <div class="row">
+                                                        <div class="col-2">
+                                                            <span class="round">
+                                                                <img src="../../../assets/images/users/2.jpg" alt="user"
+                                                                    width="50">
+                                                            </span>
+                                                        </div>
+                                                        <div class="col-10">
+                                                            <h6 class="m-b-0 text-white">Andrés Fernández</h6><small
+                                                                class="text-muted">Coordinador 12/12/2019 11:30 am</small>
+                                                        </div>
+                                                    </div>
+    
+                                                </div>
+                                                <div class="col-6">
+                                                    <h4 class="card-title text-white">Título Noticia</h4>
+                                                </div>
+    
+    
+                                                <div class="col-2">
+                                                    <a href="#" data-toggle="tooltip" data-original-title="Editar"
+                                                        class="btn btn-info">
+                                                        <i class="fa fa-pencil"></i>
+                                                    </a>
+    
+                                                    <a href="#" data-toggle="tooltip" data-original-title="Eliminar"
+                                                        class="btn btn-danger">
+                                                        <i class="fa fa-close"></i>
+                                                    </a>
+                                                </div>
+    
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+    
+                                            <div class="row">
+                                                <div class="col-lg-4 col-md-3"><img
+                                                        src="../../../assets/images/big/img1.jpg" class="img-fluid" />
+                                                </div>
+                                                <div class="col-lg-8 col-md-9">
+                                                    <div class="slimtest1">
+                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+                                                            rhoncus, felis interdum condimentum consectetur, nisl libero
+                                                            elementum eros, vehicula congue lacus eros non diam. Cum sociis
+                                                            natoque penatibus et magnis dis parturient montes, nascetur
+                                                            ridiculus mus.</p>
+                                                        <p>Vivamus mauris lorem, lacinia id tempus non, imperdiet et leo.
+                                                            Cras sit amet erat sit amet lacus egestas placerat. </p>
+                                                        <p>Aenean ultricies ultrices mauris ac congue. In vel tortor vel
+                                                            velit tristique tempus ac id nisi. Proin quis lorem velit. Nunc
+                                                            dui dui, blandit a ullamcorper vitae, congue fringilla lectus.
+                                                            Aliquam ultricies malesuada feugiat. Vestibulum placerat turpis
+                                                            et eros lobortis vel semper sapien pulvinar.</p>
+                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+                                                            rhoncus, felis interdum condimentum consectetur, nisl libero
+                                                            elementum eros, vehicula congue lacus eros non diam. Cum sociis
+                                                            natoque penatibus et magnis dis parturient montes, nascetur
+                                                            ridiculus mus.</p>
+                                                        <p>Vivamus mauris lorem, lacinia id tempus non, imperdiet et leo.
+                                                            Cras sit amet erat sit amet lacus egestas placerat. </p>
+                                                        <p>Aenean ultricies ultrices mauris ac congue. In vel tortor vel
+                                                            velit tristique tempus ac id nisi. Proin quis lorem velit. Nunc
+                                                            dui dui, blandit a ullamcorper vitae, congue fringilla lectus.
+                                                            Aliquam ultricies malesuada feugiat. Vestibulum placerat turpis
+                                                            et eros lobortis vel semper sapien pulvinar.</p>
+                                                        <p>Vivamus mauris lorem, lacinia id tempus non, imperdiet et leo.
+                                                            Cras sit amet erat sit amet lacus egestas placerat. </p>
+                                                        <p>Aenean ultricies ultrices mauris ac congue. In vel tortor vel
+                                                            velit tristique tempus ac id nisi. Proin quis lorem velit. Nunc
+                                                            dui dui, blandit a ullamcorper vitae, congue fringilla lectus.
+                                                            Aliquam ultricies malesuada feugiat. Vestibulum placerat turpis
+                                                            et eros lobortis vel semper sapien pulvinar.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <!-- Column -->
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img class="card-img-top img-responsive"
-                                src="../../assets/images/background/login-register.jpg" alt="Card image cap">
-                            <div class="card-body">
-                                <ul class="list-inline font-14">
-                                    <li class="p-l-0">22 Noviembre 2019</li>
-                                    <li><a href="javascript:void(0)" class="link">3 Comment</a></li>
-                                </ul>
-                                <center>
-                                    <h3 class="font-normal">Alex reeeeeperra</h3>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                        Laudantium in illum earum optio maxime atque saepe
-                                        aut veniam quasi architecto molestiae?</p>
-                                </center>
 
-                                <center>
-                                    <button class="btn btn-success btn-rounded waves-effect waves-light m-t-20"
-                                        id="sa-success">Modificar</button>
-                                    <button class="btn btn-danger btn-rounded waves-effect waves-light m-t-20 "
-                                        id="sa-warning">Eliminar</button>
-                                </center>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <!-- Column -->
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img class="card-img-top img-responsive"
-                                src="../../assets/images/background/login-register.jpg" alt="Card image cap">
-                            <div class="card-body">
-                                <ul class="list-inline font-14">
-                                    <li class="p-l-0">22 Noviembre 2019</li>
-                                    <li><a href="javascript:void(0)" class="link">3 Comment</a></li>
-                                </ul>
-                                <center>
-                                    <h3 class="font-normal">Alex reeeeeperra</h3>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                        Laudantium in illum earum optio maxime atque saepe
-                                        aut veniam quasi architecto molestiae?</p>
-                                </center>
 
-                                <center>
-                                    <button class="btn btn-success btn-rounded waves-effect waves-light m-t-20"
-                                        id="sa-success">Modificar</button>
-                                    <button class="btn btn-danger btn-rounded waves-effect waves-light m-t-20 "
-                                        id="sa-warning">Eliminar</button>
-                                </center>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->
@@ -193,8 +303,17 @@
         <!--stickey kit -->
         <script src="../../../assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
 
-        <!--Custom JavaScript -->
-        <!-- <script src="../../js/custom.min.js"></script> -->
+        <!-- Dropify (Seleccionar archivos) -->
+        <script src="../../../assets/plugins/dropify/dist/js/dropify.min.js"></script>
+
+        <script src="../../../js/dropify.js"></script>
+
+        <!-- slimscrollbar scrollbar JavaScript -->
+        <script src="../../../js/jquery.slimscroll.js"></script>
+
+        <!-- SlimScroll -->
+        <script src="../../../js/SlimScroll.js"></script>
+
 
 </body>
 
