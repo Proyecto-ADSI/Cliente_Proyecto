@@ -226,14 +226,15 @@
                             </div>
                         <!--/span-->
                         <div class="col-md-6">
-                                <label class="box-title m-t-30">Hora</label>
-                                <div class="input-group clockpicker">
-                                    <input type="text" class="form-control" value="09:30">
+                                <label class="m-t-30">Hora</label>
+                                <div class="input-group clockpicker " data-placement="bottom"
+                                    data-align="top" data-autoclose="true">
+                                    <input type="text" class="form-control" value="">
                                     <div class="input-group-append">
                                         <span class="input-group-text"><i class="fa fa-clock-o"></i></span>
                                     </div>
                                 </div>
-                        </div>
+                            </div>
                         <!--/span-->
                     </div>
 
@@ -294,7 +295,7 @@
                                 <div class="form-group">
                                     <label for="location1">Estado:</label>
                                     <select class="custom-select form-control" id="location1" name="city">
-                                        <option value="">...    </option>
+                                        <option disabled selected>seleccione...</option>
                                         <option value="">Firmó contrato</option>
                                         <option value="">Pactar cita para firmar contrato</option>
                                         <option value="">No interesó</option>
