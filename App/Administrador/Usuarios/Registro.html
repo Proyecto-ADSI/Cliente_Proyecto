@@ -103,7 +103,7 @@
                                                             </div>
                                                             <select class="custom-select col-12"
                                                                 id="inlineFormCustomSelect" required>
-                                                                <option selected disabled value="">Seleccione</option>
+                                                                <option selected disabled value="">Seleccione tipo de documento</option>
                                                                 <option value="1">Cédula de Ciudadanía</option>
                                                                 <option value="1">Tarjeta de Identidad</option>
                                                                 <option value="1">Cédula de extranjería</option>
@@ -120,13 +120,13 @@
                                                     <div class="col-md-9">
                                                         <div class="input-group">
                                                             <div class="input-group-prepend">
-                                                                <span class="input-group-text" id="basic-addon1" required="">
+                                                                <span class="input-group-text" id="basic-addon1">
                                                                     <i class="ti-credit-card"></i>
                                                                 </span>
                                                             </div>
                                                             <input type="text" class="form-control"
                                                                 id="exampleInputuname"
-                                                                placeholder="Número de documento">
+                                                                placeholder="Número de documento" required pattern="[0-9]{5,45}" title="Sólo se permiten caracteres numéricos de 7 hasta 45, no se permiten caracteres alfabéticos">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -148,7 +148,7 @@
                                                                 </span>
                                                             </div>
                                                             <input type="text" class="form-control"
-                                                                id="exampleInputuname" placeholder="Nombre Completo">
+                                                                id="exampleInputuname" placeholder="Nombre Completo" required pattern="[A-Z a-z]{3,45}" title="Sólo se permiten caracteres alfabéticos de 3 hasta 45, no se permiten caracteres numericos">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -165,7 +165,7 @@
                                                                 </span>
                                                             </div>
                                                             <input type="text" class="form-control"
-                                                                id="exampleInputuname" placeholder="Apellidos">
+                                                                id="exampleInputuname" placeholder="Apellidos" required pattern="[A-Z a-z]{3,45}" title="Sólo se permiten caracteres alfabéticos de 3 hasta 45, no se permiten caracteres numericos">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -185,7 +185,7 @@
                                                                 </span>
                                                             </div>
                                                             <input type="email" class="form-control"
-                                                                 placeholder="Ingresar correo">
+                                                                 placeholder="Ingresar correo" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="Digite un correo existente">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -198,9 +198,10 @@
                                                                     <i class="icon-star"></i>
                                                                 </span>
                                                             </div>
-                                                            <select class="form-control custom-select">
-                                                                <option value="">Masculino</option>
-                                                                <option value="">Femenino</option>
+                                                            <select class="form-control custom-select" required>
+                                                                    <option selected disabled value="">Seleccione sexo</option>
+                                                                <option value="1">Masculino</option>
+                                                                <option value="1">Femenino</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -214,9 +215,10 @@
                                                                     <i class=" icon-clock "></i>
                                                                 </span>
                                                             </div>
-                                                            <select class="form-control custom-select">
-                                                                <option value="">Turno 1</option>
-                                                                <option value="">Turno 2</option>
+                                                            <select class="form-control custom-select" required>
+                                                                <option selected disabled value="">Seleccione turno</option>
+                                                                <option value="1">Turno 1</option>
+                                                                <option value="1">Turno 2</option>
                                                             </select>
                                                         </div>
 
@@ -231,7 +233,7 @@
                                                         <!-- <label for="input-file-now-custom-3">You can combine
                                                             options</label> -->
                                                         <input type="file" id="input-file-now-custom-3" class="dropify"
-                                                            data-height="100"
+                                                            data-height="100" required
                                                             />
                                                         <!-- data-default-file="../../assets/plugins/dropify/src/images/test-image-2.jpg" -->
                                                     </div>
@@ -261,7 +263,7 @@
                                                                 </span>
                                                             </div>
                                                             <input type="text" class="form-control"
-                                                                id="exampleInputuname" placeholder="Nombre usuario">
+                                                                id="exampleInputuname" placeholder="Nombre usuario" required pattern="[A-Z a-z | 0-9]{7,45}" title="Solo permiten caracteres alfanuméricos de 7 hasta 45" >
                                                         </div>
                                                     </div>
                                                 </div>
@@ -277,11 +279,12 @@
                                                                     <i class="icon-people "></i>
                                                                 </span>
                                                             </div>
-                                                            <select class="form-control custom-select">
-                                                                <option value="">Coordinador</option>
-                                                                <option value="">Contact Center</option>
-                                                                <option value="">Asesor</option>
-                                                                <option value="">Gestor al cliente</option>
+                                                            <select class="form-control custom-select" required>
+                                                                <option selected disabled value="">Seleccione turno</option>
+                                                                <option value="1">Coordinador</option>
+                                                                <option value="1">Contact Center</option>
+                                                                <option value="1">Asesor</option>
+                                                                <option value="1">Gestor al cliente</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -301,7 +304,7 @@
                                                             </div>
                                                             <input type="password" class="form-control"
                                                                 id="exampleInputuname"
-                                                                placeholder="Ingresar contraseña">
+                                                                placeholder="Ingresar contraseña" required pattern="[A-Z a-z | 0-9]{8,45}" title="Sólo permiten caracteres alfanuméricos de 8 hasta 45">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -319,7 +322,7 @@
                                                             </div>
                                                             <input type="password" class="form-control"
                                                                 id="exampleInputuname"
-                                                                placeholder="Confirmar contraseña">
+                                                                placeholder="Confirmar contraseña" required pattern="[A-Z a-z | 0-9]{8-45}" title="Solo permiten caracteres alfanuméricos de 8 hasta 45">
                                                         </div>
                                                     </div>
                                                 </div>

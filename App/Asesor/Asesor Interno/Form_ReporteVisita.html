@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" type="image/png" sizes="16x16" href="../../../assets/images/favicon.png">
-    <title>Admin Press Admin Template - The Ultimate Bootstrap 4 Admin Template</title>
+    <title>Call Phone Soft</title>
     <link href="../../../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../../../assets/plugins/dropify/dist/css/dropify.min.css">
     <link rel="stylesheet" href="../../../css/MyStyle.css">
@@ -214,11 +214,12 @@
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
+                <form action="#" class="form-horizontal">
                 <div class="row">
                         <div class="col-md-6">
                                 <label class="box-title m-t-30">Fecha</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control mydatepicker" placeholder="mm/dd/yyyy">
+                                    <input type="text" class="form-control mydatepicker" placeholder="mm/dd/yyyy" required>
                                     <div class="input-group-append">
                                         <span class="input-group-text"><i class="icon-calender"></i></span>
                                     </div>
@@ -229,7 +230,7 @@
                                 <label class="m-t-30">Hora</label>
                                 <div class="input-group clockpicker " data-placement="bottom"
                                     data-align="top" data-autoclose="true">
-                                    <input type="text" class="form-control" value="">
+                                    <input type="text" class="form-control" value="" placeholder="00:00pm" required>
                                     <div class="input-group-append">
                                         <span class="input-group-text"><i class="fa fa-clock-o"></i></span>
                                     </div>
@@ -243,7 +244,11 @@
                                     <div class="form-group append">
                                         <label class="box-title m-t-30">Tipo de venta</label>
                                         <!-- <div class="col-md-9"> -->
-                                            <input type="text" class="form-control" placeholder="John doe"> 
+                                            <select class="custom-select form-control" id="location1" name="city" required>
+                                                <option  selected disabled value="">Seleccione un tipo de venta</option>
+                                                <option value="1">Paquete de internet 25MB</option>
+                                                
+                                            </select>
                                     </div>
                                 </div>
 
@@ -251,7 +256,7 @@
                                     <div class="form-group append">
                                         <label class="box-title m-t-30">Calificación de la cita</label>
                                         <!-- <div class="col-md-9"> -->
-                                        <input type="text" class="form-control" placeholder="1 - 10"> 
+                                        <input type="text" class="form-control" placeholder="1 - 10" required pattern="[A-Z a-z | 0-9]{1,2}" title="Sólo se permite dar una califación de 1 hasta 10 y solo se permiten caracteres numéricos "> 
                                     </div>
                                 </div>
                     </div>
@@ -261,7 +266,7 @@
                                     <div class="form-group append">
                                         <label class="box-title m-t-30">Total de líneas</label>
                                         <!-- <div class="col-md-9"> -->
-                                            <input type="text" class="form-control" placeholder="#"> 
+                                            <input type="text" class="form-control" placeholder="Ingrese el total de lineas" required pattern="[A-Z a-z 0-9]{2,45}" title="Sólo permiten caracteres alfanuméricos de 2 hasta 45"> 
                                     </div>
                                 </div>
 
@@ -269,7 +274,7 @@
                                     <div class="form-group append">
                                         <label class="box-title m-t-30">Total de cargos básicos</label>
                                         <!-- <div class="col-md-9"> -->
-                                        <input type="text" class="form-control" placeholder=""> 
+                                        <input type="text" class="form-control" placeholder="Ingrese el total de cargos básicos" required pattern="[A-Z a-z | 0-9]{2,45}"  title="Sólo permiten caracteres alfanuméricos de 2 hasta 45> 
                                     </div>
                                 </div>
                     </div>
@@ -278,14 +283,14 @@
                             <div class="col-md-6">
                                     <div class="form-group">
                                             <label>Sugerencias</label>
-                                            <textarea class="form-control" rows="3"></textarea>
+                                            <textarea class="form-control" rows="3" required></textarea>
                                         </div>
                                 </div>
 
                             <div class="col-md-6">
                                     <div class="form-group">
                                             <label>Observación</label>
-                                            <textarea class="form-control" rows="3"></textarea>
+                                            <textarea class="form-control" rows="3" required></textarea>
                                         </div>
                                 </div>
                     </div>
@@ -294,25 +299,25 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="location1">Estado:</label>
-                                    <select class="custom-select form-control" id="location1" name="city">
-                                        <option disabled selected>seleccione...</option>
-                                        <option value="">Firmó contrato</option>
-                                        <option value="">Pactar cita para firmar contrato</option>
-                                        <option value="">No interesó</option>
+                                    <select class="custom-select form-control" id="location1" name="city" required>
+                                        <option disabled selected value="">Seleccione un estado</option>
+                                        <option value="1">Firmó contrato</option>
+                                        <option value="1">Pactar cita para firmar contrato</option>
+                                        <option value="1">No interesó</option>
                                     </select>
                                 </div>
                             </div>
 
                             <div class="col-md-4" style="margin: 3%;">
                                 <div class="form-group append">
-                                        <button type="button" class="btn waves-effect waves-light btn-outline-primary">Agregar</button>
-                                        <button type="button" class="btn waves-effect waves-light btn-outline-secondary">Cancelar</button>
+                                        <button type="submit" class="btn waves-effect waves-light btn-outline-primary">Agregar</button>
+                                        <button type="submit" class="btn waves-effect waves-light btn-outline-secondary">Cancelar</button>
                                 </div>
                             </div>
                             
                     </div>
 
-
+                </form>
 
 
 
