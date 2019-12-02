@@ -62,87 +62,8 @@
         <!-- ============================================================== -->
         <!-- Topbar header - style you can find in pages.scss -->
         <!-- ============================================================== -->
-        <header class="topbar">
-            <nav class="navbar top-navbar navbar-expand-md navbar-light">
-                <!-- ============================================================== -->
-                <!-- Logo -->
-                <!-- ============================================================== -->
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#">
-                        <!-- Logo icon --><b>
-                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-                            <!-- Dark Logo icon -->
-                            <img src="../../assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
-                            <!-- Light Logo icon -->
-                            <img src="../../assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
-                        </b>
-                        <!--End Logo icon -->
-                        <!-- Logo text --><span>
-                            <!-- dark Logo text -->
-                            <img src="../../assets/images/logo-text.png" alt="homepage" class="dark-logo" />
-                            <!-- Light Logo text -->
-                            <img src="../../assets/images/logo-light-text.png" class="light-logo"
-                                alt="homepage" /></span>
-                    </a>
-                </div>
-                <!-- ============================================================== -->
-                <!-- End Logo -->
-                <!-- ============================================================== -->
-                <div class="navbar-collapse">
-                    <!-- ============================================================== -->
-                    <!-- toggle and nav items -->
-                    <!-- ============================================================== -->
-                    <ul class="navbar-nav mr-auto mt-md-0">
-                        <!-- This is  -->
-                        <li class="nav-item"> <a
-                                class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark"
-                                href="javascript:void(0)"><i class="mdi mdi-menu"></i></a> </li>
-                        <li class="nav-item m-l-10"> <a
-                                class="nav-link sidebartoggler hidden-sm-down text-muted waves-effect waves-dark"
-                                href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
-                        <!-- ============================================================== -->
-                    </ul>
-                    <!-- ============================================================== -->
-                    <!-- User profile and search -->
-                    <!-- ============================================================== -->
-                    <ul class="navbar-nav my-lg-0">
-
-                        <!-- ============================================================== -->
-                        <!-- Profile -->
-                        <!-- ============================================================== -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href=""
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img
-                                    src="../../assets/images/users/profile.png" alt="user" class="profile-pic" /></a>
-                            <div class="dropdown-menu dropdown-menu-right scale-up">
-                                <ul class="dropdown-user">
-                                    <li>
-                                        <div class="dw-user-box">
-                                            <div class="u-img"><img src="../../assets/images/users/1.jpg" alt="user">
-                                            </div>
-                                            <div class="u-text">
-                                                <h4>Steave Jobs</h4>
-                                                <p class="text-muted">varun@gmail.com</p><a href="pages-profile.html"
-                                                    class="btn btn-rounded btn-danger btn-sm">View Profile</a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
-                                    <li><a href="#"><i class="ti-wallet"></i> My Balance</a></li>
-                                    <li><a href="#"><i class="ti-email"></i> Inbox</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a href="#"><i class="ti-settings"></i> Account Setting</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a href="../../Login/Login.html"><i class="fa fa-power-off"></i> Cerrar
-                                            Sesión</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+        <header class="topbar" id="Navegacion_Header_GC">
+           
         </header>
         <!-- ============================================================== -->
         <!-- End Topbar header -->
@@ -150,84 +71,9 @@
         <!-- ============================================================== -->
         <!-- Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
-        <aside class="left-sidebar">
+        <aside class="left-sidebar" id="Navegacion_Aside_GC">
             <!-- Sidebar scroll-->
-            <div class="scroll-sidebar">
-                <!-- User profile -->
-                <div class="user-profile">
-                    <!-- User profile image -->
-                    <div class="profile-img"> <img src="../../assets/images/users/profile.png" alt="user" />
-                        <!-- this is blinking heartbit-->
-                        <div class="notify setpos"> <span class="heartbit"></span> <span class="point"></span> </div>
-                    </div>
-                    <!-- User profile text-->
-                    <div class="profile-text">
-                        <h5>Nombre Usuario</h5>
-                        <!-- <a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"><i class="mdi mdi-settings"></i></a>
-                             <a href="app-email.html" class="" data-toggle="tooltip" title="Email"><i class="mdi mdi-gmail"></i></a> -->
-                        <a href="../../Login/Login.html" class="" data-toggle="tooltip" title="Cerrar Sesión"><i
-                                class="mdi mdi-power"></i></a>
-
-                        <div class="dropdown-menu animated flipInY">
-                            <!-- text-->
-                            <a href="#" class="dropdown-item"><i class="ti-user"></i> My Profile</a>
-                            <!-- text-->
-                            <a href="#" class="dropdown-item"><i class="ti-wallet"></i> My Balance</a>
-                            <!-- text-->
-                            <a href="#" class="dropdown-item"><i class="ti-email"></i> Inbox</a>
-                            <!-- text-->
-                            <div class="dropdown-divider"></div>
-                            <!-- text-->
-                            <a href="#" class="dropdown-item"><i class="ti-settings"></i> Account Setting</a>
-                            <!-- text-->
-                            <div class="dropdown-divider"></div>
-                            <!-- text-->
-                            <a href="../Login/Login.html" class="dropdown-item"><i class="fa fa-power-off"></i>
-                                Logout</a>
-                            <!-- text-->
-                        </div>
-                    </div>
-                </div>
-                <!-- End User profile text-->
-                <!-- Sidebar navigation-->
-                <nav class="sidebar-nav">
-                    <ul id="sidebarnav">
-                        <li class="nav-devider"></li>
-                        <li class="nav-small-cap"><h4>Menú</h4></li>
-                        <li><a href="#"><i class="fa fa-home"></i><span class="hide-menu">Inicio</span></a></li>
-
-                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
-                            class="fa fa-book"></i><span class="hide-menu">Directorio</span></a>
-                    <ul aria-expanded="false" class="collapse">
-                            
-                        <li><a href="Clientes.html">Clientes </a></li>
-                    </ul>
-                </li>
-                                
-                                <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
-                                    class="fa fa-phone"></i><span class="hide-menu">Llamadas</span></a>  
-                                 <ul aria-expanded="false" class="collapse"> 
-                                    <li><a href="Llamadas.html">Gestionar llamadas</a></li>
-                                    <li><a href="Llamadas">programadas</a></li>
-                                    </ul>
-                                </li>
-
-
-                                <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
-                                    class="mdi mdi-calendar-clock"></i><span class="hide-menu">Citas</span></a>  
-                                 <ul aria-expanded="false" class="collapse"> 
-                                    <li><a href="CitasRealizadas.html">Gestionar citas</a></li>
-                                    
-                                    </ul>
-                                </li>
-                                
-                               
-                                
-                     
-                    </ul>
-                </nav>
-                <!-- End Sidebar navigation -->
-            </div>
+            
             <!-- End Sidebar scroll-->
         </aside>
         <!-- ============================================================== -->
@@ -1586,6 +1432,10 @@
         <!-- All Jquery -->
         <!-- ============================================================== -->
         <script src="../../assets/plugins/jquery/jquery.min.js"></script>
+
+        <!-- Navegación -->
+        <script src="../../js/Navegacion/Navegacion_GC.js"></script>
+
         <!-- Bootstrap tether Core JavaScript -->
         <script src="../../assets/plugins/bootstrap/js/popper.min.js"></script>
 
@@ -1599,10 +1449,7 @@
 
         <!--stickey kit -->
         <script src="../../assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
-
-        <!--Custom JavaScript -->
-        <script src="../../js/custom.min.js"></script>
-
+        
         <!-- DataTable -->
         <script src="../../assets/plugins/datatables/datatables.js"></script>
         <!-- Idioma DataTable -->
