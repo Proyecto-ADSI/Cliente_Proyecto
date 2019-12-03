@@ -390,7 +390,7 @@
                                                                         </div>
                                                                         <input type="text" class="form-control"
                                                                             id="exampleInputuname3"
-                                                                            placeholder="Documento">
+                                                                            placeholder="Documento" required pattern="[A-Z a-z]{2,45}" title="Sólo se permiten caracteres alfabeticos de 2 hasta 45, no se permiten caracteres numericos">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -480,7 +480,7 @@
                                                                             </span>
                                                                         </div>
                                                                         <input type="text" class="form-control"
-                                                                            id="exampleInputuname3" placeholder="Sexo">
+                                                                            id="exampleInputuname3" placeholder="Sexo" required pattern="[A-Z a-z]{2,45}" title="Sólo se permiten caracteres alfabeticos de 2 hasta 45, no se permiten caracteres numericos">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -555,7 +555,7 @@
                                                                         </div>
                                                                         <input type="text" class="form-control"
                                                                             id="exampleInputuname3"
-                                                                            placeholder="Departamento">
+                                                                            placeholder="Departamento" required pattern="[A-Z a-z]{2,45}" title="Sólo se permiten caracteres alfabeticos de 2 hasta 45, no se permiten caracteres numericos">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -662,7 +662,7 @@
                                                                         </div>
                                                                         <input type="text" class="form-control"
                                                                             id="exampleInputuname3"
-                                                                            placeholder="Municipio">
+                                                                            placeholder="Municipio" required pattern="[A-Z a-z]{2,45}" title="Sólo se permiten  de 2 hasta 45 caracteres alfabéticos, no se permiten caracteres numéricos">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -677,9 +677,9 @@
                                                                             </span>
                                                                         </div>
                                                                         <select class="custom-select col-12"
-                                                                            id="inlineFormCustomSelect">
-                                                                            <option selected="">Seleccionar
-                                                                                Departamento...</option>
+                                                                            id="inlineFormCustomSelect" required>
+                                                                            <option selected disabled value="">Seleccione el departamento</option>
+                                                                            
                                                                             <option value="1">Antioquia</option>
 
                                                                         </select>
@@ -794,7 +794,7 @@
                                                                         </div>
                                                                         <input type="text" class="form-control"
                                                                             id="exampleInputuname3"
-                                                                            placeholder="Nombre">
+                                                                            placeholder="Nombre" required pattern="[A-Z a-z | 0-9]{3,45}" title ="Solo permiten caracteres alfanuméricos de 3 hasta 45">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -808,8 +808,8 @@
                                                                             </span>
                                                                         </div>
                                                                         <select class="custom-select col-12"
-                                                                            id="inlineFormCustomSelect">
-                                                                            <option selected="">Tipo...</option>
+                                                                            id="inlineFormCustomSelect" required>
+                                                                            <option selected disabled value="">Seleccione el tipo</option>
                                                                             <option value="1">Barrio</option>
                                                                             <option value="1">Vereda</option>
 
@@ -827,8 +827,8 @@
                                                                             </span>
                                                                         </div>
                                                                         <select class="custom-select col-12"
-                                                                            id="inlineFormCustomSelect">
-                                                                            <option selected="">Municipio...</option>
+                                                                            id="inlineFormCustomSelect" required>
+                                                                            <option selected disabled value="">Seleccione el municipio</option>
                                                                             <option value="1">Medellín</option>
                                                                             <option value="1">Envigado</option>
 
@@ -923,7 +923,7 @@
                                                                             </span>
                                                                         </div>
                                                                         <input type="text" class="form-control"
-                                                                            id="exampleInputuname3" placeholder="Día">
+                                                                            id="exampleInputuname3" placeholder="Día" required pattern="[A-z a-z]{2,45}" title="Sólo se permiten caracteres alfabeticos de 2 hasta 45, no se permiten caracteres numericos">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -996,7 +996,7 @@
 
                                                                         <input type="text" class="form-control"
                                                                             id="exampleInputuname3"
-                                                                            placeholder="Nombre Turno">
+                                                                            placeholder="Nombre Turno" required pattern="[A-Z a-z]{2,45}" title="Sólo se permiten caracteres alfabeticos de 2 hasta 45, no se permiten caracteres numericos">
                                                                         <div class="input-group-append">
                                                                             <span class="input-group-text"
                                                                                 id="basic-addon1">
@@ -1012,7 +1012,7 @@
                                                                         data-placement="bottom" data-align="top"
                                                                         data-autoclose="true">
                                                                         <input type="text" class="form-control" value=""
-                                                                            placeholder="Hora Inicio">
+                                                                            placeholder="Hora Inicio" required>
                                                                         <div class="input-group-append">
                                                                             <span class="input-group-text"><i
                                                                                     class="fa fa-clock-o"></i></span>
@@ -1026,7 +1026,7 @@
                                                                         data-placement="bottom" data-align="top"
                                                                         data-autoclose="true">
                                                                         <input type="text" class="form-control" value=""
-                                                                            placeholder="Hora Fin">
+                                                                            placeholder="Hora Fin" required>
                                                                         <div class="input-group-append">
                                                                             <span class="input-group-text"><i
                                                                                     class="fa fa-clock-o"></i></span>
