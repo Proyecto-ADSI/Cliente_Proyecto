@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../assets/images/favicon.png">
+    <title>CallPhone Soft</title>
+    <link href="../../../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../assets/plugins/dropify/dist/css/dropify.min.css">
+    <link rel="stylesheet" href="../../../css/MyStyle.css">
+    <link rel="stylesheet" href="../../../css/style.css">
+    <link href="../../../css/colors/megna-dark.css" id="theme" rel="stylesheet">
+    <!-- css para selects -->
+    <link href="../../../assets/plugins/select2/dist/css/select2.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="../../../assets/plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
+
+    <link href="../../../assets/plugins/wizard/steps.css" rel="stylesheet">
+</head>
+
+
+<body class="fix-sidebar fix-header card-no-border">
+    <div class="preloader">
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
+    </div>
+
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Topbar header (Menú Horizontal) - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <header class="topbar" id="Navegacion_Header"></header>
+        <!-- ============================================================== -->
+        <!-- End Topbar header -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar (Menú Vertical Izquierdo) - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <aside class="left-sidebar" id="Navegacion_Aside"></aside>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+
+        <div class="page-wrapper">
+
+            <!-- Titulo página -->
+            <div class="row page-titles">
+                <div class="col-md-5 align-self-center">
+                    <h3 class="text-themecolor">Registro Clientes</h3>
+                </div>
+                <div class="col-md-7 align-self-center">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)"></a></li>
+
+                        <!--<li class="breadcrumb-item">pages</li> 
+                    <li class="breadcrumb-item active">Registro de usua</li>-->
+                    </ol>
+                </div>
+            </div>
+
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body wizard-content">
+                                <h4 class="card-title">Llamadas</h4>
+                                <h6 class="card-subtitle">Registro de llamadas <a href="#"
+                                        target="_blank">ESKATEMP S.A.S</a></h6>
+                                <form action="#" class="tab-wizard wizard-circle">
+                                    <!-- Step 1 -->
+                                    <h6>Datos básicos</h6>
+                                    <section>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="firstName1"> Razón social:</label>
+                                                    <input type="text" class="form-control" id="firstName1"
+                                                        name="fname"> </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="phoneNumber1">Teléfono :</label>
+                                                    <input type="tel" class="form-control" id="phoneNumber1"
+                                                        name="phone"> </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="lastName1">¿Quién responde?</label>
+                                                    <input type="text" class="form-control" id="lastName1" name="lname">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="emailAddress1">Encargado :</label>
+                                                    <input type="text" class="form-control" id="emailAddress1"
+                                                        name="lname"> </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="phoneNumber1">Teléfono de contacto :</label>
+                                                    <input type="tel" class="form-control" id="phoneNumber1"
+                                                        name="phone"> </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="date1">Extensión:</label>
+                                                    <input type="text" class="form-control" id="date1" name="text">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="location1">¿Tiene plan corporativo?:</label>
+                                                    <select class="custom-select form-control" id="location1"
+                                                        name="city">
+                                                        <option value="">¿Plan corporativo?</option>
+                                                        <option value="Amsterdam">Si</option>
+                                                        <option value="Berlin">No</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                    <!-- Step 2 -->
+                                    <h6>Plan corporativo</h6>
+                                    <section>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="jobTitle1">Operador actual :</label>
+                                                    <input type="text" class="form-control" id="jobTitle1" name="job">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="videoUrl1">Lineas actuales :</label>
+                                                    <input type="number" class="form-control" id="videoUrl1"
+                                                        name="company">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="date1">Pago mensual:</label>
+                                                    <input type="number" class="form-control" id="date1" name="text">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="location1">Pacta cita :</label>
+                                                    <select class="custom-select form-control" id="location1"
+                                                        name="city">
+                                                        <option value="">¿Pacta cita?</option>
+                                                        <option value="Amsterdam">Si</option>
+                                                        <option value="Berlin">No</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </section>
+                                    <!-- Step 3 -->
+                                    <h6>Cita</h6>
+                                    <section>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="int1">Operador:</label>
+                                                    <input type="text" class="form-control" id="int1" name="interview">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="intType1">Nit:</label>
+                                                    <input type="number" class="form-control" id="int1"
+                                                        name="interview">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="Location1">Dirección:</label>
+                                                    <input type="text" class="form-control" id="int1" name="interview">
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="jobTitle2">Fecha :</label>
+                                                    <input type="date" class="form-control" id="jobTitle2" name="idate">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Hora:</label>
+                                                    <input type="time" class="form-control" id="int1" name="interview">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="Location1">Punto de referencia:</label>
+                                                    <input type="text" class="form-control" id="int1" name="interview">
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </section>
+                                    <!-- Step 4 -->
+                                    <h6>Fin de llamada</h6>
+                                    <section>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="behName1">Conclusion :</label>
+                                                    <input type="text" class="form-control" id="behName1" name="beh">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="participants1">Habeas data</label>
+                                                    <input type="text" class="form-control" id="participants1"
+                                                        name="con">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="decisions1">Observacion</label>
+                                                    <textarea name="decisions" id="decisions1" rows="4"
+                                                        class="form-control"></textarea>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                            </div>
+                        </div>
+                        </section>
+                        </form>
+                    </div>
+                </div>
+
+
+            </div>
+            
+        </div>
+        <!-- JQuery -->
+        <script src="../../../assets/plugins/jquery/jquery.min.js"></script>
+
+        <!-- Navegación -->
+        <script src="../../../js/Navegacion/Navegacion_Admin.js"></script>
+
+        <!-- Bootstrap tether Core JavaScript -->
+        <script src="../../../assets/plugins/bootstrap/js/popper.min.js"></script>
+
+        <script src="../../../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+        <script src="../../js/jquery.slimscroll.js"></script>
+
+        <!-- <script src="../../js/waves.js"></script> -->
+        <!--Menu sidebar -->
+        <script src="../../../js/sidebarmenu.js"></script>
+        <!--stickey kit -->
+        <script src="../../../assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+        <script src="../../../assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+
+        <script src="../../../js/custom.min.js"></script>
+
+
+        <script src="../../../assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+
+        <!-- Select -->
+        <script src="../../../assets/plugins/bootstrap-select/bootstrap-select.min.js" type="text/javascript"></script>
+
+        <!--plugin select2-->
+        <script src="../../../assets/plugins/select2/dist/js/select2.full.min.js" type="text/javascript"></script>
+        <script src="../../../js/jasny-bootstrap.js"></script>
+
+        <!-- Wizard -->
+        <script src="../../../assets/plugins/wizard/jquery.steps.js"></script>
+        <script src="../../../assets/plugins/wizard/jquery.validate.min.js"></script>
+        <script src="../../../assets/plugins/wizard/steps.js"></script>
+
+        <!-- script para select con buscador  -->
+        <script src="../../js/selectBuscador.js"></script>
+</body>
+
+</html>
