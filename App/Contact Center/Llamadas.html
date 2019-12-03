@@ -9,202 +9,54 @@
                 <meta name="description" content="">
                 <meta name="author" content="">
                 <!-- Favicon icon -->
-                <link rel="icon" type="image/png" sizes="16x16" href="../../../assets/images/favicon.png">
+                <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon.png">
                 <title>Call Phone Soft</title>
                 <!-- Bootstrap Core CSS -->
-                <link href="../../../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+                <link href="../../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
                 <!-- Mis Estilos -->
-                <link rel="stylesheet" href="../../../css/MyStyle.css">
+                <link rel="stylesheet" href="../../css/MyStyle.css">
                 <!-- Custom CSS -->
-                <link rel="stylesheet" href="../../../css/style.css">
+                <link rel="stylesheet" href="../../css/style.css">
                 <!-- Tema de la plantilla -->
-                <link href="../../../css/colors/megna-dark.css" id="theme" rel="stylesheet">
+                <link href="../../css/colors/megna-dark.css" id="theme" rel="stylesheet">
             
                 <!-- DataTable -->
-                <link rel="stylesheet" href="../../../assets/plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
+                <link rel="stylesheet" href="../../assets/plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
                 <!-- Switchery -->
-                <link href="../../../assets/plugins/switchery/dist/switchery.min.css" rel="stylesheet" />
+                <link href="../../assets/plugins/switchery/dist/switchery.min.css" rel="stylesheet" />
             
                 <!-- Date Picker -->
-                <link rel="stylesheet" href="../../../assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css">
+                <link rel="stylesheet" href="../../assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css">
                 <!-- DateRange Picker -->
-                <link rel="stylesheet" href="../../../assets/plugins/timepicker/bootstrap-timepicker.min.css">
-                <link rel="stylesheet" href="../../../assets/plugins/bootstrap-daterangepicker/daterangepicker.css">
+                <link rel="stylesheet" href="../../assets/plugins/timepicker/bootstrap-timepicker.min.css">
+                <link rel="stylesheet" href="../../assets/plugins/bootstrap-daterangepicker/daterangepicker.css">
             
                 <!-- Clock Picker -->
-                <link href="../../../assets/plugins/clockpicker/dist/jquery-clockpicker.min.css" rel="stylesheet">
+                <link href="../../assets/plugins/clockpicker/dist/jquery-clockpicker.min.css" rel="stylesheet">
             
                 <!-- Select 2 -->
                 <!-- <link href="../../assets/plugins/select2/dist/css/select2.min.css" rel="stylesheet" type="text/css" /> -->
                 <!-- Select -->
-                <link href="../../../assets/plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
+                <link href="../../assets/plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
             
                 <!-- Sweetalert -->
-                <link href="../../../assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
+                <link href="../../assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
             
         </head>
 
 
-<body class="fix-header card-no-border">
+<body class="fix-header fix-sidebar  card-no-border">
     <div class="preloader">
         <svg class="circular" viewBox="25 25 50 50">
             <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
     </div>
     
       <div id="main-wrapper">
-        <!-- ============================================================== -->
-        <!-- Topbar header - style you can find in pages.scss -->
-        <!-- ============================================================== -->
-        <header class="topbar">
-            <nav class="navbar top-navbar navbar-expand-md navbar-light">
-                <!-- ============================================================== -->
-                <!-- Logo -->
-                <!-- ============================================================== -->
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#">
-                        <!-- Logo icon --><b>
-                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-                            <!-- Dark Logo icon -->
-                            <img src="../../assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
-                            <!-- Light Logo icon -->
-                            <img src="../../assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
-                        </b>
-                        <!--End Logo icon -->
-                        <!-- Logo text
-                        <span>
-                            dark Logo text -
-                            <img src="../../assets/images/logo-text.png" alt="homepage" class="dark-logo" />
-                            
-                            <img src="../../assets/images/logo-light-text.png" class="light-logo" alt="homepage" /></span> -->
-
-                    </a>
-                </div>
-                <!-- fin logos lateraless -->
-                
-                <div class="navbar-collapse">
-                  
-                    <ul class="navbar-nav mr-auto mt-md-0">
-                    
-                        <li class="nav-item"> <a
-                                class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark"
-                                href="javascript:void(0)"><i class="mdi mdi-menu"></i></a> </li>
-                        <li class="nav-item m-l-10"> <a
-                                class="nav-link sidebartoggler hidden-sm-down text-muted waves-effect waves-dark"
-                                href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
-                        
-                    </ul>
-                   
-                    <ul class="navbar-nav my-lg-0">
-                            <a class="btn btn-outline-info waves-effect waves-light"  href="AgregarLlamada.html">
-                                    <span class="waves-effect m-r-10 "><i class="fa  fa-phone"></i></span>Llamada precargada</a>
-                                <a class="btn btn-outline-info waves-effect waves-light" type="button" href="AgregarLlamada.html">
-                                    <span class="waves-effect m-r-10"><i class="fa  fa-phone"></i></span>Llamada no precargada</a>
-                                    <button class="btn btn-outline-info waves-effect waves-light" type="button">
-                                            <span class=" waves-effect m-r-10 "><i class="fa fa-calendar"></i></span>Agenda</button>
-                       
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href=""
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img
-                                    src="../../assets/images/users/profile.png" alt="user" class="profile-pic" /></a>
-                            <div class="dropdown-menu dropdown-menu-right scale-up">
-                                <ul class="dropdown-user">
-                                    <li>
-                                        <div class="dw-user-box">
-                                            <div class="u-img"><img src="../../assets/images/users/1.jpg" alt="user"></div>
-                                            <div class="u-text">
-                                                <h4>Steave Jobs</h4>
-                                                <p class="text-muted">varun@gmail.com</p><a href="pages-profile.html"
-                                                    class="btn btn-rounded btn-danger btn-sm">Perfil</a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a href="#"><i class="ti-user"></i> Mi perfil</a></li>
-                                    <li><a href="#"><i class="ti-wallet"></i> Balance</a></li>
-                                    <li><a href="#"><i class="ti-email"></i>Mensajes</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a href="#"><i class="ti-settings"></i>Configuración</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a href="../../Login/Login.html"><i class="fa fa-power-off"></i> Cerrar Sesión</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+    
+        <header class="topbar" id="Navegacion_Header_CC">
         </header>
        
-        <aside class="left-sidebar">
-          
-            <div class="scroll-sidebar">
-                
-                <div class="user-profile">
-                    <!-- Imagen de usuario-->
-                    <div class="profile-img"> <img src="../../assets/images/users/profile.png" alt="user" />
-                        <!--parpadeo-->
-                        <div class="notify setpos"> <span class="heartbit"></span> <span class="point"></span> </div>
-                    </div>
-                    <!-- Texto Usuario-->
-                    <div class="profile-text">
-                        <h5>Nombre usuario</h5>
-                        <!-- <a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"><i class="mdi mdi-settings"></i></a>
-                             <a href="app-email.html" class="" data-toggle="tooltip" title="Email"><i class="mdi mdi-gmail"></i></a> -->
-                        <a href="../../Login/Login.html" class="" data-toggle="tooltip" title="Cerrar sesiòn"><i
-                                class="mdi mdi-power"></i></a>
-
-                       <!--<div class="dropdown-menu animated flipInY">
-                            
-                            <a href="#" class="dropdown-item"><i class="ti-user"></i>Mi perfil</a>
-                          
-                            <a href="#" class="dropdown-item"><i class="ti-wallet"></i></a>
-                            
-                            <a href="#" class="dropdown-item"><i class="ti-email"></i> Inbox</a>
-                           
-                            <div class="dropdown-divider"></div>
-                            
-                            <a href="#" class="dropdown-item"><i class="ti-settings"></i>Configuración de cuenta</a>
-                         
-                            <div class="dropdown-divider"></div>
-                            
-                            <a href="../Login/Login.html" class="dropdown-item"><i class="fa fa-power-off"></i> cerrar</a>
-                            
-                        </div>--> 
-                    </div>
-                </div>
-                <!-- End User profile text  -->
-                <!-- Gestionar...-->
-                <nav class="sidebar-nav">
-                    <ul id="sidebarnav">
-                        <li class="nav-devider"></li>
-                        <li class="nav-small-cap"><h4>Menú</h4></li>
-                        <li><a href="#"><i class="fa fa-home"></i><span class="hide-menu">Inicio</span></a></li>
-
-                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
-                            class="fa fa-book"></i><span class="hide-menu">Directorio</span></a>
-                    <ul aria-expanded="false" class="collapse">
-                            
-                        <li><a href="Clientes.html">Clientes </a></li>
-                    </ul>
-                </li>
-                                
-                <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
-                    class="fa fa-phone"></i><span class="hide-menu">Llamadas</span></a>  
-                 <ul aria-expanded="false" class="collapse"> 
-                    <li><a href="Llamadas.html">llamadas</a></li>
-                    <li><a href="MisLlamadas.html">Mis llamadas</a></li>
-                    <li><a href=""></a></li>
-                    </ul>
-                </li>
-                                
-                               
-                                
-                     
-                    </ul>
-                </nav>
-                <!-- Fin Menu -->
-            </div>
-          
+        <aside class="left-sidebar" id="Navegacion_Aside_CC">         
         </aside>
         
         <div class="page-wrapper">
@@ -216,7 +68,9 @@
                 </div>
                 <div class="col-md-7 align-self-center">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item" ><a href="javascript:void(0)">ContactCenter</a></li>
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                        <li class="breadcrumb-item">pages</li>
+                        <li class="breadcrumb-item active">Registro de llamadas</li>
                         
                        <!--<li class="breadcrumb-item">pages</li> 
                            <li class="breadcrumb-item active">Registro de usua</li>-->
@@ -319,8 +173,8 @@
                                             <div class="col-md-12">
                                                 <div class="form-group m-t-30 MyStyle_Btn_Filtro ">
                                                     <button type="submit"
-                                                        class="btn btn-rounded btn-success">Consultar</button>
-                                                    <a href="#" class="btn btn-rounded btn-primary">Filtro avanzado </a>
+                                                        class="btn btn-rounded btn-success" style="color:#0c0c0c;">Consultar</button>
+                                                    <a href="#" class="btn btn-rounded btn-primary" style="background: #0c0c0c; color: rgb(28, 231, 204);">Filtro avanzado </a>
                                                 </div>
                                             </div>
                                         </div>
@@ -330,7 +184,7 @@
                             <div class="table-responsive m-t-40">
                                 <table id="example" class="table table-bordered table-striped MyStyle_Color-Table">
                                     <thead>
-                                        <tr>
+                                        <tr style="color: rgb(28, 231, 204); background: #0c0c0c;">
                                             <th class="MyStyle_Table_num">#</th>
                                             <th>Empresa</th>
                                             <th class="MyStyle_Table_Fecha">Fecha </th>
@@ -752,32 +606,32 @@
           
         </div>
         
-        <script src="../../../assets/plugins/jquery/jquery.min.js"></script>
+        <script src="../../assets/plugins/jquery/jquery.min.js"></script>
 
         <!-- Navegación -->
-        <script src="../../../js/Navegacion/Navegacion_Admin.js"></script>
+        <script src="../../js/Navegacion/Navegacion_CC.js"></script>
         
         <!-- Bootstrap tether Core JavaScript -->
-        <script src="../../../assets/plugins/bootstrap/js/popper.min.js"></script>
+        <script src="../../assets/plugins/bootstrap/js/popper.min.js"></script>
 
-        <script src="../../../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+        <script src="../../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 
         <!-- slimscrollbar scrollbar JavaScript -->
-        <script src="../../../js/jquery.slimscroll.js"></script>
+        <script src="../../js/jquery.slimscroll.js"></script>
 
         <!--Menu sidebar -->
-        <script src="../../../js/sidebarmenu.js"></script>
+        <script src="../../js/sidebarmenu.js"></script>
 
         <!--stickey kit -->
-        <script src="../../../assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+        <script src="../../assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
 
         <!--Custom JavaScript -->
-        <script src="../../../js/custom.min.js"></script>
+        <script src="../../js/custom.min.js"></script>
 
         <!-- DataTable -->
-        <script src="../../../assets/plugins/datatables/datatables.js"></script>
+        <script src="../../assets/plugins/datatables/datatables.js"></script>
         <!-- Idioma DataTable -->
-        <script src="../../../js/DataTable.js"></script>
+        <script src="../../js/DataTable.js"></script>
 
         <!-- Switchery -->
         <script src="../../../assets/plugins/switchery/dist/switchery.min.js"></script>
@@ -794,21 +648,21 @@
         <script src="../../../assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
 
         <!-- Clock Picker -->
-        <script src="../../../assets/plugins/clockpicker/dist/jquery-clockpicker.min.js"></script>
+        <script src="../../assets/plugins/clockpicker/dist/jquery-clockpicker.min.js"></script>
 
         <!-- Select 2 (Select con buscador)-->
         <!-- <script src="../../assets/plugins/select2/dist/js/select2.full.min.js" type="text/javascript"></script> -->
         <!-- Select  -->
-        <script src="../../../assets/plugins/bootstrap-select/bootstrap-select.min.js" type="text/javascript"></script>
+        <script src="../../assets/plugins/bootstrap-select/bootstrap-select.min.js" type="text/javascript"></script>
 
         <!-- Form-Addons -->
-        <script src="../../../js/Form-Addons.js"></script>
+        <script src="../../js/Form-Addons.js"></script>
         <!-- Clock Pickers -->
-        <script src="../../../js/ClockPicker.js"></script>
+        <script src="../../js/ClockPicker.js"></script>
 
          <!-- Sweetalert -->
-         <script src="../../../assets/plugins/sweetalert/sweetalert.min.js"></script>
-         <script src="../../../assets/plugins/sweetalert/jquery.sweet-alert.custom.js"></script>
+         <script src="../../assets/plugins/sweetalert/sweetalert.min.js"></script>
+         <script src="../../assets/plugins/sweetalert/jquery.sweet-alert.custom.js"></script>
 </body> 
 
 </html>

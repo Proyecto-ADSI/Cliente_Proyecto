@@ -433,13 +433,13 @@ Thumb size
 Text Colors
 *******************/
 .text-white {
-  color: #ffffff !important; }
+  color: rgb(28, 231, 204) !important; }
 
 .text-danger {
   color: #ef5350 !important; }
 
 .text-muted {
-  color: #99abb4 !important; }
+  color: grey !important; }
 
 .text-warning {
   color: #ffb22b !important; }
@@ -2261,8 +2261,8 @@ ul#themecolors {
 .card-outline-info {
   border-color: #1976d2; }
   .card-outline-info .card-header {
-    background: #1976d2;
-    border-color: #1976d2; }
+    background: #0c0c0c;
+    border-color: #0c0c0c; }
 
 .card-outline-inverse {
   border-color: #2f3d4a; }
@@ -2289,10 +2289,10 @@ ul#themecolors {
     border-color: #ef5350; }
 
 .card-outline-primary {
-  border-color: #5c4ac7; }
+  border-color: #0c0c0c; }
   .card-outline-primary .card-header {
-    background: #5c4ac7;
-    border-color: #5c4ac7; }
+    background: #0c0c0c;
+    border-color: #0c0c0c; }
 
 /*============================================================== 
 Breadcrumb
@@ -5510,7 +5510,8 @@ sidebar footer
 sidebar navigation
 ******************/
 .scroll-sidebar {
-  padding-bottom: 60px; }
+  padding-bottom: 60px;
+  background: #0c0c0c; }
 
 .collapse.in {
   display: block; }
@@ -5520,7 +5521,9 @@ sidebar navigation
   padding: 0px; }
   .sidebar-nav ul {
     margin: 0px;
-    padding: 0px; }
+    padding: 0px;
+    background: #0c0c0c;
+  color: gray; }
     .sidebar-nav ul li {
       list-style: none; }
       .sidebar-nav ul li a {
@@ -5529,9 +5532,9 @@ sidebar navigation
         display: block;
         font-size: 14px; }
         .sidebar-nav ul li a.active, .sidebar-nav ul li a:hover {
-          color: #1976d2; }
+          color: rgb(28, 231, 204); }
           .sidebar-nav ul li a.active i, .sidebar-nav ul li a:hover i {
-            color: #1976d2; }
+            color: rgb(28, 231, 204); }
         .sidebar-nav ul li a.active {
           font-weight: 500;
           color: #263238; }
