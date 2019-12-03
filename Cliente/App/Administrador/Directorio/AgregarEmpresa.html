@@ -37,14 +37,10 @@
         <!-- ============================================================== -->
         <!-- Topbar header (Menú Horizontal) - style you can find in pages.scss -->
         <!-- ============================================================== -->
-        <header class="topbar" id="Navegacion_Header"></header>
-        <!-- ============================================================== -->
-        <!-- End Topbar header -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Left Sidebar (Menú Vertical Izquierdo) - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
-        <aside class="left-sidebar" id="Navegacion_Aside"></aside>
+        <header class="topbar" id="Navegacion_Header_Coor"></header>
+       
+       
+        <aside class="left-sidebar" id="Navegacion_Aside_Coor"></aside>
         <!-- ============================================================== -->
         <!-- End Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
@@ -82,25 +78,25 @@
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <!-- <label class="control-label">Nit:</label> -->
-                                                    <input type="text" id="Nit" class="form-control" placeholder="NIT"
+                                                     <label class="control-label">Nit:</label> 
+                                                    <input type="text" id="Nit" class="form-control" placeholder=""
                                                         required>
                                                 </div>
                                             </div>
 
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <!-- <label class="control-label">Razón social:</label> -->
+                                                   <label class="control-label">Razón social:</label> 
                                                     <input type="text" id="lastName"
                                                         class="form-control form-control-danger"
-                                                        placeholder="Razón social" required>
+                                                        placeholder="" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <!-- <label for="emailAddress1"> Teléfono:</label> -->
+                                                    <label for="emailAddress1"> Teléfono:</label> 
                                                     <input type="tel" class="form-control" id="Teléfono" name="Telefono"
-                                                        placeholder="Teléfono" required> </div>
+                                                        placeholder="" required> </div>
                                             </div>
                                         </div>
                                         <h3 class="box-title">Ubicación</h3>
@@ -198,59 +194,59 @@
                                                 <div class="form-group">
                                                     <label for="int1">Encargado:</label>
                                                     <input type="text" class="form-control" id="Encargado"
-                                                        name="Encargado" placeholder="Encargado" required>
+                                                        name="Encargado" placeholder="" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="int1">Teléfono contacto:</label>
                                                     <input type="text" class="form-control" id="Tel" name="Tel"
-                                                        placeholder="Teléfono contacto" required>
+                                                        placeholder="" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="int1">Extensión:</label>
                                                     <input type="text" class="form-control" id="Tel" name="Tel"
-                                                        placeholder="Extensión" required>
+                                                        placeholder="" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="int1 ">Número de lineas:</label>
                                                     <input type="number" class="form-control" id="numLineas"
-                                                        placeholder="Número de lineas" name="NumeroLineas">
+                                                        placeholder="" name="NumeroLineas">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="int1 ">Valor mensual:</label>
                                                     <input type="text" class="form-control" id="Valor mensual"
-                                                        placeholder="Valor mensual" name="Valor mensual">
+                                                        placeholder="" name="Valor mensual">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="int1 ">Cantidad de minutos:</label>
                                                     <input type="text" class="form-control" id="Cantidad de minutos"
-                                                        placeholder="Cantidad de minutos" name="Cantidad de minutos">
+                                                        placeholder="" name="Cantidad de minutos">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="jobTitle2 ">Cantidad navegación:</label>
                                                     <input type="text" class="form-control" id="Cnavega"
-                                                        placeholder="Cantida navegación" name="CantidadNaveg">
+                                                        placeholder="" name="CantidadNaveg">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="jobTitle2 ">Llamadas internacionales:</label>
                                                     <input type="text" class="form-control" id="Cnavega"
-                                                        placeholder="Llamadas internacionales" name="CantidadNaveg">
+                                                        placeholder="" name="CantidadNaveg">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="jobTitle2 ">Mensajes de texto:</label>
                                                     <input type="text" class="form-control" id="MensajesT"
-                                                        placeholder="Mensaje de texto">
+                                                        placeholder="">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="jobTitle2 ">Aplicaciones:</label>
                                                     <input type="text" class="form-control" id="apps"
-                                                        placeholder="Aplicaciones" name="app">
+                                                        placeholder="" name="app">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="jobTitle2 ">Roaming internacional:</label>
                                                     <input type="text" class="form-control" id="apps"
-                                                        placeholder="Roaming internacional" name="app">
+                                                        placeholder="" name="app">
                                                 </div>
 
                                                 <div class="form-group">
@@ -262,11 +258,7 @@
                                                             <option value="AK">Claro</option>
                                                             <option value="HI">Movistar</option>
                                                         </optgroup>
-                                                        <optgroup label="Pacific Time Zone">
-                                                            <option value="CA">Claro</option>
-                                                            <option value="NV">Tigo</option>
-
-                                                        </optgroup>
+                                                     
                                                     </select>
                                                 </div>
                                             </div>
@@ -282,15 +274,14 @@
                                                     <input type="date" class="form-control" id="Fechadeinicio"
                                                         name="Fecha_de_inicio" placeholder="Fecha de inicio">
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="participants1">Fecha de finalización</label>
-                                                    <input type="date " class="form-control" id="fin" name="fechafin"
-                                                        placeholder="Fecha de finalización">
-                                                </div>
+                                               <div class="form-group">
+                                                   <label for="FechaFin">Fecha de fin:</label>
+                                                   <input type="date" class="form-control" id="Fechafin" name="FechaFin">
+                                               </div>
                                                 <div class="form-group">
                                                     <label for="participants1">Descripción</label>
                                                     <textarea name="Descripcion" id="Descrip" rows="4"
-                                                        class="form-control" placeholder="Descripción"></textarea>
+                                                        class="form-control" placeholder=""></textarea>
                                                 </div>
                                             </div>
 
@@ -365,7 +356,7 @@
 
         <script src="../../../assets/plugins/jquery/jquery.min.js"></script>
         <!-- Navegación -->
-        <script src="../../../js/Navegacion/Navegacion_Admin.js"></script>
+        <script src="../../../js/Navegacion/CoordinadorNavegacion.js"></script>
         <!-- Bootstrap tether Core JavaScript -->
         <script src="../../../assets/plugins/bootstrap/js/popper.min.js"></script>
 
