@@ -21,7 +21,8 @@
     <link href="../../../css/colors/megna-dark.css" id="theme" rel="stylesheet">
 
     <!-- DataTable -->
-    <link rel="stylesheet" href="../../../assets/plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet"
+        href="../../../assets/plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
     <!-- Switchery -->
     <link href="../../../assets/plugins/switchery/dist/switchery.min.css" rel="stylesheet" />
 
@@ -342,15 +343,16 @@
                                                                                 </li>
 
                                                                                 <li class="nav-item"> <a
-                                                                                    class="nav-link"
-                                                                                    data-toggle="tab"
-                                                                                    href="#Comparativo"
-                                                                                    role="tab"><span
-                                                                                        class="hidden-sm-up"><i
-                                                                                            class="ti-email"></i></span>
-                                                                                    <span
-                                                                                        class="hidden-xs-down">Comparativo coorporativo</span></a>
-                                                                            </li>
+                                                                                        class="nav-link"
+                                                                                        data-toggle="tab"
+                                                                                        href="#Comparativo"
+                                                                                        role="tab"><span
+                                                                                            class="hidden-sm-up"><i
+                                                                                                class="ti-email"></i></span>
+                                                                                        <span
+                                                                                            class="hidden-xs-down">Comparativo
+                                                                                            coorporativo</span></a>
+                                                                                </li>
                                                                             </ul>
 
 
@@ -945,411 +947,620 @@
                                                                                 </div>
 
                                                                                 <div class="tab-pane" id="Comparativo"
-                                                                                role="tabpanel">
-                                                                                <div class="card m-b-0">
-                                                                                    <div class="card-body ">
-                                                                                        <!-- Nav tabs -->
-                                                                                        <ul class="nav nav-tabs" role="tablist">
-                                                                                            <li class="nav-item">
-                                                                                                <a class="nav-link active"
-                                                                                                    data-toggle="tab"
-                                                                                                    href="#DatosBasicos"
-                                                                                                    role="tab"><span
-                                                                                                        class="hidden-sm-up"><i
-                                                                                                            class="ti-home"></i></span>
-                                                                                                    <span class="hidden-xs-down">
-                                                                                                        Datos basicos lineas
-                                                                                                    </span>
-                                                                                                </a>
-                                                                                            </li>
-                                                                                            <li class="nav-item">
-                                                                                                <a class="nav-link"
-                                                                                                    data-toggle="tab" href="#PlanCorporativo"
-                                                                                                    role="tab"><span
-                                                                                                        class="hidden-sm-up"><i
-                                                                                                            class="ti-email"></i></span>
-                                                                                                    <span class="hidden-xs-down">
-                                                                                                        Plan Corporativo
-                                                                                                    </span>
-                                                                                                </a>
-                                                                                            </li>
-                                                                                            <li class="nav-item"> <a
-                                                                                                    class="nav-link"
-                                                                                                    data-toggle="tab"
-                                                                                                    href="#Directorio"
-                                                                                                    role="tab"><span
-                                                                                                        class="hidden-sm-up"><i
-                                                                                                            class="ti-email"></i></span>
-                                                                                                    <span
-                                                                                                        class="hidden-xs-down">Directorio
+                                                                                    role="tabpanel">
+                                                                                    <div class="card m-b-0">
+                                                                                        <div class="card-body ">
+                                                                                            <!-- Nav tabs -->
+                                                                                            <ul class="nav nav-tabs"
+                                                                                                role="tablist">
+                                                                                                <li class="nav-item">
+                                                                                                    <a class="nav-link active"
+                                                                                                        data-toggle="tab"
+                                                                                                        href="#DatosBasicos"
+                                                                                                        role="tab"><span
+                                                                                                            class="hidden-sm-up"><i
+                                                                                                                class="ti-home"></i></span>
+                                                                                                        <span
+                                                                                                            class="hidden-xs-down">
+                                                                                                            Datos
+                                                                                                            basicos
+                                                                                                            lineas
+                                                                                                        </span>
+                                                                                                    </a>
+                                                                                                </li>
+                                                                                                <li class="nav-item">
+                                                                                                    <a class="nav-link"
+                                                                                                        data-toggle="tab"
+                                                                                                        href="#PlanCorporativo"
+                                                                                                        role="tab"><span
+                                                                                                            class="hidden-sm-up"><i
+                                                                                                                class="ti-email"></i></span>
+                                                                                                        <span
+                                                                                                            class="hidden-xs-down">
+                                                                                                            Plan
+                                                                                                            Corporativo
+                                                                                                        </span>
+                                                                                                    </a>
+                                                                                                </li>
+                                                                                                <li class="nav-item"> <a
+                                                                                                        class="nav-link"
+                                                                                                        data-toggle="tab"
+                                                                                                        href="#Directorio"
+                                                                                                        role="tab"><span
+                                                                                                            class="hidden-sm-up"><i
+                                                                                                                class="ti-email"></i></span>
+                                                                                                        <span
+                                                                                                            class="hidden-xs-down">Directorio
                                                                                                         </span></a>
-                                                                                            </li>
-                                                                                            <li class="nav-item"> <a
-                                                                                                class="nav-link"
-                                                                                                data-toggle="tab"
-                                                                                                href="#DocumentosSo"
-                                                                                                role="tab"><span
-                                                                                                    class="hidden-sm-up"><i
-                                                                                                        class="ti-email"></i></span>
-                                                                                                <span
-                                                                                                    class="hidden-xs-down">Documento de soporte
-                                                                                                    </span></a>
-                                                                                        </li>
-                                                                                        </ul>
-            
-            
-                                                                                        <!-- Tab panes -->
-                                                                                        <div class="tab-content tabcontent-border">
-                                                                                            <!-- Tab Datos Básicos -->
-                                                                                            <div class="tab-pane active"
-                                                                                                id="DatosBasicos" role="tabpanel">
-                                                                                                <!-- Card Datos Básicos  -->
-                                                                                                    <div class="card-body">
+                                                                                                </li>
+                                                                                                <li class="nav-item"> <a
+                                                                                                        class="nav-link"
+                                                                                                        data-toggle="tab"
+                                                                                                        href="#DocumentosSo"
+                                                                                                        role="tab"><span
+                                                                                                            class="hidden-sm-up"><i
+                                                                                                                class="ti-email"></i></span>
+                                                                                                        <span
+                                                                                                            class="hidden-xs-down">Documento
+                                                                                                            de soporte
+                                                                                                        </span></a>
+                                                                                                </li>
+                                                                                            </ul>
+
+
+                                                                                            <!-- Tab panes -->
+                                                                                            <div
+                                                                                                class="tab-content tabcontent-border">
+                                                                                                <!-- Tab Datos Básicos -->
+                                                                                                <div class="tab-pane active"
+                                                                                                    id="DatosBasicos"
+                                                                                                    role="tabpanel">
+                                                                                                    <!-- Card Datos Básicos  -->
+                                                                                                    <div
+                                                                                                        class="card-body">
                                                                                                         <!-- Tabla -->
-                                                                                                        <div class="card" role="tabpanel" style=" overflow:scroll;
+                                                                                                        <div class="card"
+                                                                                                            role="tabpanel"
+                                                                                                            style=" overflow:scroll;
                                             height:350px;
                                             width:690px;" id="DatosBasic">
-                                                <div class="card-body">
-                                                    <table class="table">
-                                                      
-                                                        <thead>
-                                                            <tr>
-                                                                <th>Titulo</th>
-                                                                <th>Corporativo anterior</th>
-                                                                <th>Corporativo nuevo</th>
-                                                               
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr class="table-active">
-                                                                <td>Id_Datos_Basicos_Lineas</td>
-                                                                <td>1</td>
-                                                                <td>2</td>
-                                                               
-                                                            </tr>
-                                                            <tr class="table-active">
-                                                                <td>Id_Cliente</td>
-                                                                <td>1</td>
-                                                                <td>2</td>
-                                                               
-                                                            </tr>
-                                                            <tr class="table-active">
-                                                                <td>Id_Operador</td>
-                                                                <td>1</td>
-                                                                <td>2</td>
-                                                               
-                                                            </tr>
-                                                            <tr class="table-active">
-                                                                <td>Id_Plan_Corporativo</td>
-                                                                <td>1</td>
-                                                                <td>2</td>
-                                                               
-                                                            </tr>
-                                                            <tr class="table-active">
-                                                                <td>Encargado</td>
-                                                                <td>1</td>
-                                                                <td>2</td>
-                                                               
-                                                            </tr>
-                                                            <tr class="table-active">
-                                                                <td>Extension</td>
-                                                                <td>1</td>
-                                                                <td>2</td>
-                                                               
-                                                            </tr>
-                                                            <tr class="table-active">
-                                                                <td>Telefono Contacto</td>
-                                                                <td>1</td>
-                                                                <td>2</td>
-                                                               
-                                                            </tr>
-                                                            <tr class="table-active">
-                                                                <td>Cantidad lineas</td>
-                                                                <td>1</td>
-                                                                <td>2</td>
-                                                               
-                                                            </tr>
-                                                            <tr class="table-active">
-                                                                <td>Valor mensual</td>
-                                                                <td>1</td>
-                                                                <td>2</td>
-                                                               
-                                                            </tr>
-                                                            <tr class="table-active">
-                                                                <td>Cantidad de minutos </td>
-                                                                <td>1</td>
-                                                                <td>2</td>
-                                                               
-                                                            </tr>
-                                                            <tr class="table-active">
-                                                                <td>Cantidad de navegación</td>
-                                                                <td>1</td>
-                                                                <td>2</td>
-                                                               
-                                                            </tr>
-                                                            <tr class="table-active">
-                                                                <td>Llamadas internacionales</td>
-                                                                <td>1</td>
-                                                                <td>2</td>
-                                                               
-                                                            </tr>
-                                                            <tr class="table-active">
-                                                                <td>Mensajes texto</td>
-                                                                <td>1</td>
-                                                                <td>2</td>
-                                                               
-                                                            </tr>
-                                                            <tr class="table-active">
-                                                                <td>Aplicaciones</td>
-                                                                <td>1</td>
-                                                                <td>2</td>
-                                                               
-                                                            </tr>
-                                                            <tr class="table-active">
-                                                                <td>Roaming internacional</td>
-                                                                <td>1</td>
-                                                                <td>2</td>
-                                                               
-                                                            </tr>
-                                                            <tr class="table-active">
-                                                                <td>Estado</td>
-                                                                <td>1</td>
-                                                                <td>2</td>
-                                                               
-                                                            </tr>
-            
-            
-                                                            
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
+                                                                                                            <div
+                                                                                                                class="card-body">
+                                                                                                                <table
+                                                                                                                    class="table">
+
+                                                                                                                    <thead>
+                                                                                                                        <tr>
+                                                                                                                            <th>Titulo
+                                                                                                                            </th>
+                                                                                                                            <th>Corporativo
+                                                                                                                                anterior
+                                                                                                                            </th>
+                                                                                                                            <th>Corporativo
+                                                                                                                                nuevo
+                                                                                                                            </th>
+
+                                                                                                                        </tr>
+                                                                                                                    </thead>
+                                                                                                                    <tbody>
+                                                                                                                        <tr
+                                                                                                                            class="table-active">
+                                                                                                                            <td>Id_Datos_Basicos_Lineas
+                                                                                                                            </td>
+                                                                                                                            <td>1
+                                                                                                                            </td>
+                                                                                                                            <td>2
+                                                                                                                            </td>
+
+                                                                                                                        </tr>
+                                                                                                                        <tr
+                                                                                                                            class="table-active">
+                                                                                                                            <td>Id_Cliente
+                                                                                                                            </td>
+                                                                                                                            <td>1
+                                                                                                                            </td>
+                                                                                                                            <td>2
+                                                                                                                            </td>
+
+                                                                                                                        </tr>
+                                                                                                                        <tr
+                                                                                                                            class="table-active">
+                                                                                                                            <td>Id_Operador
+                                                                                                                            </td>
+                                                                                                                            <td>1
+                                                                                                                            </td>
+                                                                                                                            <td>2
+                                                                                                                            </td>
+
+                                                                                                                        </tr>
+                                                                                                                        <tr
+                                                                                                                            class="table-active">
+                                                                                                                            <td>Id_Plan_Corporativo
+                                                                                                                            </td>
+                                                                                                                            <td>1
+                                                                                                                            </td>
+                                                                                                                            <td>2
+                                                                                                                            </td>
+
+                                                                                                                        </tr>
+                                                                                                                        <tr
+                                                                                                                            class="table-active">
+                                                                                                                            <td>Encargado
+                                                                                                                            </td>
+                                                                                                                            <td>1
+                                                                                                                            </td>
+                                                                                                                            <td>2
+                                                                                                                            </td>
+
+                                                                                                                        </tr>
+                                                                                                                        <tr
+                                                                                                                            class="table-active">
+                                                                                                                            <td>Extension
+                                                                                                                            </td>
+                                                                                                                            <td>1
+                                                                                                                            </td>
+                                                                                                                            <td>2
+                                                                                                                            </td>
+
+                                                                                                                        </tr>
+                                                                                                                        <tr
+                                                                                                                            class="table-active">
+                                                                                                                            <td>Telefono
+                                                                                                                                Contacto
+                                                                                                                            </td>
+                                                                                                                            <td>1
+                                                                                                                            </td>
+                                                                                                                            <td>2
+                                                                                                                            </td>
+
+                                                                                                                        </tr>
+                                                                                                                        <tr
+                                                                                                                            class="table-active">
+                                                                                                                            <td>Cantidad
+                                                                                                                                lineas
+                                                                                                                            </td>
+                                                                                                                            <td>1
+                                                                                                                            </td>
+                                                                                                                            <td>2
+                                                                                                                            </td>
+
+                                                                                                                        </tr>
+                                                                                                                        <tr
+                                                                                                                            class="table-active">
+                                                                                                                            <td>Valor
+                                                                                                                                mensual
+                                                                                                                            </td>
+                                                                                                                            <td>1
+                                                                                                                            </td>
+                                                                                                                            <td>2
+                                                                                                                            </td>
+
+                                                                                                                        </tr>
+                                                                                                                        <tr
+                                                                                                                            class="table-active">
+                                                                                                                            <td>Cantidad
+                                                                                                                                de
+                                                                                                                                minutos
+                                                                                                                            </td>
+                                                                                                                            <td>1
+                                                                                                                            </td>
+                                                                                                                            <td>2
+                                                                                                                            </td>
+
+                                                                                                                        </tr>
+                                                                                                                        <tr
+                                                                                                                            class="table-active">
+                                                                                                                            <td>Cantidad
+                                                                                                                                de
+                                                                                                                                navegación
+                                                                                                                            </td>
+                                                                                                                            <td>1
+                                                                                                                            </td>
+                                                                                                                            <td>2
+                                                                                                                            </td>
+
+                                                                                                                        </tr>
+                                                                                                                        <tr
+                                                                                                                            class="table-active">
+                                                                                                                            <td>Llamadas
+                                                                                                                                internacionales
+                                                                                                                            </td>
+                                                                                                                            <td>1
+                                                                                                                            </td>
+                                                                                                                            <td>2
+                                                                                                                            </td>
+
+                                                                                                                        </tr>
+                                                                                                                        <tr
+                                                                                                                            class="table-active">
+                                                                                                                            <td>Mensajes
+                                                                                                                                texto
+                                                                                                                            </td>
+                                                                                                                            <td>1
+                                                                                                                            </td>
+                                                                                                                            <td>2
+                                                                                                                            </td>
+
+                                                                                                                        </tr>
+                                                                                                                        <tr
+                                                                                                                            class="table-active">
+                                                                                                                            <td>Aplicaciones
+                                                                                                                            </td>
+                                                                                                                            <td>1
+                                                                                                                            </td>
+                                                                                                                            <td>2
+                                                                                                                            </td>
+
+                                                                                                                        </tr>
+                                                                                                                        <tr
+                                                                                                                            class="table-active">
+                                                                                                                            <td>Roaming
+                                                                                                                                internacional
+                                                                                                                            </td>
+                                                                                                                            <td>1
+                                                                                                                            </td>
+                                                                                                                            <td>2
+                                                                                                                            </td>
+
+                                                                                                                        </tr>
+                                                                                                                        <tr
+                                                                                                                            class="table-active">
+                                                                                                                            <td>Estado
+                                                                                                                            </td>
+                                                                                                                            <td>1
+                                                                                                                            </td>
+                                                                                                                            <td>2
+                                                                                                                            </td>
+
+                                                                                                                        </tr>
+
+
+
+                                                                                                                    </tbody>
+                                                                                                                </table>
+                                                                                                            </div>
+                                                                                                        </div>
                                                                                                         <!-- Tabla -->
                                                                                                     </div>
-                                                                                                
-            
-                                                                                            </div>
-                                                                                            <!-- /Tab Datos Básicos -->
-            
-                                                                                            <!-- Datos Líneas -->
-                                                                                            <div class="tab-pane" id="PlanCorporativo"
-                                                                                                role="tabpanel">
-                                                                                                
-                                                                                                        <!-- Formulario -->
-                                                                                                        <div class="card-body" >
-                                                                                                                <div class="card" role="tabpanel" style=" overflow:scroll;
+
+
+                                                                                                </div>
+                                                                                                <!-- /Tab Datos Básicos -->
+
+                                                                                                <!-- Datos Líneas -->
+                                                                                                <div class="tab-pane"
+                                                                                                    id="PlanCorporativo"
+                                                                                                    role="tabpanel">
+
+                                                                                                    <!-- Formulario -->
+                                                                                                    <div
+                                                                                                        class="card-body">
+                                                                                                        <div class="card"
+                                                                                                            role="tabpanel"
+                                                                                                            style=" overflow:scroll;
                                                                                                                 height:350px;
                                                                                                                 width:690px;
                                                                                                                 ">
-                                                                                                                    <div class="card-body">
-                                                                                                                        <table class="table">
-                                                                                                                            
-                                                                                                                            <thead>
-                                                                                                                                <tr>
-                                                                                                                                    <th>Titulo</th>
-                                                                                                                                    <th>Corporativo anterior</th>
-                                                                                                                                    <th>Corporativo nuevo</th>
-                                                                                                                                   
-                                                                                                                                </tr>
-                                                                                                                            </thead>
-                                                                                                                            <tbody>
-                                                                                                                                <tr class="table-active">
-                                                                                                                                    <td>Id_Plan_Corporativo</td>
-                                                                                                                                    <td>1</td>
-                                                                                                                                    <td>2</td>
-                                                                                                                                   
-                                                                                                                                </tr>
-                                                                                                                                <tr class="table-active">
-                                                                                                                                    <td>Id_Documentos</td>
-                                                                                                                                    <td>1</td>
-                                                                                                                                    <td>2</td>
-                                                                                                                                   
-                                                                                                                                </tr>
-                                                                                                                                <tr class="table-active">
-                                                                                                                                    <td>Fecha de inicio</td>
-                                                                                                                                    <td>1</td>
-                                                                                                                                    <td>2</td>
-                                                                                                                                   
-                                                                                                                                </tr>
-                                                                                                                                <tr class="table-active">
-                                                                                                                                    <td>Fecha fin</td>
-                                                                                                                                    <td>1</td>
-                                                                                                                                    <td>2</td>
-                                                                                                                                   
-                                                                                                                                </tr>
-                                                                                                                                <tr class="table-active">
-                                                                                                                                    <td>Descripcion</td>
-                                                                                                                                    <td>1</td>
-                                                                                                                                    <td>2</td>
-                                                                                                                                   
-                                                                                                                                </tr>
-                                                                                                                                <tr class="table-active">
-                                                                                                                                    <td>Estado</td>
-                                                                                                                                    <td>1</td>
-                                                                                                                                    <td>2</td>
-                                                                                                                                   
-                                                                                                                                </tr>
-                                                                                                                               
-                                                                                
-                                                                                
-                                                                                                                                
-                                                                                                                            </tbody>
-                                                                                                                        </table>
-                                                                                                                    </div>
-                                                                                
-                                                                                                                </div>
-                                                                            
-                                                                                                                
-                                                                                                          
-                                                                                
-                                                                            
+                                                                                                            <div
+                                                                                                                class="card-body">
+                                                                                                                <table
+                                                                                                                    class="table">
+
+                                                                                                                    <thead>
+                                                                                                                        <tr>
+                                                                                                                            <th>Titulo
+                                                                                                                            </th>
+                                                                                                                            <th>Corporativo
+                                                                                                                                anterior
+                                                                                                                            </th>
+                                                                                                                            <th>Corporativo
+                                                                                                                                nuevo
+                                                                                                                            </th>
+
+                                                                                                                        </tr>
+                                                                                                                    </thead>
+                                                                                                                    <tbody>
+                                                                                                                        <tr
+                                                                                                                            class="table-active">
+                                                                                                                            <td>Id_Plan_Corporativo
+                                                                                                                            </td>
+                                                                                                                            <td>1
+                                                                                                                            </td>
+                                                                                                                            <td>2
+                                                                                                                            </td>
+
+                                                                                                                        </tr>
+                                                                                                                        <tr
+                                                                                                                            class="table-active">
+                                                                                                                            <td>Id_Documentos
+                                                                                                                            </td>
+                                                                                                                            <td>1
+                                                                                                                            </td>
+                                                                                                                            <td>2
+                                                                                                                            </td>
+
+                                                                                                                        </tr>
+                                                                                                                        <tr
+                                                                                                                            class="table-active">
+                                                                                                                            <td>Fecha
+                                                                                                                                de
+                                                                                                                                inicio
+                                                                                                                            </td>
+                                                                                                                            <td>1
+                                                                                                                            </td>
+                                                                                                                            <td>2
+                                                                                                                            </td>
+
+                                                                                                                        </tr>
+                                                                                                                        <tr
+                                                                                                                            class="table-active">
+                                                                                                                            <td>Fecha
+                                                                                                                                fin
+                                                                                                                            </td>
+                                                                                                                            <td>1
+                                                                                                                            </td>
+                                                                                                                            <td>2
+                                                                                                                            </td>
+
+                                                                                                                        </tr>
+                                                                                                                        <tr
+                                                                                                                            class="table-active">
+                                                                                                                            <td>Descripcion
+                                                                                                                            </td>
+                                                                                                                            <td>1
+                                                                                                                            </td>
+                                                                                                                            <td>2
+                                                                                                                            </td>
+
+                                                                                                                        </tr>
+                                                                                                                        <tr
+                                                                                                                            class="table-active">
+                                                                                                                            <td>Estado
+                                                                                                                            </td>
+                                                                                                                            <td>1
+                                                                                                                            </td>
+                                                                                                                            <td>2
+                                                                                                                            </td>
+
+                                                                                                                        </tr>
+
+
+
+
+                                                                                                                    </tbody>
+                                                                                                                </table>
+                                                                                                            </div>
+
                                                                                                         </div>
-                                                                            
-                                                                                                        <!-- /Formulario -->
+
+
+
+
+
                                                                                                     </div>
-                                                                                                
-                                                                                            
-                                                                                            <!-- Plan Corporativo -->
-                                                                                            <div class="tab-pane" id="Directorio"
-                                                                                                role="tabpanel">
-                                                                                              
-                                                                                                   
-                                        <div class="card-body" >
-                                                <div class="card" role="tabpanel" style=" overflow:scroll;
+
+                                                                                                    <!-- /Formulario -->
+                                                                                                </div>
+
+
+                                                                                                <!-- Plan Corporativo -->
+                                                                                                <div class="tab-pane"
+                                                                                                    id="Directorio"
+                                                                                                    role="tabpanel">
+
+
+                                                                                                    <div
+                                                                                                        class="card-body">
+                                                                                                        <div class="card"
+                                                                                                            role="tabpanel"
+                                                                                                            style=" overflow:scroll;
                                                 height:350px;
                                                 width:690px;
                                                 ">
-                                                    <div class="card-body">
-                                                        <table class="table">
-                                                          
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>Titulo</th>
-                                                                    <th>Corporativo anterior</th>
-                                                                    <th>Corporativo nuevo</th>
-                                                                   
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr class="table-active">
-                                                                    <td>Id_Cliente</td>
-                                                                    <td>1</td>
-                                                                    <td>2</td>
-                                                                   
-                                                                </tr>
-                                                                <tr class="table-active">
-                                                                    <td>NIT_CDV</td>
-                                                                    <td>1</td>
-                                                                    <td>2</td>
-                                                                   
-                                                                </tr>
-                                                                <tr class="table-active">
-                                                                    <td>Razon social</td>
-                                                                    <td>1</td>
-                                                                    <td>2</td>
-                                                                   
-                                                                </tr>
-                                                                <tr class="table-active">
-                                                                    <td>Telefono</td>
-                                                                    <td>1</td>
-                                                                    <td>2</td>
-                                                                   
-                                                                </tr>
-                                                                <tr class="table-active">
-                                                                    <td>Dirección</td>
-                                                                    <td>1</td>
-                                                                    <td>2</td>
-                                                                   
-                                                                </tr>
-                                                                <tr class="table-active">
-                                                                    <td>Id_Estado_Cliente</td>
-                                                                    <td>1</td>
-                                                                    <td>2</td>
-                                                                   
-                                                                </tr>
-                                                               
-                
-                
-                                                                
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                
-                                                </div>
-                                        </div>
-                                                                                               
-                                                                                            </div>
-                                                                                            <div class="tab-pane" id="DocumentosSo"
-                                                                                            role="tabpanel">
-                                                                                          
-                                                                                               
-                                    <div class="card-body" >
-                                            <div class="card" role="tabpanel" style=" overflow:scroll;
+                                                                                                            <div
+                                                                                                                class="card-body">
+                                                                                                                <table
+                                                                                                                    class="table">
+
+                                                                                                                    <thead>
+                                                                                                                        <tr>
+                                                                                                                            <th>Titulo
+                                                                                                                            </th>
+                                                                                                                            <th>Corporativo
+                                                                                                                                anterior
+                                                                                                                            </th>
+                                                                                                                            <th>Corporativo
+                                                                                                                                nuevo
+                                                                                                                            </th>
+
+                                                                                                                        </tr>
+                                                                                                                    </thead>
+                                                                                                                    <tbody>
+                                                                                                                        <tr
+                                                                                                                            class="table-active">
+                                                                                                                            <td>Id_Cliente
+                                                                                                                            </td>
+                                                                                                                            <td>1
+                                                                                                                            </td>
+                                                                                                                            <td>2
+                                                                                                                            </td>
+
+                                                                                                                        </tr>
+                                                                                                                        <tr
+                                                                                                                            class="table-active">
+                                                                                                                            <td>NIT_CDV
+                                                                                                                            </td>
+                                                                                                                            <td>1
+                                                                                                                            </td>
+                                                                                                                            <td>2
+                                                                                                                            </td>
+
+                                                                                                                        </tr>
+                                                                                                                        <tr
+                                                                                                                            class="table-active">
+                                                                                                                            <td>Razon
+                                                                                                                                social
+                                                                                                                            </td>
+                                                                                                                            <td>1
+                                                                                                                            </td>
+                                                                                                                            <td>2
+                                                                                                                            </td>
+
+                                                                                                                        </tr>
+                                                                                                                        <tr
+                                                                                                                            class="table-active">
+                                                                                                                            <td>Telefono
+                                                                                                                            </td>
+                                                                                                                            <td>1
+                                                                                                                            </td>
+                                                                                                                            <td>2
+                                                                                                                            </td>
+
+                                                                                                                        </tr>
+                                                                                                                        <tr
+                                                                                                                            class="table-active">
+                                                                                                                            <td>Dirección
+                                                                                                                            </td>
+                                                                                                                            <td>1
+                                                                                                                            </td>
+                                                                                                                            <td>2
+                                                                                                                            </td>
+
+                                                                                                                        </tr>
+                                                                                                                        <tr
+                                                                                                                            class="table-active">
+                                                                                                                            <td>Id_Estado_Cliente
+                                                                                                                            </td>
+                                                                                                                            <td>1
+                                                                                                                            </td>
+                                                                                                                            <td>2
+                                                                                                                            </td>
+
+                                                                                                                        </tr>
+
+
+
+
+                                                                                                                    </tbody>
+                                                                                                                </table>
+                                                                                                            </div>
+
+                                                                                                        </div>
+                                                                                                    </div>
+
+                                                                                                </div>
+                                                                                                <div class="tab-pane"
+                                                                                                    id="DocumentosSo"
+                                                                                                    role="tabpanel">
+
+
+                                                                                                    <div
+                                                                                                        class="card-body">
+                                                                                                        <div class="card"
+                                                                                                            role="tabpanel"
+                                                                                                            style=" overflow:scroll;
                                             height:350px;
                                             width:690px;
                                             ">
-                                                <div class="card-body">
-                                                    <table class="table">
-                                                      
-                                                            <thead>
-                                                                    <tr>
-                                                                        <th>Titulo</th>
-                                                                        <th>Corporativo anterior</th>
-                                                                        <th>Corporativo nuevo</th>
-                                                                       
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    <tr class="table-active">
-                                                                        <td>Id_Documentos</td>
-                                                                        <td>1</td>
-                                                                        <td>2</td>
-                                                                       
-                                                                    </tr>
-                                                                    <tr class="table-active">
-                                                                        <td>Camara de comercio</td>
-                                                                        <td>1</td>
-                                                                        <td>2</td>
-                                                                       
-                                                                    </tr>
-                                                                    <tr class="table-active">
-                                                                        <td>Cedula_RL</td>
-                                                                        <td>1</td>
-                                                                        <td>2</td>
-                                                                       
-                                                                    </tr>
-                                                                    <tr class="table-active">
-                                                                        <td>Soporte ingresos</td>
-                                                                        <td>1</td>
-                                                                        <td>2</td>
-                                                                       
-                                                                    </tr>
-                                                                    <tr class="table-active">
-                                                                        <td>Detalles de plan corporativo</td>
-                                                                        <td>1</td>
-                                                                        <td>2</td>
-                                                                       
-                                                                    </tr>
-                                                                    <tr class="table-active">
-                                                                        <td>Id_Estado_Cliente</td>
-                                                                        <td>1</td>
-                                                                        <td>2</td>
-                                                                       
-                                                                    </tr>
-                                                                   
-                        </tbody>
-                                                    </table>
-                                                </div>
-            
-                                            </div>
-                                    </div>
-                                                                                           
-                                                                                        </div>
-            
+                                                                                                            <div
+                                                                                                                class="card-body">
+                                                                                                                <table
+                                                                                                                    class="table">
+
+                                                                                                                    <thead>
+                                                                                                                        <tr>
+                                                                                                                            <th>Titulo
+                                                                                                                            </th>
+                                                                                                                            <th>Corporativo
+                                                                                                                                anterior
+                                                                                                                            </th>
+                                                                                                                            <th>Corporativo
+                                                                                                                                nuevo
+                                                                                                                            </th>
+
+                                                                                                                        </tr>
+                                                                                                                    </thead>
+                                                                                                                    <tbody>
+                                                                                                                        <tr
+                                                                                                                            class="table-active">
+                                                                                                                            <td>Id_Documentos
+                                                                                                                            </td>
+                                                                                                                            <td>1
+                                                                                                                            </td>
+                                                                                                                            <td>2
+                                                                                                                            </td>
+
+                                                                                                                        </tr>
+                                                                                                                        <tr
+                                                                                                                            class="table-active">
+                                                                                                                            <td>Camara
+                                                                                                                                de
+                                                                                                                                comercio
+                                                                                                                            </td>
+                                                                                                                            <td>1
+                                                                                                                            </td>
+                                                                                                                            <td>2
+                                                                                                                            </td>
+
+                                                                                                                        </tr>
+                                                                                                                        <tr
+                                                                                                                            class="table-active">
+                                                                                                                            <td>Cedula_RL
+                                                                                                                            </td>
+                                                                                                                            <td>1
+                                                                                                                            </td>
+                                                                                                                            <td>2
+                                                                                                                            </td>
+
+                                                                                                                        </tr>
+                                                                                                                        <tr
+                                                                                                                            class="table-active">
+                                                                                                                            <td>Soporte
+                                                                                                                                ingresos
+                                                                                                                            </td>
+                                                                                                                            <td>1
+                                                                                                                            </td>
+                                                                                                                            <td>2
+                                                                                                                            </td>
+
+                                                                                                                        </tr>
+                                                                                                                        <tr
+                                                                                                                            class="table-active">
+                                                                                                                            <td>Detalles
+                                                                                                                                de
+                                                                                                                                plan
+                                                                                                                                corporativo
+                                                                                                                            </td>
+                                                                                                                            <td>1
+                                                                                                                            </td>
+                                                                                                                            <td>2
+                                                                                                                            </td>
+
+                                                                                                                        </tr>
+                                                                                                                        <tr
+                                                                                                                            class="table-active">
+                                                                                                                            <td>Id_Estado_Cliente
+                                                                                                                            </td>
+                                                                                                                            <td>1
+                                                                                                                            </td>
+                                                                                                                            <td>2
+                                                                                                                            </td>
+
+                                                                                                                        </tr>
+
+                                                                                                                    </tbody>
+                                                                                                                </table>
+                                                                                                            </div>
+
+                                                                                                        </div>
+                                                                                                    </div>
+
+                                                                                                </div>
+
+                                                                                            </div>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
-                                                                            </div>
 
                                                                             </div>
                                                                         </div>
@@ -1478,7 +1689,7 @@
 
         <!-- Navegación -->
         <script src="../../../js/Navegacion/Navegacion_Admin.js"></script>
-        
+
         <!-- Bootstrap tether Core JavaScript -->
         <script src="../../../assets/plugins/bootstrap/js/popper.min.js"></script>
 
