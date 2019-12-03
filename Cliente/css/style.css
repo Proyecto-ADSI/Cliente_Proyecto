@@ -433,7 +433,7 @@ Thumb size
 Text Colors
 *******************/
 .text-white {
-  color: rgb(28, 231, 204) !important; }
+  color: #fff !important; }
 
 .text-danger {
   color: #ef5350 !important; }
@@ -2291,8 +2291,8 @@ ul#themecolors {
 .card-outline-primary {
   border-color: #0c0c0c; }
   .card-outline-primary .card-header {
-    background: #0c0c0c;
-    border-color: #0c0c0c; }
+    background: #07575B;
+    border-color: #07575B; }
 
 /*============================================================== 
 Breadcrumb
