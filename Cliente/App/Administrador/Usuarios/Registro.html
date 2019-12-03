@@ -125,7 +125,7 @@
                                                                 </span>
                                                             </div>
                                                             <input type="text" class="form-control"
-                                                                id="exampleInputuname"
+                                                                id="Documento"
                                                                 placeholder="Número de documento">
                                                         </div>
                                                     </div>
@@ -148,7 +148,7 @@
                                                                 </span>
                                                             </div>
                                                             <input type="text" class="form-control"
-                                                                id="exampleInputuname" placeholder="Nombre Completo">
+                                                                id="Nombre" placeholder="Nombre Completo">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -165,7 +165,7 @@
                                                                 </span>
                                                             </div>
                                                             <input type="text" class="form-control"
-                                                                id="exampleInputuname" placeholder="Apellidos">
+                                                                id="Apellido" placeholder="Apellidos">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -184,7 +184,7 @@
                                                                     <i class="ti-email"></i>
                                                                 </span>
                                                             </div>
-                                                            <input type="email" class="form-control"
+                                                            <input type="email" class="form-control" id="Email"
                                                                  placeholder="Ingresar correo">
                                                         </div>
                                                     </div>
@@ -198,7 +198,7 @@
                                                                     <i class="icon-star"></i>
                                                                 </span>
                                                             </div>
-                                                            <select class="form-control custom-select">
+                                                            <select class="form-control custom-select" id="Sexo">
                                                                 <option value="">Masculino</option>
                                                                 <option value="">Femenino</option>
                                                             </select>
@@ -214,7 +214,7 @@
                                                                     <i class=" icon-clock "></i>
                                                                 </span>
                                                             </div>
-                                                            <select class="form-control custom-select">
+                                                            <select class="form-control custom-select" id="Turno">
                                                                 <option value="">Turno 1</option>
                                                                 <option value="">Turno 2</option>
                                                             </select>
@@ -261,7 +261,7 @@
                                                                 </span>
                                                             </div>
                                                             <input type="text" class="form-control"
-                                                                id="exampleInputuname" placeholder="Nombre usuario">
+                                                                id="Usuario" placeholder="Nombre usuario">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -277,11 +277,13 @@
                                                                     <i class="icon-people "></i>
                                                                 </span>
                                                             </div>
-                                                            <select class="form-control custom-select">
-                                                                <option value="">Coordinador</option>
-                                                                <option value="">Contact Center</option>
-                                                                <option value="">Asesor</option>
-                                                                <option value="">Gestor al cliente</option>
+                                                            <select class="form-control custom-select" id="Rol">
+                                                                <option value="1">Coordinador</option>
+                                                                <option value="2">Contact Center</option>
+                                                                <option value="3">Gestor al cliente</option>
+                                                                <option value="4">Asesor Interno</option>
+                                                                <option value="5">Asesor Externo</option>
+                                                                
                                                             </select>
                                                         </div>
                                                     </div>
@@ -300,7 +302,7 @@
                                                                 </span>
                                                             </div>
                                                             <input type="password" class="form-control"
-                                                                id="exampleInputuname"
+                                                                id="Contrasena"
                                                                 placeholder="Ingresar contraseña">
                                                         </div>
                                                     </div>
@@ -334,7 +336,7 @@
                                             <div class="col-md-6">
                                                 <div class="row">
                                                     <div class="col-md-offset-3 col-md-9">
-                                                        <button type="submit" class="btn btn-success">Guardar</button>
+                                                        <button type="button" onclick="Guardar()" class="btn btn-success">Guardar</button>
                                                         <a href="GestionarUsuarios.html" class="btn btn-inverse">Cancelar</a>
                                                     </div>
                                                 </div>
@@ -386,6 +388,8 @@
         <script src="../../../assets/plugins/dropify/dist/js/dropify.min.js"></script>
         
         <script src="../../../js/dropify.js"></script>
+
+        <script src="../../../Controllers/GuardarEmpleado.js"></script>
 
 </body>
 

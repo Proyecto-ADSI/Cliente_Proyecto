@@ -97,20 +97,5 @@ class UsuarioPercistece implements UsuarioRepository {
         }
     }
 
-    public function cambiar_estado(int $id, int $estado)
-    {
-        $sql = "UPDATE producto SET 
-        estado = ?
-        WHERE id = ?";
-
-        try{
-            $stm = $this->db->prepare($sql);
-            $stm->bindParam(1, $estado);
-            $stm->bindParam(2, $id);
-
-            return $stm->execute();
-        }catch(Exception $e){
-            return false;
-        }
-    }
+    
 }

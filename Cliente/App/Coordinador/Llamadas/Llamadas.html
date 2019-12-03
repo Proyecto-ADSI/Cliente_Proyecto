@@ -107,15 +107,15 @@
                             <div class="card-body">
 
                                 <form class="form-material" action="" method="POST">
-                                    <div class="row">
-                                        <div class="col-md-4">
+                                        <div class="col-md-12">
                                             <div class="row">
-                                                <div class="col-md-6 form-group">
+                                                <div class="col-md-4 form-group">
                                                     <label class="m-t-30">NIT</label>
                                                     <input type="text" class="form-control" placeholder="123...">
                                                 </div>
-                                                <div class="col-md-2">
-                                                    <label class="MyStyle_Guion"> -</label>
+                                                <div class="col-md-4">
+                                                    <label class="m-t-30">Teléfono</label>
+                                                    <input type="text" class="form-control" placeholder="1234567...">
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="m-t-30">Dígito</label>
@@ -123,14 +123,16 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
                                             <div class="example">
                                                 <label class="m-t-30">Rango de Fechas</label>
                                                 <input class="form-control input-daterange-datepicker" type="text"
                                                     name="daterange" value="" />
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <label class="m-t-30">Hora</label>
                                             <div class="input-group clockpicker " data-placement="bottom"
                                                 data-align="top" data-autoclose="true">
@@ -141,21 +143,12 @@
                                             </div>
                                         </div>
 
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <label class="m-t-30">Teléfono</label>
-                                            <input type="text" class="form-control" placeholder="1234567...">
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label class="m-t-30">Contact Center</label>
-
+                                        <div class="col-md-3">
+                                            <h5 class="m-t-30">Contact center</h5>
                                             <select class="selectpicker " multiple data-style="form-control"
-                                                style="width: 100%;">
-                                                <!--  select2 custom-select form-control -->
-                                                <!-- multiple data-style="form-control btn-secondary" -->
-                                                <!-- <option>Select</option> -->
-                                                <optgroup label="Hombres">
+                                            style="width: 100%;">
+                                                <optgroup label="Hombres"></optgroup>
+                                                    <option disabled selected>Seleccione...</option>
                                                     <option value="CA">Juan Pérez</option>
                                                     <option value="NV">Juan Manuel Rico</option>
                                                     <option value="OR">Andrés Felipe Montoya</option>
@@ -169,9 +162,12 @@
                                                 </optgroup>
                                             </select>
                                         </div>
-                                        <div class="col-md-4">
+                                        
+                                       
+                                        <div class="col-md-3">
                                             <h5 class="m-t-30">Estado</h5>
-                                            <select class="selectpicker form-control" style="width: 100%;">
+                                            <select class="selectpicker " multiple data-style="form-control"
+                                            style="width: 100%;">
                                                 <option disabled selected>Seleccione...</option>
                                                 <option>Efectiva</option>
                                                 <option>Programada</option>
@@ -199,6 +195,7 @@
                                     <tr>
                                         <th class="MyStyle_Table_num">#</th>
                                         <th>Empresa</th>
+                                        <th>Teléfono</th>
                                         <th class="MyStyle_Table_Fecha">Fecha </th>
                                         <th class="MyStyle_Table_Hora">Hora</th>
                                         <th>Contact Center</th>
@@ -210,6 +207,7 @@
                                     <tr>
                                         <td>1</td>
                                         <td>Tapitas S.A.S</td>
+                                        <td>4028576</td>
                                         <td>12/08/2019</td>
                                         <td>11:00 am</td>
                                         <td>Juan Pérez</td>
@@ -225,7 +223,7 @@
                                                 <i class="fa  fa-eye"></i>
                                             </a>
 
-                                            <a href="#" data-toggle="tooltip" data-original-title="Editar"
+                                            <a href="../../Contact Center/AgregarLlamada.html" data-toggle="tooltip" data-original-title="Editar"
                                                 class="btn btn-outline-info">
                                                 <i class="fa fa-pencil"></i>
                                             </a>
@@ -237,6 +235,7 @@
                                     <tr>
                                         <td>2</td>
                                         <td>Cemento S.A.S</td>
+                                        <td>3126456376</td>
                                         <td>12/08/2019</td>
                                         <td> 3:00 pm</td>
                                         <td>Juan Manuel Rico</td>
@@ -254,7 +253,7 @@
                                                 <i class="fa  fa-eye"></i>
                                             </a>
 
-                                            <a href="#" data-toggle="tooltip" data-original-title="Editar"
+                                            <a href="../../Contact Center/AgregarLlamada.html" data-toggle="tooltip" data-original-title="Editar"
                                                 class="btn btn-outline-info">
                                                 <i class="fa fa-pencil"></i>
                                             </a>
@@ -265,6 +264,7 @@
                                     <tr>
                                         <td>3</td>
                                         <td>Floristería S.A.S</td>
+                                        <td>4045783</td>
                                         <td>12/08/2019</td>
                                         <td>9:00 am</td>
                                         <td>Alejandro Cárdenas</td>
@@ -280,7 +280,7 @@
                                                 <i class="fa  fa-eye"></i>
                                             </a>
 
-                                            <a href="#" data-toggle="tooltip" data-original-title="Editar"
+                                            <a href="../../Contact Center/AgregarLlamada.html" data-toggle="tooltip" data-original-title="Editar"
                                                 class="btn btn-outline-info">
                                                 <i class="fa fa-pencil"></i>
                                             </a>

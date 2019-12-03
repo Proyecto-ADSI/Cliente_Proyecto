@@ -13,5 +13,4 @@ interface UsuarioRepository {
 
     public function modificar(Usuario $Usuario);
 
-    public function cambiar_estado(int $id, int $estado);
 }

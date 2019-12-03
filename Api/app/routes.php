@@ -4,11 +4,19 @@ declare(strict_types=1);
 use App\Application\Actions\User\ListUsersAction;
 use App\Application\Actions\User\ViewUserAction;
 
-use App\Application\Actions\Producto\ProductoCambiarEstadoAction;
+//Usuario
+
 use App\Application\Actions\Usuario\UsuarioCrearAction;
 use App\Application\Actions\Usuario\UsuarioListarAction;
 use App\Application\Actions\Usuario\UsuarioModificarAction;
 use App\Application\Actions\Usuario\UsuarioObtenerAction;
+
+//Empleado
+
+use App\Application\Actions\Empleado\EmpleadoCrearAction;
+use App\Application\Actions\Empleado\EmpleadoListarAction;
+use App\Application\Actions\Empleado\EmpleadoModificarAction;
+use App\Application\Actions\Empleado\EmpleadoObtenerAction;
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -31,7 +39,13 @@ return function (App $app) {
         $group->get('/{Usuario}', UsuarioObtenerAction::class);
         $group->post('', UsuarioCrearAction::class);
         $group->put('', UsuarioModificarAction::class);
-        $group->patch('/{id}/{estado}', ProductoCambiarEstadoAction::class);
+    });
+
+    $app->group('/empleado', function (Group $group) {
+        $group->get('', EmpleadoListarAction::class);
+        $group->get('/{Id_Empleado}', EmpleadoObtenerAction::class);
+        $group->post('', EmpleadoCrearAction::class);
+        $group->put('', EmpleadoModificarAction::class);
     });
 
     // $app->options('/{routes:.+}', function ($request, $response, $args) {
