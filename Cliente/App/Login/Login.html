@@ -9,8 +9,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
-    <title>Admin Press Admin Template - The Ultimate Bootstrap 4 Admin Template</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/Logos/favicon.png">
+    <title>Call Phone Soft</title>
     <!-- Bootstrap Core CSS -->
     <link href="../../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Mis estilos -->
@@ -33,7 +33,7 @@
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
     <section id="wrapper">
-        <div class="login-register MyStyle_login_fondo">
+        <div class="login-register MyStyle_login_fondo" style="background: #0c0c0c;">
             <div class="login-box card MyStyle_login_box">
 
                 <div class="row">
@@ -45,29 +45,30 @@
                     <div class="col-6">
                         <div class="card-body MyStyle_Card2_box ">
                             <div class="MyStyle_Box_Logo">
-                                <img src="../../assets/images/Eskatemp/logo.jpg" class="MyStyle_Logo_Empresa" alt="">
+                                <img src="../../assets/images/Logos/User Login.png" class="MyStyle_Logo_Empresa" alt="">
                             </div>
                             
-                            <form class="form-horizontal form-material" id="loginform" >
+                            <form class="form-horizontal form-material" id="loginform" action="../Administrador/Inicio/Index.html">
                                 <!-- <h3 class="box-title m-b-20">Ekatemp S</h3> -->
                                 <div class="form-group ">
                                     <div class="col-xs-12">
-                                        <input class="form-control MyStyle_Form_Control" type="text" required="" id="Usuario"
-                                            placeholder="Usuario">
+                                        <input class="form-control MyStyle_Form_Control" type="text" required  id="Usuario"
+                                            placeholder="Usuario" pattern="[A-Z a-z | 0-9]{7,45}" title="Sólo se permiten de 7 hasta 45 caracteres y sólo se permiten caracteres alnumericos ">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-xs-12">
-                                        <input class="form-control MyStyle_Form_Control" type="password" required="" id="Contrasena"
-                                            placeholder="Contraseña">
+                                        <input class="form-control MyStyle_Form_Control" type="password" required id="Contrasena"
+                                            placeholder="Contraseña"  pattern="[A-Z a-z | 0-9]{8,45}" title="Sólo se permiten de 8 hasta 45 caracteres y sólo se permiten caracteres alnumericos">
                                     </div>
                                 </div>
 
                                 <div class="form-group text-center m-t-20">
                                     <div class="col-xs-12">
-                                        <button
-                                            class="btn btn-lg btn-block text-uppercase MyStyle_Btn_Login"
-                                            type="button" onclick="Login()">Iniciar Sesión
+                                        <button style="background: rgb(28, 231, 204); color: #f3f3f3;
+                                         "
+                                            class="btn btn-lg btn-block text-uppercase MyStyle_Btn_Login" onclick="Login()"
+                                            type="button">Iniciar Sesión
                                         </button>
                                     </div>
                                 </div>
@@ -97,7 +98,7 @@
                                     <div class="col-xs-12">
                                         <button
                                             class="btn btn-lg btn-block text-uppercase MyStyle_Btn_Login"
-                                            type="submit">Restablecer</button>
+                                            type="submit" style="background: rgb(28, 231, 204); color: #f3f3f3;">Restablecer</button>
                                     </div>
                                 </div>
                             </form>

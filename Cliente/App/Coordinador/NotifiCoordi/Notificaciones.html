@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../assets/images/favicon.png">
+    <title>Call Phone Soft</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="../../../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Mis Estilos -->
+    <link rel="stylesheet" href="../../../css/MyStyle.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../../css/style.css">
+    <!-- Tema de la plantilla -->
+    <link href="../../../css/colors/megna-dark.css" id="theme" rel="stylesheet">
+    <link href="../../../assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
+</head>
+
+<body class="fix-header fix-sidebar card-no-border">
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header (Menú Horizontal) - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <header class="topbar" id="Navegacion_Header_Coor"></header>
+       
+       
+        <aside class="left-sidebar" id="Navegacion_Aside_Coor"></aside>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+
+            <!-- Titulo página -->
+            <div class="row page-titles">
+                <div class="col-md-5 align-self-center">
+                    <h3 class="text-themecolor">Registro de usuarios</h3>
+                </div>
+                <div class="col-md-7 align-self-center">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                        <li class="breadcrumb-item">pages</li>
+                        <li class="breadcrumb-item active">Registro de usuarios</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+
+                <!-- Card Table -->
+                <div class="card  card-outline-info">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <h4 class="m-b-0 text-white">Lista de notificaciones</h4>
+                                </div>
+                              
+                            </div>
+                        </div>
+                        <div class="card-body">
+
+                            <div class="table-responsive">
+                                <table id="example" class="table  stylish-table MyStyle_Color-Table">
+                                    <thead>
+                                        <tr>
+                                            <th class="MyStyle_Table_num">#</th>
+                                            <th colspan="2">Usuario Origen</th>
+                                            <th colspan="2">Usuario destino</th>
+                                            <th>Fecha</th>
+                                            <th >Hora</th>
+                                            <th>Mensaje</th>
+                                            <th >Opciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="active">
+                                            <td>1</td>
+                                            <td><span class="round"><img src="../../../assets/images/users/2.jpg"
+                                                        alt="user" width="50"></span>
+                                            </td>
+                                            <td>
+                                                <h6>Andrés</h6><small class="text-muted">Coordinador</small>
+                                            </td>
+
+                                            <td><span class="round"><img src="../../../assets/images/users/4.jpg"
+                                                alt="user" width="50"></span>
+                                    </td>
+                                    <td>
+                                        <h6>Andrés</h6><small class="text-muted">Coordinador</small>
+                                    </td>
+                                            <td>25/06/2020</td>
+                                            <td>12:05 pm</td>
+                                            <td>
+                                                <div class="label label-table label-success">Coordinador añadio</div>
+                                            </td>
+                                            <td>
+                                                <button data-toggle="tooltip" data-original-title="Eliminar"
+                                                    class="btn btn-outline-danger sa-params">
+                                                    <i class="fa fa-close"></i> 
+                                                </button>
+
+                                            </td>
+                                        </tr>
+                                        <tr class="active">
+                                            <td>1</td>
+                                            <td><span class="round"><img src="../../../assets/images/users/8.jpg"
+                                                        alt="user" width="50"></span>
+                                            </td>
+                                            <td>
+                                                <h6>Arnovia</h6><small class="text-muted">Gestora</small>
+                                            </td>
+
+                                            <td><span class="round"><img src="../../../assets/images/users/6.jpg"
+                                                alt="user" width="50"></span>
+                                    </td>
+                                    <td>
+                                        <h6>Andrea</h6><small class="text-muted">Coordinador</small>
+                                    </td>
+                                            <td>25/06/2020</td>
+                                            <td>12:05 pm</td>
+                                            <td>
+                                                <div class="label label-table label-success">ASESOR AÑADIO</div>
+                                            </td>
+                                            <td>
+                                                <button data-toggle="tooltip" data-original-title="Eliminar"
+                                                    class="btn btn-outline-danger sa-params">
+                                                    <i class="fa fa-close"></i> 
+                                                </button>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                <!-- ============================================================== -->
+                <!-- End PAge Content -->
+                <!-- ============================================================== -->
+            </div>
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- All Jquery -->
+        <!-- ============================================================== -->
+        <script src="../../../assets/plugins/jquery/jquery.min.js"></script>
+
+         <!-- Navegación -->
+         <script src="../../../js/Navegacion/CoordinadorNavegacion.js"></script>
+
+        <!-- Bootstrap tether Core JavaScript -->
+        <script src="../../../assets/plugins/bootstrap/js/popper.min.js"></script>
+
+        <script src="../../../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+        <!-- slimscrollbar scrollbar JavaScript -->
+        <script src="../../../js/jquery.slimscroll.js"></script>
+
+        <!--Menu sidebar -->
+        <script src="../../../js/sidebarmenu.js"></script>
+
+        <!--stickey kit -->
+        <script src="../../../assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+
+        <!--Custom JavaScript -->
+        <script src="../../../js/custom.min.js"></script>
+        <script src="../../../assets/plugins/sweetalert/sweetalert.min.js"></script>
+        <script src="../../../assets/plugins/sweetalert/jquery.sweet-alert.custom.js"></script>  
+
+
+
+</body>
+
+</html>

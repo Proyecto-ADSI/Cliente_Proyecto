@@ -14,8 +14,9 @@
 /* Card 1 */
 .MyStyle_Card1_Fondo{
     height: 100%;
-    background: url(../assets/images/background/login-register.jpg);
-    background-size: cover;
+    background: url(../assets/images/Logos/logo.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 }
 
 
@@ -69,8 +70,8 @@
 
 /* Registro */
 .MyStyle_Card_Header{
-    background:#00897b !important;
-    border-color: #00897b !important;
+    background: #07575B!important;
+    border-color: #07575B !important;
 }
 
 .MyStyle_File_Card{

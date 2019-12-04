@@ -82,13 +82,13 @@
             <!-- Titulo página -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-themecolor">Gestión de citas</h3>
+                    <h3 class="text-themecolor">Citas</h3>
                 </div>
                 <div class="col-md-7 align-self-center">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
                         <li class="breadcrumb-item">pages</li>
-                        <li class="breadcrumb-item active">Gestión de citas</li>
+                        <li class="breadcrumb-item active">Citas por enviar</li>
                     </ol>
                 </div>
             </div>
@@ -173,8 +173,8 @@
                                         <div class="col-md-12">
                                             <div class="form-group m-t-30 MyStyle_Btn_Filtro ">
                                                 <button type="submit"
-                                                    class="btn btn-rounded btn-success">Consultar</button>
-                                                <a href="#" class="btn btn-rounded btn-primary">Filtro avanzado </a>
+                                                    class="btn btn-rounded btn-success" style="color: #0c0c0c;">Consultar</button>
+                                                <a href="#" class="btn btn-rounded btn-primary" style="background:#0c0c0c; color: rgb(28, 231, 204);">Filtro avanzado </a>
                                             </div>
                                         </div>
                                     </div>
@@ -187,7 +187,7 @@
                                 <div class="table-responsive m-t-40">
                                     <table id="example" class="table table-bordered table-striped MyStyle_Color-Table">
                                         <thead>
-                                            <tr>
+                                            <tr style="background: #0c0c0c; color:rgb(28, 231, 204);">
                                                 <th class=> <i class="fa  fa-file-pdf-o"></i> </th>
                                                 <th class=>#</th>
                                                 <th>Empresa</th>
@@ -220,7 +220,7 @@
                                                 </td>
                                                 <td>
                                                     <input type="checkbox" class="js-switch" data-color="#f62d51"
-                                                        data-secondary-color="#26c6da" data-size="small"/>
+                                                        data-secondary-color="#26c6da" data-size="small" />
 
                                                     <a href="#" data-toggle="modal" class="btn btn-outline-primary"
                                                         data-target=".ModalDetalles">
@@ -228,13 +228,13 @@
 
                                                     </a>
 
-                                                    <a href="AgregarLlamada.html" data-toggle="tooltip" data-original-title="Editar"
+                                                    <a href="#" data-toggle="tooltip" data-original-title="Editar"
                                                         class="btn btn-outline-info">
                                                         <i class="fa fa-pencil"></i>
                                                     </a>
 
-                                                    <button type="button" data-toggle="tooltip" data-original-title="Eliminar"
-                                                        class="btn btn-outline-danger sa-params">
+                                                    <button data-toggle="tooltip" data-original-title="Eliminar"
+                                                        class="btn btn-outline-danger" id="sa-params">
                                                         <i class="fa fa-close"></i>
                                                     </button>
 
@@ -270,15 +270,15 @@
 
                                                     </a>
 
-                                                    <a href="AgregarLlamada.html" data-toggle="tooltip" data-original-title="Editar"
+                                                    <a href="#" data-toggle="tooltip" data-original-title="Editar"
                                                         class="btn btn-outline-info">
                                                         <i class="fa fa-pencil"></i>
                                                     </a>
 
-                                                    <button type="button" data-toggle="tooltip" data-original-title="Eliminar"
-                                                        class="btn btn-outline-danger sa-params">
+                                                    <a href="#" data-toggle="tooltip" data-original-title="Editar"
+                                                        class="btn btn-outline-danger">
                                                         <i class="fa fa-close"></i>
-                                                    </button>
+                                                    </a>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -309,15 +309,15 @@
 
                                                     </a>
 
-                                                    <a href="AgregarLlamada.html" data-toggle="tooltip" data-original-title="Editar"
+                                                    <a href="#" data-toggle="tooltip" data-original-title="Editar"
                                                         class="btn btn-outline-info">
                                                         <i class="fa fa-pencil"></i>
                                                     </a>
 
-                                                    <button type="button" data-toggle="tooltip" data-original-title="Eliminar"
-                                                        class="btn btn-outline-danger sa-params">
+                                                    <a href="#" data-toggle="tooltip" data-original-title="Eliminar"
+                                                        class="btn btn-outline-danger">
                                                         <i class="fa fa-close"></i>
-                                                    </button>
+                                                    </a>
                                                 </td>
                                             </tr>
 
@@ -331,7 +331,7 @@
                                     </div>
 
                                     
-                                    <button type="button" class="btn btn-rounded btn-info" id="sa-success">
+                                    <button type="submit" class="btn btn-rounded btn-info">
                                         <!-- <i class="fa  fa-file-pdf-o"></i> -->
                                         Enviar citas
                                     </button>
@@ -862,7 +862,7 @@
 
         <!-- Sweetalert -->
         <script src="../../../assets/plugins/sweetalert/sweetalert.min.js"></script>
-        <script src="../../assets/plugins/sweetalert/jquery.sweet-alert.custom.js"></script>
+        <script src="../../../assets/plugins/sweetalert/jquery.sweet-alert.custom.js"></script>
 </body>
 
 </html>

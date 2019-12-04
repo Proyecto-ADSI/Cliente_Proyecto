@@ -108,6 +108,7 @@
                             </div>
                             <div class="card-body ">
                                 <form class="form-material" action="" method="POST">
+
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="row">
@@ -122,8 +123,22 @@
                                                     <label class="m-t-30">Dígito</label>
                                                     <input type="number" class="form-control" placeholder="1...">
                                                 </div>
+                                           
+                                            <div class="col-md-6">
+                                           
+                                                <select class="selectpicker form-control" style="width: 100%;">
+                                                <option disabled selected>Operador...</option>
+                                                <option>Claro</option>
+                                                <option>Movistar</option>
+                                                
+                                                </select>
                                             </div>
-                                        </div>
+                                       
+                                    </div>
+                                    </div>
+                                    </div>
+                                    <div class="row">
+                                        
                                         <div class="col-md-4">
                                             <div class="example">
                                                 <label class="m-t-30">Rango de Fechas</label>
@@ -166,6 +181,7 @@
                                                 <option>Efectiva</option>
                                                 <option>Programada</option>
                                                 <option>No Efectiva</option>
+                                                <option>Sin realizar</option>
                                             </select>
                                         </div>
 
@@ -180,6 +196,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                
                                 </form>
                             </div>
                         </div>
@@ -230,7 +247,7 @@
 
                                                     </a>
 
-                                                    <a href="../../Contact Center/AgregarLlamada.html" data-toggle="tooltip" data-original-title="Editar"
+                                                    <a href="../Llamadas/AgregarLlamadas.html" data-toggle="tooltip" data-original-title="Editar"
                                                         class="btn btn-outline-info">
                                                         <i class="fa fa-pencil"></i>
                                                     </a>
@@ -269,7 +286,7 @@
 
                                                     </a>
 
-                                                    <a href="../../Contact Center/AgregarLlamada.html" data-toggle="tooltip" data-original-title="Editar"
+                                                    <a href="../Llamadas/AgregarLlamadas.html" data-toggle="tooltip" data-original-title="Editar"
                                                         class="btn btn-outline-info">
                                                         <i class="fa fa-pencil"></i>
                                                     </a>
@@ -305,7 +322,7 @@
 
                                                     </a>
 
-                                                    <a href="../../Contact Center/AgregarLlamada.html" data-toggle="tooltip" data-original-title="Editar"
+                                                    <a href="../Llamadas/AgregarLlamadas.html" data-toggle="tooltip" data-original-title="Editar"
                                                         class="btn btn-outline-info">
                                                         <i class="fa fa-pencil"></i>
                                                     </a>
@@ -318,15 +335,14 @@
                                     </table>
                                 </div>
                                 <div class="form-group m-t-30">
-                                    <button type="submit" class="btn btn-rounded btn-info">
-                                        <i class="fa  fa-file-pdf-o"></i>
-                                        Agregar a reporte
-                                    </button>
-                                    <button type="submit" class="btn btn-rounded btn-danger">
-                                        <i class="fa  fa-file-pdf-o"></i>
-                                        Citas internas
-                                    </button>
-                                </div>
+                                    <a href="ReporAgregaOperador.html" class="btn btn-rounded btn-info"> <i class="fa  fa-file-pdf-o"></i>Agregar reporte</a>
+                                        
+                                    <a href="Agenda.html" class="btn btn-rounded btn-danger"> <i class="fa  fa-calendar"></i>Citas internas</a>
+                                        
+                                    </div>
+
+
+
 
                             </form>
                         </div>
