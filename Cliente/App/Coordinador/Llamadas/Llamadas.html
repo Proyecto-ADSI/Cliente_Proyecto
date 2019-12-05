@@ -99,96 +99,101 @@
                         <h4 class="m-b-0 text-white">Registro de Llamadas</h4>
                     </div>
                     <div class="card-body">
-                        <!-- <h6 class="card-subtitle"> Filtro:</h6> -->
-                        <div class="card MyStyle_Card_Filtro card-outline-primary">
-                            <div class="card-header">
-                                <h4 class="m-b-0 text-white">Filtro:</h4>
-                            </div>
-                            <div class="card-body">
-
-                                <form class="form-material" action="" method="POST">
-                                        <div class="col-md-12">
+                        
+                            <div class="card MyStyle_Card_Filtro card-outline-primary">
+                                    <div class="card-header">
+                                        <h4 class="m-b-0 text-white">Filtro:</h4>
+                                    </div>
+                                    <div class="card-body">
+        
+                                        <form class="form-material" action="" method="POST">
                                             <div class="row">
-                                                <div class="col-md-4 form-group">
-                                                    <label class="m-t-30">NIT</label>
-                                                    <input type="text" class="form-control" placeholder="123...">
+                                                <div class="col-md-4">
+                                                    <div class="row">
+                                                        <div class="col-md-6 form-group">
+                                                            <label class="m-t-30">NIT</label>
+                                                            <input type="text" class="form-control" placeholder="123...">
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <label class="MyStyle_Guion"> -</label>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <label class="m-t-30">Dígito</label>
+                                                            <input type="number" class="form-control" placeholder="1...">
+                                                        </div>
+                                                    </div>
                                                 </div>
+                                                <div class="col-md-4">
+                                                    <div class="example">
+                                                        <label class="m-t-30">Rango de Fechas</label>
+                                                        <input class="form-control input-daterange-datepicker" type="text"
+                                                            name="daterange" value="" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="m-t-30">Hora</label>
+                                                    <div class="input-group clockpicker " data-placement="bottom"
+                                                        data-align="top" data-autoclose="true">
+                                                        <input type="text" class="form-control" value="">
+                                                        <div class="input-group-append">
+                                                            <span class="input-group-text"><i class="fa fa-clock-o"></i></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+        
+                                            </div>
+                                            <div class="row">
                                                 <div class="col-md-4">
                                                     <label class="m-t-30">Teléfono</label>
                                                     <input type="text" class="form-control" placeholder="1234567...">
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <label class="m-t-30">Dígito</label>
-                                                    <input type="number" class="form-control" placeholder="1...">
+                                                    <label class="m-t-30">Contact Center</label>
+        
+                                                    <select class="selectpicker " multiple data-style="form-control"
+                                                        style="width: 100%;">
+                                                        <!--  select2 custom-select form-control -->
+                                                        <!-- multiple data-style="form-control btn-secondary" -->
+                                                        <!-- <option>Select</option> -->
+                                                        <optgroup label="Hombres">
+                                                            <option value="CA">Juan Pérez</option>
+                                                            <option value="NV">Juan Manuel Rico</option>
+                                                            <option value="OR">Andrés Felipe Montoya</option>
+                                                            <option value="WA">Santiago Mejía</option>
+                                                        </optgroup>
+                                                        <optgroup label="Mujeres">
+                                                            <option value="AZ">Mónica Garcia</option>
+                                                            <option value="CO">Alejandra Parra</option>
+                                                            <option value="ID">Jhohana Vélez</option>
+        
+                                                        </optgroup>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <h5 class="m-t-30">Estado</h5>
+                                                    <select class="selectpicker form-control" style="width: 100%;">
+                                                        <option disabled selected>Seleccione...</option>
+                                                        <option>Efectiva</option>
+                                                        <option>Programada</option>
+                                                        <option>No Efectiva</option>
+                                                    </select>
+                                                </div>
+        
+        
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group m-t-30 MyStyle_Btn_Filtro ">
+                                                        <button type="submit"
+                                                            class="btn btn-rounded btn-success" style="color: #0c0c0c;">Consultar</button>
+                                                        <a href="#" class="btn btn-rounded btn-primary" style="background: #0c0c0c; color: rgb(28, 231, 204);">Filtro avanzado </a>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </form>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <div class="example">
-                                                <label class="m-t-30">Rango de Fechas</label>
-                                                <input class="form-control input-daterange-datepicker" type="text"
-                                                    name="daterange" value="" />
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <label class="m-t-30">Hora</label>
-                                            <div class="input-group clockpicker " data-placement="bottom"
-                                                data-align="top" data-autoclose="true">
-                                                <input type="text" class="form-control" value="">
-                                                <div class="input-group-append">
-                                                    <span class="input-group-text"><i class="fa fa-clock-o"></i></span>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-3">
-                                            <h5 class="m-t-30">Contact center</h5>
-                                            <select class="selectpicker " multiple data-style="form-control"
-                                            style="width: 100%;">
-                                                <optgroup label="Hombres"></optgroup>
-                                                    <option disabled selected>Seleccione...</option>
-                                                    <option value="CA">Juan Pérez</option>
-                                                    <option value="NV">Juan Manuel Rico</option>
-                                                    <option value="OR">Andrés Felipe Montoya</option>
-                                                    <option value="WA">Santiago Mejía</option>
-                                                </optgroup>
-                                                <optgroup label="Mujeres">
-                                                    <option value="AZ">Mónica Garcia</option>
-                                                    <option value="CO">Alejandra Parra</option>
-                                                    <option value="ID">Jhohana Vélez</option>
-
-                                                </optgroup>
-                                            </select>
-                                        </div>
-                                        
-                                       
-                                        <div class="col-md-3">
-                                            <h5 class="m-t-30">Estado</h5>
-                                            <select class="selectpicker " multiple data-style="form-control"
-                                            style="width: 100%;">
-                                                <option disabled selected>Seleccione...</option>
-                                                <option>Efectiva</option>
-                                                <option>Programada</option>
-                                                <option>No Efectiva</option>
-                                            </select>
-                                        </div>
-
-
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group m-t-30 MyStyle_Btn_Filtro ">
-                                                <button type="submit"
-                                                    class="btn btn-rounded btn-success">Consultar</button>
-                                                <a href="#" class="btn btn-rounded btn-primary">Filtro avanzado </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
                             </div>
-                        </div>
+
                         <div class="table-responsive m-t-40">
                             <table id="example" class="table table-bordered table-striped MyStyle_Color-Table">
                                 <thead>
@@ -291,10 +296,10 @@
 
                                 </tbody>
                             </table>
-                        </div>
+                        </div> 
                     </div>
                 </div>
-
+                
                 <!-- Detalles llamada -->
                 <div class="modal fade ModalDetalles" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
                     aria-hidden="true" style="display: none;">

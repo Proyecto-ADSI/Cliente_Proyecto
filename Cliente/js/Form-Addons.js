@@ -1,8 +1,3 @@
-// For select 2
-// $(".select2").select2();
-$('.selectpicker').selectpicker();
-
-
 // Date Picker
 jQuery('.mydatepicker, #datepicker').datepicker();
 jQuery('#datepicker-autoclose').datepicker({

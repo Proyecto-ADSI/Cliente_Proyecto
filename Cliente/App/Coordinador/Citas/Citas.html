@@ -62,8 +62,8 @@
         <!-- Topbar header (Menú Horizontal) - style you can find in pages.scss -->
         <!-- ============================================================== -->
         <header class="topbar" id="Navegacion_Header_Coor"></header>
-       
-       
+
+
         <aside class="left-sidebar" id="Navegacion_Aside_Coor"></aside>
 
         <!-- ============================================================== -->
@@ -101,44 +101,36 @@
                     </div>
                     <div class="card-body">
 
-                        <!-- <h6 class="card-subtitle"> Filtro:</h6> -->
                         <div class="card MyStyle_Card_Filtro card-outline-primary">
                             <div class="card-header">
                                 <h4 class="m-b-0 text-white">Filtro:</h4>
                             </div>
                             <div class="card-body ">
                                 <form class="form-material" action="" method="POST">
-
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <div class="row">
-                                                <div class="col-md-6 form-group">
-                                                    <label class="m-t-30">Empresa</label>
-                                                    <input type="text" class="form-control" placeholder="Nombre">
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <label class="MyStyle_Guion"> -</label>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <label class="m-t-30">Dígito</label>
-                                                    <input type="number" class="form-control" placeholder="1...">
-                                                </div>
-                                           
-                                            <div class="col-md-6">
-                                           
-                                                <select class="selectpicker form-control" style="width: 100%;">
+                                            <label class="m-t-30">NIT</label>
+                                            <input class="selectpicker form-control" style="width: 100%;"
+                                                placeholder="Ingrese un NIT">
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <label class="m-t-30">Empresa</label>
+                                            <input class="selectpicker form-control" style="width: 100%;"
+                                                placeholder="Ingrese razón social">
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <label class="m-t-30">Operador</label>
+                                            <select class="selectpicker form-control" style="width: 100%;">
                                                 <option disabled selected>Operador...</option>
                                                 <option>Claro</option>
                                                 <option>Movistar</option>
-                                                
-                                                </select>
-                                            </div>
-                                       
-                                    </div>
-                                    </div>
+                                            </select>
+                                        </div>
                                     </div>
                                     <div class="row">
-                                        
+
                                         <div class="col-md-4">
                                             <div class="example">
                                                 <label class="m-t-30">Rango de Fechas</label>
@@ -156,27 +148,9 @@
                                                 </div>
                                             </div>
                                         </div>
-
-                                    </div>
-                                    <div class="row">
-                                            <div class="col-md-3">
-                                                    <label class="m-t-30">Operador</label>
-                                                    <select class="selectpicker " multiple data-style="form-control"
-                                                        style="width: 100%;">
-                                                            <option value="CA">Movistar</option>
-                                                            <option value="NV">claro</option>
-                                                    </select>
-                                                </div>
-                    
-                                        <div class="col-md-4 form-group">
-                                                <label class="m-t-30">Líneas</label>
-                                                <input type="number" class="form-control" placeholder="123...">
-                                        </div>
-                                            
                                         <div class="col-md-4">
                                             <h5 class="m-t-30">Estado</h5>
-                                            <select class="selectpicker " multiple data-style="form-control"
-                                            style="width: 100%;">
+                                            <select class="selectpicker form-control" style="width: 100%;">
                                                 <option disabled selected>Seleccione...</option>
                                                 <option>Efectiva</option>
                                                 <option>Programada</option>
@@ -196,10 +170,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                
                                 </form>
                             </div>
                         </div>
+
                         <div class="row">
                             <form action="">
 
@@ -247,12 +221,12 @@
 
                                                     </a>
 
-                                                    <a href="../Llamadas/AgregarLlamadas.html" data-toggle="tooltip" data-original-title="Editar"
-                                                        class="btn btn-outline-info">
+                                                    <a href="../Llamadas/AgregarLlamadas.html" data-toggle="tooltip"
+                                                        data-original-title="Editar" class="btn btn-outline-info">
                                                         <i class="fa fa-pencil"></i>
                                                     </a>
 
-                                                   
+
 
                                                 </td>
                                             </tr>
@@ -286,12 +260,12 @@
 
                                                     </a>
 
-                                                    <a href="../Llamadas/AgregarLlamadas.html" data-toggle="tooltip" data-original-title="Editar"
-                                                        class="btn btn-outline-info">
+                                                    <a href="../Llamadas/AgregarLlamadas.html" data-toggle="tooltip"
+                                                        data-original-title="Editar" class="btn btn-outline-info">
                                                         <i class="fa fa-pencil"></i>
                                                     </a>
 
-                                                   
+
                                                 </td>
                                             </tr>
                                             <tr>
@@ -322,12 +296,12 @@
 
                                                     </a>
 
-                                                    <a href="../Llamadas/AgregarLlamadas.html" data-toggle="tooltip" data-original-title="Editar"
-                                                        class="btn btn-outline-info">
+                                                    <a href="../Llamadas/AgregarLlamadas.html" data-toggle="tooltip"
+                                                        data-original-title="Editar" class="btn btn-outline-info">
                                                         <i class="fa fa-pencil"></i>
                                                     </a>
 
-                                                   
+
                                                 </td>
                                             </tr>
 
@@ -335,11 +309,19 @@
                                     </table>
                                 </div>
                                 <div class="form-group m-t-30">
-                                    <a href="ReporAgregaOperador.html" class="btn btn-rounded btn-info"> <i class="fa  fa-file-pdf-o"></i>Agregar reporte</a>
-                                        
-                                    <a href="Agenda.html" class="btn btn-rounded btn-danger"> <i class="fa  fa-calendar"></i>Citas internas</a>
-                                        
+
+                                    <div class="MyStyle_demo-checkbox">
+                                        <input type="checkbox" id="basic_checkbox_todos" />
+                                        <label for="basic_checkbox_todos">Seleccionar todo</label>
                                     </div>
+                                    
+                                    <a href="ReporAgregaOperador.html" class="btn btn-rounded btn-info"> <i
+                                            class="fa  fa-file-pdf-o"></i>Agregar reporte</a>
+
+                                    <a href="Agenda.html" class="btn btn-rounded btn-danger"> <i
+                                            class="fa  fa-calendar"></i>Citas internas</a>
+
+                                </div>
 
 
 
@@ -349,6 +331,7 @@
                     </div>
                 </div>
 
+                <!-- Detalle empresa -->
                 <div class="modal fade ModalDetalles" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
                     aria-hidden="true" style="display: none;">
                     <div class="modal-dialog " style="max-width: 1000px">
@@ -378,7 +361,7 @@
                                                     role="tab"><span class="hidden-sm-up"><i
                                                             class="ti-email"></i></span>
                                                     <span class="hidden-xs-down">
-                                                        cita programada
+                                                        Cita programada
                                                     </span>
                                                 </a>
                                             </li>
@@ -387,11 +370,10 @@
                                                     role="tab"><span class="hidden-sm-up"><i
                                                             class="ti-email"></i></span>
                                                     <span class="hidden-xs-down">
-                                                        Informacón de llamada
+                                                        Información de llamada
                                                     </span>
                                                 </a>
                                             </li>
-
                                             <li class="nav-item">
                                                 <a class="nav-link" data-toggle="tab" href="#ReporteOperador"
                                                     role="tab"><span class="hidden-sm-up"><i
@@ -401,14 +383,12 @@
                                                     </span>
                                                 </a>
                                             </li>
-
-
                                             <li class="nav-item">
                                                 <a class="nav-link" data-toggle="tab" href="#ReporteCitaAsesor"
                                                     role="tab"><span class="hidden-sm-up"><i
                                                             class="ti-email"></i></span>
                                                     <span class="hidden-xs-down">
-                                                        Reporte cita
+                                                        Reporte visita
                                                     </span>
                                                 </a>
                                             </li>
@@ -880,8 +860,7 @@
                                                         <form class="form-horizontal" role="form">
                                                             <div class="form-body">
                                                                 <h3 class="box-title">
-                                                                    Información
-                                                                    Repote visita
+                                                                    Información de visita
                                                                 </h3>
                                                                 <hr class="m-t-0 m-b-40">
                                                                 <div class="row">

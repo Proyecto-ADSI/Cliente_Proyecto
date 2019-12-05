@@ -143,3 +143,30 @@
     border: 1px solid #ffffff;
 
 }
+
+/* Filtro */
+.MyStyle_Btn_Filtro > button{
+    color: #0c0c0c;
+}
+.MyStyle_Btn_Filtro > a{
+    background: #0c0c0c;
+    color: rgb(28, 231, 204);
+}
+
+.input-group-addon{
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: .375rem .75rem;
+    margin-bottom: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    text-align: center;
+    white-space: nowrap;
+    background-color: #e9ecef;
+    border: 1px solid#ced4da;
+}
+

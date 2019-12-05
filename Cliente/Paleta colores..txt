@@ -8,3 +8,28 @@ Gris:
 #272c33
 
 #f2f4f8
+
+
+
+    <div class="col-md-4">
+                                            <label class="m-t-30">Contact Center</label>
+
+                                            <select class="selectpicker " multiple data-style="form-control"
+                                                style="width: 100%;">
+                                                <!--  select2 custom-select form-control -->
+                                                <!-- multiple data-style="form-control btn-secondary" -->
+                                                <!-- <option>Select</option> -->
+                                                <optgroup label="Hombres">
+                                                    <option value="CA">Juan Pérez</option>
+                                                    <option value="NV">Juan Manuel Rico</option>
+                                                    <option value="OR">Andrés Felipe Montoya</option>
+                                                    <option value="WA">Santiago Mejía</option>
+                                                </optgroup>
+                                                <optgroup label="Mujeres">
+                                                    <option value="AZ">Mónica Garcia</option>
+                                                    <option value="CO">Alejandra Parra</option>
+                                                    <option value="ID">Jhohana Vélez</option>
+
+                                                </optgroup>
+                                            </select>
+                                        </div>
