@@ -10,87 +10,73 @@ let Login = () =>{
 
     //Capturar usuario
 
-    let Usuario = $('#Usuario').val()
+    let datos = {
 
-    console.log(Usuario);
+        Usuario: $('#Usuario').val(),
+        Contrasena: $('#Contrasena').val()
+
+    }
+        
+     
+    // console.log(datos);
 
         $.ajax({
 
-            url: `${URL}/usuario/${Usuario}`,
+            url: `${URL}/Usuarios/Login`,
             dataType: 'json',
-            type: 'get'
-
+            type: 'post',
+            contentType:'application/json',
+            data: JSON.stringify(datos),
+            processData: false
 
         }).done(respuesta =>{
 
+            if(respuesta.data.ok){
 
-            let Array = []; 
+                let Rol = parseInt(respuesta.data.Rol);
+                
+                //Redireccionamiento
+                switch (Rol) {
+                    case 1:
+                    //Administrador
+                    location.href = "../Administrador/Inicio/Index.html"
 
-            Array = respuesta.data;
+                        break;
+                    case 2:
+                    //Coordinador
+                    location.href = "../Coordinador/Menu.html"
+                        
+                        break;
+                    case 3:
+                    //Contac center
+                    location.href = "../Contact Center/Index.html"
+                        
+                        break;
+                    case 4:
+                    //Gestor
+                    location.href = "../Gestor Cliente/Index.html"
+                        
+                        break;
+                    case 5:
 
-            //Capturamos datos de Usuario
-
-            let Rol = parseInt(Array['Id_Rol']) 
-            let Contrasena= Array['Contrasena']
-            let Id = Array['Id_Usuarios']
-
-            //Validar contraseña
-
-
-            if(Contrasena == $('#Contrasena').val())
-
-                {
-
-                    switch (Rol) {
-                        case 1:
-                        //Administrador
-                        location.href = "../Administrador/Inicio/Index.html"
-
-                            break;
-                        case 2:
-                        //Coordinador
-                        location.href = "../Coordinador/Menu.html"
-                            
-                            break;
-                        case 3:
-                        //Contac center
-                        location.href = "../Contac_Center/Index.html"
-                            
-                            break;
-                        case 4:
-                        //Gestor
-                        location.href = "../Gestor Cliente/Index.html"
-                            
-                            break;
-                        case 5:
-
-                        location.href = "../Asesor/Asesor interno/Form_ReporteVisita.html"
-                            
-                            break;
-                        case 6:
-
-                        location.href = "../Asesor/Asesor interno/.html"
-                            
-                            break;
-                    
-                    }
-                    
+                    location.href = "../Asesor/Asesor interno/Form_ReporteVisita.html"
+                        
+                        break;
+                    // case 6:
+                    // location.href = "../Asesor/Asesor interno/.html"
+                    //     break;
+                
                 }
+                
+           }
+            
 
-                else
-
-                {
-                    
-                    alert ("No funciono");
-
-                }
 
                
             
         }).fail(error =>{
 
             alert ("No Existe");
-            location.href = this
 
         });
 

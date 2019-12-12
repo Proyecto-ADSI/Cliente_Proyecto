@@ -101,8 +101,7 @@
                                                                     <i class="ti-user"></i>
                                                                 </span>
                                                             </div>
-                                                            <select class="custom-select col-12"
-                                                                id="inlineFormCustomSelect" required>
+                                                            <select class="custom-select col-12" id="txtTipoDocumento" required>
                                                                 <option selected disabled value="">Seleccione tipo de documento</option>
                                                                 <option value="1">Cédula de Ciudadanía</option>
                                                                 <option value="1">Tarjeta de Identidad</option>
@@ -124,8 +123,7 @@
                                                                     <i class="ti-credit-card"></i>
                                                                 </span>
                                                             </div>
-                                                            <input type="text" class="form-control"
-                                                                id="exampleInputuname"
+                                                            <input type="text" class="form-control" id="txtDocumento"
                                                                 placeholder="Número de documento" required pattern="[0-9]{5,45}" title="Sólo se permiten caracteres numéricos de 7 hasta 45, no se permiten caracteres alfabéticos">
                                                         </div>
                                                     </div>
@@ -148,7 +146,7 @@
                                                                 </span>
                                                             </div>
                                                             <input type="text" class="form-control"
-                                                                id="exampleInputuname" placeholder="Nombre Completo" required pattern="[A-Z a-z]{3,45}" title="Sólo se permiten caracteres alfabéticos de 3 hasta 45, no se permiten caracteres numericos">
+                                                                id="txtNombre" placeholder="Nombre Completo" required pattern="[A-Z a-z]{3,45}" title="Sólo se permiten caracteres alfabéticos de 3 hasta 45, no se permiten caracteres numericos">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -165,7 +163,7 @@
                                                                 </span>
                                                             </div>
                                                             <input type="text" class="form-control"
-                                                                id="exampleInputuname" placeholder="Apellidos" required pattern="[A-Z a-z]{3,45}" title="Sólo se permiten caracteres alfabéticos de 3 hasta 45, no se permiten caracteres numericos">
+                                                                id="txtApellidos" placeholder="Apellidos" required pattern="[A-Z a-z]{3,45}" title="Sólo se permiten caracteres alfabéticos de 3 hasta 45, no se permiten caracteres numericos">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -184,7 +182,7 @@
                                                                     <i class="ti-email"></i>
                                                                 </span>
                                                             </div>
-                                                            <input type="email" class="form-control"
+                                                            <input type="email" class="form-control" id="txtEmail"
                                                                  placeholder="Ingresar correo" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="Digite un correo existente">
                                                         </div>
                                                     </div>
@@ -198,10 +196,10 @@
                                                                     <i class="icon-star"></i>
                                                                 </span>
                                                             </div>
-                                                            <select class="form-control custom-select" required>
-                                                                    <option selected disabled value="">Seleccione sexo</option>
-                                                                <option value="1">Masculino</option>
-                                                                <option value="1">Femenino</option>
+                                                            <select class="form-control custom-select" required id="txtSexo">
+                                                                <option selected disabled value="">Seleccione sexo</option>
+                                                                <option value="Masculino">Masculino</option>
+                                                                <option value="Femenino">Femenino</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -215,10 +213,10 @@
                                                                     <i class=" icon-clock "></i>
                                                                 </span>
                                                             </div>
-                                                            <select class="form-control custom-select" required>
+                                                            <select class="form-control custom-select" required id="txtTurno">
                                                                 <option selected disabled value="">Seleccione turno</option>
-                                                                <option value="1">Turno 1</option>
-                                                                <option value="1">Turno 2</option>
+                                                                <option value="Mañana">Turno Mañana</option>
+                                                                <option value="Tarde">Turno Tarde</option>
                                                             </select>
                                                         </div>
 
@@ -263,7 +261,7 @@
                                                                 </span>
                                                             </div>
                                                             <input type="text" class="form-control"
-                                                                id="Usuario" placeholder="Nombre usuario" required pattern="[A-Z a-z | 0-9]{7,45}" title="Solo permiten caracteres alfanuméricos de 7 hasta 45" >
+                                                                id="txtUsuario" placeholder="Nombre usuario" required pattern="[A-Z a-z | 0-9]{7,45}" title="Solo permiten caracteres alfanuméricos de 7 hasta 45" >
                                                         </div>
                                                     </div>
                                                 </div>
@@ -279,12 +277,13 @@
                                                                     <i class="icon-people "></i>
                                                                 </span>
                                                             </div>
-                                                            <select class="form-control custom-select" id="Rol" required>
-                                                                <option selected disabled value="">Seleccione turno</option>
-                                                                <option value="1">Coordinador</option>
-                                                                <option value="1">Contact Center</option>
-                                                                <option value="1">Asesor</option>
-                                                                <option value="1">Gestor al cliente</option>
+                                                            <select class="form-control custom-select" id="txtRol" required>
+                                                                <option selected disabled>Seleccione Rol</option>
+                                                                <option value="1">Administrador</option>
+                                                                <option value="2">Coordinador</option>
+                                                                <option value="3">Contact Center</option>
+                                                                <option value="4">Gestor al cliente </option>
+                                                                <option value="5">Asesor</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -303,7 +302,7 @@
                                                                 </span>
                                                             </div>
                                                             <input type="password" class="form-control"
-                                                                id="Contrasena"
+                                                                id="txtContrasena"
                                                                 placeholder="Ingresar contraseña" required pattern="[A-Z a-z | 0-9]{8,45}" title="Sólo permiten caracteres alfanuméricos de 8 hasta 45">
                                                         </div>
                                                     </div>
@@ -321,7 +320,7 @@
                                                                 </span>
                                                             </div>
                                                             <input type="password" class="form-control"
-                                                                id="exampleInputuname"
+                                                                id="txtConfirmarContrasena"
                                                                 placeholder="Confirmar contraseña" required pattern="[A-Z a-z | 0-9]{8-45}" title="Solo permiten caracteres alfanuméricos de 8 hasta 45">
                                                         </div>
                                                     </div>
