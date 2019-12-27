@@ -19,6 +19,9 @@
     <link href="../../css/style.css" rel="stylesheet">
     <!-- Tema-->
     <link href="../../css/colors/megna-dark.css" id="theme" rel="stylesheet">
+
+    <!-- Sweetalert -->
+    <link href="../../assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -81,24 +84,25 @@
                                 </div>
                             </form>
 
-                            <form class="form-horizontal" id="recoverform" action="index.html">
+                            <form class="form-horizontal" id="recoverform">
                                 <a href="javascript:void(0)" id="to-login" class="MyStyle_btn_Regresar"><i class="fa fa-mail-reply"></i></a>
                                 <div class="form-group ">
                                     <div class="col-xs-12">
                                         <h3>Recuperar Contraseña</h3>
-                                        <p class="text-muted">Ingresa tu correo y sigue las instrucciones.
+                                        <p class="text-muted">Ingresa tu usuario y sigue las instrucciones.
                                         </p>
                                     </div>
                                 </div>
                                 <div class="form-group ">
                                     <div class="col-xs-12">
-                                        <input class="form-control" type="text" required="" placeholder="Email"> </div>
+                                        <input id="Usuario_Recuperar" class="form-control" type="text" required="" placeholder="Usuario"> </div>
                                 </div>
                                 <div class="form-group text-center m-t-20">
                                     <div class="col-xs-12">
                                         <button
+                                            onclick="ValidarUsuario()"
                                             class="btn btn-lg btn-block text-uppercase MyStyle_Btn_Login"
-                                            type="submit" style="background: rgb(28, 231, 204); color: #f3f3f3;">Restablecer</button>
+                                            type="button" style="background: rgb(28, 231, 204); color: #f3f3f3;">Enviar</button>
                                     </div>
                                 </div>
                             </form>
@@ -128,6 +132,10 @@
     
     <!--Custom JavaScript -->
     <script src="../../js/custom.min.js"></script>
+
+     <!-- Sweetalert -->
+     <script src="../../assets/plugins/sweetalert/sweetalert.min.js"></script>
+     <script src="../../assets/plugins/sweetalert/jquery.sweet-alert.custom.js"></script>
 
     <script src="../../Controllers/Login.js"></script>
     <!-- ============================================================== -->
