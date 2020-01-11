@@ -6,3 +6,7 @@ $.validator.addMethod( "SoloLetras", function( value, element ) {
 $.validator.addMethod("SoloNumeros", function(value,element){
     return this.optional(element) || /^[\d]+$/.test(value);
 },"Solo se permiten números del 0 al 9");
+
+$.validator.addMethod("NumeroMovil", function(value,element){
+    return this.optional(element) || /^3[\d]+$/.test(value);
+},"Ingresa un número de celular válido");

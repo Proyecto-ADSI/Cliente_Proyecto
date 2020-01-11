@@ -46,8 +46,6 @@ let RegistrarUsuario = () => {
 
     }
 
-    console.log(datos);
-
     $.ajax({
         // A donde va a ir a guardar
         url: `${URL}/Usuarios`,
@@ -150,7 +148,7 @@ $(function () {
             txtEmail: "required",
             txtSexo: "required",
             txtCelular: {
-                SoloNumeros: true,
+                NumeroMovil: true,
                 minlength: 10,
                 maxlength: 10
             },
@@ -169,7 +167,6 @@ $(function () {
                     },
                     dataFilter: function(res){
                         var json  = JSON.parse(res);
-                        console.log(json);
                         if(json.data){
                             return '"true"';
                         }else{
