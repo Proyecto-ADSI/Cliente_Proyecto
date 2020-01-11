@@ -6616,7 +6616,7 @@ File: scss
   color: #26dad2; }
 
 .has-success .form-control-success {
-  background-image: url(../../assets/images/icon/success.svg); }
+  background-image: url(../assets/images/icon/success.svg); }
 
 .has-success .form-control {
   border-color: #26dad2; }
@@ -6625,7 +6625,7 @@ File: scss
   color: #ffb22b; }
 
 .has-warning .form-control-warning {
-  background-image: url(../../assets/images/icon/warning.svg); }
+  background-image: url(../assets/images/icon/warning.svg); }
 
 .has-warning .form-control {
   border-color: #ffb22b; }
@@ -6634,7 +6634,7 @@ File: scss
   color: #ef5350; }
 
 .has-danger .form-control-danger {
-  background-image: url(../../assets/images/icon/danger.svg); }
+  background-image: url(../assets/images/icon/danger.svg); }
 
 .has-danger .form-control {
   border-color: #ef5350; }

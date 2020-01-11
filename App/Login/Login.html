@@ -38,11 +38,10 @@
     <section id="wrapper">
         <div class="login-register MyStyle_login_fondo" style="background: #0c0c0c;">
             <div class="login-box card MyStyle_login_box">
-
                 <div class="row">
                     <div class="col-6">
                         <div class="card-body MyStyle_Card1_Fondo zoomInLeft animated">
-                            
+
                         </div>
                     </div>
                     <div class="col-6">
@@ -50,28 +49,21 @@
                             <div class="MyStyle_Box_Logo">
                                 <img src="../../assets/images/Logos/User Login.png" class="MyStyle_Logo_Empresa" alt="">
                             </div>
-                            
-                            <form class="form-horizontal form-material" id="loginform" action="../Administrador/Inicio/Index.html">
-                                <!-- <h3 class="box-title m-b-20">Ekatemp S</h3> -->
-                                <div class="form-group ">
-                                    <div class="col-xs-12">
-                                        <input class="form-control MyStyle_Form_Control" type="text" required  id="Usuario"
-                                            placeholder="Usuario" pattern="[A-Z a-z | 0-9]{7,45}" title="Sólo se permiten de 7 hasta 45 caracteres y sólo se permiten caracteres alnumericos ">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-xs-12">
-                                        <input class="form-control MyStyle_Form_Control" type="password" required id="Contrasena"
-                                            placeholder="Contraseña"  pattern="[A-Z a-z | 0-9]{8,45}" title="Sólo se permiten de 8 hasta 45 caracteres y sólo se permiten caracteres alnumericos">
-                                    </div>
-                                </div>
 
-                                <div class="form-group text-center m-t-20">
-                                    <div class="col-xs-12">
-                                        <button style="background: rgb(28, 231, 204); color: #f3f3f3;
-                                         "
-                                            class="btn btn-lg btn-block text-uppercase MyStyle_Btn_Login" onclick="Login()"
-                                            type="button">Iniciar Sesión
+                            <!-- Formulario Inicio Sesión -->
+                            <form class="form-horizontal form-material" id="loginform">
+                                <div class="col-xs-12">
+                                    <div class="form-group">
+                                        <input type="text" id="Usuario" name="Usuario"
+                                            class="form-control  MyStyle_Form_Control" placeholder="Usuario*">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" id="Contrasena" name="Contrasena" class="form-control MyStyle_Form_Control"
+                                            placeholder="Contraseña*">
+                                    </div>
+                                    <div class="form-group text-center m-t-20">
+                                        <button class="btn btn-lg btn-block text-uppercase MyStyle_Btn_Login" type="submit">
+                                            Iniciar Sesión
                                         </button>
                                     </div>
                                 </div>
@@ -84,8 +76,10 @@
                                 </div>
                             </form>
 
+                            <!-- Formulario Envío de correo de recuperación -->
                             <form class="form-horizontal" id="recoverform">
-                                <a href="javascript:void(0)" id="to-login" class="MyStyle_btn_Regresar"><i class="fa fa-mail-reply"></i></a>
+                                <a href="javascript:void(0)" id="to-login" class="MyStyle_btn_Regresar"><i
+                                        class="fa fa-mail-reply"></i></a>
                                 <div class="form-group ">
                                     <div class="col-xs-12">
                                         <h3>Recuperar Contraseña</h3>
@@ -95,14 +89,14 @@
                                 </div>
                                 <div class="form-group ">
                                     <div class="col-xs-12">
-                                        <input id="Usuario_Recuperar" class="form-control" type="text" required="" placeholder="Usuario"> </div>
+                                        <input id="Usuario_Recuperar" class="form-control" type="text" required=""
+                                            placeholder="Usuario"> </div>
                                 </div>
                                 <div class="form-group text-center m-t-20">
                                     <div class="col-xs-12">
-                                        <button
-                                            onclick="ValidarUsuario()"
+                                        <button onclick="ValidarUsuario()"
                                             class="btn btn-lg btn-block text-uppercase MyStyle_Btn_Login"
-                                            type="button" style="background: rgb(28, 231, 204); color: #f3f3f3;">Enviar</button>
+                                            type="button">Enviar</button>
                                     </div>
                                 </div>
                             </form>
@@ -119,7 +113,13 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
+    <!-- <script src="../../Controllers/ValidarSesion.js"></script> -->
     <script src="../../assets/plugins/jquery/jquery.min.js"></script>
+    <!-- JQuery Validate -->
+    <script src="../../assets/plugins/jquery-validation-1.19.1/jquery.validate.js"></script>
+    <!-- Idioma JQuery Validate  -->
+    <script src="../../assets/plugins/jquery-validation-1.19.1/messages_es.js"></script>
+
     <!-- Bootstrap tether Core JavaScript -->
     <script src="../../assets/plugins/bootstrap/js/popper.min.js"></script>
     <script src="../../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
@@ -129,16 +129,18 @@
     <script src="../../js/sidebarmenu.js"></script>
     <!--stickey kit -->
     <script src="../../assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
-    
+
     <!--Custom JavaScript -->
     <script src="../../js/custom.min.js"></script>
 
-     <!-- Sweetalert -->
-     <script src="../../assets/plugins/sweetalert/sweetalert.min.js"></script>
-     <script src="../../assets/plugins/sweetalert/jquery.sweet-alert.custom.js"></script>
+    <!-- Sweetalert -->
+    <script src="../../assets/plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="../../assets/plugins/sweetalert/jquery.sweet-alert.custom.js"></script>
 
-    <script src="../../Controllers/Login.js"></script>
+    <script src="../../Controllers/Usuarios/Login.js"></script>
+    <script src="../../Controllers/Usuarios/EnviarCorreo.js"></script>
     <!-- ============================================================== -->
+
 </body>
 
 </html>

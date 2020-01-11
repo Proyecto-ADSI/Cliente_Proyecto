@@ -45,19 +45,18 @@
 }
 
 .MyStyle_Form_Control:focus{
-    /* background-color: #00897b !important; */
     background-image: linear-gradient(#00897b, #00897b), linear-gradient(rgba(120, 130, 140, 0.13), rgba(120, 130, 140, 0.13)) !important;
 }
 
 .MyStyle_Btn_Login{
-    color: #fff;
-    background-color: #00897b;
-    border: 2px solid #eef5f9;
+    color: #f3f3f3;
+    background: rgb(28, 231, 204); 
+    border: 2px solid rgb(28, 231, 204);
 }
 
 .MyStyle_Btn_Login:hover{
-    color: #00897b ;
-    background-color: #eef5f9;
+    color: #f3f3f3;
+    background-color:rgb(28, 231, 204);
     border: 2px solid #00897b;
 }
 
@@ -78,6 +77,9 @@
     padding-top: 0 !important;
 }
 
+.MyStyle_Btn_Registro_Usuarios{
+    /* text-align: center; */
+}
 
 /* .form-horizontal label {
     padding-top: 7px !important;

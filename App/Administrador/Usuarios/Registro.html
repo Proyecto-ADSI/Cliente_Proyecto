@@ -20,8 +20,14 @@
     <!-- Tema de la plantilla -->
     <link href="../../../css/colors/megna-dark.css" id="theme" rel="stylesheet">
 
-     <!-- Dropify -->
-     <link rel="stylesheet" href="../../../assets/plugins/dropify/dist/css/dropify.min.css">
+    <!-- Dropify -->
+    <link rel="stylesheet" href="../../../assets/plugins/dropify/dist/css/dropify.min.css">
+
+    <!-- Sweetalert -->
+    <link href="../../../assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
+
+    <!-- Select 2 -->
+    <link href="../../../assets/plugins/select2/dist/css/select2.min.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body class="fix-header fix-sidebar card-no-border">
@@ -84,266 +90,342 @@
                                 <h4 class="m-b-0 text-white">Formulario de registro de usuarios</h4>
                             </div>
                             <div class="card-body">
-                                <form action="#" class="form-horizontal">
-                                    <div class="form-body">
+                                <form id="FormRegistroUsuario">
+                                    <div class="form-body ml-5 mr-5">
                                         <h3 class="box-title">Empleado:</h3>
                                         <hr class="m-t-0 m-b-40">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group row">
 
-                                                    <label class="control-label text-right col-md-3">Tipo de
-                                                        documento</label>
-                                                    <div class="col-sm-9">
-                                                        <div class="input-group">
-                                                            <div class="input-group-prepend">
-                                                                <span class="input-group-text" id="basic-addon1">
-                                                                    <i class="ti-user"></i>
-                                                                </span>
-                                                            </div>
-                                                            <select class="custom-select col-12" id="txtTipoDocumento" required>
-                                                                <option selected disabled value="">Seleccione tipo de documento</option>
-                                                                <option value="1">Cédula de Ciudadanía</option>
-                                                                <option value="1">Tarjeta de Identidad</option>
-                                                                <option value="1">Cédula de extranjería</option>
-                                                                <option value="1">Pasaporte</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                             <!--/span-->
-                                            <div class="col-md-6">
-                                                <div class="form-group row">
-                                                    <label class="control-label text-right col-md-3">Documento</label>
-                                                    <div class="col-md-9">
-                                                        <div class="input-group">
-                                                            <div class="input-group-prepend">
-                                                                <span class="input-group-text" id="basic-addon1">
-                                                                    <i class="ti-credit-card"></i>
-                                                                </span>
-                                                            </div>
-                                                            <input type="text" class="form-control" id="txtDocumento"
-                                                                placeholder="Número de documento" required pattern="[0-9]{5,45}" title="Sólo se permiten caracteres numéricos de 7 hasta 45, no se permiten caracteres alfabéticos">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                           
+                                        <ul class="nav nav-tabs customtab" role="tablist">
+                                            <li class="nav-item"> <a id="FormularioEmpleado"
+                                                    class="nav-link active" data-toggle="tab" href="#formEmpleado"
+                                                    role="tab">
+                                                    <span class="hidden-sm-up"><i class="ti-home"></i></span>
+                                                    <span class="hidden-xs-down">Registrar empleado</span></a>
+                                            </li>
+                                            <li class="nav-item"> <a class="nav-link" data-toggle="tab"
+                                                    href="#selectEmpleado" role="tab">
+                                                    <span class="hidden-sm-up"><i class="ti-user"></i></span>
+                                                    <span class="hidden-xs-down">Seleccionar empleado </span></a>
+                                            </li>
+                                        </ul>
+                                        <!-- Tab panes -->
+                                        <div class="tab-content">
+                                            <div class="tab-pane active m-3" id="formEmpleado" role="tabpanel">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label text-right">Tipo de
+                                                                documento <span class="text-danger">*</span>
+                                                            </label>
 
-                                            <!--/span-->
-                                        </div>
-                                        <!--/row-->
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group row">
-                                                    <label class="control-label text-right col-md-3">Nombre</label>
-                                                    <div class="col-md-9">
-                                                        <div class="input-group">
-                                                            <div class="input-group-prepend">
-                                                                <span class="input-group-text" id="basic-addon1">
-                                                                    <i class="ti-user"></i>
-                                                                </span>
+                                                            <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text" id="basic-addon1">
+                                                                        <i class="ti-user"></i>
+                                                                    </span>
+                                                                </div>
+                                                                <select class="custom-select col-12"
+                                                                    id="txtTipoDocumento" name="txtTipoDocumento">
+                                                                    <option selected disabled value="">Seleccione
+                                                                        tipo de documento</option>
+                                                                    <option value="1">Cédula de Ciudadanía</option>
+                                                                    <option value="1">Tarjeta de Identidad</option>
+                                                                    <option value="1">Cédula de extranjería</option>
+                                                                    <option value="1">Pasaporte</option>
+                                                                </select>
                                                             </div>
-                                                            <input type="text" class="form-control"
-                                                                id="txtNombre" placeholder="Nombre Completo" required pattern="[A-Z a-z]{3,45}" title="Sólo se permiten caracteres alfabéticos de 3 hasta 45, no se permiten caracteres numericos">
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Documento
+                                                                <span class="text-danger">*</span>
+                                                            </label>
+
+                                                            <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text" id="basic-addon1">
+                                                                        <i class="ti-credit-card"></i>
+                                                                    </span>
+                                                                </div>
+                                                                <input type="number" class="form-control"
+                                                                    id="txtDocumento" name="txtDocumento"
+                                                                    placeholder="Número de documento">
+                                                            </div>
+
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <!--/span-->
-                                            <div class="col-md-6">
-                                                <div class="form-group row">
-                                                    <label class="control-label text-right col-md-3">Apellidos</label>
-                                                    <div class="col-md-9">
-                                                        <div class="input-group">
-                                                            <div class="input-group-prepend">
-                                                                <span class="input-group-text" id="basic-addon1">
-                                                                    <i class="ti-user"></i>
-                                                                </span>
+                                                <!--/row-->
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Nombre
+                                                                <span class="text-danger">*</span>
+                                                            </label>
+                                                            <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text" id="basic-addon1">
+                                                                        <i class="ti-user"></i>
+                                                                    </span>
+                                                                </div>
+                                                                <input type="text" class="form-control" id="txtNombre"
+                                                                    name="txtNombre" placeholder="Nombre Completo">
                                                             </div>
-                                                            <input type="text" class="form-control"
-                                                                id="txtApellidos" placeholder="Apellidos" required pattern="[A-Z a-z]{3,45}" title="Sólo se permiten caracteres alfabéticos de 3 hasta 45, no se permiten caracteres numericos">
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <!--/span-->
-                                        </div>
-                                        <!--/row-->
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group row">
-                                                    <label class="control-label text-right col-md-3">Correo</label>
-                                                    <div class="col-md-9">
-                                                        <div class="input-group">
-                                                            <div class="input-group-prepend">
-                                                                <span class="input-group-text" id="basic-addon1">
-                                                                    <i class="ti-email"></i>
-                                                                </span>
+                                                    <!--/row-->
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Apellidos
+                                                                <span class="text-danger">*</span>
+                                                            </label>
+
+                                                            <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text" id="basic-addon1">
+                                                                        <i class="ti-user"></i>
+                                                                    </span>
+                                                                </div>
+                                                                <input type="text" class="form-control"
+                                                                    id="txtApellidos" name="txtApellidos"
+                                                                    placeholder="Apellidos">
                                                             </div>
-                                                            <input type="email" class="form-control" id="txtEmail"
-                                                                 placeholder="Ingresar correo" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="Digite un correo existente">
                                                         </div>
                                                     </div>
+                                                    <!--/span-->
                                                 </div>
-                                                <div class="form-group row">
-                                                    <label class="control-label text-right col-md-3">Sexo</label>
-                                                    <div class="col-md-9">
-                                                        <div class="input-group">
-                                                            <div class="input-group-prepend">
-                                                                <span class="input-group-text" id="basic-addon1">
-                                                                    <i class="icon-star"></i>
-                                                                </span>
+                                                <!--/row-->
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Correo
+                                                                <span class="text-danger">*</span>
+                                                            </label>
+
+                                                            <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text" id="basic-addon1">
+                                                                        <i class="ti-email"></i>
+                                                                    </span>
+                                                                </div>
+                                                                <input type="email" class="form-control" id="txtEmail"
+                                                                    name="txtEmail" placeholder="Ingresar correo">
                                                             </div>
-                                                            <select class="form-control custom-select" required id="txtSexo">
-                                                                <option selected disabled value="">Seleccione sexo</option>
-                                                                <option value="Masculino">Masculino</option>
-                                                                <option value="Femenino">Femenino</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="control-label text-right col-md-3">Turno</label>
-                                                    <div class="col-md-9">
-                                                        <div class="input-group">
-                                                            <div class="input-group-prepend">
-                                                                <span class="input-group-text" id="basic-addon1">
-                                                                    <i class=" icon-clock "></i>
-                                                                </span>
-                                                            </div>
-                                                            <select class="form-control custom-select" required id="txtTurno">
-                                                                <option selected disabled value="">Seleccione turno</option>
-                                                                <option value="Mañana">Turno Mañana</option>
-                                                                <option value="Tarde">Turno Tarde</option>
-                                                            </select>
+
                                                         </div>
 
                                                     </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Sexo
+                                                                <span class="text-danger">*</span>
+                                                            </label>
+
+                                                            <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text" id="basic-addon1">
+                                                                        <i class="icon-star"></i>
+                                                                    </span>
+                                                                </div>
+                                                                <select class="form-control custom-select" id="txtSexo"
+                                                                    name="txtSexo">
+                                                                    <option selected disabled value="">Seleccione
+                                                                        sexo</option>
+                                                                    <option value="1">Masculino</option>
+                                                                    <option value="2">Femenino</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <!--/span-->
-                                            <div class="col-md-6">
-                                                <div class="card">
-                                                    <div class="card-body MyStyle_File_Card">
-                                                        <h4 class="card-title">Fotografía</h4>
-                                                        <!-- <label for="input-file-now-custom-3">You can combine
+                                                <!-- /Row -->
+                                                <div class="row">
+                                                    <div class="col-md-6">
+
+                                                        <div class="form-group">
+                                                            <label class="control-label">Celular
+                                                            </label>
+                                                            <div class="input-group ">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text" id="basic-addon1">
+                                                                        <i class="ti-mobile"></i>
+                                                                    </span>
+                                                                </div>
+                                                                <input type="number" class="form-control"
+                                                                    id="txtCelular" name="txtCelular"
+                                                                    placeholder="Ingresar número">
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="control-label">Turno
+                                                                <span class="text-danger">*</span>
+                                                            </label>
+
+                                                            <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text" id="basic-addon1">
+                                                                        <i class=" icon-clock "></i>
+                                                                    </span>
+                                                                </div>
+                                                                <select class="form-control custom-select" id="txtTurno"
+                                                                    name="txtTurno">
+                                                                    <option selected disabled value="">Seleccione
+                                                                        turno</option>
+                                                                    <option value="1">Turno Mañana</option>
+                                                                    <option value="2">Turno Tarde</option>
+                                                                </select>
+                                                            </div>
+
+
+                                                        </div>
+                                                    </div>
+                                                    <!--/span-->
+                                                    <div class="col-md-6">
+                                                        <div class="card">
+                                                            <div class="card-body MyStyle_File_Card">
+                                                                <h4 class="card-title">Fotografía</h4>
+                                                                <!-- <label for="input-file-now-custom-3">You can combine
                                                             options</label> -->
-                                                        <input type="file" id="input-file-now-custom-3" class="dropify"
-                                                            data-height="100" required
-                                                            />
-                                                        <!-- data-default-file="../../assets/plugins/dropify/src/images/test-image-2.jpg" -->
+                                                                <input type="file" id="input-file-now-custom-3"
+                                                                    name="Fotografia" class="dropify"
+                                                                    data-height="100" />
+                                                                <!-- data-default-file="../../assets/plugins/dropify/src/images/test-image-2.jpg" -->
+                                                            </div>
+                                                        </div>
                                                     </div>
+                                                    <!--/span-->
+                                                </div>
+                                                <!-- /row -->
+                                            </div>
+                                            <div class="tab-pane  p-20" id="selectEmpleado" role="tabpanel">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="ListaEmpleados" class="control-label" >
+                                                                Empleados registrados
+                                                                <span class="text-danger">*</span>
+                                                            </label>
+                                                            <select class="ListarEmpleados form-control custom-select" 
+                                                                name="ListaEmpleados" id="ListaEmpleados" style="width: 100%; height:36px;">
+                                                            </select>
+
+                                                        </div>
+                                                    </div>
+
                                                 </div>
                                             </div>
-                                            <!--/span-->
                                         </div>
-                                        <!-- /row -->
-                                        <div class="row">
-                                            <div class="col-md-6">
 
-                                            </div>
-                                        </div>
-                                        <!-- /row -->
+
                                         <h3 class="box-title">Usuario:</h3>
                                         <hr class="m-t-0 m-b-40">
                                         <!--/row-->
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <div class="form-group row">
-                                                    <label class="control-label text-right col-md-3">Usuario</label>
-                                                    <div class="col-md-9">
-                                                        <div class="input-group">
-                                                            <div class="input-group-prepend">
-                                                                <span class="input-group-text" id="basic-addon1">
-                                                                    <i class="ti-user"></i>
-                                                                </span>
-                                                            </div>
-                                                            <input type="text" class="form-control"
-                                                                id="txtUsuario" placeholder="Nombre usuario" required pattern="[A-Z a-z | 0-9]{7,45}" title="Solo permiten caracteres alfanuméricos de 7 hasta 45" >
+                                                <div class="form-group">
+                                                    <label class="control-label">Usuario
+                                                        <span class="text-danger">*</span>
+                                                    </label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" id="basic-addon1">
+                                                                <i class="ti-user"></i>
+                                                            </span>
                                                         </div>
+                                                        <input type="text" class="form-control" id="txtUsuario"
+                                                            name="txtUsuario" placeholder="Nombre usuario">
                                                     </div>
+
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
-                                                <div class="form-group row">
-                                                    <label class="control-label text-right col-md-3">Tipo de
-                                                        usuario</label>
-                                                    <div class="col-md-9">
-                                                        <div class="input-group">
-                                                            <div class="input-group-prepend">
-                                                                <span class="input-group-text" id="basic-addon1">
-                                                                    <i class="icon-people "></i>
-                                                                </span>
-                                                            </div>
-                                                            <select class="form-control custom-select" id="txtRol" required>
-                                                                <option selected disabled>Seleccione Rol</option>
-                                                                <option value="1">Administrador</option>
-                                                                <option value="2">Coordinador</option>
-                                                                <option value="3">Contact Center</option>
-                                                                <option value="4">Gestor al cliente </option>
-                                                                <option value="5">Asesor</option>
-                                                            </select>
+                                                <div class="form-group">
+                                                    <label class="control-label">Tipo de usuario
+                                                        <span class="text-danger">*</span>
+                                                    </label>
+
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" id="basic-addon1">
+                                                                <i class="icon-people "></i>
+                                                            </span>
                                                         </div>
+                                                        <select class="form-control custom-select" id="txtRol"
+                                                            name="txtRol">
+                                                            <option selected disabled>Seleccione Rol</option>
+                                                            <option value="1">Administrador</option>
+                                                            <option value="2">Coordinador</option>
+                                                            <option value="3">Contact Center</option>
+                                                            <option value="4">Gestor al cliente </option>
+                                                            <option value="5">Asesor</option>
+                                                        </select>
                                                     </div>
+
                                                 </div>
                                             </div>
                                         </div>
+                                        <!-- /Row -->
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <div class="form-group row">
-                                                    <label class="control-label text-right col-md-3">Contraseña</label>
-                                                    <div class="col-md-9">
-                                                        <div class="input-group">
-                                                            <div class="input-group-prepend">
-                                                                <span class="input-group-text" id="basic-addon1">
-                                                                    <i class="ti-lock"></i>
-                                                                </span>
-                                                            </div>
-                                                            <input type="password" class="form-control"
-                                                                id="txtContrasena"
-                                                                placeholder="Ingresar contraseña" required pattern="[A-Z a-z | 0-9]{8,45}" title="Sólo permiten caracteres alfanuméricos de 8 hasta 45">
+                                                <div class="form-group">
+                                                    <label class="control-label">Contraseña
+                                                        <span class="text-danger">*</span>
+                                                    </label>
+
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" id="basic-addon1">
+                                                                <i class="ti-lock"></i>
+                                                            </span>
                                                         </div>
+                                                        <input type="password" class="form-control" id="txtContrasena"
+                                                            name="txtContrasena" placeholder="Contraseña">
                                                     </div>
                                                 </div>
                                             </div>
                                             <!--/span-->
                                             <div class="col-md-6">
-                                                <div class="form-group row">
-                                                    <label class="control-label text-right col-md-3">Confirmar</label>
-                                                    <div class="col-md-9">
-                                                        <div class="input-group">
-                                                            <div class="input-group-prepend">
-                                                                <span class="input-group-text" id="basic-addon1">
-                                                                    <i class="ti-lock"></i>
-                                                                </span>
-                                                            </div>
-                                                            <input type="password" class="form-control"
-                                                                id="txtConfirmarContrasena"
-                                                                placeholder="Confirmar contraseña" required pattern="[A-Z a-z | 0-9]{8-45}" title="Solo permiten caracteres alfanuméricos de 8 hasta 45">
+                                                <div class="form-group">
+                                                    <label class="control-label">Confirmar
+                                                        <span class="text-danger">*</span>
+                                                    </label>
+
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" id="basic-addon1">
+                                                                <i class="ti-lock"></i>
+                                                            </span>
                                                         </div>
+                                                        <input type="password" class="form-control"
+                                                            id="txtConfirmarContrasena" name="txtConfirmarContrasena"
+                                                            placeholder="Confirmar contraseña">
                                                     </div>
+
                                                 </div>
                                             </div>
                                             <!--/span-->
                                         </div>
                                         <!--/row-->
-                                    </div>
-                                    <hr>
-                                    <div class="form-actions">
-                                        <div class="row">
-                                            <div class="col-md-6">
+                                        <hr>
+                                        <div class="form-actions row">
+
+                                            <div class="col-md-6 MyStyle_Btn_Registro_Usuarios">
                                                 <div class="row">
                                                     <div class="col-md-offset-3 col-md-9">
-                                                        <button type="button" onclick="Guardar()" class="btn btn-success">Guardar</button>
+                                                        <button type="submit" class="btn btn-success">Guardar</button>
                                                         <a href="GestionarUsuarios.html" class="btn btn-inverse">Cancelar</a>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!-- <div class="col-md-6"> </div> -->
+
                                         </div>
+
                                     </div>
+                                    <!-- /Form Body -->
                                 </form>
                             </div>
                         </div>
@@ -364,9 +446,16 @@
         <!-- ============================================================== -->
         <script src="../../../assets/plugins/jquery/jquery.min.js"></script>
 
+        <!-- JQuery Validate -->
+        <script src="../../../assets/plugins/jquery-validation-1.19.1/jquery.validate.js"></script>
+        <script src="../../../assets/plugins/jquery-validation-1.19.1/additional-methods.js"></script>
+        <script src="../../../js/ValidacionesExtra.js"></script>
+        <!-- Idioma JQuery Validate  -->
+        <script src="../../../assets/plugins/jquery-validation-1.19.1/messages_es.js"></script>
+
         <!-- Navegación -->
         <script src="../../../js/Navegacion/Navegacion_Admin.js"></script>
-        
+
         <!-- Bootstrap tether Core JavaScript -->
         <script src="../../../assets/plugins/bootstrap/js/popper.min.js"></script>
 
@@ -386,10 +475,19 @@
 
         <!-- Dropify (Seleccionar archivos) -->
         <script src="../../../assets/plugins/dropify/dist/js/dropify.min.js"></script>
-        
+
         <script src="../../../js/dropify.js"></script>
 
-        <script src="../../../Controllers/GuardarEmpleado.js"></script>
+        <!-- Sweetalert -->
+        <script src="../../../assets/plugins/sweetalert/sweetalert.min.js"></script>
+        <script src="../../../assets/plugins/sweetalert/jquery.sweet-alert.custom.js"></script>
+
+        <!-- Select 2 & Select Picker -->
+        <script src="../../../assets/plugins/select2/dist/js/select2.full.min.js" type="text/javascript"></script>
+        <script src="../../../assets/plugins/bootstrap-select/bootstrap-select.min.js" type="text/javascript"></script>
+        <!-- <script src="../../../js/Select2.js"></script> -->
+
+        <script src="../../../Controllers/Usuarios/RegistrarUsuario.js"></script>
 
 </body>
 
