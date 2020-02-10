@@ -145,7 +145,10 @@ $(function () {
                 minlength: 2,
                 maxlength: 30
             },
-            txtEmail: "required",
+            txtEmail: {
+                required: true,
+                ValidarCorreo: true
+            },
             txtSexo: "required",
             txtCelular: {
                 NumeroMovil: true,
@@ -254,5 +257,4 @@ $(function () {
             localStorage.removeItem("Id_Empleado");
         }
     });
-    
 });
