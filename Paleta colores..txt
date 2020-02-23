@@ -33,3 +33,157 @@ Gris:
                                                 </optgroup>
                                             </select>
                                         </div>
+
+
+
+
+<!-- Detalles usuario y empleado -->
+
+                                                    <div class="modal fade ModalEmpleados" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+                                                        aria-hidden="true" style="display: none;">
+                                                        <div class="modal-dialog modal-lg">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h4 class="modal-title" id="myLargeModalLabel">
+                                                                        Detalles Empleado</h4>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <div class="card m-b-0">
+                                                                        <div class="card-body ">
+                                                                                <!-- Formulario -->
+                                                                                <form class="form-horizontal" role="form">
+                                                                                    <div class="form-body">
+                                                                                        <div class="row">
+                                                                                            <div class="col-md-3">
+                                                                                                <div class="form-group">
+                                                                                                    <label class="control-label text-right">
+                                                                                                        Cargo:
+                                                                                                    </label>
+                                                                                                    <p class="form-control-static">
+                                                                                                        jabsdb  
+                                                                                                    </p>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <!--/col-->
+                                                                                            <div class="col-md-3">
+                                                                                                <div class="form-group">
+                                                                                                    <label class="control-label text-right">
+                                                                                                        Usuario:
+                                                                                                    </label>
+                                                                                                    <p class="form-control-static">
+                                                                                                        sad 
+                                                                                                    </p>
+
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <!--/col-->
+                                                                                            <div class="col-md-3">
+                                                                                                <div class="form-group">
+                                                                                                    <label class="control-label text-right">
+                                                                                                        Conexión:
+                                                                                                    </label>
+                                                                                                    <p class="form-control-static">
+                                                                                                        12132
+                                                                                                    </p>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <!--/col-->
+                                                                                            <div class="col-md-3">
+                                                                                                <div class="form-group">
+                                                                                                    <label class="control-label text-right">
+                                                                                                        Estado:
+                                                                                                    </label>
+                                                                                                    <p class="form-control-static">
+                                                                                                        12132
+                                                                                                    </p>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <!--/col-->
+                                                                                        </div>
+                                                                                        <!--/row-->
+                                                                                        <div class="row">
+                                                                                            <div class="col-md-3">
+                                                                                                <div class="form-group">
+                                                                                                    <label class="control-label text-right">
+                                                                                                        Tipo Documento:
+                                                                                                    </label>
+                                                                                                    <p class="form-control-static">
+                                                                                                        12132
+                                                                                                    </p>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <!--/col-->
+                                                                                            <div class="col-md-3">
+                                                                                                <div class="form-group">
+                                                                                                    <label class="control-label text-right">
+                                                                                                        Número documento:
+                                                                                                    </label>
+                                                                                                    <p class="form-control-static">
+                                                                                                        12132
+                                                                                                    </p>
+
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <!--/col-->
+                                                                                            <div class="col-md-6">
+                                                                                                <div class="form-group">
+                                                                                                    <label class="control-label text-right">
+                                                                                                        Nombre:
+                                                                                                    </label>
+                                                                                                    <p class="form-control-static">
+                                                                                                        Sandra Restrepo Cárdenas
+                                                                                                    </p>
+
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <!--/col-->
+                                                                                        </div>
+                                                                                        <!--/row-->
+                                                                                        <div class="row">
+                                                                                            <div class="col-md-4">
+                                                                                                <div class="form-group">
+                                                                                                    <label class="control-label text-right">
+                                                                                                        Barrio/Vereda:
+                                                                                                    </label>
+                                                                                                    <p class="form-control-static">
+                                                                                                        12132
+                                                                                                    </p>
+
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <!--/col-->
+                                                                                            <div class="col-md-4">
+                                                                                                <div class="form-group">
+                                                                                                    <label class="control-label text-right">
+                                                                                                        Dirección:
+                                                                                                    </label>
+                                                                                                    <p class="form-control-static">
+                                                                                                        12132
+                                                                                                    </p>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <!--/col-->
+                                                                                        </div>
+                                                                                        <!-- /Row -->
+                                                                                    </div>
+                                                                                    <!-- Form-Body -->
+                                                                                </form>
+                                                                                <!-- /Formulario -->
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <button type="submit" class="btn btn-info">
+                                                                                <i class="fa fa-pencil"></i>
+                                                                                Modificar</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- /.modal-content -->
+                                                        </div>
+                                                        <!-- /.modal-dialog -->
+                                                    </div>                                    

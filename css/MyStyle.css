@@ -173,3 +173,20 @@
 }
 
 /* Card (Atención telefónica, Llamada Pre, LLamada no pre*/
+
+/* Modal Detalles usuarios y empleados */
+.MyStyle_Detalles_Emp_Usu{
+
+    font-weight: bold;
+}
+
+/* Modal editar usuarios */
+
+.MyStyle_Id_Usuario_Column{
+
+    display: none;
+
+}
+/* .MyStyle_Modal_Editar_Usuarios{
+    max-height: 400px !important;
+} */

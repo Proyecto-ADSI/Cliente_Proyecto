@@ -1,5 +1,5 @@
 
-const URL = 'http://localhost:8080'
+const URL = 'http://localhost:8081';
 
 
 let Login = () => {
@@ -27,7 +27,7 @@ let Login = () => {
             localStorage.Id_Usuario = respuesta.data.Id_Usuario;
             localStorage.Rol = respuesta.data.Rol;
             
-         
+
             let Rol = parseInt(respuesta.data.Rol);
             //Redireccionamiento
             switch (Rol) {
@@ -38,7 +38,7 @@ let Login = () => {
                     break;
                 case 2:
                     //Coordinador
-                    location.href = "../Coordinador/Menu.html"
+                    location.href = "../Coordinador/Inicio/Menu.html"
 
                     break;
                 case 3:
@@ -70,6 +70,7 @@ let Login = () => {
 
     }).fail(error => {
 
+        swal("¡Error al iniciar sesión!", "Verifica los datos e intenta nuevamente", "error");
         console.log(error);
 
 
@@ -81,9 +82,6 @@ let Login = () => {
 $(function () {
 
     $("#loginform").validate({
-        // invalidHandler: function(){
-        //     console.log("Holls Bad")
-        // },
         submitHandler: function (){
             Login();
         },
@@ -105,13 +103,6 @@ $(function () {
         unhighlight: function (element) {
             $(element).parents(".form-group").removeClass("has-danger");
         }
-        // messages: {
-        //     Usuario:{
-        //         required:"Este campo es requerido",
-        //         minlength: "Se requieren como mínimo 8 caracteres"
-        //     }
-        // }
-
 
     });
 

@@ -1,6 +1,6 @@
 //API
 
-const URL = 'http://localhost:8080'
+const URL = 'http://localhost:8081'
 
 
 let RegistrarUsuario = () => {
@@ -77,7 +77,7 @@ let RegistrarUsuario = () => {
                     location.href = "GestionarUsuarios.html";
                 }
             });
-        }else{
+        } else {
             swal({
                 title: "Error al registrar.",
                 text: "Ha ocurrido un error al registrar, intenta de nuevo",
@@ -116,15 +116,146 @@ let RegistrarUsuario = () => {
 
 }
 
+CargarTiposDocumentos = () => {
+
+    $.ajax({
+        url: `${URL}/Documento`,
+        type: 'get',
+        datatype: 'json',
+        success: function (datos) {
+            ListarTipoDocumentos(datos);
+        },
+        error: function (error) {
+            console.log(error);
+        }
+
+    })
+
+}
+
+ListarTipoDocumentos = (datos) => {
+
+    $('#txtTipoDocumento').empty();
+    $('#txtTipoDocumento').prepend("<option selected disabled >Seleccione...</option>");
+    for (let item of datos.data) {
+        let $opcion = $('<option />', {
+            text: `${item.Nombre}`,
+            value: `${item.Id_Documento}`,
+        });
+
+        $('#txtTipoDocumento').append($opcion);
+    }
+}
+
+CargarSexos = () => {
+
+    $.ajax({
+        url: `${URL}/Sexo`,
+        type: 'get',
+        datatype: 'json',
+        success: function (datos) {
+            ListarSexos(datos);
+        },
+        error: function (error) {
+            console.log(error);
+        }
+
+    })
+
+}
+
+ListarSexos = (datos) => {
+
+    $('#txtSexo').empty();
+    $('#txtSexo').prepend("<option selected disabled >Seleccione...</option>");
+    for (let item of datos.data) {
+        let $opcion = $('<option />', {
+            text: `${item.Nombre}`,
+            value: `${item.Id_Sexo}`,
+        });
+
+        $('#txtSexo').append($opcion);
+    }
+}
+
+CargarTurnos = () => {
+
+    $.ajax({
+        url: `${URL}/Turno`,
+        type: 'get',
+        datatype: 'json',
+        success: function (datos) {
+            ListarSexos(datos);
+        },
+        error: function (error) {
+            console.log(error);
+        }
+
+    })
+
+}
+
+ListarTurnos = (datos) => {
+
+    $('#txtTurno').empty();
+    $('#txtTurno').prepend("<option selected disabled >Seleccione...</option>");
+    for (let item of datos.data) {
+        let $opcion = $('<option />', {
+            text: `${item.Nombre}`,
+            value: `${item.Id_Turno}`,
+        });
+
+        $('#txtTurno').append($opcion);
+    }
+}
+
+CargarRoles = () => {
+
+    $.ajax({
+        url: `${URL}/Turno`,
+        type: 'get',
+        datatype: 'json',
+        success: function (datos) {
+            ListarSexos(datos);
+        },
+        error: function (error) {
+            console.log(error);
+        }
+
+    })
+
+}
+
+ListarRoles = (datos) => {
+
+    $('#txtRol').empty();
+    $('#txtRol').prepend("<option selected disabled >Seleccione...</option>");
+    for (let item of datos.data) {
+        let $opcion = $('<option />', {
+            text: `${item.Nombre}`,
+            value: `${item.Id_Rol}`,
+        });
+        $('#txtRol').append($opcion);
+    }
+}
+
+
+
 
 $(function () {
+
+    // Inicializar selects del formulario
+    CargarTiposDocumentos();
+    CargarSexos();
+    // CargarTurnos()
+    // CargarRoles
     
-     $("#FormRegistroUsuario").validate({
-      
-        submitHandler: function (){
-           
+    $("#FormRegistroUsuario").validate({
+
+        submitHandler: function () {
+
             RegistrarUsuario();
-         
+
         },
         rules: {
             txtTipoDocumento: "required",
@@ -135,11 +266,11 @@ $(function () {
             },
             txtNombre: {
                 required: true,
-                SoloLetras:true,
+                SoloLetras: true,
                 minlength: 2,
                 maxlength: 30
             },
-            txtApellidos:{
+            txtApellidos: {
                 required: true,
                 SoloLetras: true,
                 minlength: 2,
@@ -159,20 +290,20 @@ $(function () {
             txtUsuario: {
                 required: true,
                 minlength: 5,
-                remote:{
-                    url: `${URL}/Usuarios/Disponible`,
+                remote: {
+                    url: `${URL}/Usuarios/Validacion/Disponible`,
                     type: 'get',
                     dataType: 'json',
                     data: {
-                        txtUsuario: function(){
+                        txtUsuario: function () {
                             return $("#txtUsuario").val();
                         }
                     },
-                    dataFilter: function(res){
-                        var json  = JSON.parse(res);
-                        if(json.data){
+                    dataFilter: function (res) {
+                        var json = JSON.parse(res);
+                        if (json.data) {
                             return '"true"';
-                        }else{
+                        } else {
                             return '"Usuario no disponible"';
                         }
                     }
@@ -189,7 +320,7 @@ $(function () {
             },
             ListaEmpleados: "required"
         },
-        messages:{
+        messages: {
             txtConfirmarContrasena: {
                 equalTo: "Las contraseñas no coinciden"
             }
@@ -202,17 +333,17 @@ $(function () {
             $(element).addClass("form-control-danger").removeClass("form-control-success");
         },
         unhighlight: function (element) {
-           
+
             $(element).parents(".form-group").addClass("has-success").removeClass("has-danger");
             $(element).addClass("form-control-success").removeClass("form-control-danger");
         },
-        errorPlacement: function(error, element) {
-            if(element[0].id == "ListaEmpleados"){
+        errorPlacement: function (error, element) {
+            if (element[0].id == "ListaEmpleados") {
                 $(element).parents(".form-group").append(error);
-            }else{
+            } else {
 
                 error.insertAfter(element.parent(".input-group"));
-            }          
+            }
         }
     });
 
@@ -244,6 +375,7 @@ $(function () {
 
     });
 
+    // Guardar en LocalStorage
     $(".ListarEmpleados").on("select2:select", function (e) {
         $(this).trigger('blur');
         var Id_Empleado = $(e.currentTarget).val();
@@ -251,10 +383,15 @@ $(function () {
 
     });
 
-    // Eliminar selección
-    $("#FormularioEmpleado").click(function(){
-        if(localStorage.Id_Empleado){
+    // Eliminar selección de LocalStorage
+    $("#FormularioEmpleado").click(function () {
+        if (localStorage.Id_Empleado) {
             localStorage.removeItem("Id_Empleado");
         }
     });
 });
+
+
+
+
+
