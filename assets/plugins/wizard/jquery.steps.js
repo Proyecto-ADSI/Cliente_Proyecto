@@ -1985,7 +1985,7 @@ var defaults = $.fn.steps.defaults = {
          * @default "current step:"
          * @for defaults
          **/
-        current: "current step:",
+        current: "Pestaña actual:",
 
         /**
          * This label is important for accessability reasons and describes the kind of navigation.
@@ -1996,7 +1996,7 @@ var defaults = $.fn.steps.defaults = {
          * @for defaults
          * @since 0.9.7
          **/
-        pagination: "Pagination",
+        pagination: "Paginación",
 
         /**
          * Label for the finish button.

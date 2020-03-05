@@ -33,6 +33,9 @@ $(function () {
     $('#UsuariosDataTable').DataTable({
         ajax: {
             url: `${URL}/Usuarios`,
+            error: function(error){
+                console.log("Eror al listar usuarios " + error);
+            }
         },
         // data: datos,
         aoColumns: [
@@ -58,6 +61,7 @@ $(function () {
             `}
                 
         ],
+        
         language: {
             "lengthMenu": "Mostrar _MENU_ registros",
             "zeroRecords": "No se encontraron resultados",

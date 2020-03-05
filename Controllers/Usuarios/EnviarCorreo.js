@@ -42,7 +42,7 @@ let ValidarUsuario = () =>
                         dataType: 'json'
                 
                     }).done(respuesta =>{
-             
+            
                         if(respuesta.data.ok)
                         {  
                             swal({
@@ -59,12 +59,22 @@ let ValidarUsuario = () =>
                                 location.href = "Login.html";
 
                               });
-
-
-                            // swal("¡Correo enviado!","Revisa el correo que se ha enviado", "success");
         
                         }else{
-                            swal("¡Correo NO enviado!","Ha ocurrido un error intenta nuevamente", "danger");
+                            swal({
+                                title: "¡Correo NO enviado!",
+                                text: "Ha ocurrido un error intenta nuevamente",
+                                type: "error",
+                                showCancelButton: false,
+                                confirmButtonClass: "btn-danger",
+                                confirmButtonText: "Cerrar",
+                                closeOnConfirm: false
+                              },
+                              function(){
+                                
+                                location.href = "Login.html";
+
+                              });
                         }
                         
                     }).fail(error => {

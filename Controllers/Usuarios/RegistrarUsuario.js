@@ -181,11 +181,11 @@ ListarSexos = (datos) => {
 CargarTurnos = () => {
 
     $.ajax({
-        url: `${URL}/Turno`,
+        url: `${URL}/Turnos`,
         type: 'get',
         datatype: 'json',
         success: function (datos) {
-            ListarSexos(datos);
+            ListarTurnos(datos);
         },
         error: function (error) {
             console.log(error);
@@ -212,11 +212,11 @@ ListarTurnos = (datos) => {
 CargarRoles = () => {
 
     $.ajax({
-        url: `${URL}/Turno`,
+        url: `${URL}/Rol`,
         type: 'get',
         datatype: 'json',
         success: function (datos) {
-            ListarSexos(datos);
+            ListarRoles(datos);
         },
         error: function (error) {
             console.log(error);
@@ -247,8 +247,8 @@ $(function () {
     // Inicializar selects del formulario
     CargarTiposDocumentos();
     CargarSexos();
-    // CargarTurnos()
-    // CargarRoles
+    CargarTurnos();
+    CargarRoles();
     
     $("#FormRegistroUsuario").validate({
 
@@ -261,7 +261,7 @@ $(function () {
             txtTipoDocumento: "required",
             txtDocumento: {
                 required: true,
-                SoloNumeros: true,
+                number: true,
                 minlength: 5
             },
             txtNombre: {

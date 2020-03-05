@@ -186,4 +186,215 @@ Gris:
                                                             <!-- /.modal-content -->
                                                         </div>
                                                         <!-- /.modal-dialog -->
-                                                    </div>                                    
+                                                    </div> 
+
+
+
+
+// Selects formulario para registrar clientes.
+
+CargarPais = () => {
+
+//     $.ajax({
+//         url: `${URL}/Pais`,
+//         type: 'get',
+//         datatype: 'json',
+//         success: function (datos) {
+//             ListarPais(datos);
+//         },
+//         error: function (error) {
+//             console.log(error);
+//         }
+
+//     });
+
+// }
+
+// ListarPais = (datos) => {
+
+//     $('#txtPais').empty();
+//     $('#txtPais').prepend("<option selected disabled >Seleccione...</option>");
+//     for (let item of datos.data) {
+//         let $opcion = $('<option />', {
+//             text: `${item.Nombre}`,
+//             value: `${item.Id_Pais}`,
+//         });
+
+//         $('#txtPais').append($opcion);
+//     }
+// }
+
+
+// $("#txtPais").click(function () {
+
+//     console.log("Hola");
+
+//     if ($("#txtPais").val() != null) {
+
+//         Id_Pais = parseInt($("#txtPais").val());
+//         CargarDepartamento(Id_Pais);
+//     }
+
+    
+
+// });
+
+
+// CargarDepartamento = (Id_Pais) => {
+
+//     $.ajax({
+//         url: `${URL}/Departamento/ConsultarDepartamento/${Id_Pais}`,
+//         type: 'get',
+//         datatype: 'json',
+//         success: function (datos) {
+//             console.log(datos);
+//             ListarDepartamento(datos);
+//         },
+//         error: function (error) {
+//             console.log(error);
+//         }
+
+//     })
+// }
+
+// ListarDepartamento = (datos) => {
+
+//     $('#txtDepartamento').empty();
+//     $('#txtDepartamento').prepend("<option selected disabled >Seleccione...</option>");
+//     for (let item of datos.data) {
+//         let $opcion = $('<option />', {
+//             text: `${item.Nombre}`,
+//             value: `${item.Id_Departamento}`,
+//         });
+
+//         $('#txtDepartamento').append($opcion);
+//     }
+// }
+
+// $("#txtDepartamento").click(function () {
+
+//     if ($("#txtDepartamento").val() != null) {
+
+//         Id_Departamento = parseInt($("#txtDepartamento").val());
+
+//         CargarMunicipio(Id_Departamento);
+//     }
+
+// });
+
+// CargarMunicipio = (Id_Departamento) => {
+
+//     $.ajax({
+//         url: `${URL}/Municipio/ConsultarMunicipio/${Id_Departamento}`,
+//         type: 'get',
+//         datatype: 'json',
+//         success: function (datos) {
+//             ListarMunicipio(datos);
+//         },
+//         error: function (error) {
+//             console.log(error);
+//         }
+//     })
+
+// }
+
+// ListarMunicipio = (datos) => {
+
+//     $('#txtMunicipio').empty();
+//     $('#txtMunicipio').prepend("<option selected disabled >Seleccione...</option>");
+//     for (let item of datos.data) {
+//         let $opcion = $('<option />', {
+//             text: `${item.Nombre}`,
+//             value: `${item.Id_Munucipio}`,
+//         });
+
+//         $('#txtMunicipio').append($opcion);
+//     }
+// }
+
+// CargarSubTipo = () => {
+
+//     $.ajax({
+//         url: `${URL}/SubTipo`,
+//         type: 'get',
+//         datatype: 'json',
+//         success: function (datos) {
+//             ListarSubTipo(datos);
+//         },
+//         error: function (error) {
+//             console.log(error);
+//         }
+
+//     })
+
+// }
+
+// ListarSubTipo = (datos) => {
+
+//     $('#txtSubTipo').empty();
+//     $('#txtSubTipo').prepend("<option selected disabled >Seleccione...</option>");
+//     for (let item of datos.data) {
+//         let $opcion = $('<option />', {
+//             text: `${item.SubTipo}`,
+//             value: `${item.Id_SubTipo_Barrio_Vereda}`,
+//         });
+//         $('#txtSubTipo').append($opcion);
+//     }
+// }
+
+// $("#txtSubTipo").click(function () {
+
+//     if ($("#txtSubTipo").val() != null && $("#txtMunicipio").val() != null) {
+
+//         Id_Munucipio = parseInt($("#txtMunicipio").val());
+
+//         Id_SubTipo = parseInt($("#txtSubTipo").val());
+
+//         CargarBarrios_Veredas(Id_Departamento, Id_SubTipo);
+
+
+//     }
+
+// });
+
+// $("#txtMunicipio").click(function () {
+
+//     if ($("#txtSubTipo").val() != null && $("#txtMunicipio").val() != null) {
+
+//         Id_Munucipio = parseInt($("#txtMunicipio").val());
+
+//         Id_SubTipo = parseInt($("#txtSubTipo").val());
+
+//         CargarBarrios_Veredas(Id_Departamento, Id_SubTipo);
+//     }
+
+// });
+
+// CargarBarrios_Veredas = (Id_Departamento, Id_SubTipo) => {
+
+//     $.ajax({
+//         url: `${URL}/BarriosVeredas/ConsultarBarriosVeredas/${Id_Departamento}/${Id_SubTipo}`,
+//         type: 'get',
+//         datatype: 'json',
+//         success: function (datos) {
+//             ListarBarrios_Veredas(datos);
+//         },
+//         error: function (error) {
+//             console.log(error);
+//         }
+
+//     })
+// }
+
+// ListarBarrios_Veredas = (datos) => {
+
+//     $('#txtNombre_Lugar').empty();
+//     $('#txtNombre_Lugar').prepend("<option selected disabled >Seleccione...</option>");
+//     for (let item of datos.data) {
+//         let $opcion = $('<option />', {
+//             text: `${item.Nombre}`,
+//             value: `${item.Id_Barrios_Veredas}`,
+//         });
+//         $('#txtNombre_Lugar').append($opcion);
+//     }
+// }

@@ -4,17 +4,19 @@ $(".tab-wizard").steps({
     transitionEffect: "fade",
     titleTemplate: '<span class="step">#index#</span> #title#',
     labels: {
-        finish: "Submit"
+        finish: "Enviar"
     }, 
     onFinished: function (event, currentIndex) {
         var form = $(this);
         // Submit form input
-        form.submit();        
+        // form.submit();
+        
+        console.log("HOla")
     }
 });
 
 
-var form = $(".validation-wizard").show();
+// var form = $(".validation-wizard").show();
 
 $(".validation-wizard").steps({
     headerTag: "h6"

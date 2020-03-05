@@ -21,13 +21,13 @@ CargarDatosModalEditar = (Datos) => {
     $("#txtCorreo").val(Informacion.Correo);
     CargarSexos(Informacion.Id_Sexo);
     $("#txtCelular").val(Informacion.Celular);
-    // CargarTurnos(Informacion.Id_Turno);
+    CargarTurnos(Informacion.Id_Turno);
 
     // Llenar formulario de usuario
     Id_UsuarioEditar = Informacion.Id_Usuario;
     UsuarioBD = Informacion.Usuario;
     $("#txtUsuario").val(Informacion.Usuario);
-    // CargarRoles(Informacion.Id_Rol);
+    CargarRoles(Informacion.Id_Rol);
 
 
 
@@ -129,11 +129,11 @@ ListarSexos = (Id_Sexo,datos) => {
 CargarTurnos = (Id_Turno) => {
     
     $.ajax({
-        url: `${URL}/Turno`,
+        url: `${URL}/Turnos`,
         type: 'get',
         datatype: 'json',
         success: function(datos){
-            ListarSexos(Id_Turno, datos);
+            ListarTurnos(Id_Turno, datos);
         },
         error: function(error){
             console.log(error);
@@ -166,18 +166,18 @@ ListarTurnos = (Id_Turno,datos) => {
                 })
             }
 
-            $('#txtSexo').append($opcion);
+            $('#txtTurno').append($opcion);
         }
 }
 
 CargarRoles = (Id_Rol) => {
     
     $.ajax({
-        url: `${URL}/Turno`,
+        url: `${URL}/Rol`,
         type: 'get',
         datatype: 'json',
         success: function(datos){
-            ListarSexos(Id_Rol, datos);
+            ListarRoles(Id_Rol, datos);
         },
         error: function(error){
             console.log(error);
