@@ -15,6 +15,9 @@
     <link href="../../../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Mis Estilos -->
     <link rel="stylesheet" href="../../../css/MyStyle.css">
+    
+    <!--Switchery css-->
+    <link href="../../../assets/plugins/switchery/dist/switchery.min.css" rel="stylesheet" />
 
      <!-- Sweetalert -->
      <link href="../../../assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
@@ -106,10 +109,6 @@
                                                 <span><i class="ti-home"></i>Documentos</span></a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" data-toggle="tab" href="#dias" role="tab">
-                                                <span><i class="ti-home"></i>Dias</span></a>
-                                        </li>
-                                        <li class="nav-item">
                                             <a class="nav-link" data-toggle="tab" href="#sexo" role="tab">
                                                 <span><i class="ti-home"></i>Sexo</span></a>
                                         </li>
@@ -140,10 +139,6 @@
                                         <li class="nav-item">
                                             <a class="nav-link" data-toggle="tab" href="#turnos" role="tab">
                                                 <span><i class="ti-home"></i>Turnos</span></a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" data-toggle="tab" href="#estados" role="tab">
-                                                <span><i class="ti-home"></i>Estados</span></a>
                                         </li>
                                         <li class="nav-item">
                                                 <a class="nav-link" data-toggle="tab" href="#directorio" role="tab">
@@ -245,7 +240,7 @@
                                                                                     <input class="form-control"
                                                                                         type="text"
                                                                                         value="Orientación al cliente"
-                                                                                        id="example-text-input"
+                                                                                        id=""
                                                                                         placeholder="Ingresa el título">
                                                                                     <div class="input-group-append">
                                                                                         <button class="btn btn-danger"
@@ -336,7 +331,7 @@
                                              <!--Roles-->
                                     <div class="tab-pane " id="roles" role="tabpanel">
                                         <div class="row">
-                                            <div class="col-6">
+                                            <div class="col-10">
                                                 <div class="card">
                                                     <div class="card-body">
                                                         <h4 class="card-title">Roles Registrados</h4>
@@ -345,8 +340,7 @@
                                                                 <thead>
                                                                     <tr>
                                                                         <th>#</th>
-                                                                        <th>Rol</th>
-                                                                        <th>Opciones</th>
+                                                                        <th>Roles</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody id="TablaRol">
@@ -354,41 +348,6 @@
                                                                 </tbody>
                                                             </table>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="card">
-                                                    <div class="card-body">
-                                                        <h4 class="card-title">Edición y registro de documentos
-                                                        </h4>
-
-                                                        <form class="form-horizontal p-t-20">
-                                                            <div class="form-group row">
-
-                                                                <div class="col-sm-12">
-                                                                    <div class="input-group">
-                                                                        <div class="input-group-prepend">
-                                                                            <span class="input-group-text"
-                                                                                id="basic-addon1">
-                                                                                <i class="ti-user"></i>
-                                                                            </span>
-                                                                        </div>
-                                                                        <input type="text" disabled class="form-control"
-                                                                            id="" name="Documento"
-                                                                            placeholder="Rol" 
-                                                                             >
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row m-b-0">
-                                                                <div class="offset-sm-3 col-sm-9">
-                                                                    <button type="submit" disabled class="btn btn-info waves-effect waves-light">Guardar
-                                                                    </button>
-                                                                </div>
-                                                            </div>
-                                                        </form>
-                                                        
                                                     </div>
                                                 </div>
                                             </div>
@@ -404,7 +363,7 @@
                                             <div class="col-6">
                                                 <div class="card">
                                                     <div class="card-body">
-                                                        <h4 class="card-title">Documentos Registrados</h4>
+                                                        <h4 class="card-title">Tipo de documentos registrados</h4>
                                                         <div class="table-responsive">
                                                             <table class="table color-table success-table">
                                                                 <thead>
@@ -415,7 +374,7 @@
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody id="TablaDocumento">
-                                                                   
+
                                                                 </tbody>
                                                             </table>
                                                         </div>
@@ -441,7 +400,7 @@
                                                                         </div>
                                                                         <input type="text" class="form-control"
                                                                             id="TxtDocumento" name="Documento"
-                                                                            placeholder="Documento" 
+                                                                            placeholder="Tipo de documento" 
                                                                              >
                                                                     </div>
                                                                 </div>
@@ -1001,98 +960,7 @@
                                         </div>
                                     </div>
 
-                                    <!-- Días Semana -->
-                                    <div class="tab-pane " id="dias" role="tabpanel">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <div class="card">
-                                                    <div class="card-body">
-                                                        <h4 class="card-title">Días Registrados</h4>
-                                                        <div class="table-responsive">
-                                                            <table class="table color-table success-table">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>#</th>
-                                                                        <th>Día</th>
-                                                                        <th>Opciones</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td>1</td>
-                                                                        <td>Lunes</td>
-                                                                        <td class="text-nowrap">
-                                                                            <a href="#" data-toggle="tooltip"
-                                                                                data-original-title="Editar">
-                                                                                <i
-                                                                                    class="fa fa-pencil text-inverse m-r-10"></i>
-                                                                            </a>
-                                                                            <a href="#" data-toggle="tooltip"
-                                                                                data-original-title="Eliminar"> <i
-                                                                                    class="fa fa-close text-danger"></i>
-                                                                            </a>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>2</td>
-                                                                        <td>Martes</td>
-                                                                        <td class="text-nowrap">
-                                                                            <a href="#" data-toggle="tooltip"
-                                                                                data-original-title="Editar">
-                                                                                <i
-                                                                                    class="fa fa-pencil text-inverse m-r-10"></i>
-                                                                            </a>
-                                                                            <a href="#" data-toggle="tooltip"
-                                                                                data-original-title="Close"> <i
-                                                                                    class="fa fa-close text-danger"></i>
-                                                                            </a>
-                                                                        </td>
-
-                                                                    </tr>
-
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="card">
-                                                    <div class="card-body">
-                                                        <h4 class="card-title">Edición y registro de días
-                                                        </h4>
-
-                                                        <form class="form-horizontal p-t-20">
-                                                            <div class="form-group row">
-
-                                                                <div class="col-sm-12">
-                                                                    <div class="input-group">
-                                                                        <div class="input-group-prepend">
-                                                                            <span class="input-group-text"
-                                                                                id="basic-addon1">
-                                                                                <i class="ti-user"></i>
-                                                                            </span>
-                                                                        </div>
-                                                                        <input type="text" class="form-control"
-                                                                            id="exampleInputuname3" placeholder="Día"
-                                                                            required pattern="[A-z a-z]{2,45}"
-                                                                            title="Sólo se permiten caracteres alfabeticos de 2 hasta 45, no se permiten caracteres numericos">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row m-b-0">
-                                                                <div class="offset-sm-3 col-sm-9">
-                                                                    <button type="submit"
-                                                                        class="btn btn-info waves-effect waves-light">Guardar
-                                                                    </button>
-                                                                </div>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+            
 
                                     <!-- Turnos -->
                                     <div class="tab-pane " id="turnos" role="tabpanel">
@@ -1112,24 +980,8 @@
                                                                         <th>Opciones</th>
                                                                     </tr>
                                                                 </thead>
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td>1</td>
-                                                                        <td>Turno Mañana</td>
-                                                                        <td>8:00 am</td>
-                                                                        <td>1:00 pm</td>
-                                                                        <td class="text-nowrap">
-                                                                            <a href="#" data-toggle="tooltip"
-                                                                                data-original-title="Editar">
-                                                                                <i
-                                                                                    class="fa fa-pencil text-inverse m-r-10"></i>
-                                                                            </a>
-                                                                            <a href="#" data-toggle="tooltip"
-                                                                                data-original-title="Eliminar"> <i
-                                                                                    class="fa fa-close text-danger"></i>
-                                                                            </a>
-                                                                        </td>
-                                                                    </tr>
+                                                                <tbody id="TablaTurnos">
+                        
                                                                 </tbody>
                                                             </table>
                                                         </div>
@@ -1142,16 +994,14 @@
                                                         <h4 class="card-title">Edición y registro de turnos
                                                         </h4>
 
-                                                        <form class="form-horizontal p-t-20">
+                                                        <form class="form-horizontal p-t-20" id="FormTurnos">
                                                             <div class="form-group row">
                                                                 <div class="col-sm-12">
                                                                     <div class="input-group">
 
                                                                         <input type="text" class="form-control"
-                                                                            id="exampleInputuname3"
-                                                                            placeholder="Nombre Turno" required
-                                                                            pattern="[A-Z a-z]{2,45}"
-                                                                            title="Sólo se permiten caracteres alfabeticos de 2 hasta 45, no se permiten caracteres numericos">
+                                                                            id="TxtTurno"
+                                                                            placeholder="Nombre Turno" name="VaTurno">
                                                                         <div class="input-group-append">
                                                                             <span class="input-group-text"
                                                                                 id="basic-addon1">
@@ -1163,11 +1013,11 @@
                                                             </div>
                                                             <div class="form-group row">
                                                                 <div class="col-sm-12">
-                                                                    <div class="input-group clockpicker "
+                                                                    <div class="input-group clockpicker"
                                                                         data-placement="bottom" data-align="top"
                                                                         data-autoclose="true">
-                                                                        <input type="text" class="form-control" value=""
-                                                                            placeholder="Hora Inicio" required>
+                                                                        <input type="text" id="Inicio" name="VaInicio" class="form-control" value=""
+                                                                            placeholder="Hora Inicio" >
                                                                         <div class="input-group-append">
                                                                             <span class="input-group-text"><i
                                                                                     class="fa fa-clock-o"></i></span>
@@ -1180,8 +1030,8 @@
                                                                     <div class="input-group clockpicker "
                                                                         data-placement="bottom" data-align="top"
                                                                         data-autoclose="true">
-                                                                        <input type="text" class="form-control" value=""
-                                                                            placeholder="Hora Fin" required>
+                                                                        <input type="text" id="Fin" name="VaFin" class="form-control" value=""
+                                                                            placeholder="Hora Fin" >
                                                                         <div class="input-group-append">
                                                                             <span class="input-group-text"><i
                                                                                     class="fa fa-clock-o"></i></span>
@@ -1218,8 +1068,8 @@
                                                                             llamada para inhabilar empresa: </label>
                                                                         <div class="input-group">
                                                                             <input type="text" class="form-control"
-                                                                                id="exampleInputuname3"
-                                                                                placeholder="#">
+                                                                                id="2"
+                                                                                placeholder="Numero1">
                                                                             <div class="input-group-append">
                                                                                 <span class="input-group-text"
                                                                                     id="basic-addon1">
@@ -1236,8 +1086,8 @@
                                                                         </label>
                                                                         <div class="input-group">
                                                                             <input type="text" class="form-control"
-                                                                                id="exampleInputuname3"
-                                                                                placeholder="#">
+                                                                                id="1"
+                                                                                placeholder="Numero">
                                                                             <div class="input-group-append">
                                                                                 <span class="input-group-text"
                                                                                     id="basic-addon1">
@@ -1261,327 +1111,7 @@
                                             </div>
                                     </div>
 
-                                    <!-- Estados -->
-                                    <div class="tab-pane" id="estados" role="tabpanel">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <div class="card">
-                                                    <div class="card-body p-b-0">
-                                                        <h4 class="card-title">Estados</h4>
-                                                        <!-- Nav tabs -->
-                                                        <ul class="nav nav-tabs customtab" role="tablist">
-                                                            <li class="nav-item"> <a class="nav-link active"
-                                                                    data-toggle="tab" href="#Clientes"
-                                                                    role="tab"><span class="hidden-sm-up"><i
-                                                                            class="ti-home"></i></span> <span
-                                                                        class="hidden-xs-down">Clientes</span></a> 
-                                                            </li>
-                                                            <li class="nav-item"> <a class="nav-link" data-toggle="tab"
-                                                                    href="#Llamadas" role="tab"><span
-                                                                        class="hidden-sm-up"><i
-                                                                            class="ti-user"></i></span> <span
-                                                                        class="hidden-xs-down">Llamadas</span></a>
-                                                            </li>
-                                                            <li class="nav-item"> <a class="nav-link" data-toggle="tab"
-                                                                    href="#Citas" role="tab"><span
-                                                                        class="hidden-sm-up"><i
-                                                                            class="ti-email"></i></span> <span
-                                                                        class="hidden-xs-down">Citas</span></a>
-                                                            </li>
-                                                        </ul>
-                                                        <!-- Tab panes horizontales-->
-                                                        <form action="#" class="form-horizontal">
-                                                            <div class="tab-content">
-                                                                <!-- Tab Clientes -->
-                                                                <div class="tab-pane active" id="Clientes" role="tabpanel">
-                                                                        <div class="row">
-                                                                                <div class="col-6">
-                                                                                    <div class="card">
-                                                                                        <div class="card-body">
-                                                                                            <h4 class="card-title">Estados de clientes registrados</h4>
-                                                                                            <div class="table-responsive">
-                                                                                                <table class="table color-table success-table">
-                                                                                                    <thead>
-                                                                                                        <tr>
-                                                                                                            <th>#</th>
-                                                                                                            <th>Estado</th>
-                                                                                                            <th>Opciones</th>
-                                                                                                        </tr>
-                                                                                                    </thead>
-                                                                                                    <tbody>
-                                                                                                        <tr>
-                                                                                                            <td>1</td>
-                                                                                                            <td>Habilitado</td>
-                                                                                                            <td class="text-nowrap">
-                                                                                                                <a href="#" data-toggle="tooltip"
-                                                                                                                    data-original-title="Editar">
-                                                                                                                    <i
-                                                                                                                        class="fa fa-pencil text-inverse m-r-10"></i>
-                                                                                                                </a>
-                                                                                                                <a href="#" data-toggle="tooltip"
-                                                                                                                    data-original-title="Eliminar"> <i
-                                                                                                                        class="fa fa-close text-danger"></i>
-                                                                                                                </a>
-                                                                                                            </td>
-                                                                                                        </tr>
-                                                                                                        <tr>
-                                                                                                            <td>2</td>
-                                                                                                            <td>Inhabilitado</td>
-                                                                                                            <td class="text-nowrap">
-                                                                                                                <a href="#" data-toggle="tooltip"
-                                                                                                                    data-original-title="Editar">
-                                                                                                                    <i
-                                                                                                                        class="fa fa-pencil text-inverse m-r-10"></i>
-                                                                                                                </a>
-                                                                                                                <a href="#" data-toggle="tooltip"
-                                                                                                                    data-original-title="Close"> <i
-                                                                                                                        class="fa fa-close text-danger"></i>
-                                                                                                                </a>
-                                                                                                            </td>
-                                    
-                                                                                                        </tr>
-                                    
-                                                                                                    </tbody>
-                                                                                                </table>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-6">
-                                                                                    <div class="card">
-                                                                                        <div class="card-body">
-                                                                                            <h4 class="card-title">Edición y registro de Estados
-                                                                                            </h4>
-                                    
-                                                                                            <form class="form-horizontal p-t-20">
-                                                                                                <div class="form-group row">
-                                                                                                    <div class="col-sm-12">
-                                                                                                        <div class="input-group">
-                                                                                                            <div class="input-group-prepend">
-                                                                                                                <span class="input-group-text"
-                                                                                                                    id="basic-addon1">
-                                                                                                                    <i class="ti-user"></i>
-                                                                                                                </span>
-                                                                                                            </div>
-                                                                                                            <input type="text" class="form-control"
-                                                                                                                id="exampleInputuname3"
-                                                                                                                placeholder="Estado">
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                                <div class="form-group row m-b-0">
-                                                                                                    <div class="offset-sm-3 col-sm-9">
-                                                                                                        <button type="submit"
-                                                                                                            class="btn btn-info waves-effect waves-light">Guardar
-                                                                                                        </button>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </form>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                </div>
-                                                                 <!-- Tab Llamadas -->
-                                                                <div class="tab-pane " id="Llamadas" role="tabpanel">
-                                                                        <div class="row">
-                                                                                <div class="col-6">
-                                                                                    <div class="card">
-                                                                                        <div class="card-body">
-                                                                                            <h4 class="card-title">Estados de llamadas registrados</h4>
-                                                                                            <div class="table-responsive">
-                                                                                                <table class="table color-table success-table">
-                                                                                                    <thead>
-                                                                                                        <tr>
-                                                                                                            <th>#</th>
-                                                                                                            <th>Estado</th>
-                                                                                                            <th>Opciones</th>
-                                                                                                        </tr>
-                                                                                                    </thead>
-                                                                                                    <tbody>
-                                                                                                        <tr>
-                                                                                                            <td>1</td>
-                                                                                                            <td>Efectiva</td>
-                                                                                                            <td class="text-nowrap">
-                                                                                                                <a href="#" data-toggle="tooltip"
-                                                                                                                    data-original-title="Editar">
-                                                                                                                    <i
-                                                                                                                        class="fa fa-pencil text-inverse m-r-10"></i>
-                                                                                                                </a>
-                                                                                                                <a href="#" data-toggle="tooltip"
-                                                                                                                    data-original-title="Eliminar"> <i
-                                                                                                                        class="fa fa-close text-danger"></i>
-                                                                                                                </a>
-                                                                                                            </td>
-                                                                                                        </tr>
-                                                                                                        <tr>
-                                                                                                            <td>2</td>
-                                                                                                            <td>Reprogramada</td>
-                                                                                                            <td class="text-nowrap">
-                                                                                                                <a href="#" data-toggle="tooltip"
-                                                                                                                    data-original-title="Editar">
-                                                                                                                    <i
-                                                                                                                        class="fa fa-pencil text-inverse m-r-10"></i>
-                                                                                                                </a>
-                                                                                                                <a href="#" data-toggle="tooltip"
-                                                                                                                    data-original-title="Close"> <i
-                                                                                                                        class="fa fa-close text-danger"></i>
-                                                                                                                </a>
-                                                                                                            </td>
-                                    
-                                                                                                        </tr>
-                                    
-                                                                                                    </tbody>
-                                                                                                </table>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-6">
-                                                                                    <div class="card">
-                                                                                        <div class="card-body">
-                                                                                            <h4 class="card-title">Edición y registro de Estados
-                                                                                            </h4>
-                                    
-                                                                                            <form class="form-horizontal p-t-20">
-                                                                                                <div class="form-group row">
-                                    
-                                                                                                    <div class="col-sm-12">
-                                                                                                        <div class="input-group">
-                                                                                                            <div class="input-group-prepend">
-                                                                                                                <span class="input-group-text"
-                                                                                                                    id="basic-addon1">
-                                                                                                                    <i class="ti-user"></i>
-                                                                                                                </span>
-                                                                                                            </div>
-                                                                                                            <input type="text" class="form-control"
-                                                                                                                id="exampleInputuname3"
-                                                                                                                placeholder="Estado">
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                                <div class="form-group row m-b-0">
-                                                                                                    <div class="offset-sm-3 col-sm-9">
-                                                                                                        <button type="submit"
-                                                                                                            class="btn btn-info waves-effect waves-light">Guardar
-                                                                                                        </button>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </form>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                        </div>
-                                                                </div>
-                                                                 <!-- Tab Citas -->
-                                                                <div class="tab-pane" id="Citas" role="tabpanel">
-                                                                        <div class="row">
-                                                                                <div class="col-6">
-                                                                                    <div class="card">
-                                                                                        <div class="card-body">
-                                                                                            <h4 class="card-title">Estados de citas registrados</h4>
-                                                                                            <div class="table-responsive">
-                                                                                                <table class="table color-table success-table">
-                                                                                                    <thead>
-                                                                                                        <tr>
-                                                                                                            <th>#</th>
-                                                                                                            <th>Estado</th>
-                                                                                                            <th>Opciones</th>
-                                                                                                        </tr>
-                                                                                                    </thead>
-                                                                                                    <tbody>
-                                                                                                        <tr>
-                                                                                                            <td>1</td>
-                                                                                                            <td>Efectiva</td>
-                                                                                                            <td class="text-nowrap">
-                                                                                                                <a href="#" data-toggle="tooltip"
-                                                                                                                    data-original-title="Editar">
-                                                                                                                    <i
-                                                                                                                        class="fa fa-pencil text-inverse m-r-10"></i>
-                                                                                                                </a>
-                                                                                                                <a href="#" data-toggle="tooltip"
-                                                                                                                    data-original-title="Eliminar"> <i
-                                                                                                                        class="fa fa-close text-danger"></i>
-                                                                                                                </a>
-                                                                                                            </td>
-                                                                                                        </tr>
-                                                                                                        <tr>
-                                                                                                            <td>2</td>
-                                                                                                            <td>Reprogramada</td>
-                                                                                                            <td class="text-nowrap">
-                                                                                                                <a href="#" data-toggle="tooltip"
-                                                                                                                    data-original-title="Editar">
-                                                                                                                    <i
-                                                                                                                        class="fa fa-pencil text-inverse m-r-10"></i>
-                                                                                                                </a>
-                                                                                                                <a href="#" data-toggle="tooltip"
-                                                                                                                    data-original-title="Close"> <i
-                                                                                                                        class="fa fa-close text-danger"></i>
-                                                                                                                </a>
-                                                                                                            </td>
-                                    
-                                                                                                        </tr>
-                                    
-                                                                                                    </tbody>
-                                                                                                </table>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-6">
-                                                                                    <div class="card">
-                                                                                        <div class="card-body">
-                                                                                            <h4 class="card-title">Edición y registro de Estados
-                                                                                            </h4>
-                                    
-                                                                                            <form class="form-horizontal p-t-20">
-                                                                                                <div class="form-group row">
-                                    
-                                                                                                    <div class="col-sm-12">
-                                                                                                        <div class="input-group">
-                                                                                                            <div class="input-group-prepend">
-                                                                                                                <span class="input-group-text"
-                                                                                                                    id="basic-addon1">
-                                                                                                                    <i class="ti-user"></i>
-                                                                                                                </span>
-                                                                                                            </div>
-                                                                                                            <input type="text" class="form-control"
-                                                                                                                id="exampleInputuname3"
-                                                                                                                placeholder="Estado">
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                                <div class="form-group row m-b-0">
-                                                                                                    <div class="offset-sm-3 col-sm-9">
-                                                                                                        <button type="submit"
-                                                                                                            class="btn btn-info waves-effect waves-light">Guardar
-                                                                                                        </button>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </form>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-
-                                                                    
-                                                                    <!-- Fin tab 3 -->
-                                                                </div>
-                                                        </form>
-                                                        <!-- Tabs -->
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <div class="col-sm-9">
-                                                <button type="submit" class="btn btn-info ">Guardar
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                <!-- Vtabs -->
-                                </div>
+                                  
 
                                 <div class="modal fade" id="ModificarDocumento" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                     <div class="modal-dialog">
@@ -1593,6 +1123,7 @@
                                             <div class="modal-body">
                                                 <form id="FormDocumentoEdit">
                                                     <div class="col-sm-12">
+                                                        <div class="form-group row">
                                                         <div class="input-group">
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text"
@@ -1607,6 +1138,7 @@
                                                                  >
                                                         </div>
                                                     </div>
+                                                </div>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Salir</button>
@@ -1765,6 +1297,94 @@
                         
                     </div>
 
+
+                    <div class="modal fade" id="ModificarBarrioVereda" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Editar barrio o vereda</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="FormBarrioVeredaEdit">
+                                        <div class="form-group row">
+                                            <div class="col-sm-12">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"
+                                                            id="basic-addon1">
+                                                            <i class="ti-user"></i>
+                                                        </span>
+                                                    </div>
+                                                    <input type="text" class="form-control"
+                                                        placeholder="Codigo" id="TxtCodigoEdit" name="CodigoEdit">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-12">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"
+                                                            id="basic-addon1">
+                                                            <i class="ti-user"></i>
+                                                        </span>
+                                                    </div>
+                                                    <input type="text" class="form-control"
+                                                        placeholder="Nombre" id="TxtBarrioVeredaEdit" name="BarrioVeredaEdit">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <div class="col-sm-12">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"
+                                                            id="basic-addon1">
+                                                            <i class="ti-user"></i>
+                                                        </span>
+                                                    </div>
+                                                    <select class="custom-select col-12"
+                                                        id="SelectSubTipoEdit1" name="SeleSubTipoEdit1">
+                                                       
+
+                                                    </select>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <div class="col-sm-12">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"
+                                                            id="basic-addon1">
+                                                            <i class="ti-user"></i>
+                                                        </span>
+                                                    </div>
+                                                    <select class="custom-select col-12"
+                                                        id="SelectMunicipioEdit1" name="SeleMunicipioEdit1">
+                                                       
+
+                                                    </select>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                            
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Salir</button>
+                                    <button type="submit" class="btn waves-effect waves-light btn-info">Editar barrio o vereda</button>
+                                </div>
+                            </form>
+                            </div>
+                        </div>
+                    
+                </div>
+
                         
                     <div class="modal fade" id="ModificarDepartamento" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                         <div class="modal-dialog">
@@ -1898,6 +1518,9 @@
     <!-- Navegación -->
     <script src="../../../js/Navegacion/Navegacion_Admin.js"></script>
 
+      <!--Switchery boton habilitar o deshabilitar-->
+      <script src="../../../assets/plugins/switchery/dist/switchery.min.js"></script>
+
     <!-- Bootstrap tether Core JavaScript -->
     <script src="../../../assets/plugins/bootstrap/js/popper.min.js"></script>
 
@@ -1930,6 +1553,7 @@
     <script src="../../../Controllers/PanelControl/Documentos/ListarDocumento.js"></script>
     <script src="../../../Controllers/PanelControl/Documentos/ObtenerDocumento.js"></script>
     <script src="../../../Controllers/PanelControl/Documentos/EditarDocumento.js"></script>
+    <script src="../../../Controllers/PanelControl/Documentos/CambiarEstadoDocumento.js"></script>
 
     <!-- Ajax Sexo -->
     <script src="../../../Controllers/PanelControl/Sexo/RegistrarSexo.js"></script>
@@ -1980,11 +1604,16 @@
     <script src="../../../Controllers/PanelControl/BarriosVeredas/ObtenerBarrioVereda.js"></script>
     <script src="../../../Controllers/PanelControl/BarriosVeredas/EditarBarrioVereda.js"></script>
 
+     <!--Ajax roles-->
+     <script src="../../../Controllers/PanelControl/Turnos/RegistrarTurnos.js"></script>
+     <script src="../../../Controllers/PanelControl/Turnos/ListarTurnos.js"></script>
+     <script src="../../../Controllers/PanelControl/Turnos/ObtenerTurnos.js"></script>
+     <script src="../../../Controllers/PanelControl/Turnos/EditarTurnos.js"></script>
+
 
     <!-- Clock Picker -->
     <script src="../../../assets/plugins/clockpicker/dist/jquery-clockpicker.min.js"></script>
     <script src="../../../js/ClockPicker.js"></script>
-
 </body>
 
 </html>

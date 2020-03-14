@@ -1,5 +1,5 @@
 let ListarRol = () =>{ 
-    contador=0;
+    let contador=0;
 
     $.ajax({
         url: `${URL}/Rol`,
