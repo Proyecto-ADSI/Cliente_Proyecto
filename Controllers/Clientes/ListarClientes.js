@@ -1,13 +1,12 @@
 const URL = 'http://localhost:8081';
 
-ObtenerUsuario = (Id_Usuario, Modal) => {
+ObtenerCliente= (Id_Cliente, Modal) => {
 
     $.ajax({
-        url: `${URL}/Usuarios/${Id_Usuario}`,
+        url: `${URL}/Cliente/${Id_Cliente}`,
         type: 'get',
         datatype: 'json',
         success: function(datos){
-
 
             if(Modal == 1){
 
@@ -30,24 +29,32 @@ ObtenerUsuario = (Id_Usuario, Modal) => {
 
 $(function () {
 
-    $('#UsuariosDataTable').DataTable({
+    
+     
+
+    $('#ClientesDataTable').DataTable({
         ajax: {
-            url: `${URL}/Usuarios`,
+            url: `${URL}/Cliente`,
             error: function(error){
-                console.log("Eror al listar usuarios " + error);
-            }
+                console.log("Eror al listar clientes " + error);
+            }, 
+            // success: function(success){
+                   
+               
+            // }
         },
-        // data: datos,
         aoColumns: [
-            { mData: 'Id_Usuario', sClass: "MyStyle_Id_Principal_Column"},
-            { mData: 'Usuario'},
-            { mData: 'Nombre'},
-            { mData: 'Apellidos' },
-            { mData: 'Rol'},
-            { mData: 'Correo'},
-            { mData: 'Celular'},
+            { mData: 'Id_Cliente', sClass: "MyStyle_Id_Principal_Column"},
+            { mData: 'NIT_CDV'},
+            { mData: 'Razon_Social'},
+            { mData: 'Telefono' },
+            { mData: 'Operador'},
+            { mData: 'Corporativo'},
             { defaultContent: 
-                    `<button id="btnDetalles"  data-toggle="tooltip" data-original-title="Ver perfil" class="btn btn-outline-primary">
+                    `
+                    <input type="checkbox" id="switch_cliente" class="js-switch" checked/>
+
+                    <button id="btnDetalles"  data-toggle="tooltip" data-original-title="Ver perfil" class="btn btn-outline-primary">
                         <i class="fa  fa-eye"></i>
                     </button>
                     
@@ -58,8 +65,9 @@ $(function () {
                     <button id="btnEliminar" class="btn btn-outline-danger">
                         <i class="fa fa-close"></i> 
                     </button>
+
+                    
             `}
-                
         ],
         
         language: {
@@ -76,47 +84,74 @@ $(function () {
                 "sPrevious": "Anterior"
             },
             "sProcessing": "Procesando...",
+        },
+        createdRow: function(row, data,index){
+            
+            let switchElem = Array.prototype.slice.call($(row).find('.js-switch'));
+            
+            switchElem.forEach(function (html) {
+                let switchery = new Switchery(html, {
+                    checked: true,
+                    color: '#26c6da', 
+                    secondaryColor: '#f62d51',
+                    size: 'small',
+                    disabled: true
+                });
+            });
+      
         }
     });
+        
+});
+
+
+$(document).on("click",".switchery ", function(){
+
+    let fila = $(this).closest("tr");
+    let switchElem = fila.find('.js-switch')[0];
+    let Id_Cliente = parseInt(fila.find('td:eq(0)').text());
+
 });
 
 // Cargar Modal
 // 1 -> Detalles
 // 2 -> Editar
+// 3 -> Eliminar
 
-// Detalles usuario y empleado - abrir modal y cargar datos
+
+// Detalles - abrir modal y cargar datos
 $(document).on("click","#btnDetalles", function(){
 
     fila = $(this).closest("tr");
 
-    Id_Usuario = parseInt(fila.find('td:eq(0)').text());
+    Id_Cliente = parseInt(fila.find('td:eq(0)').text());
 
-    ObtenerUsuario(Id_Usuario,1);
+    ObtenerCliente(Id_Cliente,1);
 
 });
 
 
 
-// Editar usuarios y empleado - abrir modal y cargar datos
+// Editar - abrir modal y cargar datos
 $(document).on("click","#btnEditar", function(){
 
     fila = $(this).closest("tr");
 
-    Id_Usuario = parseInt(fila.find('td:eq(0)').text());
+    Id_Cliente = parseInt(fila.find('td:eq(0)').text());
 
-    ObtenerUsuario(Id_Usuario,2);
+    ObtenerCliente(Id_Cliente,2);
 
 });
 
 
-// Eliminar usuarios y empleado - abrir modal y cargar datos
+// Eliminar - abrir modal y cargar datos
 $(document).on("click","#btnEliminar", function(){
 
     fila = $(this).closest("tr");
 
-    Id_Usuario = parseInt(fila.find('td:eq(0)').text());
+    Id_Cliente = parseInt(fila.find('td:eq(0)').text());
 
-    ObtenerUsuario(Id_Usuario,3);
+    ObtenerCliente(Id_Cliente,3);
 
 });
 

@@ -3,11 +3,9 @@
 const URL = 'http://localhost:8081'
 
 
-let RegistrarUsuario = () => {
+let RegistrarCliente = () => {
 
-    if ($("#txtFecha_inicio").val() != null && $("#txtCamara_Comercio").val() == null) {
-
-        console.log($("#txtCamara_Comercio").val());
+    if ($("#txtFecha_inicio").val().length > 0 && $("#txtCamara_Comercio").get(0).files.length == 0) {
 
         // Objeto JSON con plan sin documentos
         var datos =
@@ -21,14 +19,14 @@ let RegistrarUsuario = () => {
             Razon_Social: $("#txtRazonSocial").val(),
             Telefono: $("#txtTelefono").val(),
             Direccion: $("#txtDireccion").val(),
+            Encargado: $("#txtEncargado").val(),
+            Telefono_Contacto: $("#txtTelefono_Contacto").val(),
+            Extension: $("#txtExtension").val(),
             Barrio_Vereda: parseInt($("#txtNombre_Lugar").val()),
             Estado_Cliente: 1,
 
             //DBL
             Id_Operador: parseInt($("#txtOperador").val()),
-            Encargado: $("#txtEncargado").val(),
-            Telefono_Contacto: $("#txtTelefono_Contacto").val(),
-            Extension: $("#txtExtension").val(),
             Cantidad_Lineas: parseInt($("#txtNumero_Lineas").val()),
             Valor_Mensual: $("#txtValor_Mensual").val(),
             Cantidad_Minutos: $("#txtMinutos").val(),
@@ -45,7 +43,7 @@ let RegistrarUsuario = () => {
             Descripcion: $("#txtDescripcion").val(),
             Estado_Plan_Corporativo: 1
         };
-    } else if ($("#txtFecha_inicio").val() != null && $("#txtCamara_Comercio").val() != null) {
+    } else if ($("#txtFecha_inicio").val().length > 0 && $("#txtCamara_Comercio").get(0).files.length > 0) {
 
         //Objeto JSON con plan y con documentos
         var datos =
@@ -59,14 +57,14 @@ let RegistrarUsuario = () => {
             Razon_Social: $("#txtRazonSocial").val(),
             Telefono: $("#txtTelefono").val(),
             Direccion: $("#txtDireccion").val(),
+            Encargado: $("#txtEncargado").val(),
+            Telefono_Contacto: $("#txtTelefono_Contacto").val(),
+            Extension: $("#txtExtension").val(),
             Barrio_Vereda: parseInt($("#txtNombre_Lugar").val()),
             Estado_Cliente: 1,
 
             //DBL
             Id_Operador: parseInt($("#txtOperador").val()),
-            Encargado: $("#txtEncargado").val(),
-            Telefono_Contacto: $("#txtTelefono_Contacto").val(),
-            Extension: $("#txtExtension").val(),
             Cantidad_Lineas: parseInt($("#txtNumero_Lineas").val()),
             Valor_Mensual: $("#txtValor_Mensual").val(),
             Cantidad_Minutos: $("#txtMinutos").val(),
@@ -89,7 +87,7 @@ let RegistrarUsuario = () => {
             Soporte_Ingresos: $("#txtSoporte").val(),
             Detalles_Plan_Corporativo: $("#txtDetalles").val()
         };
-    } else if ($("#txtFecha_inicio").val() == null) {
+    } else if ($("#txtFecha_inicio").val().length == 0) {
 
         //Objeto JSON sin plan y sin documentos
         var datos =
@@ -102,14 +100,14 @@ let RegistrarUsuario = () => {
             Razon_Social: $("#txtRazonSocial").val(),
             Telefono: $("#txtTelefono").val(),
             Direccion: $("#txtDireccion").val(),
+            Encargado: $("#txtEncargado").val(),
+            Telefono_Contacto: $("#txtTelefono_Contacto").val(),
+            Extension: $("#txtExtension").val(),
             Barrio_Vereda: parseInt($("#txtNombre_Lugar").val()),
             Estado_Cliente: 1,
 
             //DBL
             Id_Operador: parseInt($("#txtOperador").val()),
-            Encargado: $("#txtEncargado").val(),
-            Telefono_Contacto: $("#txtTelefono_Contacto").val(),
-            Extension: $("#txtExtension").val(),
             Cantidad_Lineas: parseInt($("#txtNumero_Lineas").val()),
             Valor_Mensual: $("#txtValor_Mensual").val(),
             Cantidad_Minutos: $("#txtMinutos").val(),
@@ -121,6 +119,7 @@ let RegistrarUsuario = () => {
             Estado_DBL: 1
         };
     }
+
     $.ajax({
         url: `${URL}/Cliente`,
         dataType: 'json',
@@ -131,6 +130,8 @@ let RegistrarUsuario = () => {
 
         // done -> capturar respuesta del servidor 
     }).done(respuesta => {
+
+        console.log(respuesta)
         // La api devuelve un booleando
         if (respuesta.data.ok) {
 
@@ -179,16 +180,45 @@ let RegistrarUsuario = () => {
                 console.log(error);
             }
         });
-
-
     });
 
 }
 
+CargarOperadores = () => {
+
+    $.ajax({
+        url: `${URL}/Operador`,
+        type: 'get',
+        datatype: 'json',
+        success: function (datos) {
+            ListarOperadores(datos);
+        },
+        error: function (error) {
+            console.log(error);
+        }
+
+    })
+
+}
+
+ListarOperadores = (datos) => {
+
+    $('#txtOperador').empty();
+    $('#txtOperador').prepend("<option selected disabled >Seleccione...</option>");
+    for (let item of datos.data) {
+        let $opcion = $('<option />', {
+            text: `${item.Nombre_Operador}`,
+            value: `${item.Id_Operador}`,
+        });
+
+        $('#txtOperador').append($opcion);
+    }
+}
 
 $(function () {
 
     // Inicializar selects del formulario
+    CargarOperadores();
     // CargarPais();
     // CargarSubTipo();
 
@@ -206,11 +236,16 @@ $(function () {
             return form.validate().settings.ignore = ":disabled", form.valid()
         },
         onFinished: function (event, currentIndex) {
-
-            RegistrarUsuario();
+        
+            RegistrarCliente();
         }
     }),
         $(".Form_Registro_Clientes").validate({
+            submitHandler: function () {
+
+              console.log("Hola mundo")
+    
+            },
             ignore: "input[type=hidden]",
             successClass: "text-success",
             errorClass: "form-control-feedback",
@@ -219,7 +254,6 @@ $(function () {
                 
             
                 if (element[0].id == "txtValor_Mensual") {
-                    console.log("HOla")
                     error.insertAfter(element.parent(".input-group"));
                 } else {
                     error.insertAfter(element);
@@ -293,18 +327,22 @@ $(function () {
                 },
                 txtRoaming: {
                     SoloAlfanumericos: true
+                },
+                txtDescripcion: {
+                    SoloAlfanumericos: true
                 }
             }
         })
 
-    // DatePicker
-    $(".RegistrarClienteDatePicker").datepicker({
+    // DatePicker fecha
+    $("#Fecha_DatePicker").datepicker({
         language: "es",
+        format: 'dd-mm-yyyy',
         autoclose: true,
-        todayHighlight: true
+        todayHighlight: true,
     });
 
-    // TouchSpin
+    // TouchSpin    
     $("#txtValor_Mensual").TouchSpin({
         min: 0,
         max: 1000000000,
@@ -312,6 +350,8 @@ $(function () {
         maxboostedstep: 10000000,
         postfix: 'COP'
     });
+
+    
 
 });
 
