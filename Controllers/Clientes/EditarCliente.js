@@ -6,15 +6,134 @@ var UsuarioValido = false;
 // Para editar
 var Id_Cliente;
 var Id_DBL;
+var Id_Plan_Corporativo;
+var Id_Documentos;
 
 CargarDatosModalEditar = (datos) => {
-    
+
+    var form = $("#Form_Editar_Clientes").show();
+
+    $("#Form_Editar_Clientes").steps({
+        headerTag: "h6",
+        bodyTag: "section",
+        transitionEffect: "fade",
+        titleTemplate: '<span class="step">#index#</span> #title#',
+        onStepChanging: function (event, currentIndex, newIndex) {
+            return currentIndex > newIndex || !(3 === newIndex && Number($("#age-2").val()) < 18) && (currentIndex < newIndex && (form.find(".body:eq(" + newIndex + ") label.error").remove(), form.find(".body:eq(" + newIndex + ") .error").removeClass("error")), form.validate().settings.ignore = ":disabled,:hidden", form.valid())
+        },
+        onFinishing: function (event, currentIndex) {
+            return form.validate().settings.ignore = ":disabled", form.valid()
+        },
+        onFinished: function (event, currentIndex) {
+        
+            EditarCliente();
+        }
+    }),
+        $("#Form_Editar_Clientes").validate({
+            ignore: "input[type=hidden]",
+            successClass: "text-success",
+            errorClass: "form-control-feedback",
+            errorElement: "div",
+            errorPlacement: function (error, element) {
+                
+            
+                if (element[0].id == "txtValor_Mensual") {
+                    error.insertAfter(element.parent(".input-group"));
+                } else {
+                    error.insertAfter(element);
+                }
+            },
+            highlight: function (element) {
+                $(element).parents(".form-group").addClass("has-danger").removeClass("has-success");
+                $(element).addClass("form-control-danger").removeClass("form-control-success");
+            },
+            unhighlight: function (element) {
+
+                $(element).parents(".form-group").addClass("has-success").removeClass("has-danger");
+                $(element).addClass("form-control-success").removeClass("form-control-danger");
+            },
+            rules: {
+                txtNIT_E: {
+                    ValidarNIT: true,
+                    minlength: 5
+                },
+                txtRazonSocial_E:{
+                    required: true,
+                    minlength: 5,
+                    SoloAlfanumericos: true
+                },
+                txtTelefono_E: {
+                    required: true,
+                    SoloNumeros: true,
+                    minlength: 5,
+                    maxlength: 10,
+                },
+                // txtPais: "required",
+                // txtDepartamento: "required",
+                // txtMunicipio: "required",
+                // txtSubTipo: "required",
+                // txtNombre_Lugar: "required",
+                // txtDireccion: "required",
+                txtOperador_E: "required",
+                txtEncargado_E: {
+                    SoloLetras: true
+                },
+                txtTelefono_Contacto_E: {
+                    SoloNumeros: true,
+                    minlength: 5,
+                    maxlength: 10
+                },
+                txtExtension_E: {
+                    SoloNumeros: true,
+                    minlength: 2,
+                    maxlength: 4
+                },
+                txtCantidad_Lineas_E: {
+                    SoloNumeros2: true,
+                },
+                txtValor_Mensual_E: {
+                    SoloNumeros2: true
+                },
+                txtMinutos_E: {
+                    SoloAlfanumericos: true
+                },
+                txtNavegacion_E: {
+                    SoloAlfanumericos: true
+                },
+                txtLlamadas_Inter_E: {
+                    SoloAlfanumericos: true
+                },
+                txtMensajes_E: {
+                    SoloAlfanumericos: true
+                },
+                txtApps_E: {
+                    SoloAlfanumericos: true
+                },
+                txtRoaming_E: {
+                    SoloAlfanumericos: true
+                },
+                txtDescripcion_E: {
+                    SoloAlfanumericos: true
+                }
+            }
+        });
+
+    // DatePicker fecha
+    $("#Fecha_DatePicker").datepicker({
+        language: "es",
+        format: 'yyyy/mm/dd',
+        autoclose: true,
+        todayHighlight: true,
+    });
+  
+
     Informacion = datos.data;
 
     // Llenar formulario 
     Id_Cliente = Informacion.Id_Cliente;
     Id_DBL =  Informacion.Id_DBL;
-
+    Id_Plan_Corporativo = Informacion.Id_Plan_Corporativo;
+    Id_Documentos = Informacion.Id_Documentos;
 
     $("#txtNIT_E").val(Informacion.NIT_CDV);
     $("#txtRazonSocial_E").val(Informacion.Razon_Social);
@@ -40,18 +159,31 @@ CargarDatosModalEditar = (datos) => {
     $("#txtRoaming_E").val(Informacion.Roaming_Internacional);
     $("#txtLlamadas_Inter_E").val(Informacion.Llamadas_Internacionales);
 
-
     console.log(Informacion.Fecha_Inicio);
+    let Fecha_Inicio = new Date(Informacion.Fecha_Inicio.replace(/-/g, '\/')); 
+    let Fecha_Fin = new Date(Informacion.Fecha_Fin.replace(/-/g, '\/'));
+    // Date.parse();
+    console.log($("#Fecha_DatePicker").firstChild('input'));
 
+    $("#Fecha_DatePicker").children('#txtFecha_Inicio').datepicker("setUTCDate",Fecha_Inicio);
 
-    $("#txtFecha_Inicio_E").datepicker("update", Informacion.Fecha_Inicio );
-    $("#txtFecha_Fin_E").datepicker("update", Informacion.Fecha_Fin );
+    
 
- 
+    // $("#txtFecha_Inicio_E").datepicker("setDate", Informacion.Fecha_Inicio);
+    // $("#txtFecha_Fin_E").datepicker("setDate", Informacion.Fecha_Fin );
+
     $("#txtDescripcion_E").val(Informacion.Descripcion);
+    
+    $("#txtCamara_Comercio_Actual").find('.fileinput-filename').text(Informacion.Camara_Comercio);
+    $("#txtCedula_Actual").find('.fileinput-filename').text(Informacion.Cedula_RL);
+    $("#txtSoporte_Actual").find('.fileinput-filename').text(Informacion.Soporte_Ingresos);
+    $("#txtDetalles_Actual").find('.fileinput-filename').text(Informacion.Detalles_Plan_Corporativo);
+
 
     // Mostrar Modal con formulario para editar
     $('.ModalEditar').modal('show');
+
+   
 
 }
 
@@ -229,8 +361,9 @@ ListarRoles = (Id_Rol,datos) => {
 }
 
 EditarCliente = () => {
+    
 
-    if ($("#txtFecha_inicio").val().length > 0 && $("#txtCamara_Comercio").get(0).files.length == 0) {
+    if ($("#txtFecha_inicio_E").val().length > 0 && $("#txtCamara_Comercio_Actual").find('.fileinput-filename').text().length == 0) {
 
         // Objeto JSON con plan sin documentos
         var datos =
@@ -240,6 +373,7 @@ EditarCliente = () => {
             Validacion_Doc_S: false,
 
             // Cliente
+            Id_Cliente: parseInt(Id_Cliente),
             NIT_CDV: ($("#txtNIT_E").val()),
             Razon_Social: $("#txtRazonSocial_E").val(),
             Telefono: $("#txtTelefono_E").val(),
@@ -251,8 +385,9 @@ EditarCliente = () => {
      
 
             //DBL
+            Id_DBL: parseInt(Id_DBL),
             Id_Operador: parseInt($("#txtOperador_E").val()),
-            Cantidad_Lineas: parseInt($("#txtNumero_Lineas_E").val()),
+            Cantidad_Lineas: parseInt($("#txtCantidad_Lineas_E").val()),
             Valor_Mensual: $("#txtValor_Mensual_E").val(),
             Cantidad_Minutos: $("#txtMinutos_E").val(),
             Cantidad_Navegacion: $("#txtNavegacion_E").val(),
@@ -262,11 +397,12 @@ EditarCliente = () => {
             Roaming_Internacional: $("#txtRoaming_E").val(),
 
             //Plan Corporativo
+            Id_Plan_Corporativo: parseInt(Id_Plan_Corporativo),
             Fecha_Inicio: $("#txtFecha_inicio_E").val(),
             Fecha_Fin: $("#txtFecha_fin_E").val(),
             Descripcion: $("#txtDescripcion_E").val(),
         };
-    } else if ($("#txtFecha_inicio").val().length > 0 && $("#txtCamara_Comercio").get(0).files.length > 0) {
+    } else if ($("#txtFecha_inicio_E").val().length > 0 && $("#txtCamara_Comercio_Actual").find('.fileinput-filename').text().length > 0) {
 
         //Objeto JSON con plan y con documentos
         var datos =
@@ -276,6 +412,7 @@ EditarCliente = () => {
             Validacion_Doc_S: true,
 
             // Cliente
+            Id_Cliente: parseInt(Id_Cliente),
             NIT_CDV: ($("#txtNIT_E").val()),
             Razon_Social: $("#txtRazonSocial_E").val(),
             Telefono: $("#txtTelefono_E").val(),
@@ -286,8 +423,9 @@ EditarCliente = () => {
             Id_Barrios_Veredas: parseInt($("#txtNombre_Lugar_E").val()),
 
             //DBL
+            Id_DBL:  parseInt(Id_DBL),
             Id_Operador: parseInt($("#txtOperador_E").val()),
-            Cantidad_Lineas: parseInt($("#txtNumero_Lineas_E").val()),
+            Cantidad_Lineas: parseInt($("#txtCantidad_Lineas_E").val()),
             Valor_Mensual: $("#txtValor_Mensual_E").val(),
             Cantidad_Minutos: $("#txtMinutos_E").val(),
             Cantidad_Navegacion: $("#txtNavegacion_E").val(),
@@ -297,17 +435,45 @@ EditarCliente = () => {
             Roaming_Internacional: $("#txtRoaming_E").val(),
 
             //Plan Corporativo
+            Id_Plan_Corporativo: parseInt(Id_Plan_Corporativo),
             Fecha_Inicio: $("#txtFecha_inicio_E").val(),
             Fecha_Fin: $("#txtFecha_fin_E").val(),
             Descripcion: $("#txtDescripcion_E").val(),
 
             // Documentos Soporte
-            Camara_Comercio: $("#txtCamara_Comercio_E").val(),
-            Cedula_RL: $("#txtCedula_E").val(),
-            Soporte_Ingresos: $("#txtSoporte_E").val(),
-            Detalles_Plan_Corporativo: $("#txtDetalles_E").val()
+            Id_Documentos: parseInt(Id_Documentos),
+            Camara_Comercio: null,
+            Cedula_RL: null,
+            Soporte_Ingresos: null,
+            Detalles_Plan_Corporativo: null
         };
-    } else if ($("#txtFecha_inicio").val().length == 0) {
+
+        if($("#txtCamara_Comercio_E").val().length < 0){
+            datos.Camara_Comercio = $("#txtCamara_Comercio_E").val()
+        }else{
+            datos.Camara_Comercio = $("#txtCamara_Comercio_Actual").find('.fileinput-filename').text();
+        }
+
+        if($("#txtCedula_E").val().length < 0){
+            datos.Cedula_RL = $("#txtCedula_E").val()
+        }else{
+            datos.Cedula_RL = $("#txtCedula_Actual").find('.fileinput-filename').text();
+        }
+
+        if($("#txtSoporte_E").val().length < 0){
+            datos.Soporte_Ingresos = $("#txtSoporte_E").val()
+        }else{
+            datos.Soporte_Ingresos = $("#txtSoporte_Actual").find('.fileinput-filename').text();
+        }
+
+        if($("#txtDetalles_E").val().length < 0){
+            datos.Detalles_Plan_Corporativo = $("#txtDetalles_E").val()
+        }else{
+            datos.Detalles_Plan_Corporativo = $("#txtDetalles_Actual").find('.fileinput-filename').text();
+        }
+
+
+    } else if ($("#txtFecha_inicio_E").val().length == 0) {
 
         //Objeto JSON sin plan y sin documentos
         var datos =
@@ -316,6 +482,7 @@ EditarCliente = () => {
             Validacion_PLan_C: false,
 
             // Cliente
+            Id_Cliente: parseInt(Id_Cliente),
             NIT_CDV: ($("#txtNIT_E").val()),
             Razon_Social: $("#txtRazonSocial_E").val(),
             Telefono: $("#txtTelefono_E").val(),
@@ -326,8 +493,9 @@ EditarCliente = () => {
             Id_Barrios_Veredas: parseInt($("#txtNombre_Lugar_E").val()),
 
             //DBL
+            Id_DBL:  parseInt(Id_DBL),
             Id_Operador: parseInt($("#txtOperador_E").val()),
-            Cantidad_Lineas: parseInt($("#txtNumero_Lineas_E").val()),
+            Cantidad_Lineas: parseInt($("#txtCantidad_Lineas_E").val()),
             Valor_Mensual: $("#txtValor_Mensual_E").val(),
             Cantidad_Minutos: $("#txtMinutos_E").val(),
             Cantidad_Navegacion: $("#txtNavegacion_E").val(),
@@ -337,11 +505,12 @@ EditarCliente = () => {
             Roaming_Internacional: $("#txtRoaming_E").val(),
         };
     }
-        
-        console.log(datos);
+
+    console.log(datos);
+
 
         $.ajax({
-            url:`${URL}/Usuarios`,
+            url:`${URL}/Cliente`,
             type: 'put',
             dataType: 'json',
             data: JSON.stringify(datos),
@@ -388,125 +557,22 @@ EditarCliente = () => {
         });
 }
 
+LimpiarDoc_Soporte = () =>{
 
-$(function () {
+    $("#txtCamara_Comercio_Actual").find('.fileinput-filename').text("");
+    $("#txtCedula_Actual").find('.fileinput-filename').text("");
+    $("#txtSoporte_Actual").find('.fileinput-filename').text("");
+    $("#txtDetalles_Actual").find('.fileinput-filename').text("");
+}
 
-    CargarOperadores();
+$(".ModalEditar").on("hidden.bs.modal", function () {
 
-    var form = $("#Form_Editar_Clientes").show();
+    LimpiarDoc_Soporte();
+    $("#Form_Editar_Clientes").steps("destroy");
 
-    $("#Form_Editar_Clientes").steps({
-        headerTag: "h6",
-        bodyTag: "section",
-        transitionEffect: "fade",
-        titleTemplate: '<span class="step">#index#</span> #title#',
-        onStepChanging: function (event, currentIndex, newIndex) {
-            return currentIndex > newIndex || !(3 === newIndex && Number($("#age-2").val()) < 18) && (currentIndex < newIndex && (form.find(".body:eq(" + newIndex + ") label.error").remove(), form.find(".body:eq(" + newIndex + ") .error").removeClass("error")), form.validate().settings.ignore = ":disabled,:hidden", form.valid())
-        },
-        onFinishing: function (event, currentIndex) {
-            return form.validate().settings.ignore = ":disabled", form.valid()
-        },
-        onFinished: function (event, currentIndex) {
-        
-            EditarCliente();
-        }
-    }),
-        $("#Form_Editar_Clientes").validate({
-            ignore: "input[type=hidden]",
-            successClass: "text-success",
-            errorClass: "form-control-feedback",
-            errorElement: "div",
-            errorPlacement: function (error, element) {
-                
-            
-                if (element[0].id == "txtValor_Mensual") {
-                    error.insertAfter(element.parent(".input-group"));
-                } else {
-                    error.insertAfter(element);
-                }
-            },
-            highlight: function (element) {
-                $(element).parents(".form-group").addClass("has-danger").removeClass("has-success");
-                $(element).addClass("form-control-danger").removeClass("form-control-success");
-            },
-            unhighlight: function (element) {
+});
 
-                $(element).parents(".form-group").addClass("has-success").removeClass("has-danger");
-                $(element).addClass("form-control-success").removeClass("form-control-danger");
-            },
-            rules: {
-                txtNIT_E: {
-                    ValidarNIT: true,
-                    minlength: 5
-                },
-                txtRazonSocial_E:{
-                    required: true,
-                    minlength: 5,
-                    SoloAlfanumericos: true
-                },
-                txtTelefono_E: {
-                    required: true,
-                    SoloNumeros: true,
-                    minlength: 5,
-                    maxlength: 10,
-                },
-                // txtPais: "required",
-                // txtDepartamento: "required",
-                // txtMunicipio: "required",
-                // txtSubTipo: "required",
-                // txtNombre_Lugar: "required",
-                // txtDireccion: "required",
-                txtOperador_E: "required",
-                txtEncargado_E: {
-                    SoloLetras: true
-                },
-                txtTelefono_Contacto_E: {
-                    SoloNumeros: true,
-                    minlength: 5,
-                    maxlength: 10
-                },
-                txtExtension_E: {
-                    SoloNumeros: true,
-                    minlength: 2,
-                    maxlength: 4
-                },
-                txtCantidad_Lineas_E: {
-                    SoloNumeros2: true,
-                },
-                txtValor_Mensual_E: {
-                    SoloNumeros2: true
-                },
-                txtMinutos_E: {
-                    SoloAlfanumericos: true
-                },
-                txtNavegacion_E: {
-                    SoloAlfanumericos: true
-                },
-                txtLlamadas_Inter_E: {
-                    SoloAlfanumericos: true
-                },
-                txtMensajes_E: {
-                    SoloAlfanumericos: true
-                },
-                txtApps_E: {
-                    SoloAlfanumericos: true
-                },
-                txtRoaming_E: {
-                    SoloAlfanumericos: true
-                },
-                txtDescripcion_E: {
-                    SoloAlfanumericos: true
-                }
-            }
-        });
+// $(function () {
 
     
-    // DatePicker fecha
-    $("#Fecha_DatePicker").datepicker({
-        language: "es",
-        format: 'dd-mm-yyyy',
-        autoclose: true,
-        todayHighlight: true,
-    });
-    
-})
+// })

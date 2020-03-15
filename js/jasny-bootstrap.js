@@ -86,6 +86,7 @@
         $img[0].src = re.target.result
         files[0].result = re.target.result
         
+       
         element.find('.fileinput-filename').text(file.name)
         
         // if parent has max-height, using `(max-)height: 100%` on child doesn't take padding and border into account
@@ -106,6 +107,8 @@
       
       this.$element.trigger('change.bs.fileinput')
     }
+
+    console.log(this.$element);
   },
 
   Fileinput.prototype.clear = function(e) {

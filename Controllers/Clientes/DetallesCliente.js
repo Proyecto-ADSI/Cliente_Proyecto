@@ -4,8 +4,6 @@ var Id_Cliente;
 
 CargarDatosModalDetalles = (datos) => {
 
-    console.log(datos);
-
     Informacion = datos.data;
 
     // Llenar detalles cliente
@@ -43,6 +41,6 @@ CargarDatosModalDetalles = (datos) => {
 
 MostrarModalEditar = () =>{
     
-    $('.ModalDetallesUsuarios').modal('hide');
-    ObtenerUsuario(Id_UsuarioDetalle,2);
+    $('.ModalDetalles').modal('hide');
+    ObtenerCliente(Id_Cliente,2);
 }
