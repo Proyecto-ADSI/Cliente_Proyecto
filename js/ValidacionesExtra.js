@@ -4,7 +4,7 @@ $.validator.addMethod( "SoloLetras", function( value, element ) {
 }, "Solo se permiten caracteres alfabéticos" );
 
 $.validator.addMethod("SoloAlfanumericos", function(value,element){
-    return this.optional(element) || /^[\w ñáéíóúÁÉÍÓÚüÜ.]+$/.test(value);
+    return this.optional(element) || /^[\w \s ñáéíóúÁÉÍÓÚüÜ., ]+$/.test(value);
 },"No se permiten caracteres especiales");
 
 $.validator.addMethod("SoloNumeros", function(value,element){

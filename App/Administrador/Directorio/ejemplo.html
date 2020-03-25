@@ -1,0 +1,49 @@
+<!-- <script type="text/javascript" src="dist/switchery.min.js"></script> -->
+<link href="../../../assets/plugins/switchery/dist/switchery.min.css" rel="stylesheet" />
+
+<input type="checkbox" class="js-switch special" style="display: block !important" />
+<button class="specialBtn">native check</button>
+    
+<script src="../../../assets/plugins/switchery/dist/switchery.js"></script>
+<script>
+var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
+
+elems.forEach(function(html) {
+    var switchery = new Switchery(html);
+});
+
+var special = document.querySelector('.special')
+        , specialButton = document.querySelector('.specialBtn');
+
+
+window.onload = function() {
+    console.log(1)
+    special.checked = true;
+
+    // if (special.checked) {
+    //     special.checked = false;
+    //     // onChange(special);
+    // }
+    // else {
+    //     special.checked = true;
+    //     // onChange(special);
+    // }
+
+    function onChange(el) {
+    if (typeof Event === 'function' || !document.fireEvent) {
+        var event = document.createEvent('HTMLEvents');
+        event.initEvent('change', true, true);
+        el.dispatchEvent(event);
+    } else {
+        el.fireEvent('onchange');
+    }
+}
+}
+
+
+// specialButton.addEventListener('click', function(e) {
+   
+// });
+
+
+</script>

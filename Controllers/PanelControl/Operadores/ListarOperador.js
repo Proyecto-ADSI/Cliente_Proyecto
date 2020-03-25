@@ -1,5 +1,5 @@
 let ListarOperador = () =>{ 
-    contador=0;
+    
 
     $.ajax({
         url: `${URL}/Operador`,
@@ -7,7 +7,7 @@ let ListarOperador = () =>{
         type: 'GET',
     }).done(respuesta =>{
         $("#TablaOperador").empty();
-
+        contador=0;
         for(let item of respuesta.data){
             contador++
             $("#TablaOperador").append(`

@@ -1,5 +1,5 @@
 let ListarSubTipo = () =>{ 
-    contador=0;
+    
 
     $.ajax({
         url: `${URL}/SubTipo`,
@@ -7,7 +7,7 @@ let ListarSubTipo = () =>{
         type: 'GET',
     }).done(respuesta =>{
         $("#TablaSubTipo").empty();
-
+        contador=0;
         for(let item of respuesta.data){
             contador++
             $("#TablaSubTipo").append(`

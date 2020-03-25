@@ -1,4 +1,3 @@
-
 // Variables globales de control
 var UsuarioBD;
 var UsuarioValido = false;
@@ -25,7 +24,7 @@ CargarDatosModalEditar = (datos) => {
             return form.validate().settings.ignore = ":disabled", form.valid()
         },
         onFinished: function (event, currentIndex) {
-        
+
             EditarCliente();
         }
     }),
@@ -35,8 +34,8 @@ CargarDatosModalEditar = (datos) => {
             errorClass: "form-control-feedback",
             errorElement: "div",
             errorPlacement: function (error, element) {
-                
-            
+
+
                 if (element[0].id == "txtValor_Mensual") {
                     error.insertAfter(element.parent(".input-group"));
                 } else {
@@ -57,7 +56,7 @@ CargarDatosModalEditar = (datos) => {
                     ValidarNIT: true,
                     minlength: 5
                 },
-                txtRazonSocial_E:{
+                txtRazonSocial_E: {
                     required: true,
                     minlength: 5,
                     SoloAlfanumericos: true
@@ -125,27 +124,88 @@ CargarDatosModalEditar = (datos) => {
         autoclose: true,
         todayHighlight: true,
     });
-  
+
+
+    // Detectar cambios en el select
+    $("#txtPais_E").change(function () {
+
+        let Id_Pais = $('#txtPais_E option:selected').val();
+        $('#txtDepartamento_E').empty();
+        $('#txtDepartamento_E').prepend("<option selected disabled >Seleccione...</option>");
+        $('#txtMunicipio_E').empty();
+        $('#txtMunicipio_E').prepend("<option selected disabled value='0' >Seleccione...</option>");
+        $('#txtSubTipo_E').empty();
+        $('#txtSubTipo_E').prepend("<option selected disabled value='0' >Seleccione...</option>");
+        $('#txtNombre_Lugar_E').empty();
+        $('#txtNombre_Lugar_E').prepend("<option selected disabled >Seleccione...</option>");
+        ListarDepartamentos(Id_Pais);
+        ListarSubTipos();
+
+    });
+
+    $("#txtDepartamento_E").change(function () {
+
+        let Id_Departamento = $('#txtDepartamento_E option:selected').val();
+        $('#txtMunicipio_E').empty();
+        $('#txtMunicipio_E').prepend("<option selected disabled value='0' >Seleccione...</option>");
+        $('#txtNombre_Lugar_E').empty();
+        $('#txtNombre_Lugar_E').prepend("<option selected disabled >Seleccione...</option>");
+        ListarMunicipios(Id_Departamento);
+
+    });
+
+
+    var Id_Municipio;
+    var Id_SubTipo;
+
+
+    $("#txtMunicipio_E").change(function () {
+
+        Id_Municipio = parseInt($('#txtMunicipio_E option:selected').val());
+        Id_SubTipo = parseInt($('#txtSubTipo_E option:selected').val());
+       
+        if (Id_Municipio || Id_Municipio != 0) {
+            if (Id_SubTipo || Id_SubTipo != 0) {
+                $('#txtNombre_Lugar_E').empty();
+                $('#txtNombre_Lugar_E').prepend("<option selected disabled >Seleccione...</option>");
+                ListarBarrios_Veredas(Id_Municipio, Id_SubTipo);
+            }
+        }
+    });
+
+    $("#txtSubTipo_E").change(function () {
+
+        Id_Municipio = $('#txtMunicipio_E option:selected').val();
+        Id_SubTipo = $('#txtSubTipo_E option:selected').val();
+
+        if (Id_Municipio || Id_Municipio != 0) {
+            if (Id_SubTipo || Id_SubTipo != 0) {
+                $('#txtNombre_Lugar_E').empty();
+                $('#txtNombre_Lugar_E').prepend("<option selected disabled >Seleccione...</option>");
+                ListarBarrios_Veredas(Id_Municipio, Id_SubTipo);
+            }
+        }
+    });
+
 
     Informacion = datos.data;
 
     // Llenar formulario 
     Id_Cliente = Informacion.Id_Cliente;
-    Id_DBL =  Informacion.Id_DBL;
+    Id_DBL = Informacion.Id_DBL;
     Id_Plan_Corporativo = Informacion.Id_Plan_Corporativo;
     Id_Documentos = Informacion.Id_Documentos;
 
     $("#txtNIT_E").val(Informacion.NIT_CDV);
     $("#txtRazonSocial_E").val(Informacion.Razon_Social);
     $("#txtTelefono_E").val(Informacion.Telefono);
-
-    // $("#txtPais").val(Informacion.Apellidos);
-    // $("#txtDepartamento").val(Informacion.Correo);
-    // $("#txtMunicipio").val(Informacion.Correo);
-    // $("#txtTipo").val(Informacion.Correo);
-    // $("#txtBarrio_Vereda").val(Informacion.Correo);
-
+    CargarPaises(Informacion.Id_Pais);
+    CargarDepartamentos(Informacion.Id_Pais, Informacion.Id_Departamento);
+    CargarMunicipios(Informacion.Id_Departamento, Informacion.Id_Municipio);
+    CargarSubTipos(Informacion.Id_SubTipo_Barrio_Vereda);
+    CargarBarriosVeredas(Informacion.Id_Barrios_Veredas, Informacion.Id_Municipio, Informacion.Id_SubTipo_Barrio_Vereda);
     $("#txtDireccion_E").val(Informacion.Direccion);
+
     CargarOperadores(Informacion.Id_Operador);
     $("#txtEncargado_E").val(Informacion.Encargado);
     $("#txtTelefono_Contacto_E").val(Informacion.Telefono_Contacto);
@@ -159,21 +219,17 @@ CargarDatosModalEditar = (datos) => {
     $("#txtRoaming_E").val(Informacion.Roaming_Internacional);
     $("#txtLlamadas_Inter_E").val(Informacion.Llamadas_Internacionales);
 
-    console.log(Informacion.Fecha_Inicio);
-    let Fecha_Inicio = new Date(Informacion.Fecha_Inicio.replace(/-/g, '\/')); 
-    let Fecha_Fin = new Date(Informacion.Fecha_Fin.replace(/-/g, '\/'));
-    // Date.parse();
-    console.log($("#Fecha_DatePicker").firstChild('input'));
+    if (Informacion.Fecha_Inicio) {
+        let Fecha_Inicio = new Date(Informacion.Fecha_Inicio.replace(/-/g, '\/'));
+        $("#Fecha_DatePicker").children('.txtFecha_inicio_E').datepicker("setUTCDate", Fecha_Inicio);
+    }
 
-    $("#Fecha_DatePicker").children('#txtFecha_Inicio').datepicker("setUTCDate",Fecha_Inicio);
-
-    
-
-    // $("#txtFecha_Inicio_E").datepicker("setDate", Informacion.Fecha_Inicio);
-    // $("#txtFecha_Fin_E").datepicker("setDate", Informacion.Fecha_Fin );
+    if (Informacion.Fecha_Fin) {
+        let Fecha_Fin = new Date(Informacion.Fecha_Fin.replace(/-/g, '\/'));
+        $("#Fecha_DatePicker").children('.txtFecha_fin_E').datepicker("setUTCDate", Fecha_Fin);
+    }
 
     $("#txtDescripcion_E").val(Informacion.Descripcion);
-    
     $("#txtCamara_Comercio_Actual").find('.fileinput-filename').text(Informacion.Camara_Comercio);
     $("#txtCedula_Actual").find('.fileinput-filename').text(Informacion.Cedula_RL);
     $("#txtSoporte_Actual").find('.fileinput-filename').text(Informacion.Soporte_Ingresos);
@@ -183,149 +239,218 @@ CargarDatosModalEditar = (datos) => {
     // Mostrar Modal con formulario para editar
     $('.ModalEditar').modal('show');
 
-   
-
 }
 
 CargarOperadores = (Id_Operador) => {
-    
+
     $.ajax({
         url: `${URL}/Operador`,
         type: 'get',
         datatype: 'json',
-        success: function(datos){
-            ListarOperadores(Id_Operador, datos);
-        },
-        error: function(error){
-            console.log(error);
-        }
+        success: function (datos) {
 
-    })
+            $('#txtOperador_E').empty();
 
-}
+            for (let item of datos.data) {
 
-ListarOperadores = (Id_Operador,datos) => {
+                if (item.Id_Operador == Id_Operador) {
 
-    $('#txtOperador_E').empty();
+                    var $opcion = $('<option />', {
+                        text: `${item.Nombre_Operador}`,
+                        value: `${item.Id_Operador}`,
+                        selected: true
+                    })
+                } else {
+                    var $opcion = $('<option />', {
+                        text: `${item.Nombre_Operador}`,
+                        value: `${item.Id_Operador}`
+                    })
+                }
 
-        for (let item of datos.data) {
-
-            if (item.Id_Operador == Id_Operador) {
-
-                var $opcion = $('<option />', {
-                    text: `${item.Nombre_Operador}`,
-                    value: `${item.Id_Operador}`,
-                    selected: true
-                })
-            } else {
-                var $opcion = $('<option />', {
-                    text: `${item.Nombre_Operador}`,
-                    value: `${item.Id_Operador}`
-                })
+                $('#txtOperador_E').append($opcion);
             }
 
-            $('#txtOperador_E').append($opcion);
+        },
+        error: function (error) {
+            console.log(error);
         }
+    });
 }
 
-CargarSexos = (Id_Sexo) => {
-    
+CargarPaises = (Id_Pais) => {
+
     $.ajax({
-        url: `${URL}/Sexo`,
+        url: `${URL}/Pais`,
         type: 'get',
         datatype: 'json',
-        success: function(datos){
-            ListarSexos(Id_Sexo, datos);
-        },
-        error: function(error){
-            console.log(error);
-        }
+        success: function (datos) {
 
-    })
+            $('#txtPais_E').empty();
 
-}
+            for (let item of datos.data) {
 
-ListarSexos = (Id_Sexo,datos) => {
-    
-    $('#txtSexo').empty();
-        $('#txtSexo').prepend("<option disabled >Seleccione...</option>");
+                if (item.Id_Pais == Id_Pais) {
 
-        for (let item of datos.data) {
+                    var $opcion = $('<option />', {
+                        text: `${item.Nombre_Pais}`,
+                        value: `${item.Id_Pais}`,
+                        selected: true
+                    })
+                } else {
+                    var $opcion = $('<option />', {
+                        text: `${item.Nombre_Pais}`,
+                        value: `${item.Id_Pais}`
+                    })
+                }
 
-            if (item.Id_Sexo == Id_Sexo) {
-
-                var $opcion = $('<option />', {
-                    text: `${item.Nombre}`,
-                    value: `${item.Id_Sexo}`,
-                    selected: true
-                })
-
-            } else {
-
-                var $opcion = $('<option />', {
-                    text: `${item.Nombre}`,
-                    value: `${item.Id_Sexo}`
-                })
+                $('#txtPais_E').append($opcion);
             }
 
-            $('#txtSexo').append($opcion);
+        },
+        error: function (error) {
+            console.log(error);
         }
+    });
 }
 
-CargarTurnos = (Id_Turno) => {
-    
+CargarDepartamentos = (Id_Pais, Id_Departamento) => {
     $.ajax({
-        url: `${URL}/Turnos`,
+        url: `${URL}/Departamento/ConsultarDepartamento/${Id_Pais}`,
         type: 'get',
         datatype: 'json',
-        success: function(datos){
-            ListarTurnos(Id_Turno, datos);
+        success: function (datos) {
+            $('#txtDepartamento_E').empty();
+            for (let item of datos.data) {
+                if (item.Id_Departamento == Id_Departamento) {
+                    var $opcion = $('<option />', {
+                        text: `${item.Nombre_Departamento}`,
+                        value: `${item.Id_Departamento}`,
+                        selected: true
+                    })
+                } else {
+                    var $opcion = $('<option />', {
+                        text: `${item.Nombre_Departamento}`,
+                        value: `${item.Id_Departamento}`
+                    })
+                }
+                $('#txtDepartamento_E').append($opcion);
+            }
         },
-        error: function(error){
+        error: function (error) {
             console.log(error);
         }
-
-    })
-
+    });
 }
 
-ListarTurnos = (Id_Turno,datos) => {
-    
-    $('#txtTurno').empty();
-        $('#txtTurno').prepend("<option disabled >Seleccione...</option>");
-
-        for (let item of datos.data) {
-
-            if (item.Id_Turno == Id_Turno) {
-
-                var $opcion = $('<option />', {
-                    text: `${item.Nombre}`,
-                    value: `${item.Id_Turno}`,
-                    selected: true
-                })
-
-            } else {
-
-                var $opcion = $('<option />', {
-                    text: `${item.Nombre}`,
-                    value: `${item.Id_Turno}`
-                })
-            }
-
-            $('#txtTurno').append($opcion);
-        }
-}
-
-CargarRoles = (Id_Rol) => {
-    
+CargarMunicipios = (Id_Departamento, Id_Municipio) => {
     $.ajax({
-        url: `${URL}/Rol`,
+        url: `${URL}/Municipio/ConsultarMunicipio/${Id_Departamento}`,
         type: 'get',
         datatype: 'json',
-        success: function(datos){
-            ListarRoles(Id_Rol, datos);
+        success: function (datos) {
+            $('#txtMunicipio_E').empty();
+            for (let item of datos.data) {
+                if (item.Id_Municipio == Id_Municipio) {
+                    var $opcion = $('<option />', {
+                        text: `${item.Nombre_Municipio}`,
+                        value: `${item.Id_Municipio}`,
+                        selected: true
+                    })
+                } else {
+                    var $opcion = $('<option />', {
+                        text: `${item.Nombre_Municipio}`,
+                        value: `${item.Id_Municipio}`
+                    })
+                }
+                $('#txtMunicipio_E').append($opcion);
+            }
         },
-        error: function(error){
+        error: function (error) {
+            console.log(error);
+        }
+    });
+}
+
+CargarSubTipos = (Id_SubTipo_Barrio_Vereda) => {
+    $.ajax({
+        url: `${URL}/SubTipo`,
+        type: 'get',
+        datatype: 'json',
+        success: function (datos) {
+            $('#txtSubTipo_E').empty();
+            for (let item of datos.data) {
+                if (item.Id_SubTipo_Barrio_Vereda == Id_SubTipo_Barrio_Vereda) {
+                    var $opcion = $('<option />', {
+                        text: `${item.SubTipo}`,
+                        value: `${item.Id_SubTipo_Barrio_Vereda}`,
+                        selected: true
+                    })
+                } else {
+                    var $opcion = $('<option />', {
+                        text: `${item.SubTipo}`,
+                        value: `${item.Id_SubTipo_Barrio_Vereda}`
+                    });
+                }
+                $('#txtSubTipo_E').append($opcion);
+            }
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+}
+
+
+CargarBarriosVeredas = (Id_Barrios_Veredas, Id_Municipio, Id_SubTipo_Barrio_Vereda) => {
+    $.ajax({
+        url: `${URL}/BarriosVeredas/ConsultarBarriosVeredas/${Id_Municipio}/${Id_SubTipo_Barrio_Vereda}`,
+        type: 'get',
+        datatype: 'json',
+        success: function (datos) {
+            $('#txtNombre_Lugar_E').empty();
+            for (let item of datos.data) {
+                if (item.Id_Barrios_Veredas == Id_Barrios_Veredas) {
+                    var $opcion = $('<option />', {
+                        text: `${item.Nombre_Barrio_Vereda}`,
+                        value: `${item.Id_Barrios_Veredas}`,
+                        selected: true
+                    })
+                } else {
+                    var $opcion = $('<option />', {
+                        text: `${item.Nombre_Barrio_Vereda}`,
+                        value: `${item.Id_Barrios_Veredas}`
+                    });
+                }
+                $('#txtNombre_Lugar_E').append($opcion);
+            }
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+}
+
+// Actualizar selects
+
+ListarDepartamentos = (Id_Pais) => {
+
+    $.ajax({
+        url: `${URL}/Departamento/ConsultarDepartamento/${Id_Pais}`,
+        type: 'get',
+        datatype: 'json',
+        success: function (datos) {
+
+
+            for (let item of datos.data) {
+                let $opcion = $('<option />', {
+                    text: `${item.Nombre_Departamento}`,
+                    value: `${item.Id_Departamento}`,
+                });
+
+                $('#txtDepartamento_E').append($opcion);
+            }
+        },
+        error: function (error) {
             console.log(error);
         }
 
@@ -333,35 +458,90 @@ CargarRoles = (Id_Rol) => {
 
 }
 
-ListarRoles = (Id_Rol,datos) => {
-    
-    $('#txtRol').empty();
-        $('#txtRol').prepend("<option disabled >Seleccione...</option>");
+ListarMunicipios = (Id_Departamento) => {
 
-        for (let item of datos.data) {
+    $.ajax({
+        url: `${URL}/Municipio/ConsultarMunicipio/${Id_Departamento}`,
+        type: 'get',
+        datatype: 'json',
+        success: function (datos) {
 
-            if (item.Id_Rol == Id_Rol) {
 
-                var $opcion = $('<option />', {
-                    text: `${item.Nombre}`,
-                    value: `${item.Id_Rol}`,
-                    selected: true
-                })
+            for (let item of datos.data) {
+                let $opcion = $('<option />', {
+                    text: `${item.Nombre_Municipio}`,
+                    value: `${item.Id_Municipio}`,
+                });
 
-            } else {
-
-                var $opcion = $('<option />', {
-                    text: `${item.Nombre}`,
-                    value: `${item.Id_Turno}`
-                })
+                $('#txtMunicipio_E').append($opcion);
             }
-
-            $('#txtRol').append($opcion);
+        },
+        error: function (error) {
+            console.log(error);
         }
+
+    })
+
 }
+
+ListarSubTipos = () => {
+
+    $.ajax({
+        url: `${URL}/SubTipo`,
+        type: 'get',
+        datatype: 'json',
+        success: function (datos) {
+
+            $('#txtSubTipo_E').empty();
+            $('#txtSubTipo_E').prepend("<option selected disabled value='0' >Seleccione...</option>");
+            for (let item of datos.data) {
+                let $opcion = $('<option />', {
+                    text: `${item.SubTipo}`,
+                    value: `${item.Id_SubTipo_Barrio_Vereda}`,
+                });
+
+                $('#txtSubTipo_E').append($opcion);
+            }
+        },
+        error: function (error) {
+            console.log(error);
+        }
+
+    })
+
+}
+
+ListarBarrios_Veredas = (Id_Municipio, Id_SubTipo) => {
+
+    $.ajax({
+        url: `${URL}/BarriosVeredas/ConsultarBarriosVeredas/${Id_Municipio}/${Id_SubTipo}`,
+        type: 'get',
+        datatype: 'json',
+        success: function (datos) {
+
+
+            for (let item of datos.data) {
+                let $opcion = $('<option />', {
+                    text: `${item.Nombre_Barrio_Vereda}`,
+                    value: `${item.Id_Barrios_Veredas}`,
+                });
+
+                $('#txtNombre_Lugar_E').append($opcion);
+            }
+        },
+        error: function (error) {
+            console.log(error);
+        }
+
+    })
+}
+
+
+
+
 
 EditarCliente = () => {
-    
+
 
     if ($("#txtFecha_inicio_E").val().length > 0 && $("#txtCamara_Comercio_Actual").find('.fileinput-filename').text().length == 0) {
 
@@ -382,7 +562,7 @@ EditarCliente = () => {
             Telefono_Contacto: $("#txtTelefono_Contacto_E").val(),
             Extension: $("#txtExtension_E").val(),
             Id_Barrios_Veredas: parseInt($("#txtNombre_Lugar_E").val()),
-     
+
 
             //DBL
             Id_DBL: parseInt(Id_DBL),
@@ -423,7 +603,7 @@ EditarCliente = () => {
             Id_Barrios_Veredas: parseInt($("#txtNombre_Lugar_E").val()),
 
             //DBL
-            Id_DBL:  parseInt(Id_DBL),
+            Id_DBL: parseInt(Id_DBL),
             Id_Operador: parseInt($("#txtOperador_E").val()),
             Cantidad_Lineas: parseInt($("#txtCantidad_Lineas_E").val()),
             Valor_Mensual: $("#txtValor_Mensual_E").val(),
@@ -448,27 +628,27 @@ EditarCliente = () => {
             Detalles_Plan_Corporativo: null
         };
 
-        if($("#txtCamara_Comercio_E").val().length < 0){
+        if ($("#txtCamara_Comercio_E").val().length < 0) {
             datos.Camara_Comercio = $("#txtCamara_Comercio_E").val()
-        }else{
+        } else {
             datos.Camara_Comercio = $("#txtCamara_Comercio_Actual").find('.fileinput-filename').text();
         }
 
-        if($("#txtCedula_E").val().length < 0){
+        if ($("#txtCedula_E").val().length < 0) {
             datos.Cedula_RL = $("#txtCedula_E").val()
-        }else{
+        } else {
             datos.Cedula_RL = $("#txtCedula_Actual").find('.fileinput-filename').text();
         }
 
-        if($("#txtSoporte_E").val().length < 0){
+        if ($("#txtSoporte_E").val().length < 0) {
             datos.Soporte_Ingresos = $("#txtSoporte_E").val()
-        }else{
+        } else {
             datos.Soporte_Ingresos = $("#txtSoporte_Actual").find('.fileinput-filename').text();
         }
 
-        if($("#txtDetalles_E").val().length < 0){
+        if ($("#txtDetalles_E").val().length < 0) {
             datos.Detalles_Plan_Corporativo = $("#txtDetalles_E").val()
-        }else{
+        } else {
             datos.Detalles_Plan_Corporativo = $("#txtDetalles_Actual").find('.fileinput-filename').text();
         }
 
@@ -493,7 +673,7 @@ EditarCliente = () => {
             Id_Barrios_Veredas: parseInt($("#txtNombre_Lugar_E").val()),
 
             //DBL
-            Id_DBL:  parseInt(Id_DBL),
+            Id_DBL: parseInt(Id_DBL),
             Id_Operador: parseInt($("#txtOperador_E").val()),
             Cantidad_Lineas: parseInt($("#txtCantidad_Lineas_E").val()),
             Valor_Mensual: $("#txtValor_Mensual_E").val(),
@@ -506,58 +686,53 @@ EditarCliente = () => {
         };
     }
 
-    console.log(datos);
+    $.ajax({
+        url: `${URL}/Cliente`,
+        type: 'put',
+        dataType: 'json',
+        data: JSON.stringify(datos),
+        contentType: 'application/json',
+        processData: false
+    }).done(respuesta => {
 
+        if (respuesta.data.ok) {
 
-        $.ajax({
-            url:`${URL}/Cliente`,
-            type: 'put',
-            dataType: 'json',
-            data: JSON.stringify(datos),
-            contentType: 'application/json',
-            processData: false
-        }).done(respuesta =>{
-            
-            if (respuesta.data.ok) {
+            swal({
+                title: "Información modificada correctamente.",
+                type: "success",
+                showCancelButton: false,
+                confirmButtonColor: "#2F6885",
+                confirmButtonText: "Continuar",
+                closeOnConfirm: true,
+            });
+        } else {
+            swal({
+                title: "Error al modificar.",
+                text: "Ha ocurrido un error al modificar, intenta de nuevo",
+                type: "error",
+                showCancelButton: false,
+                confirmButtonColor: "#2F6885",
+                confirmButtonText: "Continuar",
+                closeOnConfirm: true,
+            });
+        }
 
-                swal({
-                    title: "Información modificada correctamente.",
-                    type: "success",
-                    showCancelButton: false,
-                    confirmButtonColor: "#2F6885",
-                    confirmButtonText: "Continuar",
-                    closeOnConfirm: false,
-                }, function (isConfirm) {
-                    if (isConfirm) {
-                    
-                        location.href = "Directorio.html";
-                    }
-                });
-            } else {
-                swal({
-                    title: "Error al modificar.",
-                    text: "Ha ocurrido un error al modificar, intenta de nuevo",
-                    type: "danger",
-                    showCancelButton: false,
-                    confirmButtonColor: "#2F6885",
-                    confirmButtonText: "Continuar",
-                    closeOnConfirm: false,
-                }, function (isConfirm) {
-                    if (isConfirm) {
-                        
-                        console.log(respuesta.data);
-                    }
-                });
-            }
+    }).fail(error => {
 
-        }).fail(error => {
-
-            console.log(error);
-
+        swal({
+            title: "Error al modificar.",
+            text: "Ha ocurrido un error al modificar, intenta de nuevo",
+            type: "error",
+            showCancelButton: false,
+            confirmButtonColor: "#2F6885",
+            confirmButtonText: "Continuar",
+            closeOnConfirm: true,
         });
+
+    });
 }
 
-LimpiarDoc_Soporte = () =>{
+LimpiarDoc_Soporte = () => {
 
     $("#txtCamara_Comercio_Actual").find('.fileinput-filename').text("");
     $("#txtCedula_Actual").find('.fileinput-filename').text("");
@@ -565,6 +740,7 @@ LimpiarDoc_Soporte = () =>{
     $("#txtDetalles_Actual").find('.fileinput-filename').text("");
 }
 
+// Cuando se cierre el modal
 $(".ModalEditar").on("hidden.bs.modal", function () {
 
     LimpiarDoc_Soporte();
@@ -572,7 +748,7 @@ $(".ModalEditar").on("hidden.bs.modal", function () {
 
 });
 
-// $(function () {
+$(function () {
 
-    
-// })
+
+})

@@ -57,7 +57,6 @@ $(function (){
     $("#FormPais").validate({
         submitHandler: function(){
                 RegistrarPais();
-                console.clear();
         },
         rules:{
             Pais: {

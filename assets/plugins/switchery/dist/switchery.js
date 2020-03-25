@@ -1682,10 +1682,11 @@ Switchery.prototype.insertAfter = function(reference, target) {
  * Set switch jack proper position.
  *
  * @param {Boolean} clicked - we need this in order to uncheck the input when the switch is clicked
+ * @param {Boolean} MySwetchery 
  * @api private
  */
 
-Switchery.prototype.setPosition = function (clicked) {
+Switchery.prototype.setPosition = function (clicked, MySwetchery) {
   var checked = this.isChecked()
     , switcher = this.switcher
     , jack = this.jack;
@@ -1693,14 +1694,30 @@ Switchery.prototype.setPosition = function (clicked) {
   if (clicked && checked) checked = false;
   else if (clicked && !checked) checked = true;
 
+  
+
   if (checked === true) {
     this.element.checked = true;
 
-    if (window.getComputedStyle) jack.style.left = parseInt(window.getComputedStyle(switcher).width) - parseInt(window.getComputedStyle(jack).width) + 'px';
-    else jack.style.left = parseInt(switcher.currentStyle['width']) - parseInt(jack.currentStyle['width']) + 'px';
+	if(MySwetchery){
+
+		jack.style.left = 13 + 'px';
+
+	}else{
+
+		if (window.getComputedStyle){
+
+			jack.style.left = parseInt(window.getComputedStyle(switcher).width) - parseInt(window.getComputedStyle(jack).width) + 'px';
+		} 
+		else{
+	
+			jack.style.left = parseInt(switcher.currentStyle['width']) - parseInt(jack.currentStyle['width']) + 'px';
+		}
+	}
 
     if (this.options.color) this.colorize();
-    this.setSpeed();
+	this.setSpeed();
+	
   } else {
     jack.style.left = 0;
     this.element.checked = false;
@@ -1792,7 +1809,7 @@ Switchery.prototype.handleOnchange = function(state) {
   if (document.dispatchEvent) {
     var event = document.createEvent('HTMLEvents');
     event.initEvent('change', true, true);
-    this.element.dispatchEvent(event);
+	this.element.dispatchEvent(event);
   } else {
     this.element.fireEvent('onchange');
   }
@@ -1811,11 +1828,11 @@ Switchery.prototype.handleChange = function() {
 
   if (el.addEventListener) {
     el.addEventListener('change', function() {
-      self.setPosition();
+    //   self.setPosition();
     });
   } else {
     el.attachEvent('onchange', function() {
-      self.setPosition();
+    //   self.setPosition();
     });
   }
 };
@@ -1841,10 +1858,11 @@ Switchery.prototype.handleClick = function() {
 
 Switchery.prototype.bindClick = function() {
   var parent = this.element.parentNode.tagName.toLowerCase()
-    , labelParent = (parent === 'label') ? false : true;
+	, labelParent = (parent === 'label') ? false : true;
+	
 
-  this.setPosition(labelParent);
-  this.handleOnchange(this.element.checked);
+  	this.setPosition(labelParent);
+  	// this.handleOnchange(this.element.checked);
 };
 
 /**
