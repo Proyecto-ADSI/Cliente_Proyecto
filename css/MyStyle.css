@@ -192,3 +192,12 @@
 /* .MyStyle_Modal_Editar_Usuarios{
     max-height: 400px !important;
 } */
+
+
+.MyStyle_Checkbox{
+    display: none;
+}
+
+.select2-search__field{
+    width: 100% !important;
+}

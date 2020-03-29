@@ -13,7 +13,7 @@ $.validator.addMethod("SoloNumeros", function(value,element){
 
 $.validator.addMethod("SoloNumeros2", function(value,element){
     return this.optional(element) || /^[1-9]\d*/.test(value);
-},"No se permite 0 al inicio.");
+},"No se permite 0 al inicio ni caracteres especiales y alfabéticos.");
 
 $.validator.addMethod("NumeroMovil", function(value,element){
     return this.optional(element) || /^3[\d]+$/.test(value);
