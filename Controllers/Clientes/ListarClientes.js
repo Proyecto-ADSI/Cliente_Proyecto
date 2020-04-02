@@ -31,11 +31,7 @@ $(function () {
             url: `${URL}/Cliente`,
             error: function (error) {
                 console.log("Eror al listar clientes " + error);
-            },
-            // success: function(success){
-
-
-            // }
+            }
         },
         aoColumns: [
             { mData: 'Id_Cliente', sClass: "MyStyle_Id_Principal_Column" },
@@ -44,10 +40,8 @@ $(function () {
             { mData: 'Telefono' },
             { mData: 'Operador' },
             { mData: 'Corporativo' },
-            {
-                defaultContent:
+            { defaultContent:
                     `
-                    
                     <input type="checkbox" id="switch_cliente" class="js-switch" />
 
                     <button id="btnDetalles"  data-toggle="tooltip" data-original-title="Ver perfil" class="btn btn-outline-primary">
@@ -111,43 +105,11 @@ $(function () {
 });
 
 
-// Cambiar estado
 
-$(document).on("click", ".switchery ", function () {
-
-    let fila = $(this).closest("tr");
-    let switchElem = fila.find('.js-switch')[0];
-    let Id_Cliente_Estado = parseInt(fila.find('td:eq(0)').text());
-
-    
-
-    // Cambiar Estado Cliente
-    let Estado;
-    if(switchElem.checked){
-
-        Estado = 1;
-
-    }else{
-        Estado = 0;
-    } 
-
-    $.ajax({
-        url: `${URL}/Cliente/CambiarEstado/${Id_Cliente_Estado}/${Estado}`,
-        type: 'get',
-        datatype: 'json',
-        success: function (datos) {
-            
-        },
-        error: function (error) {
-            console.log(error);
-        }
-    });
-});
 
 // Cargar Modal
 // 1 -> Detalles
 // 2 -> Editar
-// 3 -> Eliminar
 
 
 // Detalles - abrir modal y cargar datos
@@ -172,6 +134,39 @@ $(document).on("click", "#btnEditar", function () {
 
     ObtenerCliente(Id_Cliente, 2);
 
+});
+
+// Cambiar estado -> Inhabilitar/Habilitar
+
+$(document).on("click", ".switchery ", function () {
+
+    let fila = $(this).closest("tr");
+    let switchElem = fila.find('.js-switch')[0];
+    let Id_Cliente_Estado = parseInt(fila.find('td:eq(0)').text());
+
+    
+
+    // Cambiar Estado Cliente
+    let Estado;
+    if(switchElem.checked){
+
+        Estado = 1;
+
+    }else{
+        Estado = 0;
+    } 
+
+    $.ajax({
+        url: `${URL}/Usuarios/CambiarEstado/${Id_Cliente_Estado}/${Estado}`,
+        type: 'get',
+        datatype: 'json',
+        success: function (datos) {
+            
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
 });
 
 

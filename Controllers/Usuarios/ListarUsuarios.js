@@ -30,7 +30,7 @@ ObtenerUsuario = (Id_Usuario, Modal) => {
 
 $(function () {
 
-    $('#UsuariosDataTable').DataTable({
+    DataTableUsuarios =  $('#UsuariosDataTable').DataTable({
         ajax: {
             url: `${URL}/Usuarios`,
             error: function(error){
@@ -47,10 +47,13 @@ $(function () {
             { mData: 'Correo'},
             { mData: 'Celular'},
             { defaultContent: 
-                    `<button id="btnDetalles"  data-toggle="tooltip" data-original-title="Ver perfil" class="btn btn-outline-primary">
-                        <i class="fa  fa-eye"></i>
-                    </button>
+                    `
+                    <input type="checkbox" id="switch_cliente" class="js-switch" />
                     
+                    <button id="btnDetalles" class="btn btn btn-outline-primary">
+                        <i class="fa fa-eye"></i>
+                    </button>
+
                     <button id="btnEditar" class="btn btn-outline-info">
                         <i class="fa fa-pencil"></i>
                     </button>
@@ -76,6 +79,30 @@ $(function () {
                 "sPrevious": "Anterior"
             },
             "sProcessing": "Procesando...",
+        },
+        createdRow: function (row, data, index) {
+
+
+            let Estado_Usuario = parseInt(data.Estado_Usuario);
+
+            let switchElem = Array.prototype.slice.call($(row).find('.js-switch'));
+
+            switchElem.forEach(function (html) {
+
+                let s = new Switchery(html, {
+                    color: '#26c6da',
+                    secondaryColor: '#f62d51',
+                    size: 'small'
+                });
+
+                if (Estado_Usuario == 0) {
+                    s.setPosition(false, true);
+
+                } else if (Estado_Usuario == 1) {
+                    s.setPosition(true, true);
+                }
+            });
+
         }
     });
 });
@@ -108,15 +135,46 @@ $(document).on("click","#btnEditar", function(){
 
 });
 
+// Cambiar estado -> Inhabilitar/Habilitar
 
-// Eliminar usuarios y empleado - abrir modal y cargar datos
+$(document).on("click", ".switchery ", function () {
+
+    let fila = $(this).closest("tr");
+    let switchElem = fila.find('.js-switch')[0];
+    let Id_Usuario_Estado = parseInt(fila.find('td:eq(0)').text());
+
+    
+
+    // Cambiar Estado Usuario
+    let Estado;
+    if(switchElem.checked){
+
+        Estado = 1;
+
+    }else{
+        Estado = 0;
+    } 
+
+    $.ajax({
+        url: `${URL}/Usuarios/CambiarEstado/${Id_Usuario_Estado}/${Estado}`,
+        type: 'get',
+        datatype: 'json',
+        success: function (datos) { 
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+});
+
+
+// Eliminar usuarios y empleado
 $(document).on("click","#btnEliminar", function(){
 
-    fila = $(this).closest("tr");
+    let fila = $(this).closest("tr");
 
-    Id_Usuario = parseInt(fila.find('td:eq(0)').text());
+    let Id_Usuario = parseInt(fila.find('td:eq(0)').text());
 
-    ObtenerUsuario(Id_Usuario,3);
-
+    Eliminarusuario(Id_Usuario);
 });
 

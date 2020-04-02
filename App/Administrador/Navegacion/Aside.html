@@ -1,77 +1,92 @@
 <div class="scroll-sidebar">
-        <!-- User profile -->
-        <div class="user-profile">
-            <!-- User profile image -->
-            <div class="profile-img"> <img src="../../../assets/images/users/profile.png" alt="user" />
-                <!-- this is blinking heartbit-->
-                <div class="notify setpos"> <span class="heartbit"></span> <span class="point"></span> </div>
-            </div>
-            <!-- User profile text-->
-            <div class="profile-text">
-                <h5>Nombre de usuario</h5>
-                <small>Administrador</small>
-                <br>
-                <a href="/App/Home/Home.html" class="" data-toggle="tooltip" title="Cerrar Sesión"><i
-                        class="mdi mdi-power"></i></a>
-            </div>
+    <!-- User profile -->
+    <div class="user-profile">
+        <!-- User profile image -->
+        <div class="profile-img" id="ImgUsuarioAside"></div>
+        <!-- User profile text-->
+        <div class="profile-text">
+            <h5 id="txtNombre_Usuario"></h5>
+            <small id="txtRol_Usuario"></small>
+            <br>
+            <a href="/App/Home/Home.html" class="" data-toggle="tooltip" title="Cerrar Sesión"><i
+                    class="mdi mdi-power"></i></a>
         </div>
-        <!-- End User profile text-->
-        <!-- Sidebar navigation-->
-        <nav class="sidebar-nav">
-            <ul id="sidebarnav">
-                <li class="nav-devider"></li>
-                <li class="nav-small-cap">
-                    <h4>Menú</h4>
-                </li>
-                <li><a href="../Inicio/Index.html"><i class="fa fa-home"></i><span class="hide-menu">Inicio</span></a>
-                    <ul aria-expanded="false" class="collapse">
-                        <li><a href="../Inicio/Index.html">Noticias</a></li>
-                        <li><a href="../Inicio/Estadisticas.html">Estadísticas</a></li>
-                    </ul>
-                </li>
-
-                <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
-                            class="fa fa-book"></i><span class="hide-menu">Directorio</span></a>
-                    <ul aria-expanded="false" class="collapse">
-                        <li><a href="../Directorio/Directorio.html">Gestionar clientes </a></li>
-                    </ul>
-                    <ul aria-expanded="false" class="collapse">
-                        <li><a href="../Directorio/AgregarEmpresa.html">Registrar clientes </a></li>
-                    </ul>
-                </li>
-
-                <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
-                            class="fa  fa-phone"></i><span class="hide-menu">Llamadas</span></a>
-                    <ul aria-expanded="false" class="collapse">
-                        <li><a href="../Llamadas/Llamadas.html">Gestionar llamadas</a></li>
-                        <li><a href="../Llamadas/ControlLlamadas.html">Control de llamadas</a></li>
-                    </ul>
-                </li>
-
-                <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
-                            class="mdi mdi-calendar-clock"></i><span class="hide-menu">Citas</span></a>
-                    <ul aria-expanded="false" class="collapse">
-                        <li><a href="../Citas/Citas.html">Gestionar citas</a></li>
-                        <li><a href="../Citas/Agenda.html">Agenda</a></li>
-                    </ul>
-                </li>
-
-                <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
-                            class="fa fa-pencil-square-o"></i><span class="hide-menu">Reportes</span></a>
-                    <ul aria-expanded="false" class="collapse">
-                        <li><a href="../Reportes/HistorialReportes.html">Historial de reportes</a></li>
-                    </ul>
-                </li>
-
-                <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
-                            class="fa fa-user"></i><span class="hide-menu">Usuarios y Empleados</span></a>
-                    <ul aria-expanded="false" class="collapse">
-                        <li><a href="../Usuarios/GestionarUsuarios.html">Gestionar usuarios</a></li>
-                        <li><a href="../Usuarios/Registro.html">Registrar usuarios</a></li>
-                    </ul>
-                </li>
-
-            </ul>
-        </nav>
-        <!-- End Sidebar navigation -->
     </div>
+    <!-- End User profile text-->
+    <!-- Sidebar navigation-->
+    <nav class="sidebar-nav">
+        <ul id="sidebarnav">
+            <li class="nav-devider"></li>
+            <li class="nav-small-cap">
+                <h4>Menú</h4>
+            </li>
+            <li><a href="../Inicio/Index.html"><i class="fa fa-home"></i><span class="hide-menu">Inicio</span></a>
+                <ul aria-expanded="false" class="collapse">
+                    <li><a href="../Inicio/Index.html">Noticias</a></li>
+                    <li><a href="../Inicio/Estadisticas.html">Estadísticas</a></li>
+                </ul>
+            </li>
+
+            <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
+                        class="fa fa-book"></i><span class="hide-menu">Directorio</span></a>
+                <ul aria-expanded="false" class="collapse">
+                    <li><a href="../Directorio/Directorio.html">Gestionar clientes </a></li>
+                </ul>
+                <ul aria-expanded="false" class="collapse">
+                    <li><a href="../Directorio/AgregarEmpresa.html">Registrar clientes </a></li>
+                </ul>
+            </li>
+
+            <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
+                        class="fa  fa-phone"></i><span class="hide-menu">Llamadas</span></a>
+                <ul aria-expanded="false" class="collapse">
+                    <li><a href="../Llamadas/Llamadas.html">Gestionar llamadas</a></li>
+                    <li><a href="../Llamadas/ControlLlamadas.html">Control de llamadas</a></li>
+                </ul>
+            </li>
+
+            <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
+                        class="mdi mdi-calendar-clock"></i><span class="hide-menu">Citas</span></a>
+                <ul aria-expanded="false" class="collapse">
+                    <li><a href="../Citas/Citas.html">Gestionar citas</a></li>
+                    <li><a href="../Citas/Agenda.html">Agenda</a></li>
+                </ul>
+            </li>
+
+            <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
+                        class="fa fa-pencil-square-o"></i><span class="hide-menu">Reportes</span></a>
+                <ul aria-expanded="false" class="collapse">
+                    <li><a href="../Reportes/HistorialReportes.html">Historial de reportes</a></li>
+                </ul>
+            </li>
+
+            <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
+                        class="fa fa-user"></i><span class="hide-menu">Usuarios y Empleados</span></a>
+                <ul aria-expanded="false" class="collapse">
+                    <li><a href="../Usuarios/GestionarUsuarios.html">Gestionar usuarios</a></li>
+                    <li><a href="../Usuarios/Registro.html">Registrar usuarios</a></li>
+                </ul>
+            </li>
+
+        </ul>
+    </nav>
+    <!-- End Sidebar navigation -->
+</div>
+
+<!-- Cargar datos de sesión -->
+<script>
+
+    // Imagen
+    let rutaImagen = localStorage.getItem("Imagen");
+    let img = document.createElement("IMG");
+    img.src = `../../../assets/images/usuarios/${rutaImagen}`;
+    $('#ImgUsuarioAside').html(img); 
+
+    // Usuario
+    let usuario = localStorage.getItem("Usuario");
+    $('#txtNombre_Usuario').html(usuario);
+
+    // Rol
+    let rol = localStorage.getItem("Rol");
+    $('#txtRol_Usuario').html(rol);
+</script>

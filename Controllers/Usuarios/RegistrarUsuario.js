@@ -3,7 +3,7 @@
 const URL = 'http://localhost:8081'
 
 
-let RegistrarUsuario = () => {
+let RegistrarUsuario = (imagen) => {
 
     if (localStorage.Id_Empleado) {
 
@@ -22,8 +22,6 @@ let RegistrarUsuario = () => {
         localStorage.removeItem("Id_Empleado");
 
     } else {
-
-
         //Objeto JSON
         var datos =
         {
@@ -35,7 +33,7 @@ let RegistrarUsuario = () => {
             Email: $("#txtEmail").val(),
             Sexo: parseInt($("#txtSexo").val()),
             Celular: $("#txtCelular").val(),
-            Imagen: "Ruta",
+            Imagen: imagen,
             Turno: parseInt($("#txtTurno").val()),
 
             // Usuario
@@ -43,77 +41,72 @@ let RegistrarUsuario = () => {
             Contrasena: $("#txtContrasena").val(),
             Rol: parseInt($("#txtRol").val())
         };
-
     }
-
+    
     $.ajax({
-        // A donde va a ir a guardar
         url: `${URL}/Usuarios`,
-        // lo que se queire recibir
         dataType: 'json',
-        // tipo de petición que se hace
         type: 'post',
-        // tipo de contenido
         contentType: 'aplication/json',
-        // los datos que se envían
         data: JSON.stringify(datos),
-        // No procesar datos
-        processData: false
-
-        // done -> capturar respuesta del servidor 
-    }).done(respuesta => {
-        // La api devuelve un booleando -> revisar accion de crear en la api  
-        if (respuesta.data.ok) {
-
-            swal({
-                title: "Usuario registrado correctamente.",
-                type: "success",
-                showCancelButton: false,
-                confirmButtonColor: "#2F6885",
-                confirmButtonText: "Continuar",
-                closeOnConfirm: false,
-            }, function (isConfirm) {
-                if (isConfirm) {
-                    location.href = "GestionarUsuarios.html";
-                }
-            });
-        } else {
-            swal({
-                title: "Error al registrar.",
-                text: "Ha ocurrido un error al registrar, intenta de nuevo",
-                type: "danger",
-                showCancelButton: false,
-                confirmButtonColor: "#2F6885",
-                confirmButtonText: "Continuar",
-                closeOnConfirm: false,
-            }, function (isConfirm) {
-                if (isConfirm) {
+        cache: false,
+        processData: false,
+        success: function(respuesta){
+            if (respuesta.data.ok) {
+                swal({
+                    title: "Usuario registrado correctamente.",
+                    type: "success",
+                    showCancelButton: false,
+                    confirmButtonColor: "#2F6885",
+                    confirmButtonText: "Continuar",
+                    closeOnConfirm: false,
+                }, function (isConfirm) {
+                    if (isConfirm) {
+                        location.href = "GestionarUsuarios.html";
+                    }
+                });
+            } else {
+                swal({
+                    title: "Error al registrar.",
+                    text: "Ha ocurrido un error al registrar, intenta de nuevo",
+                    type: "danger",
+                    showCancelButton: false,
+                    confirmButtonColor: "#2F6885",
+                    confirmButtonText: "Continuar",
+                    closeOnConfirm: false,
+                }, function (isConfirm) {
+                    if (isConfirm) {
                     location.href = "Registro.html";
-                    console.log(respuesta.data);
-                }
-            });
-        }
-
-    }).fail(error => {
-
-        swal({
-            title: "Error al registrar.",
-            text: "Ha ocurrido un error al registrar, intenta de nuevo",
-            type: "danger",
-            showCancelButton: false,
-            confirmButtonColor: "#2F6885",
-            confirmButtonText: "Continuar",
-            closeOnConfirm: false,
-        }, function (isConfirm) {
-            if (isConfirm) {
-                location.href = "Registro.html";
-                console.log(error);
+                    }
+                });
             }
-        });
+        },
+        error : function(xhr,errmsg,err) {
+            console.log(xhr.status + ": " + xhr.responseText);
+        }
+    });        
+}
 
+let CargarImagenRegistro = () => {
 
+    let formData = new FormData();
+    let files = $('#fileFotografia')[0].files[0];
+    formData.append('Img_Usuario', files);
+            
+    $.ajax({
+        url: `${URL}/CargarImagenUsuario`,
+        type: 'post',
+        data: formData,
+        contentType: false,
+        processData: false,
+    }).done(respuesta=>{
+        let res  = JSON.parse(respuesta);
+        let imagen = res.pathArchivo;
+        console.log(imagen);
+        RegistrarUsuario(imagen); 
+    }).fail(error =>{
+        console.log(error);
     });
-
 }
 
 CargarTiposDocumentos = () => {
@@ -249,13 +242,12 @@ $(function () {
     CargarSexos();
     CargarTurnos();
     CargarRoles();
-    
+
     $("#FormRegistroUsuario").validate({
+        
+        submitHandler: function (form,event) {
 
-        submitHandler: function () {
-
-            RegistrarUsuario();
-
+            CargarImagenRegistro();
         },
         rules: {
             txtTipoDocumento: "required",
