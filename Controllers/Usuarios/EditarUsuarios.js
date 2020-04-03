@@ -310,14 +310,13 @@ let CargarImagenEditar = () => {
     formData.append('Img_Usuario', files);
 
     $.ajax({
-        url: `${URL}/CargarImagenUsuario`,
+        url: `${URL}/Usuarios/CargarImagenUsuario`,
         type: 'post',
         data: formData,
         contentType: false,
         processData: false,
     }).done(respuesta => {
-        let res = JSON.parse(respuesta);
-        let imagen = res.pathArchivo;
+        let imagen = respuesta.data.pathArchivo;
         EditarUsuario(imagen);
     }).fail(error => {
         console.log(error);

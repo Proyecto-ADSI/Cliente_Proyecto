@@ -100,7 +100,8 @@ $(function () {
 
         }
     });
-
+    
+    $('#archivoClientes').dropify();
 
 });
 
