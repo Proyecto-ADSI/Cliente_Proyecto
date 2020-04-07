@@ -20,6 +20,8 @@ let ObtenerDocumento = (Id_Documento) =>{
   });
 }
 
-$(function(){
-ObtenerDocumento();
+$(document).ready(function(){
+  $('#EditarDocumento').click(function(){
+      ObtenerDocumento();
+  });
 });

@@ -20,6 +20,8 @@
     <!-- Tema de la plantilla -->
     <link href="../../../css/colors/megna-dark.css" id="theme" rel="stylesheet">
 
+    
+
     <!-- DataTable -->
     <link rel="stylesheet" href="../../../assets/plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
     <!-- Switchery -->
@@ -81,7 +83,7 @@
         <div class="page-wrapper">
 
             <!-- Titulo página -->
-            <div class="row page-titles">
+            <!-- <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
                     <h3 class="text-themecolor">Reporte de citas</h3>
                 </div>
@@ -92,7 +94,14 @@
                         <li class="breadcrumb-item active">Reporte de citas</li>
                     </ol>
                 </div>
+            </div> -->
+            <div class="row page-titles">
+                <div class="col-lg-12 text-center">
+                    <h1 class="m-t-30">Eskatemp S.A.S</h1>
+                    <h5 class="text-muted m-b-30"><i class="ti-pin"></i>Solución Integral</h5>
+                </div>
             </div>
+
 
             <!-- ============================================================== -->
             <!-- Container fluid  -->
@@ -105,7 +114,7 @@
                     <div class="card-header MyStyle_Card_Header">
                         <h4 class="m-b-0 text-white">Reporte de llamadas</h4>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body" id="Card-Body-Reporte-Llamadas">
                         <!-- <h6 class="card-subtitle"> Filtro:</h6> -->
 
                         <div class="table-responsive m-t-40">
@@ -118,13 +127,13 @@
 
                                 </div>
                                 <div class="col-md-2">
-                                    <button type="submit" class="btn btn-rounded btn-success m-t-30">Imprimir</button>
+                                    <button type="submit" class="btn btn-info m-t-30"><i class="fas fa-print"></i> Imprimir</button>
 
                                 </div>
 
                             </div>
 
-                            <table id="example" class="table table-bordered table-striped MyStyle_Color-Table">
+                            <table id="example" style="margin-top:4rem;" class="table table-bordered table-striped MyStyle_Color-Table">
 
                                 <thead>
                                     <tr>
@@ -243,6 +252,9 @@
         <!-- Sweetalert -->
         <script src="../../../assets/plugins/sweetalert/sweetalert.min.js"></script>
         <script src="../../../assets/plugins/sweetalert/jquery.sweet-alert.custom.js"></script>
+
+          <!--Font awesome-->
+      <script src="https://kit.fontawesome.com/8feb0255f1.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

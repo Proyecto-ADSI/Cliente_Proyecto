@@ -20,6 +20,8 @@ let ObtenerSubTipo = (Id_SubTipo_Barrio_Vereda) =>{
   });
 }
 
-$(function(){
-ObtenerSubTipo();
+$(document).ready(function(){
+  $('#EditarSubTipo').click(function(){
+     ObtenerSubTipo();
+  });
 });

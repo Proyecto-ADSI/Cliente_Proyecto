@@ -15,7 +15,7 @@ let ListarSexo = () =>{
             <td>${contador}</td>
             <td>${item.Nombre}</td>
             <td class="text-nowrap">
-                    <i class="fa fa-pencil text-inverse m-r-10" data-toggle="modal" data-target="#ModificarSexo" onclick="ObtenerSexo(${item.Id_Sexo})" style="cursor:pointer;"></i>
+                    <i class="fa fa-pencil text-inverse m-r-10" id="EditarSexo" data-toggle="modal" data-target="#ModificarSexo" onclick="ObtenerSexo(${item.Id_Sexo})" style="cursor:pointer;"></i>
                      <i class="fa fa-close text-danger" style="cursor:pointer;"></i>
                      <input type="checkbox" class="js-switch6" data-color="#f62d51" data-secondary-color="#26c6da" data-size="small" />
             </td>
@@ -33,6 +33,8 @@ let ListarSexo = () =>{
         console.log(error);
     });
 }
-$(function(){
-   ListarSexo();
+$(document).ready(function(){
+    $('#SexoTab').click(function(){
+        ListarSexo();
+    });
 });

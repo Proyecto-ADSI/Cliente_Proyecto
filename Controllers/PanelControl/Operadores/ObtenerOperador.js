@@ -20,6 +20,8 @@ let ObtenerOperador = (Id_Operador) =>{
   });
 }
 
-$(function(){
-ObtenerOperador();
+$(document).ready(function(){
+  $('#EditarOperador').click(function(){
+      ObtenerOperador();
+  });
 });

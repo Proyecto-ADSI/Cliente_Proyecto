@@ -119,7 +119,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: #455a64;
+  color: #b5b5b5;
   font-family: "Poppins", sans-serif;
   font-weight: 400; }
 
@@ -736,7 +736,7 @@ Table Cell
 .table-responsive {
   display: block;
   width: 100%;
-  overflow-x: auto;
+  overflow-x: hidden;
   -ms-overflow-style: -ms-autohiding-scrollbar; }
 
 /*******************
@@ -1047,6 +1047,7 @@ Buttons
 .btn-info.disabled {
   background: #1976d2;
   border: 1px solid #1976d2;
+  margin-left: 0.3rem;
   -webkit-box-shadow: 0 2px 2px 0 rgba(66, 165, 245, 0.14), 0 3px 1px -2px rgba(66, 165, 245, 0.2), 0 1px 5px 0 rgba(66, 165, 245, 0.12);
   box-shadow: 0 2px 2px 0 rgba(66, 165, 245, 0.14), 0 3px 1px -2px rgba(66, 165, 245, 0.2), 0 1px 5px 0 rgba(66, 165, 245, 0.12);
   -webkit-transition: 0.2s ease-in;
@@ -1070,6 +1071,7 @@ Buttons
 .btn-warning.disabled {
   background: #ffb22b;
   color: #ffffff;
+  margin-left: 0.3rem;
   -webkit-box-shadow: 0 2px 2px 0 rgba(248, 194, 0, 0.14), 0 3px 1px -2px rgba(248, 194, 0, 0.2), 0 1px 5px 0 rgba(248, 194, 0, 0.12);
   box-shadow: 0 2px 2px 0 rgba(248, 194, 0, 0.14), 0 3px 1px -2px rgba(248, 194, 0, 0.2), 0 1px 5px 0 rgba(248, 194, 0, 0.12);
   border: 1px solid #ffb22b;
@@ -1097,6 +1099,7 @@ Buttons
 .btn-danger.disabled {
   background: #ef5350;
   border: 1px solid #ef5350;
+  margin-left: 0.3rem;
   -webkit-box-shadow: 0 2px 2px 0 rgba(239, 83, 80, 0.14), 0 3px 1px -2px rgba(239, 83, 80, 0.2), 0 1px 5px 0 rgba(239, 83, 80, 0.12);
   box-shadow: 0 2px 2px 0 rgba(239, 83, 80, 0.14), 0 3px 1px -2px rgba(239, 83, 80, 0.2), 0 1px 5px 0 rgba(239, 83, 80, 0.12);
   -webkit-transition: 0.2s ease-in;
@@ -1746,7 +1749,7 @@ File: scss
     display: none; }
 
 .page-wrapper {
-  background: #eef5f9;
+  background: rgb(24, 32, 34);
   padding-bottom: 60px; }
 
 .container-fluid {
@@ -1760,7 +1763,8 @@ File: scss
   z-index: 50; }
   .topbar .top-navbar {
     min-height: 50px;
-    padding: 0px 15px 0 0; }
+    padding: 0px 15px 0 0; 
+    background-color: rgb(41, 41,41);}
     .topbar .top-navbar .dropdown-toggle::after {
       display: none; }
     .topbar .top-navbar .navbar-header {
@@ -1831,10 +1835,9 @@ File: scss
       .topbar ul.dropdown-user li a {
         padding: 9px 15px;
         display: block;
-        color: #67757c; }
+        color: #b5b5b5; }
         .topbar ul.dropdown-user li a:hover {
-          background: #f2f4f8;
-          color: #1976d2;
+          color: #3694ff;
           text-decoration: none; }
 
 .search-box .app-search {
@@ -1882,7 +1885,7 @@ File: scss
  Breadcrumb and page title
 *******************/
 .page-titles {
-  background: #ffffff;
+  background-color:rgb(24,32,34);
   margin: 0 0px 30px;
   padding: 15px 10px;
   position: relative;
@@ -1891,7 +1894,8 @@ File: scss
   box-shadow: 1px 0 5px rgba(0, 0, 0, 0.1); }
   .page-titles h3 {
     margin-bottom: 0px;
-    margin-top: 0px; }
+    margin-top: 0px;
+    color:#fff }
   .page-titles .breadcrumb {
     padding: 0px;
     background: transparent;
@@ -2261,8 +2265,9 @@ ul#themecolors {
 .card-outline-info {
   border-color: #1976d2; }
   .card-outline-info .card-header {
-    background: #0c0c0c;
-    border-color: #0c0c0c; }
+    background: #154360!important;
+    border-color: #154360!important; 
+  }
 
 .card-outline-inverse {
   border-color: #2f3d4a; }
@@ -2291,8 +2296,8 @@ ul#themecolors {
 .card-outline-primary {
   border-color: #0c0c0c; }
   .card-outline-primary .card-header {
-    background: #07575B;
-    border-color: #07575B; }
+    background: #154360!important;
+    border-color: #154360!important; }
 
 /*============================================================== 
 Breadcrumb
@@ -2605,7 +2610,9 @@ File upload
 .btn-file {
   overflow: hidden;
   position: relative;
-  vertical-align: middle; }
+  vertical-align: middle;
+  cursor: pointer;
+  color: #b5b5b5; }
   .btn-file > input {
     position: absolute;
     top: 0;
@@ -2618,13 +2625,15 @@ File upload
     width: 100%;
     direction: ltr;
     cursor: pointer;
-    border-radius: 0px; }
+    border-radius: 0px;
+  }
 
 .fileinput .input-group-addon {
   border: none;
-  border-bottom: 1px solid rgba(120, 130, 140, 0.13);
-  background: #ffffff;
-  margin-bottom: 1px; }
+  border-bottom: 1px solid #b5b5b5;
+  background: #434343;
+  margin-bottom: 1px;
+cursor: pointer; }
 
 .fileinput .form-control {
   padding-top: 7px;
@@ -2789,7 +2798,7 @@ Form Material page
   padding-left: 0px;
   border-bottom: 1px solid rgba(120, 130, 140, 0.13); }
   .form-control-line .form-control:focus {
-    border-bottom: 1px solid #1976d2; }
+    border-bottom: 1px solid green; }
 
 /*******************/
 /*Floating Label*/
@@ -3093,8 +3102,8 @@ Table-Layout
   background: #f2f4f8; }
 
 .color-table.success-table thead th {
-  background-color: #26dad2;
-  color: #ffffff; }
+  background-color: #3694ff;
+  color: #fff; }
 
 .color-table.info-table thead th {
   background-color: #1976d2;
@@ -3424,7 +3433,7 @@ table.dataTable thead .sorting:after {
 .dataTables_wrapper .dataTables_paginate {
   float: right;
   text-align: right;
-  padding-top: 0.25em; }
+  padding-top: 0.25em;}
 
 .dataTables_wrapper .dataTables_paginate .paginate_button {
   -webkit-box-sizing: border-box;
@@ -3449,7 +3458,9 @@ table.dataTable thead .sorting:after {
 .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover,
 .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
   cursor: default;
-  color: #67757c;
+  background-color: #154360;
+  cursor: pointer;
+  color: #b5b5b5;
   border: 1px solid #ddd;
   background: transparent;
   -webkit-box-shadow: none;
@@ -3806,11 +3817,19 @@ Vertical tabs
     border-right: 1px solid rgba(120, 130, 140, 0.13);
     display: table-cell;
     vertical-align: top; }
+    .vtabs .tabs-vertical:hover {
+      width: 180px;
+      border-bottom: 0px;
+      border-right: 1px solid rgba(120, 130, 140, 0.13);
+      display: table-cell;
+      vertical-align: top;
+      background-color: #333333; }
     .vtabs .tabs-vertical li .nav-link {
       color: #263238;
-      margin-bottom: 10px;
+      /* margin-bottom: 10px; */
       border: 0px;
       border-radius: 4px 0 0 4px; }
+      
   .vtabs .tab-content {
     display: table-cell;
     padding: 20px;
@@ -3834,7 +3853,8 @@ Vertical tabs
   color: #1976d2; }
 
 .tabcontent-border {
-  border: 1px solid #ddd;
+  /* border: 1px solid #ddd; */
+  background-color: #434343;
   border-top: 0px; }
 
 .customtab2 li a.nav-link {
@@ -5369,7 +5389,8 @@ Contact app Page
         float: right; }
 
 .slimScrollBar {
-  z-index: 10 !important; }
+  z-index: 10 !important;
+    }
 
 .carousel-item-next,
 .carousel-item-prev,
@@ -5511,7 +5532,7 @@ sidebar navigation
 ******************/
 .scroll-sidebar {
   padding-bottom: 60px;
-  background: #0c0c0c; }
+  background-color: #333333; }
 
 .collapse.in {
   display: block; }
@@ -5522,12 +5543,12 @@ sidebar navigation
   .sidebar-nav ul {
     margin: 0px;
     padding: 0px;
-    background: #0c0c0c;
+    background-color: #333333;
   color: gray; }
     .sidebar-nav ul li {
       list-style: none; }
       .sidebar-nav ul li a {
-        color: #607d8b;
+        color: #B5B5B5;
         padding: 8px 35px 8px 15px;
         display: block;
         font-size: 14px; }
@@ -5568,7 +5589,7 @@ sidebar navigation
       margin-top: 6px; }
     .sidebar-nav > ul > li > a.active {
       font-weight: 400;
-      background: #242933;
+      background: #333333;
       color: #26c6da; }
   .sidebar-nav > ul > li {
     margin-bottom: 5px; }
@@ -5618,7 +5639,9 @@ When click on sidebar toggler and also for tablet
 *****************/
 @media (min-width: 768px) {
   .mini-sidebar .sidebar-nav #sidebarnav li {
-    position: relative; }
+    position: relative;
+    background-color: #333333; }
+    
   .mini-sidebar .sidebar-nav #sidebarnav > li > ul {
     position: absolute;
     left: 60px;
@@ -5636,7 +5659,8 @@ When click on sidebar toggler and also for tablet
     position: absolute; }
   .mini-sidebar .sidebar-nav #sidebarnav > li:hover > ul {
     height: auto !important;
-    overflow: auto; }
+    overflow: auto; 
+    background-color: #333333;}
   .mini-sidebar .sidebar-nav #sidebarnav > li:hover > ul,
   .mini-sidebar .sidebar-nav #sidebarnav > li:hover > ul.collapse {
     display: block; }
@@ -5698,7 +5722,9 @@ File: scss
 /*User mail widgets*/
 /*******************/
 .topbar .top-navbar .mailbox {
-  width: 300px; }
+  width: 300px; 
+  background-color: #333333;
+  color: #b5b5b5;}
   .topbar .top-navbar .mailbox ul {
     padding: 0px; }
     .topbar .top-navbar .mailbox ul li {
@@ -5707,7 +5733,9 @@ File: scss
 .mailbox ul li .drop-title {
   font-weight: 500;
   padding: 11px 20px 15px;
-  border-bottom: 1px solid rgba(120, 130, 140, 0.13); }
+  border-bottom: 1px solid rgba(255,255,255,0.4); 
+  background-color: #333333;
+  color: #b5b5b5;}
 
 .mailbox ul li .nav-link {
   border-top: 1px solid rgba(120, 130, 140, 0.13);
@@ -5718,12 +5746,12 @@ File: scss
   overflow: auto;
   position: relative; }
   .mailbox .message-center a {
-    border-bottom: 1px solid rgba(120, 130, 140, 0.13);
+    border-bottom: 1px solid rgba(255,255,255,0.4);
     display: block;
     text-decoration: none;
     padding: 9px 15px; }
     .mailbox .message-center a:hover {
-      background: #f2f4f8; }
+      background: #434343; }
     .mailbox .message-center a div {
       white-space: normal; }
     .mailbox .message-center a .user-img {
@@ -5764,8 +5792,17 @@ File: scss
         -o-text-overflow: ellipsis;
         text-overflow: ellipsis;
         overflow: hidden;
-        color: #67757c;
+        color: #b5b5b5;
         white-space: nowrap; }
+
+        .navbar-light .navbar-nav .nav-link{
+          color: #b5b5b5;
+          border-top:1px solid rgba(255,255,255,0.4);
+        }
+        .navbar-light .navbar-nav .nav-link:hover{
+          color: #3694ff;
+          border-top:1px solid rgba(255,255,255,0.4);
+        }
 
 /*******************
 /*Analytic info sparkline chart page*/
@@ -5962,8 +5999,8 @@ File: scss
     display: block;
     text-decoration: none;
     padding: 9px 15px; }
-    .message-box .message-widget a:hover {
-      background: #f2f4f8; }
+    /* .message-box .message-widget a:hover {
+      background: #434343; } */
     .message-box .message-widget a:last-child {
       border-bottom: 0px; }
     .message-box .message-widget a div {
@@ -7094,10 +7131,11 @@ form p:last-child {
   z-index: 0;
   border: 1px solid #b1b8bb;
   border-radius: 1px;
-  margin-top: 2px;
+  margin-top: 9px;
   -webkit-transition: .2s;
   -o-transition: .2s;
-  transition: .2s; }
+  transition: .2s;
+  margin-left: 14px; }
 
 [type="checkbox"]:not(.filled-in) + label:after {
   border: 0;
@@ -8132,3 +8170,489 @@ input[type=checkbox]:not(:disabled).tabbed:focus ~ .lever::after {
     background-color: rgba(255, 255, 255, 0.5); }
     .switch label input[type=checkbox]:checked + .lever.switch-col-white:after {
       background-color: #ffffff; }
+
+
+      html{
+        background-color:rgb(24, 32, 34) ;
+      }
+
+      /* Noticias */
+      .Card-Body-Noticias{
+        background-color:#333333;
+      }
+      .Card-Noticias{
+        background-color: #434343; 
+        color: #b5b5b5;
+      }
+
+
+      /*En lines inactivos o activo */
+      .Card-Conectados{
+        background-color: #333333;
+      }
+      .Card-Usuarios-Conexion{
+        background-color: #434343;
+      }
+      .Connect{
+        color: #2ECC71 ;
+      }
+      .Connect:hover{
+        color: #39ff14 ;
+        
+      }
+      .Inactivos{
+        color:#F1C40F;
+      }
+      .Inactivos:hover{
+        color:#faed27;
+      }
+      .No-Conectados{
+        color:#E74C3C;
+      }
+      .No-Conectados:hover{
+        color: #f80000;
+      }
+      #Titulos-Conectados{
+        background-color: #154360;
+      }
+      /*Estadisticas*/
+      #Card-Estadisticas{
+            background-color: #333333;
+            color: #b5b5b5;
+      }
+
+      /*Directorios filtrar card body*/
+      #Card-Body-Filtrar-Directorio{
+        background-color: #333333;
+      }
+      #Card-Body-Filtrar-Directorio2{
+        background-color: #434343;
+      }
+      .m-t-30{
+        color: #fff;
+      }
+      #Nit{
+        color: #b5b5b5;
+        background-color:#434343;
+      }
+      #RazonSocial{
+        color: #b5b5b5;
+        background-color:#434343;
+      }
+      #Telefono{
+        color: #b5b5b5;
+        background-color:#434343;
+      }
+      #Card-Body-Directorio{
+        background-color: #434343;
+      }
+      /* Data tables */
+
+      .table td, .table th{
+        background-color: #434343;
+        color: #fff;
+        border: 1px solid grey;
+      }
+      #dropdownMenuButton{
+              position: relative;
+              left: 14rem;
+              color: #154360;
+      }
+      #dropdownMenuButton:hover{
+        background-color: white;
+      }
+      .btn-secondary:not(:disabled):not(.disabled).active, .btn-secondary:not(:disabled):not(.disabled):active, .show>.btn-secondary.dropdown-toggle{
+        background-color: #fff;
+        border-color: #154360;
+      }
+      /* Agregar empresa */
+      #Card-Form-Agregar-Empresa{
+            background-color: #333333;
+      }
+      input{
+        background-color: #434343;
+        color: #b5b5b5;
+      }
+      .form-control{
+        background-color: #333333;
+        color: #b5b5b5;
+      }
+      .form-control:focus{
+        background-color: #333333;
+        color: #b5b5b5;
+        /* border-color: inherit; */
+        -webkit-box-shadow: none;
+        box-shadow: none;
+         /* border-color: #06c;  */
+      }
+
+      /*Card body filtrar llamadas*/
+      #Card-Body-Filtrar-Llamadas{
+        background-color: #333333;
+      }
+      #Card-Body-Filtrar-Llamadas2{
+        background-color: #434343;
+      }
+      #Llamadas-Nit{
+        color: #b5b5b5;
+        background-color:#434343;
+      }
+      #Llamadas-Digito{
+        color: #b5b5b5;
+        background-color:#434343;
+      }
+      #Llamadas-Rango-Fechas{
+        color: #b5b5b5;
+        background-color:#434343;
+      }
+      #Llamadas-Hora{
+        color: #b5b5b5;
+        background-color:#434343;
+      }
+      #Llamadas-Telefono{
+        color: #b5b5b5;
+        background-color:#434343;
+      }
+      #Llamadas-Contact{
+        color: #b5b5b5;
+        background-color:#434343;
+      }
+      #Llamadas-Estado{
+        color: #b5b5b5;
+        background-color:#434343;
+      }
+      #Card-Body-Control-Llamadas{
+        background-color: #333333;
+      }
+      #Card-Body-Formulario-Llamadas{
+        background-color: #333333;
+      }
+      .bootstrap-switch .bootstrap-switch-label{
+        background-color: #434343;
+      }
+      #Control-Llamadas-Name{
+        color: #fff;
+       
+      }
+      /*Citas filtrar*/
+      #Card-Body-Filtrar-Citas{
+        background-color: #333333;
+      }
+      #Card-Body-Filtrar-Citas2{
+        background-color: #434343;
+      }
+      #Citas-Nit{
+        background-color: #434343;
+        color: #fff;
+      }
+      #Citas-Razon-Social{
+        background-color: #434343;
+        color: #fff;
+      }
+      #Citas-Fechas{
+        background-color: #434343;
+        color: #fff;
+      }
+      #Citas-Hora{
+        background-color: #434343;
+        color: #fff;
+      }
+      #Card-ReporOperador{
+        background-color: #333333;
+      }
+      /* Historial reportes */
+      #Card-Body-Historial-Reportes{
+        background-color: #333333;
+      }
+      #Card-Body-Historial-Reportes2{
+        background-color: #434343;
+      }
+      #Reportes-Historial{
+        background-color: #434343;
+        color: #fff;
+      }
+      #Card-Body-Reporte-Llamadas{
+        background-color: #333333;
+      }
+      /* Gestion usuarios*/
+      #Card-Body-Gestion-Usuarios{
+        background-color: #333333;
+      }
+      #Card-Body-Gestion-Usuarios2{
+        background-color: #434343;
+      }
+      #Card-Body-Registro-Usuarios{
+        background-color: #333333;
+      }
+      #FormRegistroUsuario{
+        background-color: #434343;
+      }
+      #Label-Form-Registro-Usuario{
+        color: #b5b5b5;
+      }
+      #txtDocumento{
+        color: #b5b5b5;
+        background-color:#434343;
+      }
+      #txtNombre{
+        color: #b5b5b5;
+        background-color:#434343;
+      }
+      #txtApellidos{
+        color: #b5b5b5;
+        background-color:#434343;
+      }
+      #txtEmail{
+        color: #b5b5b5;
+        background-color:#434343;
+      }
+      #txtSexo{
+        color: #b5b5b5;
+        background-color:#434343;
+      }
+      #txtCelular{
+        color: #b5b5b5;
+        background-color:#434343;
+      }
+      #txtTurno{
+        color: #b5b5b5;
+        background-color:#434343;
+      }
+      #txtUsuario{
+        color: #b5b5b5;
+        background-color:#434343;
+      }
+      #txtRol{
+        color: #b5b5b5;
+        background-color:#434343;
+      }
+      #txtContrasena{
+        color: #b5b5b5;
+        background-color:#434343;
+      }
+      #txtConfirmarContrasena{
+        color: #b5b5b5;
+        background-color:#434343;
+      }
+      #txtTipoDocumento{
+        color: #b5b5b5;
+        background-color: #434343;
+      }
+      #Card-Fotografia{
+        background-color:#494949 ;
+      }
+
+      /*Panel de control */
+      #Card-Body-Panel-Control{
+        background-color:#333333 ;
+      }
+      /* span{
+        color: #fff;
+      } */
+      #Card-Presentacion-Corporativa{
+        background-color: #434343;
+      }
+      #Card-Roles{
+        background-color: #434343;
+      }
+      #Card-Documentos{
+        background-color: #434343;
+      }
+      #Card-Documentos2{
+        background-color: #434343;
+      }
+      #Card-Sexo{
+        background-color: #434343;
+      }
+      #Card-Sexo2{
+        background-color: #434343;
+      }
+      #Card-Pais{
+        background-color: #434343;
+      }
+      #Card-Pais2{
+        background-color: #434343;
+      }
+      #Card-Departamentos{
+        background-color: #434343;
+      }
+      #Card-Departamentos2{
+        background-color: #434343;
+      }
+      #Card-Municipios{
+        background-color: #434343;
+      }
+      #Card-Municipios2{
+        background-color: #434343;
+      }
+      #Card-SubTipo{
+        background-color: #434343;
+      }
+      #Card-SubTipo2{
+        background-color: #434343;
+      }
+      #Card-BarrioVereda{
+        background-color: #434343;
+      }
+      #Card-BarrioVereda2{
+        background-color: #434343;
+      }
+      #Card-Operadores{
+        background-color: #434343;
+      }
+      #Card-Operadores2{
+        background-color: #434343;
+      }
+      #Card-Turnos{
+        background-color: #434343;
+      }
+      #Card-Turnos2{
+        background-color: #434343;
+      }
+      #Card-Directorio{
+        background-color: #434343;
+      }
+      #Span-Panel{
+        color: #fff;
+      }
+      /* Selects de panel*/
+      .bootstrap-select .dropdown-menu li a:hover, .bootstrap-select .dropdown-menu li a:focus{
+        background-color: #333333;
+        color: #b5b5b5;
+           /* border-color: inherit; */
+           -webkit-box-shadow: none;
+           box-shadow: none;
+            /* border-color: #06c;  */
+      }
+      .btn-group>.btn:first-child {
+        color: #b5b5b5;
+        background-color: #434343;
+      }
+      .btn-group>.btn:first-child:focus {
+            /* border-color: inherit; */
+            -webkit-box-shadow: none;
+            box-shadow: none;
+             /* border-color: #06c;  */
+      }
+      /* Mini menu ver perfil etc.*/
+      #Mini-Menu{
+        background-color: #333333;
+        color: #fff;
+        border: 1px solid grey
+      }
+      #VerPerfil{
+        margin-left: -0.1rem;
+        margin-top: 0.2rem;
+      }
+      #VerPerfil:hover{
+        background-color: #1976d2;
+      }
+      /* Modals*/
+      .modal-header{
+        background-color: #333333;
+        color: #b5b5b5;
+        border-bottom: 1px solid rgba(255, 2555, 255,0.2);
+      }
+      .modal-header .close{
+        color: #fff;
+      }
+      .modal-body{
+        background-color: #333333;
+      }
+      .modal-footer {
+        background-color: #333333;
+        border-top: 1px solid rgba(255,255,255,0.1);
+      }
+      .nav-tabs{
+        border-bottom: none;
+      }
+      .MyStyle_File_Card {
+         background-color: #434343;
+         color: #b5b5b5;
+      }
+      /*Modal directorio y tabs de modals*/
+      #Card-Body-Modal-Directorio{
+        background-color: #434343;
+      }
+      .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+        color: #3694ff;
+        background-color: #434343;
+        border: none;
+        border-bottom: 2px solid #3694FF;
+        margin-right: 1rem;
+      }
+      
+      .nav-tabs .nav-item.show .nav-link, .nav-tabs:hover {
+        color: #3694ff;
+        background-color: #434343;
+
+      }
+      .nav-link{
+        color: #b5b5b5;
+      }
+      .nav-tabs .nav-link{
+        border: none;
+        background-color: #434343;
+        margin-right: 1rem;
+      }
+      .nav-tabs .nav-link:hover{
+        border: none;
+        background-color: #434343;
+        color: #b5b5b5;
+      }
+      .nav-tabs .nav-link:focus{
+        border: none;
+        background-color: #434343;
+        color: #3694ff;
+        border-bottom: 2px solid #3694ff;
+      }
+      #Card-Body-Directorio2{
+        background-color: #434343;
+      }
+      /* .nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover{
+        color: #fff;
+      } */
+      #Card-Body-Directorio2{
+       background-color: #434343;
+      }
+    /* Card body llamadas modal*/
+    #Card-Body-Llamadas-Modal{
+      background-color: #434343;
+
+    }
+    #Card-Body-Llamadas2-Modal{
+      background-color: #434343;
+      color: #b5b5b5;
+    }
+    hr{
+      background-color: #b5b5b5;
+      border: none;
+      height: 1px;
+    }
+    ::-webkit-scrollbar{
+      width: 17px;
+    }
+    ::-webkit-scrollbar-track{
+      border: 4px solid #434343;
+      box-shadow: inset 0 0 2.5px 2px rgba(255, 255, 255,0.4);
+    }
+    ::-webkit-scrollbar-thumb{
+      background:linear-gradient(
+         45deg,
+         #3694ff,
+         #808080
+      );
+      border-radius: 4px;
+    }
+     element.style {
+      background-color: #434343;
+    }
+
+      
+
+
+
+
+    
+      
+    

@@ -18,6 +18,7 @@
     <link href="../../../assets/plugins/select2/dist/css/select2.min.css" rel="stylesheet" type="text/css"/>
     <!-- Select -->
     <link href="../../../assets/plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
+
     <!-- Wizard -->
     <link href="../../../assets/plugins/wizard/steps.css" rel="stylesheet">
     <!-- Switch -->
@@ -59,7 +60,7 @@
         <div class="page-wrapper">
 
             <!-- Titulo página -->
-            <div class="row page-titles">
+            <!-- <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
                     <h3 class="text-themecolor">Gestión de Llamadas</h3>
                 </div>
@@ -70,11 +71,18 @@
                         <li class="breadcrumb-item active">Registro de llamadas</li>
                     </ol>
                 </div>
+            </div> -->
+            <div class="row page-titles">
+                <div class="col-lg-12 text-center">
+                    <h1 class="m-t-30">Eskatemp S.A.S</h1>
+                    <h5 class="text-muted m-b-30"><i class="ti-pin"></i>Solución Integral</h5>
+                </div>
             </div>
+
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
-                        <div class="card">
+                        <div class="card" id="Card-Body-Formulario-Llamadas">
                             <div class="card-body wizard-content">
                                 <h4 class="card-title">Formulario de registro de llamadas</h4>
                                 <form action="#" class="tab-wizard wizard-circle">
@@ -332,10 +340,10 @@
                                         </div>
                                         <div class="row">
                                            <div class="col-md-12">
-                                                <button type="button" class="btn waves-effect waves-light btn-outline-success">
-                                                Verificar
+                                                <button type="button" class="btn btn-success">
+                                                    <i class="fas fa-check"></i> Verificar
                                             </button>
-                                            <button type="button" class="btn waves-effect waves-light btn-outline-danger">
+                                            <button type="button" class="btn btn-danger" style="margin-left: 1.0rem;">  <i class="fas fa-undo-alt"></i>
                                                 Enviar después
                                             </button>
                                            </div>
@@ -403,6 +411,9 @@
             <!-- Date Picker -->
             <script src="../../../assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
             <script src="../../../js/DatePicker.js"></script>
+
+                 <!--Font Awesome-->
+            <script src="https://kit.fontawesome.com/8feb0255f1.js" crossorigin="anonymous"></script>
 
 
 </body>

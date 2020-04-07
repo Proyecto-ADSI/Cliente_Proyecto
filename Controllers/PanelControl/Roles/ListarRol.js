@@ -14,8 +14,6 @@ let ListarRol = () =>{
             <tr>
             <td>${contador}</td>
             <td>${item.Nombre}</td>
-            <td class="text-nowrap">
-            </td>
         </tr>
         <tr>
             `); 
@@ -25,9 +23,12 @@ let ListarRol = () =>{
         console.log(error);
     });
 }
-$(function(){
-   ListarRol();
+$(document).ready(function(){
+    $('#RolesTab').click(function(){
+        ListarRol();
+    });
 });
+
 /*
 <i class="fa fa-pencil text-inverse m-r-10" data-toggle="modal" data-target="#ModificarDocumento" onclick="ObtenerDocumento(${item.Id_Documento})" style="cursor:pointer;"></i>
 <i class="fa fa-close text-danger" style="cursor:pointer;"></i>

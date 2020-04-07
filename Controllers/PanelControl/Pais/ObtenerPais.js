@@ -20,6 +20,8 @@ let ObtenerPais = (Id_Pais) =>{
   });
 }
 
-$(function(){
-ObtenerPais();
+$(document).ready(function(){
+  $('#EditarPais').click(function(){
+      ObtenerPais();
+  });
 });

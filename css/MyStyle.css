@@ -10,6 +10,10 @@
     margin-top: 5% !important;
     border: none;
 }
+/* td{
+    background-color: #434343;
+} */
+
 
 /* Card 1 */
 .MyStyle_Card1_Fondo{
@@ -69,8 +73,8 @@
 
 /* Registro */
 .MyStyle_Card_Header{
-    background: #07575B!important;
-    border-color: #07575B !important;
+    background: #154360!important;
+    border-color: #154360 !important;
 }
 
 .MyStyle_File_Card{
@@ -98,7 +102,7 @@
 
 /* Tabla Llamadas */
 .MyStyle_Color-Table thead tr th{
-    background-color: #00897b !important;
+    background-color: #154360 !important;
     color: #ffffff !important;
 
 }
@@ -148,7 +152,7 @@
 
 /* Filtro */
 .MyStyle_Btn_Filtro > button{
-    color: #0c0c0c;
+    color: #fff;
 }
 .MyStyle_Btn_Filtro > a{
     background: #0c0c0c;

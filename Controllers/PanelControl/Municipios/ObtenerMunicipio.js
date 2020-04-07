@@ -50,6 +50,11 @@ let ObtenerMunicipio = (Id_Municipio) =>{
 }
 
 $(function(){
-ObtenerMunicipio();
-ListarDepartamento2();
+    ListarDepartamento2();
+});
+
+$(document).ready(function(){
+    $('#EditarMunicipio').click(function(){
+       ObtenerMunicipio();
+    });
 });

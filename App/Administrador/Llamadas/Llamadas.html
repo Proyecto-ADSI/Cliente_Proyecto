@@ -20,6 +20,9 @@
     <!-- Tema de la plantilla -->
     <link href="../../../css/colors/megna-dark.css" id="theme" rel="stylesheet">
 
+      <!--Font awesome-->
+    
+      
     <!-- DataTable -->
     <link rel="stylesheet"
         href="../../../assets/plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
@@ -78,7 +81,7 @@
         <div class="page-wrapper">
 
             <!-- Titulo página -->
-            <div class="row page-titles">
+            <!-- <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
                     <h3 class="text-themecolor">Gestión de llamadas</h3>
                 </div>
@@ -88,6 +91,13 @@
                         <li class="breadcrumb-item">pages</li>
                         <li class="breadcrumb-item active">Gestión de llamadas</li>
                     </ol>
+                </div>
+            </div> -->
+
+            <div class="row page-titles">
+                <div class="col-lg-12 text-center">
+                    <h1 class="m-t-30">Eskatemp S.A.S</h1>
+                    <h5 class="text-muted m-b-30"><i class="ti-pin"></i>Solución Integral</h5>
                 </div>
             </div>
 
@@ -102,28 +112,28 @@
                     <div class="card-header MyStyle_Card_Header">
                         <h4 class="m-b-0 text-white">Registro de Llamadas</h4>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body" id="Card-Body-Filtrar-Llamadas">
                         <!-- <h6 class="card-subtitle"> Filtro:</h6> -->
                         <div class="card MyStyle_Card_Filtro card-outline-primary">
                             <div class="card-header">
                                 <h4 class="m-b-0 text-white">Filtro:</h4>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body" id="Card-Body-Filtrar-Llamadas2"> 
 
-                                <form class="form-material" action="" method="POST">
+                                <form class="" action="" method="POST">
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="row">
                                                 <div class="col-md-6 form-group">
                                                     <label class="m-t-30">NIT</label>
-                                                    <input type="text" class="form-control" placeholder="123...">
+                                                    <input type="text" class="form-control" id="Llamadas-Nit" placeholder="123...">
                                                 </div>
                                                 <div class="col-md-2">
                                                     <label class="MyStyle_Guion"> -</label>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="m-t-30">Dígito</label>
-                                                    <input type="number" class="form-control" placeholder="1...">
+                                                    <input type="number" class="form-control" id="Llamadas-Digito" placeholder="1...">
                                                 </div>
                                             </div>
                                         </div>
@@ -131,14 +141,14 @@
                                             <div class="example">
                                                 <label class="m-t-30">Rango de Fechas</label>
                                                 <input class="form-control input-daterange-datepicker" type="text"
-                                                    name="daterange" value="" />
+                                                    name="daterange" id="Llamadas-Rango-Fechas" value="" />
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <label class="m-t-30">Hora</label>
                                             <div class="input-group clockpicker " data-placement="bottom"
                                                 data-align="top" data-autoclose="true">
-                                                <input type="text" class="form-control" value="">
+                                                <input type="text" class="form-control" id="Llamadas-Hora" value="">
                                                 <div class="input-group-append">
                                                     <span class="input-group-text"><i class="fa fa-clock-o"></i></span>
                                                 </div>
@@ -149,12 +159,12 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <label class="m-t-30">Teléfono</label>
-                                            <input type="text" class="form-control" placeholder="1234567...">
+                                            <input type="text" class="form-control" id="Llamadas-Telefono" placeholder="1234567...">
                                         </div>
                                         <div class="col-md-4">
                                             <label class="m-t-30">Contact Center</label>
 
-                                            <select class="selectpicker " multiple data-style="form-control"
+                                            <select class="selectpicker" id="Llamadas-Contact" multiple data-style="form-control"
                                                 style="width: 100%;">
                                                 <!--  select2 custom-select form-control -->
                                                 <!-- multiple data-style="form-control btn-secondary" -->
@@ -175,7 +185,7 @@
                                         </div>
                                         <div class="col-md-4">
                                             <h5 class="m-t-30">Estado</h5>
-                                            <select class="selectpicker form-control" style="width: 100%;">
+                                            <select class="selectpicker form-control" id="Llamadas-Estado" style="width: 100%;">
                                                 <option disabled selected>Seleccione...</option>
                                                 <option>Efectiva</option>
                                                 <option>Programada</option>
@@ -187,8 +197,9 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group m-t-30 MyStyle_Btn_Filtro ">
-                                                <button type="submit" class="btn btn-rounded btn-success">Consultar</button>
-                                                <a href="#" class="btn btn-rounded btn-primary">Filtro avanzado </a>
+                                                <button type="submit"
+                                                class="btn btn-info"><i class="fas fa-search"></i> Consultar</button>
+                                                <button class="btn btn-warning" style="margin-left: 1.7rem;"><i class="fas fa-filter"></i> Filtro avanzado </button>
                                             </div>
                                         </div>
                                     </div>
@@ -198,7 +209,7 @@
                         <div class="table-responsive m-t-40">
                             <table id="example" class="table table-bordered table-striped MyStyle_Color-Table">
                                 <thead>
-                                    <tr style="background: #0c0c0c; color: rgb(28, 231, 204);">
+                                    <tr>
                                         <th class="MyStyle_Table_num">#</th>
                                         <th>Empresa</th>
                                         <th class="MyStyle_Table_Fecha">Fecha </th>
@@ -222,18 +233,18 @@
                                             <input type="checkbox" class="js-switch" data-color="#f62d51"
                                                 data-secondary-color="#26c6da" data-size="small" />
 
-                                            <a href="#" data-toggle="modal" class="btn btn-outline-primary"
+                                            <a href="#" data-toggle="modal" class="btn btn-warning"
                                                 data-target=".ModalDetalles">
                                                 <i class="fa  fa-eye"></i>
                                             </a>
 
                                             <a href="#" data-toggle="tooltip" data-original-title="Editar"
-                                                class="btn btn-outline-info">
+                                                class="btn btn-info">
                                                 <i class="fa fa-pencil"></i>
                                             </a>
 
                                             <a href="#" data-toggle="tooltip" data-original-title="Eliminar"
-                                                class="btn btn-outline-danger">
+                                                class="btn btn-danger">
                                                 <i class="fa fa-close"></i>
                                             </a>
 
@@ -254,18 +265,18 @@
                                             <input type="checkbox" class="js-switch" data-color="#f62d51"
                                                 data-secondary-color="#26c6da" data-size="small" />
 
-                                            <a href="#" data-toggle="modal" class="btn btn-outline-primary"
+                                            <a href="#" data-toggle="modal" class="btn btn-warning"
                                                 data-target=".ModalDetalles">
                                                 <i class="fa  fa-eye"></i>
                                             </a>
 
                                             <a href="#" data-toggle="tooltip" data-original-title="Editar"
-                                                class="btn btn-outline-info">
+                                                class="btn btn-info">
                                                 <i class="fa fa-pencil"></i>
                                             </a>
 
                                             <a href="#" data-toggle="tooltip" data-original-title="Eliminar"
-                                                class="btn btn-outline-danger">
+                                                class="btn btn-danger">
                                                 <i class="fa fa-close"></i>
                                             </a>
 
@@ -284,18 +295,18 @@
                                             <input type="checkbox" class="js-switch" data-color="#f62d51"
                                                 data-secondary-color="#26c6da" data-size="small" />
 
-                                            <a href="#" data-toggle="modal" class="btn btn-outline-primary"
+                                            <a href="#" data-toggle="modal" class="btn btn-warning"
                                                 data-target=".ModalDetalles">
                                                 <i class="fa  fa-eye"></i>
                                             </a>
 
                                             <a href="#" data-toggle="tooltip" data-original-title="Editar"
-                                                class="btn btn-outline-info">
+                                                class="btn btn-info">
                                                 <i class="fa fa-pencil"></i>
                                             </a>
 
                                             <a href="#" data-toggle="tooltip" data-original-title="Editar"
-                                                class="btn btn-outline-danger">
+                                                class="btn btn-danger">
                                                 <i class="fa fa-close"></i>
                                             </a>
                                         </td>
@@ -319,7 +330,7 @@
                             </div>
                             <div class="modal-body">
                                 <div class="card m-b-0">
-                                    <div class="card-body ">
+                                    <div class="card-body" id="Card-Body-Llamadas-Modal">
                                         <!-- Nav tabs -->
                                         <ul class="nav nav-tabs" role="tablist">
                                             <li class="nav-item">
@@ -348,7 +359,7 @@
                                             <div class="tab-pane active" id="DatosBasicos" role="tabpanel">
                                                 <!-- Card Datos Básicos  -->
                                                 <div class="card MyStyle_Card_Detalle">
-                                                    <div class="card-body">
+                                                    <div class="card-body" id="Card-Body-Llamadas2-Modal">
                                                         <!-- Formulario -->
                                                         <form class="form-horizontal" role="form">
                                                             <div class="form-body">
@@ -480,7 +491,7 @@
                                             <!-- Informaciòn llamada -->
                                             <div class="tab-pane" id="Lineas" role="tabpanel">
                                                 <div class="card MyStyle_Card_Detalle">
-                                                    <div class="card-body">
+                                                    <div class="card-body" id="Card-Body-Llamadas2-Modal">
                                                         <!-- Formulario -->
                                                         <form class="form-horizontal" role="form">
                                                             <div class="form-body">
@@ -709,6 +720,9 @@
         <!-- Sweetalert -->
         <script src="../../../assets/plugins/sweetalert/sweetalert.min.js"></script>
         <script src="../../../assets/plugins/sweetalert/jquery.sweet-alert.custom.js"></script>
+
+
+        <script src="https://kit.fontawesome.com/8feb0255f1.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

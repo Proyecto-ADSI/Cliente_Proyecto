@@ -78,7 +78,12 @@ let ObtenerBarriosVereda = (Id_Barrios_Veredas) =>{
 }
 
 $(function(){
-ObtenerBarriosVereda();
-ListarMunicipio2();
-ListarSubTipo2();
+    ListarMunicipio2();
+    ListarSubTipo2();
+});
+
+$(document).ready(function(){
+    $('#EditarBarriosVeredas').click(function(){
+        ObtenerBarriosVereda();
+    });
 });

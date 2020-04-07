@@ -15,7 +15,7 @@ let ListarMunicipio = () =>{
             <td>${contador}</td>
             <td>${item.Nombre_Municipio}</td>
             <td class="text-nowrap">
-                    <i class="fa fa-pencil text-inverse m-r-10" data-toggle="modal" data-target="#ModificarMunicipio" onclick="ObtenerMunicipio(${item.Id_Municipio})" style="cursor:pointer;"></i>
+                    <i class="fa fa-pencil text-inverse m-r-10" id="EditarMunicipio" data-toggle="modal" data-target="#ModificarMunicipio" onclick="ObtenerMunicipio(${item.Id_Municipio})" style="cursor:pointer;"></i>
                      <i class="fa fa-close text-danger" style="cursor:pointer;"></i>
                      <input type="checkbox" class="js-switch3" data-color="#f62d51" data-secondary-color="#26c6da" data-size="small" />
             </td>
@@ -31,6 +31,8 @@ let ListarMunicipio = () =>{
         console.log(error);
     });
 }
-$(function(){
-   ListarMunicipio();
+$(document).ready(function(){
+    $('#MunicipioTab').click(function(){
+        ListarMunicipio();
+    });
 });
