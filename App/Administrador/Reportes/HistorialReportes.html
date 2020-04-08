@@ -20,6 +20,9 @@
     <!-- Tema de la plantilla -->
     <link href="../../../css/colors/megna-dark.css" id="theme" rel="stylesheet">
 
+    
+      
+
     <!-- DataTable -->
     <link rel="stylesheet" href="../../../assets/plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
     <!-- Switchery -->
@@ -76,7 +79,7 @@
         <div class="page-wrapper">
 
             <!-- Titulo página -->
-            <div class="row page-titles">
+            <!-- <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
                     <h3 class="text-themecolor">Reportes</h3>
                 </div>
@@ -86,6 +89,14 @@
                         <li class="breadcrumb-item">pages</li>
                         <li class="breadcrumb-item active">Historial de reportes</li>
                     </ol>
+                </div>
+            </div> -->
+
+            
+            <div class="row page-titles">
+                <div class="col-lg-12 text-center">
+                    <h1 class="m-t-30">Eskatemp S.A.S</h1>
+                    <h5 class="text-muted m-b-30"><i class="ti-pin"></i>Solución Integral</h5>
                 </div>
             </div>
 
@@ -100,22 +111,22 @@
                     <div class="card-header MyStyle_Card_Header">
                         <h4 class="m-b-0 text-white">Reportes</h4>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body" id="Card-Body-Historial-Reportes">
                         <!-- <h6 class="card-subtitle"> Filtro:</h6> -->
                         <div class="card MyStyle_Card_Filtro card-outline-primary">
                             <div class="card-header">
                                 <h4 class="m-b-0 text-white">Filtro:</h4>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body" id="Card-Body-Historial-Reportes2">
                                 
-                                <form class="form-material" action="" method="POST">
-                                    <div class="row form-control">
+                                <form class="" action="" method="POST">
+                                    <div class="row">
                                        
                                         <div class="col-md-12">
                                             <div class="example">
                                                 <label class="m-t-30">Rango de Fechas</label>
-                                                <input class="form-control input-daterange-datepicker" type="text"
-                                                    name="daterange" value=""  required/>
+                                                <input class="form-control input-daterange-datepicker" type="text" id="Reportes-Historial"
+                                                    name="daterange" value="" style="margin-bottom: 2rem;"  required/>
                                             </div>
                                         </div>
                                        
@@ -152,8 +163,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group m-t-30 MyStyle_Btn_Filtro ">
                                                 <button type="submit"
-                                                    class="btn btn-rounded btn-success" style="color: #0c0c0c;" >Consultar</button>
-                                               
+                                                class="btn btn-info"><i class="fas fa-search"></i> Consultar</button>
                                             </div>
                                         </div>
                                     </div>
@@ -163,7 +173,7 @@
                         <div class="table-responsive m-t-40">
                             <table id="example" class="table table-bordered table-striped MyStyle_Color-Table">
                                 <thead>
-                                    <tr style="color: rgb(28, 231, 204); background: #0c0c0c;">
+                                    <tr">
                                         <th class="MyStyle_Table_num">#</th>
                                         
                                         <th class="MyStyle_Table_Fecha">Fecha </th>
@@ -172,7 +182,7 @@
                                         <th class="MyStyle_Table_Fecha">Tipo</th>
                                         
                                         <th>Opciones</th>
-                                    </tr>
+                                    </tr">
                                 </thead>
                                 <tbody>
                                     <tr>
@@ -192,14 +202,14 @@
 
                                            
                                                 <a href="#" data-toggle="tooltip" data-original-title="descargar"
-                                                class="btn btn-outline-info">
+                                                class="btn btn-info">
                                                 <i class="fa fa-cloud-download"></i>
                                             </a>
                                           
 
                                             
                                             <a href="#" data-toggle="tooltip" data-original-title="Eliminar"
-                                                class="btn btn-outline-danger">
+                                                class="btn btn-danger">
                                                 <i class="fa fa-close"></i>
                                             </a>
 
@@ -221,14 +231,14 @@
 
                                            
                                                 <a href="#" data-toggle="tooltip" data-original-title="descargar"
-                                                class="btn btn-outline-info">
+                                                class="btn btn-info">
                                                 <i class="fa fa-cloud-download"></i>
                                             </a>
                                           
 
                                             
                                             <a href="#" data-toggle="tooltip" data-original-title="Eliminar"
-                                                class="btn btn-outline-danger">
+                                                class="btn btn-danger">
                                                 <i class="fa fa-close"></i>
                                             </a>
                                         </td>
@@ -249,14 +259,14 @@
 
                                            
                                                 <a href="#" data-toggle="tooltip" data-original-title="descargar"
-                                                class="btn btn-outline-info">
+                                                class="btn btn-info">
                                                 <i class="fa fa-cloud-download"></i>
                                             </a>
                                           
 
                                             
                                             <a href="#" data-toggle="tooltip" data-original-title="Eliminar"
-                                                class="btn btn-outline-danger">
+                                                class="btn btn-danger">
                                                 <i class="fa fa-close"></i>
                                             </a>
                                         </td>
@@ -338,6 +348,9 @@
          <!-- Sweetalert -->
          <script src="../../../assets/plugins/sweetalert/sweetalert.min.js"></script>
          <script src="../../../assets/plugins/sweetalert/jquery.sweet-alert.custom.js"></script>
+
+         <!--Font awesome-->
+      <script src="https://kit.fontawesome.com/8feb0255f1.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

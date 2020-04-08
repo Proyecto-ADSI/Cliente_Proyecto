@@ -72,13 +72,13 @@ File: css
 }
 
 .wizard-content .wizard>.steps>ul>li.current>a {
-    color: #2f3d4a;
+    color: #b5b5b5;
     cursor: default
 }
 
 .wizard-content .wizard>.steps>ul>li.current .step {
     border-color: #009efb ;
-    background-color: #fff;
+    background-color: #333333;
     color: #009efb 
 }
 
@@ -229,14 +229,15 @@ File: css
 .wizard-content .wizard.wizard-circle>.steps>ul>li.current:after,
 .wizard-content .wizard.wizard-circle>.steps>ul>li.current~li:after,
 .wizard-content .wizard.wizard-circle>.steps>ul>li.current~li:before {
-    background-color: #F3F3F3
+    background-color: grey
 }
 
 .wizard-content .wizard.wizard-circle>.steps .step {
     width: 50px;
     height: 50px;
     line-height: 45px;
-    border: 3px solid #F3F3F3;
+    border: 3px solid grey;
+    background-color: #333333;
     font-size: 1.3rem;
     border-radius: 50%
 }

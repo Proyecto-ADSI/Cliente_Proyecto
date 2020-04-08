@@ -62,7 +62,7 @@
         <div class="page-wrapper">
 
             <!-- Titulo página -->
-            <div class="row page-titles">
+            <!-- <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
                     <h3 class="text-themecolor">Registro de usuarios</h3>
                 </div>
@@ -73,7 +73,15 @@
                         <li class="breadcrumb-item active">Registro de usuarios</li>
                     </ol>
                 </div>
+            </div> -->
+
+            <div class="row page-titles">
+                <div class="col-lg-12 text-center">
+                    <h1 class="m-t-30">Eskatemp S.A.S</h1>
+                    <h5 class="text-muted m-b-30"><i class="ti-pin"></i>Solución Integral</h5>
+                </div>
             </div>
+
 
             <!-- ============================================================== -->
             <!-- Container fluid  -->
@@ -114,7 +122,7 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label class="control-label text-right">Tipo de
+                                                            <label class="control-label text-right" id="Label-Form-Registro-Usuario">Tipo de
                                                                 documento <span class="text-danger">*</span>
                                                             </label>
 
@@ -135,7 +143,7 @@
 
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label class="control-label">Documento
+                                                            <label class="control-label" id="Label-Form-Registro-Usuario">Documento
                                                                 <span class="text-danger">*</span>
                                                             </label>
 
@@ -157,7 +165,7 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label class="control-label">Nombre
+                                                            <label class="control-label" id="Label-Form-Registro-Usuario">Nombre
                                                                 <span class="text-danger">*</span>
                                                             </label>
                                                             <div class="input-group">
@@ -174,7 +182,7 @@
                                                     <!--/row-->
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label class="control-label">Apellidos
+                                                            <label class="control-label" id="Label-Form-Registro-Usuario">Apellidos
                                                                 <span class="text-danger">*</span>
                                                             </label>
 
@@ -196,7 +204,7 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label class="control-label">Correo
+                                                            <label class="control-label" id="Label-Form-Registro-Usuario">Correo
                                                                 <span class="text-danger">*</span>
                                                             </label>
 
@@ -215,7 +223,7 @@
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label class="control-label">Sexo
+                                                            <label class="control-label" id="Label-Form-Registro-Usuario">Sexo
                                                                 <span class="text-danger">*</span>
                                                             </label>
 
@@ -238,7 +246,7 @@
                                                     <div class="col-md-6">
 
                                                         <div class="form-group">
-                                                            <label class="control-label">Celular
+                                                            <label class="control-label" id="Label-Form-Registro-Usuario">Celular
                                                             </label>
                                                             <div class="input-group ">
                                                                 <div class="input-group-prepend">
@@ -253,7 +261,7 @@
 
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label">Turno
+                                                            <label class="control-label" id="Label-Form-Registro-Usuario">Turno
                                                                 <span class="text-danger">*</span>
                                                             </label>
 
@@ -274,7 +282,7 @@
                                                     </div>
                                                     <!--/span-->
                                                     <div class="col-md-6">
-                                                        <div class="card">
+                                                        <div class="card" id="Card-Fotografia">
                                                             <div class="card-body MyStyle_File_Card">
                                                                 <h4 class="card-title">Fotografía</h4>
                                                                 <input type="file" id="fileFotografia" name="Fotografia"
@@ -313,7 +321,7 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label class="control-label">Usuario
+                                                    <label class="control-label" id="Label-Form-Registro-Usuario">Usuario
                                                         <span class="text-danger">*</span>
                                                     </label>
                                                     <div class="input-group">
@@ -330,7 +338,7 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label class="control-label">Tipo de usuario
+                                                    <label class="control-label" id="Label-Form-Registro-Usuario">Tipo de usuario
                                                         <span class="text-danger">*</span>
                                                     </label>
 
@@ -353,7 +361,7 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label class="control-label">Contraseña
+                                                    <label class="control-label" id="Label-Form-Registro-Usuario">Contraseña
                                                         <span class="text-danger">*</span>
                                                     </label>
 
@@ -371,7 +379,7 @@
                                             <!--/span-->
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label class="control-label">Confirmar
+                                                    <label class="control-label" id="Label-Form-Registro-Usuario">Confirmar
                                                         <span class="text-danger">*</span>
                                                     </label>
 
@@ -394,10 +402,10 @@
                                         <hr>
                                         <div class="form-actions row">
                                             <div class="col-md-6 MyStyle_Btn_Registro_Usuarios">
-                                                <div class="row">
+                                                <div class="row" style="margin-top: 0.5rem; position: relative; top: -2rem;">
                                                     <div class="col-md-offset-3 col-md-9">
-                                                        <button type="submit" class="btn btn-success">Guardar</button>
-                                                        <a href="GestionarUsuarios.html" class="btn btn-inverse">Cancelar</a>
+                                                        <button type="submit" class="btn btn-info">Guardar</button>
+                                                        <a href="GestionarUsuarios.html" style="margin-left:1rem;" class="btn btn-danger">Cancelar</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -470,6 +478,10 @@
         <!-- <script src="../../../js/Select2.js"></script> -->
 
         <script src="../../../Controllers/Usuarios/RegistrarUsuario.js"></script>
+
+
+         <!--Font awesome-->
+    <script src="https://kit.fontawesome.com/8feb0255f1.js" crossorigin="anonymous"></script>
 
 </body>
 

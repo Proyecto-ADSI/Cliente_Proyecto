@@ -20,6 +20,8 @@
     <!-- Tema de la plantilla -->
     <link href="../../../css/colors/megna-dark.css" id="theme" rel="stylesheet">
 
+ 
+
     <!-- DataTable -->
     <link rel="stylesheet" href="../../../assets/plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
 
@@ -84,7 +86,7 @@
         <div class="page-wrapper">
 
             <!-- Titulo página -->
-            <div class="row page-titles">
+            <!-- <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
                     <h3 class="text-themecolor">Gestión de clientes</h3>
                 </div>
@@ -94,6 +96,12 @@
                         <li class="breadcrumb-item">pages</li>
                         <li class="breadcrumb-item active">Gestión de clientes</li>
                     </ol>
+                </div>
+            </div> -->
+            <div class="row page-titles">
+                <div class="col-lg-12 text-center">
+                    <h1 class="m-t-30">Eskatemp S.A.S</h1>
+                    <h5 class="text-muted m-b-30"><i class="ti-pin"></i>Solución Integral</h5>
                 </div>
             </div>
             <!-- ============================================================== -->
@@ -107,36 +115,39 @@
                     <div class="card-header MyStyle_Card_Header">
                         <h4 class="m-b-0 text-white">Directorio de clientes</h4>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body" id="Card-Body-Filtrar-Directorio">
                         <!-- <h6 class="card-subtitle"> Filtro:</h6> -->
                         <div class="card MyStyle_Card_Filtro card-outline-primary">
                             <div class="card-header">
                                 <h4 class="m-b-0 text-white">Filtro:</h4>
                             </div>
-                            <div class="card-body">
-                                <form class="form-material">
+                            <div class="card-body" id="Card-Body-Filtrar-Directorio2">
+                                <form class="" action="" method="POST">
+
                                     <div class="col-12">
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <label class="m-t-30">NIT</label>
-                                                <input type="text" class="form-control" placeholder="123...">
+                                                <input type="text" class="form-control" id="Nit" placeholder="123...">
                                             </div>
 
                                             <div class="col-md-4">
                                                 <label class="m-t-30">Razón social</label>
-                                                <input type="text" class="form-control" placeholder="Nombre">
+                                                <input type="text" class="form-control" id="RazonSocial"
+                                                    placeholder="Nombre">
                                             </div>
 
                                             <div class="col-md-4">
                                                 <label class="m-t-30">Teléfono</label>
-                                                <input type="text" class="form-control" placeholder="1234567...">
+                                                <input type="text" class="form-control" id="Telefono"
+                                                    placeholder="1234567...">
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="row">
 
-                                        <div class="col-md-4">
+                                        <div class="col-md-4" style="margin-left: 1rem;">
                                             <label class="m-t-30">Operador</label>
                                             <select class="selectpicker form-control" style="width: 100%;">
                                                 <option disabled selected>Seleccione...</option>
@@ -145,7 +156,7 @@
                                             </select>
                                         </div>
                                         <div class="col-md-4">
-                                            <h5 class="m-t-30">Corporativo</h5>
+                                            <label class="m-t-30">Corporativo</label>
                                             <select class="selectpicker form-control" style="width: 100%;">
                                                 <option disabled selected>Seleccione...</option>
                                                 <option>Sí</option>
@@ -157,10 +168,12 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <div class="form-group m-t-30 MyStyle_Btn_Filtro ">
-                                                <button type="submit"
-                                                    class="btn btn-rounded btn-success">Consultar</button>
-                                                <a href="#" class="btn btn-rounded btn-primary">Filtro avanzado </a>
+                                            <div class="form-group m-t-30 MyStyle_Btn_Filtro"
+                                                style="margin-left: 1rem;">
+                                                <button type="submit" class="btn btn-info"><i class="fas fa-search"></i>
+                                                    Consultar</button>
+                                                <button class="btn btn-warning" style="margin-left: 1.7rem;"><i
+                                                        class="fas fa-filter"></i> Filtro avanzado </button>
                                             </div>
                                         </div>
                                     </div>
@@ -178,19 +191,27 @@
                                     </div>
                                     <div class="col-md-5">
                                         <div class="m-l-50">
-                                            <a href="AgregarEmpresa.html" class="btn btn-rounded btn-success"
-                                                style="color: #0c0c0c;">Agregar
-                                                Cliente
-                                            </a>
-                                            <a href="#" class="btn btn-rounded btn-primary" data-toggle="modal"
-                                                data-target=".importarClientes"
-                                                style="background: rgb(28, 231, 204); color:#0c0c0c">Importar Clientes
-                                            </a>
+                                            <button class="btn btn-secondary dropdown-toggle" type="button"
+                                                id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                                aria-expanded="false">
+                                                Opciones
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <a href="AgregarEmpresa.html" class="dropdown-item""
+                                                > <i class=" fas fa-user-plus"></i> Agregar
+                                                    Cliente
+                                                </a>
+                                                <a href="#" class="dropdown-item"" data-toggle=" modal"
+                                                    data-target=".ImportarClientes"><i class="fas fa-file-upload"></i>
+                                                    Importar Clientes
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body" id="Card-Body-Directorio">
+
                                 <!-- Importar archivo de clientes-->
                                 <div class="modal fade importarClientes" tabindex="-1" role="dialog"
                                     aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
@@ -1101,6 +1122,11 @@
 
         <!-- Dropify (Seleccionar archivos) -->
         <script src="../../../assets/plugins/dropify/dist/js/dropify.min.js"></script>
+
+
+        
+            <!--Font awesome-->
+       <script src="https://kit.fontawesome.com/8feb0255f1.js" crossorigin="anonymous"></script>
 
         <!-- Controladores JS -->
         <script src="../../../Controllers/Clientes/ListarClientes.js"></script>

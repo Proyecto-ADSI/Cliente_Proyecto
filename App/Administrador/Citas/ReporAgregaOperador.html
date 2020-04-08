@@ -20,6 +20,8 @@
     <!-- Tema de la plantilla -->
     <link href="../../../css/colors/megna-dark.css" id="theme" rel="stylesheet">
 
+  
+
     <!-- DataTable -->
     <link rel="stylesheet"
         href="../../../assets/plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
@@ -75,7 +77,7 @@
         <div class="page-wrapper">
 
             <!-- Titulo página -->
-            <div class="row page-titles">
+            <!-- <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
                     <h3 class="text-themecolor">Gestión de citas</h3>
                 </div>
@@ -86,6 +88,14 @@
                         <li class="breadcrumb-item active">Gestión de citas</li>
                     </ol>
                 </div>
+            </div> -->
+
+            
+            <div class="row page-titles">
+                <div class="col-lg-12 text-center">
+                    <h1 class="m-t-30">Eskatemp S.A.S</h1>
+                    <h5 class="text-muted m-b-30"><i class="ti-pin"></i>Solución Integral</h5>
+                </div>
             </div>
 
             <!-- ============================================================== -->
@@ -95,16 +105,16 @@
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
-                <div class="card ">
+                <div class="card">
                     <div class="card-header MyStyle_Card_Header">
                         <h4 class="m-b-0 text-white">Reporte Operador</h4>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body" id="Card-ReporOperador">
 
                         <div class="row">
                             <form action="">
 
-                                <div class="table-responsive m-t-40">
+                                <div class="table-responsive m-t-40" style="margin-left: 2rem;">
                                     <table id="example" class="table table-bordered table-striped MyStyle_Color-Table">
                                         <thead>
                                             <tr>
@@ -135,14 +145,14 @@
 
                                                 <td>
 
-                                                    <a href="#" data-toggle="modal" class="btn btn-outline-primary"
+                                                    <a href="#" data-toggle="modal" class="btn btn-warning"
                                                         data-target=".ModalDetalles">
                                                         <i class="fa  fa-eye"></i>
                                                     </a>
 
                                                     <button type="button" data-toggle="tooltip"
                                                         data-original-title="Eliminar"
-                                                        class="btn btn-outline-danger sa-params">
+                                                        class="btn btn-danger">
                                                         <i class="fa fa-close"></i>
                                                     </button>
 
@@ -161,14 +171,14 @@
                                                 <td>8</td>
 
                                                 <td>
-                                                    <a href="#" data-toggle="modal" class="btn btn-outline-primary"
+                                                    <a href="#" data-toggle="modal" class="btn btn-warning"
                                                         data-target=".ModalDetalles">
                                                         <i class="fa  fa-eye"></i>
                                                     </a>
 
                                                     <button type="button" data-toggle="tooltip"
                                                         data-original-title="Eliminar"
-                                                        class="btn btn-outline-danger sa-params">
+                                                        class="btn btn-danger">
                                                         <i class="fa fa-close"></i>
                                                     </button>
                                                 </td>
@@ -186,14 +196,14 @@
                                                 <td>4</td>
 
                                                 <td>
-                                                    <a href="#" data-toggle="modal" class="btn btn-outline-primary"
+                                                    <a href="#" data-toggle="modal" class="btn btn-warning"
                                                         data-target=".ModalDetalles">
                                                         <i class="fa  fa-eye"></i>
                                                     </a>
 
                                                     <button type="button" data-toggle="tooltip"
                                                         data-original-title="Eliminar"
-                                                        class="btn btn-outline-danger sa-params">
+                                                        class="btn btn-danger">
                                                         <i class="fa fa-close"></i>
                                                     </button>
 
@@ -206,7 +216,7 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <div class="form-group m-t-30">
+                                <div class="form-group m-t-30" style="margin-left: 2rem;">
                                     <button type="submit" class="btn btn-rounded btn-info">
                                         <i class="fa  fa-file-pdf-o"></i>
                                         Generar reporte
@@ -1003,6 +1013,8 @@
         <!-- Sweetalert -->
         <script src="../../../assets/plugins/sweetalert/sweetalert.min.js"></script>
         <script src="../../../assets/plugins/sweetalert/jquery.sweet-alert.custom.js"></script>
+          <!--Font Awesome-->
+    <script src="https://kit.fontawesome.com/8feb0255f1.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

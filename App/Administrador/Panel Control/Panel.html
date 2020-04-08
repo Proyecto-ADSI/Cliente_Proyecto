@@ -19,6 +19,7 @@
     <!--Switchery css-->
     <link href="../../../assets/plugins/switchery/dist/switchery.min.css" rel="stylesheet" />
 
+   
      <!-- Sweetalert -->
      <link href="../../../assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
     <!-- Custom CSS -->
@@ -66,7 +67,7 @@
         <!-- ============================================================== -->
         <div class="page-wrapper">
             <!-- Titulo página -->
-            <div class="row page-titles">
+            <!-- <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
                     <h3 class="text-themecolor">Panel de control</h3>
                 </div>
@@ -76,6 +77,12 @@
                         <li class="breadcrumb-item">pages</li>
                         <li class="breadcrumb-item active">Registro de usuarios</li>
                     </ol>
+                </div>
+            </div> -->
+            <div class="row page-titles">
+                <div class="col-lg-12 text-center">
+                    <h1 class="m-t-30">Eskatemp S.A.S</h1>
+                    <h5 class="text-muted m-b-30"><i class="ti-pin"></i>Solución Integral</h5>
                 </div>
             </div>
 
@@ -90,7 +97,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="card-body">
+                            <div class="card-body" id="Card-Body-Panel-Control">
                                 <h4 class="card-title">Configuración del sistema</h4>
                                 <!-- Nav tabs -->
                                 <div class="vtabs ">
@@ -98,51 +105,51 @@
                                         <li class="nav-item">
                                             <a class="nav-link active" data-toggle="tab" href="#presentacion"
                                                 role="tab">
-                                                <span><i class="ti-home"></i>Presentación Corporativa </span></a>
+                                                <span id="Span-Panel"><i class="ti-home"></i>Presentación Corporativa </span></a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" data-toggle="tab" href="#roles" role="tab">
-                                                <span><i class="ti-home"></i>Roles</span></a>
+                                            <a class="nav-link" data-toggle="tab" id="RolesTab" href="#roles" role="tab">
+                                                <span id="Span-Panel"><i class="ti-home"></i>Roles</span></a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" data-toggle="tab" href="#documento" role="tab">
-                                                <span><i class="ti-home"></i>Documentos</span></a>
+                                            <a class="nav-link" data-toggle="tab" id="DocumentosTab" href="#documento" role="tab">
+                                                <span id="Span-Panel"><i class="ti-home"></i>Documentos</span></a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" data-toggle="tab" href="#sexo" role="tab">
-                                                <span><i class="ti-home"></i>Sexo</span></a>
+                                            <a class="nav-link" data-toggle="tab" id="SexoTab" href="#sexo" role="tab">
+                                                <span id="Span-Panel"><i class="ti-home"></i>Sexo</span></a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" data-toggle="tab" href="#pais" role="tab">
-                                                <span><i class="ti-home"></i>País</span></a>
+                                            <a class="nav-link" data-toggle="tab" id="PaisTab" href="#pais" role="tab">
+                                                <span id="Span-Panel"><i class="ti-home"></i>País</span></a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" data-toggle="tab" href="#departamento" role="tab">
-                                                <span><i class="ti-home"></i>Departamentos</span></a>
+                                            <a class="nav-link" data-toggle="tab" id="DepartamentosTab" href="#departamento" role="tab">
+                                                <span id="Span-Panel"><i class="ti-home"></i>Departamentos</span></a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" data-toggle="tab" href="#municipio" role="tab">
-                                                <span><i class="ti-home"></i>Municipios</span></a>
+                                            <a class="nav-link" data-toggle="tab" id="MunicipioTab" href="#municipio" role="tab">
+                                                <span id="Span-Panel"><i class="ti-home"></i>Municipios</span></a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" data-toggle="tab" href="#subtipo" role="tab">
-                                                <span><i class="ti-home"></i>Sub tipo</span></a>
+                                            <a class="nav-link" data-toggle="tab" id="SubTipoTab" href="#subtipo" role="tab">
+                                                <span id="Span-Panel"><i class="ti-home"></i>Sub tipo</span></a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" data-toggle="tab" href="#barrio/vereda" role="tab">
-                                                <span><i class="ti-home"></i>Barrios y veredas</span></a>
+                                            <a class="nav-link" data-toggle="tab" id="BarriosVeredasTab" href="#barrio/vereda" role="tab">
+                                                <span id="Span-Panel"><i class="ti-home"></i>Barrios y veredas</span></a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" data-toggle="tab" href="#operadores" role="tab">
-                                                <span><i class="ti-home"></i>Operadores</span></a>
+                                            <a class="nav-link" data-toggle="tab" id="OperadoresTab" href="#operadores" role="tab">
+                                                <span id="Span-Panel"><i class="ti-home"></i>Operadores</span></a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" data-toggle="tab" href="#turnos" role="tab">
-                                                <span><i class="ti-home"></i>Turnos</span></a>
+                                            <a class="nav-link" data-toggle="tab" id="TurnosTab" href="#turnos" role="tab">
+                                                <span id="Span-Panel"><i class="ti-home"></i>Turnos</span></a>
                                         </li>
                                         <li class="nav-item">
-                                                <a class="nav-link" data-toggle="tab" href="#directorio" role="tab">
-                                                    <span><i class="ti-home"></i>Configuración directorio</span></a>
+                                                <a class="nav-link" data-toggle="tab" id="DirectorioTab" href="#directorio" role="tab">
+                                                    <span id="Span-Panel"><i class="ti-home"></i>Configuración directorio</span></a>
                                             </li>                       
                                     </ul>
 
@@ -153,7 +160,7 @@
                                         <div class="tab-pane active" id="presentacion" role="tabpanel">
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <div class="card">
+                                                    <div class="card" id="Card-Presentacion-Corporativa">
                                                         <div class="card-body p-b-0">
                                                             <h4 class="card-title">Presentación Corporativa</h4>
                                                             <!-- Nav tabs -->
@@ -332,7 +339,7 @@
                                     <div class="tab-pane " id="roles" role="tabpanel">
                                         <div class="row">
                                             <div class="col-10">
-                                                <div class="card">
+                                                <div class="card" id="Card-Roles">
                                                     <div class="card-body">
                                                         <h4 class="card-title">Roles Registrados</h4>
                                                         <div class="table-responsive">
@@ -361,7 +368,7 @@
                                     <div class="tab-pane " id="documento" role="tabpanel">
                                         <div class="row">
                                             <div class="col-6">
-                                                <div class="card">
+                                                <div class="card" id="Card-Documentos">
                                                     <div class="card-body">
                                                         <h4 class="card-title">Tipo de documentos registrados</h4>
                                                         <div class="table-responsive">
@@ -382,9 +389,9 @@
                                                 </div>
                                             </div>
                                             <div class="col-6">
-                                                <div class="card">
+                                                <div class="card" id="Card-Documentos2">
                                                     <div class="card-body">
-                                                        <h4 class="card-title">Edición y registro de documentos
+                                                        <h4 class="card-title">Registro de documentos
                                                         </h4>
 
                                                         <form class="form-horizontal p-t-20" id="FormDocumento">
@@ -428,7 +435,7 @@
                                     <div class="tab-pane " id="sexo" role="tabpanel">
                                         <div class="row">
                                             <div class="col-6">
-                                                <div class="card">
+                                                <div class="card" id="Card-Sexo" >
                                                     <div class="card-body">
                                                         <h4 class="card-title">Sexos Registrados</h4>
                                                         <div class="table-responsive">
@@ -450,7 +457,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-6">
-                                                <div class="card">
+                                                <div class="card" id="Card-Sexo2" >
                                                     <div class="card-body">
                                                         <h4 class="card-title">Edición y registro de sexo
                                                         </h4>
@@ -491,7 +498,7 @@
                                     <div class="tab-pane" id="pais" role="tabpanel">
                                         <div class="row">
                                             <div class="col-6">
-                                                <div class="card">
+                                                <div class="card" id="Card-Pais" >
                                                     <div class="card-body">
                                                         <h4 class="card-title">Paises Registrados</h4>
                                                         <div class="table-responsive">
@@ -504,22 +511,7 @@
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody id="TablaPais">
-                                                                    <!-- <tr>
-                                                                        <td>1</td>
-                                                                        <td>Antioquia</td>
-                                                                        <td class="text-nowrap">
-                                                                            <a href="#" data-toggle="tooltip"
-                                                                                data-original-title="Editar">
-                                                                                <i
-                                                                                    class="fa fa-pencil text-inverse m-r-10"></i>
-                                                                            </a>
-                                                                            <a href="#" data-toggle="tooltip"
-                                                                                data-original-title="Eliminar"> <i
-                                                                                    class="fa fa-close text-danger"></i>
-                                                                            </a>
-                                                                        </td>
-                                                                    </tr> -->
-
+                                                                
 
                                                                 </tbody>
                                                             </table>
@@ -528,7 +520,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-6">
-                                                <div class="card">
+                                                <div class="card" id="Card-Pais2" >
                                                     <div class="card-body">
                                                         <h4 class="card-title">Edición y registro de paises
                                                         </h4>
@@ -570,7 +562,7 @@
                                     <div class="tab-pane" id="departamento" role="tabpanel">
                                         <div class="row">
                                             <div class="col-6">
-                                                <div class="card">
+                                                <div class="card" id="Card-Departamentos" >
                                                     <div class="card-body">
                                                         <h4 class="card-title">Departamentos Registrados</h4>
                                                         <div class="table-responsive">
@@ -591,7 +583,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-6">
-                                                <div class="card">
+                                                <div class="card" id="Card-Departamentos2" >
                                                     <div class="card-body">
                                                         <h4 class="card-title">Edición y registro de departamentos
                                                         </h4>
@@ -650,7 +642,7 @@
                                     <div class="tab-pane" id="municipio" role="tabpanel">
                                         <div class="row">
                                             <div class="col-6">
-                                                <div class="card">
+                                                <div class="card" id="Card-Municipios" >
                                                     <div class="card-body">
                                                         <h4 class="card-title">Municipios Registrados</h4>
                                                         <div class="table-responsive">
@@ -672,7 +664,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-6">
-                                                <div class="card">
+                                                <div class="card" id="Card-Municipios2" >
                                                     <div class="card-body">
                                                         <h4 class="card-title">Edición y registro de municipios
                                                         </h4>
@@ -732,7 +724,7 @@
                                     <div class="tab-pane " id="subtipo" role="tabpanel">
                                         <div class="row">
                                             <div class="col-6">
-                                                <div class="card">
+                                                <div class="card" id="Card-SubTipo" >
                                                     <div class="card-body">
                                                         <h4 class="card-title">Sub tipo Registrados</h4>
                                                         <div class="table-responsive">
@@ -753,7 +745,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-6">
-                                                <div class="card">
+                                                <div class="card" id="Card-SubTipo2" >
                                                     <div class="card-body">
                                                         <h4 class="card-title">Edición y registro de sub tipo
                                                         </h4>
@@ -797,7 +789,7 @@
                                     <div class="tab-pane" id="barrio/vereda" role="tabpanel">
                                         <div class="row">
                                             <div class="col-8">
-                                                <div class="card">
+                                                <div class="card" id="Card-BarrioVereda" >
                                                     <div class="card-body">
                                                         <h4 class="card-title">Barrios y Veredas Registrados</h4>
                                                         <div class="table-responsive">
@@ -819,7 +811,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-4">
-                                                <div class="card">
+                                                <div class="card" id="Card-BarrioVereda2" >
                                                     <div class="card-body">
                                                         <h4 class="card-title">Edición y registro de Barrio/Vereda
                                                         </h4>
@@ -904,7 +896,7 @@
                                     <div class="tab-pane" id="operadores" role="tabpanel">
                                         <div class="row">
                                             <div class="col-6">
-                                                <div class="card">
+                                                <div class="card" id="Card-Operadores" >
                                                     <div class="card-body">
                                                         <h4 class="card-title">Operadores Registrados</h4>
                                                         <div class="table-responsive">
@@ -925,7 +917,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-6">
-                                                <div class="card">
+                                                <div class="card" id="Card-Operadores2" >
                                                     <div class="card-body">
                                                         <h4 class="card-title">Edición y registro de operadores
                                                         </h4>
@@ -966,7 +958,7 @@
                                     <div class="tab-pane " id="turnos" role="tabpanel">
                                         <div class="row">
                                             <div class="col-8">
-                                                <div class="card">
+                                                <div class="card" id="Card-Turnos" >
                                                     <div class="card-body">
                                                         <h4 class="card-title">Turnos</h4>
                                                         <div class="table-responsive">
@@ -989,7 +981,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-4">
-                                                <div class="card">
+                                                <div class="card" id="Card-Turnos2" >
                                                     <div class="card-body">
                                                         <h4 class="card-title">Edición y registro de turnos
                                                         </h4>
@@ -1057,7 +1049,7 @@
                                      <div class="tab-pane" id="directorio" role="tabpanel">
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <div class="card">
+                                                    <div class="card" id="Card-Directorio" >
                                                         <div class="card-body">
                                                             <h4 class="card-title">Configuración de directorio
                                                             </h4>
@@ -1162,6 +1154,7 @@
                                         <div class="modal-body">
                                             <form id="FormOperadorEdit">
                                                 <div class="col-sm-12">
+                                                    <div class="form-group row">
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text"
@@ -1174,6 +1167,7 @@
                                                             id="TxtOperadorEdit" name="OperadorEdit"
                                                             placeholder="Operador" 
                                                              >
+                                                    </div>
                                                     </div>
                                                 </div>
                                         </div>
@@ -1198,6 +1192,7 @@
                                         <div class="modal-body">
                                             <form id="FormSubTipoEdit">
                                                 <div class="col-sm-12">
+                                                    <div class="form-group row">
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text"
@@ -1210,6 +1205,7 @@
                                                             id="TxtSubTipoEdit" name="SubTipoEdit"
                                                             placeholder="SubTipo" 
                                                              >
+                                                    </div>
                                                     </div>
                                                 </div>
                                         </div>
@@ -1234,6 +1230,7 @@
                                         <div class="modal-body">
                                             <form id="FormSexoEdit">
                                                 <div class="col-sm-12">
+                                                    <div class="form-group row">
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text"
@@ -1246,6 +1243,7 @@
                                                             id="TxtSexoEdit" name="SexoEdit"
                                                             placeholder="Sexo" 
                                                              >
+                                                    </div>
                                                     </div>
                                                 </div>
                                         </div>
@@ -1272,6 +1270,7 @@
                                     <div class="modal-body">
                                         <form id="FormPaisEdit">
                                             <div class="col-sm-12">
+                                                <div class="form-group row">
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"
@@ -1284,6 +1283,7 @@
                                                         id="TxtPaisEdit" name="PaisEdit"
                                                         placeholder="País" 
                                                          >
+                                                </div>
                                                 </div>
                                             </div>
                                     </div>
@@ -1614,6 +1614,11 @@
     <!-- Clock Picker -->
     <script src="../../../assets/plugins/clockpicker/dist/jquery-clockpicker.min.js"></script>
     <script src="../../../js/ClockPicker.js"></script>
+
+
+     <!--Font Awesome-->
+     <script src="https://kit.fontawesome.com/8feb0255f1.js" crossorigin="anonymous"></script>
+
 </body>
 
 </html>

@@ -15,7 +15,7 @@ let ListarDepartamento = () =>{
             <td>${contador}</td>
             <td>${item.Nombre_Departamento}</td>
             <td class="text-nowrap">
-                    <i class="fa fa-pencil text-inverse m-r-10" data-toggle="modal" data-target="#ModificarDepartamento" onclick="ObtenerDepartamento(${item.Id_Departamento})" style="cursor:pointer;"></i>
+                    <i class="fa fa-pencil text-inverse m-r-10" data-toggle="modal" data-target="#ModificarDepartamento" id="EditarDepartamento" onclick="ObtenerDepartamento(${item.Id_Departamento})" style="cursor:pointer;"></i>
                      <i class="fa fa-close text-danger" style="cursor:pointer;"></i>
                      <input type="checkbox" class="js-switch2" data-color="#f62d51" data-secondary-color="#26c6da" data-size="small" />
             </td>
@@ -31,6 +31,9 @@ let ListarDepartamento = () =>{
         console.log(error);
     });
 }
-$(function(){
-   ListarDepartamento();
+$(document).ready(function(){
+    $('#DepartamentosTab').click(function(){
+        ListarDepartamento();
+        ListarPais1();
+    });
 });

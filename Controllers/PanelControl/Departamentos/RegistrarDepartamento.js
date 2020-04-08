@@ -54,7 +54,7 @@ let RegistrarDepartamento = () => {
     });
 }
 
-let ListarPais1 = () =>{
+ ListarPais1 = () =>{
 
 
     $.ajax({

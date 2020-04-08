@@ -20,6 +20,8 @@
     <!-- Tema de la plantilla -->
     <link href="../../../css/colors/megna-dark.css" id="theme" rel="stylesheet">
 
+   
+
     <!-- DataTable -->
     <link rel="stylesheet" href="../../../assets/plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
 
@@ -68,7 +70,7 @@
         <div class="page-wrapper">
 
             <!-- Titulo página -->
-            <div class="row page-titles">
+            <!-- <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
                     <h3 class="text-themecolor">Eskatemp S.A</h3>
                 </div>
@@ -79,7 +81,15 @@
                         <li class="breadcrumb-item active">Gestión de usuarios</li>
                     </ol>
                 </div>
+            </div> -->
+
+            <div class="row page-titles">
+                <div class="col-lg-12 text-center">
+                    <h1 class="m-t-30">Eskatemp S.A.S</h1>
+                    <h5 class="text-muted m-b-30"><i class="ti-pin"></i>Solución Integral</h5>
+                </div>
             </div>
+
 
             <!-- ============================================================== -->
             <!-- Container fluid  -->
@@ -92,7 +102,7 @@
                     <div class="card-header MyStyle_Card_Header">
                         <h4 class="m-b-0 text-white">Gestión de usuarios y empleados</h4>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body" id="Card-Body-Gestion-Usuarios">
                         <!-- Card Table -->
                         <div class="card  card-outline-info">
                             <div class="card-header">
@@ -103,15 +113,15 @@
                                     <div class="col-md-3">
                                         <div class="m-l-50">
                                             <a href="../Usuarios/Registro.html"
-                                                class="btn btn-rounded btn-outline-primary"
-                                                style="color: #0c0c0c;">Agregar
+                                            class="btn waves-effect waves-light btn-block btn-secondary"
+                                                "><i class="fas fa-user-plus"></i> Agregar
                                                 Usuario
                                             </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-body"> 
+                            <div class="card-body" id="Card-Body-Gestion-Usuarios2"> 
                                 <div class="table-responsive">
                                     <table id="UsuariosDataTable" class="table table-bordered table-striped MyStyle_Color-Table">
                                         <thead>
@@ -661,6 +671,9 @@
         <script src="../../../Controllers/Usuarios/EditarUsuarios.js"></script>
         <!-- 4. Eliminar usuario -->
         <script src="../../../Controllers/Usuarios/EliminarUsuario.js"></script>
+
+         <!--Font awesome-->
+    <script src="https://kit.fontawesome.com/8feb0255f1.js" crossorigin="anonymous"></script>
         
 </body>
 

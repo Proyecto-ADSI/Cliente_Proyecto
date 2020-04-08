@@ -20,6 +20,8 @@ let ObtenerSexo = (Id_Sexo) =>{
   });
 }
 
-$(function(){
-ObtenerSexo();
+$(document).ready(function(){
+  $('#EditarSexo').click(function(){
+     ObtenerSexo();
+  });
 });
