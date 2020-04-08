@@ -202,21 +202,25 @@
                                                 <button type="button" class="close" data-dismiss="modal"
                                                     aria-hidden="true">×</button>
                                             </div>
-                                            <form action="">
+                                            <form id="formArchivo" enctype="multipart/form-data">
                                                 <div class="modal-body">
                                                     <div class="card">
                                                         <div class="card-body MyStyle_File_Card">
-                                                            <h4 class="card-title">Archivo</h4>
-                                                            <input type="file" id="archivoClientes"
-                                                                class="dropify" data-height="100" />
+                                                            <div class="form-group">
+                                                                <h4 class="card-title">Archivo</h4>
+                                                                <input type="file" id="archivoClientes"
+                                                                class="dropify" data-height="100" name="archivoClientes" />
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-danger waves-effect text-left"
-                                                        data-dismiss="modal">Cerrar</button>
-                                                    <button type="button" class="btn btn-success waves-effect text-left"
-                                                        data-dismiss="modal">Importar</button>
+                                                        data-dismiss="modal">Cerrar
+                                                    </button>
+                                                    <button type="submit" class="btn btn-success waves-effect text-left">
+                                                        Importar
+                                                    </button>
                                                 </div>
                                             </form>
                                         </div>
@@ -1103,6 +1107,7 @@
         <script src="../../../Controllers/Clientes/DetallesCliente.js"></script>
         <script src="../../../Controllers/Clientes/EditarCliente.js"></script>
         <script src="../../../Controllers/Clientes/EliminarCliente.js"></script>
+        <script src="../../../Controllers/Clientes/ImportarClientes.js"></script>
 
 </body>
 

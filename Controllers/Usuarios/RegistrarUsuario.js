@@ -94,7 +94,7 @@ let CargarImagenRegistro = () => {
     formData.append('Img_Usuario', files);
             
     $.ajax({
-        url: `${URL}/CargarImagenUsuario`,
+        url: `${URL}/Usuarios/CargarImagenUsuario`,
         type: 'post',
         data: formData,
         contentType: false,

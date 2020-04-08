@@ -100,7 +100,8 @@ $(function () {
 
         }
     });
-    
+
+    // Importar archivo de clientes.
     $('#archivoClientes').dropify();
 
 });
