@@ -8,6 +8,13 @@ CargarDatosModalDetalles = (datos) => {
 
     Informacion = datos.data;
 
+    // Imagen
+    let img = document.createElement("IMG");
+    img.setAttribute("class","img-thumbnail");
+    img.setAttribute("width","300");
+    img.src = `../../../assets/images/usuarios/${Informacion.Imagen}`;
+    $('#imgDetalleUsuario').html(img); 
+
     // Llenar detalles empleado
     Id_EmpleadoEditar = Informacion.Id_Empleado;
     document.getElementById("txtNombreDetalle").innerHTML = Informacion.Nombre + " " + Informacion.Apellidos;
@@ -23,7 +30,13 @@ CargarDatosModalDetalles = (datos) => {
     document.getElementById("txtUsuarioDetalle").innerHTML = Informacion.Usuario;
     document.getElementById("txtRolDetalle").innerHTML = Informacion.Rol;
     document.getElementById("txtConexionDetalle").innerHTML = Informacion.Conexion;
-    document.getElementById("txtEstadoDetalle").innerHTML = Informacion.Estado;
+
+    if(Informacion.Estado_Usuario == 1){
+        document.getElementById("txtEstadoDetalle").innerHTML = 'Habilitado';
+    }else{
+        document.getElementById("txtEstadoDetalle").innerHTML = 'Inhabilitado';
+    }
+    
 
     // Mostrar Modal con formulario para editar
     $('.ModalDetallesUsuarios').modal('show');

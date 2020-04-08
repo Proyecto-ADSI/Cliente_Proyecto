@@ -186,11 +186,22 @@
 
 /* Modal editar usuarios */
 
-.MyStyle_Id_Usuario_Column{
-
+.MyStyle_Id_Principal_Column{
     display: none;
+}
 
+.MyStyle_Btn_Docs{
+    color: #000 !important;
 }
 /* .MyStyle_Modal_Editar_Usuarios{
     max-height: 400px !important;
 } */
+
+
+.MyStyle_Checkbox{
+    display: none;
+}
+
+.select2-search__field{
+    width: 100% !important;
+}

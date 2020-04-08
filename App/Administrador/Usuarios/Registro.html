@@ -97,8 +97,8 @@
                             <div class="card-header MyStyle_Card_Header">
                                 <h4 class="m-b-0 text-white">Formulario de registro de usuarios</h4>
                             </div>
-                            <div class="card-body" id="Card-Body-Registro-Usuarios">
-                                <form id="FormRegistroUsuario">
+                            <div class="card-body">
+                                <form id="FormRegistroUsuario" enctype="multipart/form-data">
                                     <div class="form-body ml-5 mr-5">
                                         <h3 class="box-title">Empleado:</h3>
                                         <hr class="m-t-0 m-b-40">
@@ -284,12 +284,9 @@
                                                     <div class="col-md-6">
                                                         <div class="card" id="Card-Fotografia">
                                                             <div class="card-body MyStyle_File_Card">
-                                                                <h4 class="card-title" id="Label-Form-Registro-Usuario">Fotografía</h4>
-                                                                <!-- <label for="input-file-now-custom-3">You can combine
-                                                            options</label> -->
-                                                                <input type="file" id="input-file-now-custom-3"
-                                                                    name="Fotografia" class="dropify"
-                                                                    data-height="100"  />
+                                                                <h4 class="card-title">Fotografía</h4>
+                                                                <input type="file" id="fileFotografia" name="Fotografia"
+                                                                    class="dropify" data-height="100"/>
                                                                 <!-- data-default-file="../../assets/plugins/dropify/src/images/test-image-2.jpg" -->
                                                             </div>
                                                         </div>
@@ -374,7 +371,7 @@
                                                                 <i class="ti-lock"></i>
                                                             </span>
                                                         </div>
-                                                        <input type="password" class="form-control" id="txtContrasena"
+                                                        <input type="password" class="form-control" id="txtContrasena" autocomplete=""
                                                             name="txtContrasena" placeholder="Contraseña">
                                                     </div>
                                                 </div>
@@ -392,8 +389,8 @@
                                                                 <i class="ti-lock"></i>
                                                             </span>
                                                         </div>
-                                                        <input type="password" class="form-control"
-                                                            id="txtConfirmarContrasena" name="txtConfirmarContrasena"
+                                                        <input type="password" class="form-control" 
+                                                            id="txtConfirmarContrasena" name="txtConfirmarContrasena" autocomplete=""
                                                             placeholder="Confirmar contraseña">
                                                     </div>
 
@@ -436,7 +433,11 @@
         <!-- ============================================================== -->
         <!-- All Jquery -->
         <!-- ============================================================== -->
+       
+
         <script src="../../../assets/plugins/jquery/jquery.min.js"></script>
+
+        <script type="text/javascript" src="../../../js/default-passive-events.js"></script>
 
         <!-- JQuery Validate -->
         <script src="../../../assets/plugins/jquery-validation-1.19.1/jquery.validate.js"></script>

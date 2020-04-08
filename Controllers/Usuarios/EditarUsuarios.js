@@ -29,25 +29,38 @@ CargarDatosModalEditar = (Datos) => {
     $("#txtUsuario").val(Informacion.Usuario);
     CargarRoles(Informacion.Id_Rol);
 
+    // var imagenUrl = `../../../assets/images/usuarios/${Informacion.Imagen}`;
+    // var drEvent = $('#fileFotografia').dropify({
+    //     defaultFile: imagenUrl
+    // });
+    // drEvent = drEvent.data('dropify');
+    // drEvent.resetPreview();
+    // drEvent.clearElement();
+    // drEvent.settings.defaultFile = imagenUrl;
+    // drEvent.destroy();
+    // drEvent.init();
 
-
+    $("#fileFotografia").addClass('dropify');
+    $("#fileFotografia").attr("data-default-file",`../../../assets/images/usuarios/${Informacion.Imagen}`);
+    $("#fileFotografia").attr("imagen",`${Informacion.Imagen}`);
+    $('#fileFotografia').dropify();
 
     // Mostrar Modal con formulario para editar
     $('.ModalEditarUsuarios').modal('show');
-    
+
 
 }
 
 CargarTiposDocumentos = (Id_Documento) => {
-    
+
     $.ajax({
         url: `${URL}/Documento`,
         type: 'get',
         datatype: 'json',
-        success: function(datos){
+        success: function (datos) {
             ListarTipoDocumentos(Id_Documento, datos);
         },
-        error: function(error){
+        error: function (error) {
             console.log(error);
         }
 
@@ -55,43 +68,43 @@ CargarTiposDocumentos = (Id_Documento) => {
 
 }
 
-ListarTipoDocumentos = (Id_Documento,datos) => {
+ListarTipoDocumentos = (Id_Documento, datos) => {
 
     $('#txtTipoDocumento').empty();
-        $('#txtTipoDocumento').prepend("<option disabled >Seleccione...</option>");
+    $('#txtTipoDocumento').prepend("<option disabled >Seleccione...</option>");
 
-        for (let item of datos.data) {
+    for (let item of datos.data) {
 
-            if (item.Id_Documento == Id_Documento) {
+        if (item.Id_Documento == Id_Documento) {
 
-                var $opcion = $('<option />', {
-                    text: `${item.Nombre}`,
-                    value: `${item.Id_Documento}`,
-                    selected: true
-                })
+            var $opcion = $('<option />', {
+                text: `${item.Nombre}`,
+                value: `${item.Id_Documento}`,
+                selected: true
+            })
 
-            } else {
+        } else {
 
-                var $opcion = $('<option />', {
-                    text: `${item.Nombre}`,
-                    value: `${item.Id_Documento}`
-                })
-            }
-
-            $('#txtTipoDocumento').append($opcion);
+            var $opcion = $('<option />', {
+                text: `${item.Nombre}`,
+                value: `${item.Id_Documento}`
+            })
         }
+
+        $('#txtTipoDocumento').append($opcion);
+    }
 }
 
 CargarSexos = (Id_Sexo) => {
-    
+
     $.ajax({
         url: `${URL}/Sexo`,
         type: 'get',
         datatype: 'json',
-        success: function(datos){
+        success: function (datos) {
             ListarSexos(Id_Sexo, datos);
         },
-        error: function(error){
+        error: function (error) {
             console.log(error);
         }
 
@@ -99,43 +112,43 @@ CargarSexos = (Id_Sexo) => {
 
 }
 
-ListarSexos = (Id_Sexo,datos) => {
-    
+ListarSexos = (Id_Sexo, datos) => {
+
     $('#txtSexo').empty();
-        $('#txtSexo').prepend("<option disabled >Seleccione...</option>");
+    $('#txtSexo').prepend("<option disabled >Seleccione...</option>");
 
-        for (let item of datos.data) {
+    for (let item of datos.data) {
 
-            if (item.Id_Sexo == Id_Sexo) {
+        if (item.Id_Sexo == Id_Sexo) {
 
-                var $opcion = $('<option />', {
-                    text: `${item.Nombre}`,
-                    value: `${item.Id_Sexo}`,
-                    selected: true
-                })
+            var $opcion = $('<option />', {
+                text: `${item.Nombre}`,
+                value: `${item.Id_Sexo}`,
+                selected: true
+            })
 
-            } else {
+        } else {
 
-                var $opcion = $('<option />', {
-                    text: `${item.Nombre}`,
-                    value: `${item.Id_Sexo}`
-                })
-            }
-
-            $('#txtSexo').append($opcion);
+            var $opcion = $('<option />', {
+                text: `${item.Nombre}`,
+                value: `${item.Id_Sexo}`
+            })
         }
+
+        $('#txtSexo').append($opcion);
+    }
 }
 
 CargarTurnos = (Id_Turno) => {
-    
+
     $.ajax({
         url: `${URL}/Turnos`,
         type: 'get',
         datatype: 'json',
-        success: function(datos){
+        success: function (datos) {
             ListarTurnos(Id_Turno, datos);
         },
-        error: function(error){
+        error: function (error) {
             console.log(error);
         }
 
@@ -143,43 +156,43 @@ CargarTurnos = (Id_Turno) => {
 
 }
 
-ListarTurnos = (Id_Turno,datos) => {
-    
+ListarTurnos = (Id_Turno, datos) => {
+
     $('#txtTurno').empty();
-        $('#txtTurno').prepend("<option disabled >Seleccione...</option>");
+    $('#txtTurno').prepend("<option disabled >Seleccione...</option>");
 
-        for (let item of datos.data) {
+    for (let item of datos.data) {
 
-            if (item.Id_Turno == Id_Turno) {
+        if (item.Id_Turno == Id_Turno) {
 
-                var $opcion = $('<option />', {
-                    text: `${item.Nombre}`,
-                    value: `${item.Id_Turno}`,
-                    selected: true
-                })
+            var $opcion = $('<option />', {
+                text: `${item.Nombre}`,
+                value: `${item.Id_Turno}`,
+                selected: true
+            })
 
-            } else {
+        } else {
 
-                var $opcion = $('<option />', {
-                    text: `${item.Nombre}`,
-                    value: `${item.Id_Turno}`
-                })
-            }
-
-            $('#txtTurno').append($opcion);
+            var $opcion = $('<option />', {
+                text: `${item.Nombre}`,
+                value: `${item.Id_Turno}`
+            })
         }
+
+        $('#txtTurno').append($opcion);
+    }
 }
 
 CargarRoles = (Id_Rol) => {
-    
+
     $.ajax({
         url: `${URL}/Rol`,
         type: 'get',
         datatype: 'json',
-        success: function(datos){
+        success: function (datos) {
             ListarRoles(Id_Rol, datos);
         },
-        error: function(error){
+        error: function (error) {
             console.log(error);
         }
 
@@ -187,104 +200,128 @@ CargarRoles = (Id_Rol) => {
 
 }
 
-ListarRoles = (Id_Rol,datos) => {
-    
+ListarRoles = (Id_Rol, datos) => {
+
     $('#txtRol').empty();
-        $('#txtRol').prepend("<option disabled >Seleccione...</option>");
+    $('#txtRol').prepend("<option disabled >Seleccione...</option>");
 
-        for (let item of datos.data) {
+    for (let item of datos.data) {
 
-            if (item.Id_Rol == Id_Rol) {
+        if (item.Id_Rol == Id_Rol) {
 
-                var $opcion = $('<option />', {
-                    text: `${item.Nombre}`,
-                    value: `${item.Id_Rol}`,
-                    selected: true
-                })
+            var $opcion = $('<option />', {
+                text: `${item.Nombre}`,
+                value: `${item.Id_Rol}`,
+                selected: true
+            })
 
-            } else {
+        } else {
 
-                var $opcion = $('<option />', {
-                    text: `${item.Nombre}`,
-                    value: `${item.Id_Turno}`
-                })
-            }
-
-            $('#txtRol').append($opcion);
+            var $opcion = $('<option />', {
+                text: `${item.Nombre}`,
+                value: `${item.Id_Turno}`
+            })
         }
+
+        $('#txtRol').append($opcion);
+    }
 }
 
-EditarUsuario = () => {
+EditarUsuario = (imagen) => {
 
     var datos =
-        {
-            // Empleado
-            Id_Empleado: parseInt(Id_EmpleadoEditar), 
-            Tipo_Documento: parseInt($("#txtTipoDocumento").val()),
-            Documento: $("#txtDocumento").val(),
-            Nombre: $("#txtNombre").val(),
-            Apellidos: $("#txtApellidos").val(),
-            Correo: $("#txtCorreo").val(),
-            Sexo: parseInt($("#txtSexo").val()),
-            Celular: $("#txtCelular").val(),
-            Imagen: "Ruta",
-            Turno: parseInt($("#txtTurno").val()),
+    {
+        // Empleado
+        Id_Empleado: parseInt(Id_EmpleadoEditar),
+        Tipo_Documento: parseInt($("#txtTipoDocumento").val()),
+        Documento: $("#txtDocumento").val(),
+        Nombre: $("#txtNombre").val(),
+        Apellidos: $("#txtApellidos").val(),
+        Correo: $("#txtCorreo").val(),
+        Sexo: parseInt($("#txtSexo").val()),
+        Celular: $("#txtCelular").val(),
+        Imagen: imagen,
+        Turno: parseInt($("#txtTurno").val()),
 
-            // Usuario
-            Id_Usuario: parseInt(Id_UsuarioEditar),
-            Usuario: $("#txtUsuario").val(),
-            Rol: parseInt($("#txtRol").val())
-        };
-        
-        // console.log(datos);
+        // Usuario
+        Id_Usuario: parseInt(Id_UsuarioEditar),
+        Usuario: $("#txtUsuario").val(),
+        Rol: parseInt($("#txtRol").val())
+    };
 
-        $.ajax({
-            url:`${URL}/Usuarios`,
-            type: 'put',
-            dataType: 'json',
-            data: JSON.stringify(datos),
-            contentType: 'application/json',
-            processData: false
-        }).done(respuesta =>{
-            
-            if (respuesta.data.ok) {
+    if (datos.Id_Usuario == parseInt(localStorage.getItem("Id_Usuario"))) {
+        localStorage.Imagen = imagen;
+    };
 
-                swal({
-                    title: "Información modificada correctamente.",
-                    type: "success",
-                    showCancelButton: false,
-                    confirmButtonColor: "#2F6885",
-                    confirmButtonText: "Continuar",
-                    closeOnConfirm: false,
-                }, function (isConfirm) {
-                    if (isConfirm) {
-                        location.href = "GestionarUsuarios.html";
-                    }
-                });
-            } else {
-                swal({
-                    title: "Error al modificar.",
-                    text: "Ha ocurrido un error al modificar, intenta de nuevo",
-                    type: "danger",
-                    showCancelButton: false,
-                    confirmButtonColor: "#2F6885",
-                    confirmButtonText: "Continuar",
-                    closeOnConfirm: false,
-                }, function (isConfirm) {
-                    if (isConfirm) {
-                        
-                        console.log(respuesta.data);
-                    }
-                });
-            }
 
-        }).fail(error => {
+    // console.log(datos);
 
-            console.log(error);
+    $.ajax({
+        url: `${URL}/Usuarios`,
+        type: 'put',
+        dataType: 'json',
+        data: JSON.stringify(datos),
+        contentType: 'application/json',
+        processData: false
+    }).done(respuesta => {
 
-        });
+        if (respuesta.data.ok) {
+
+            swal({
+                title: "Información modificada correctamente.",
+                type: "success",
+                showCancelButton: false,
+                confirmButtonColor: "#2F6885",
+                confirmButtonText: "Continuar",
+                closeOnConfirm: false,
+            }, function (isConfirm) {
+                if (isConfirm) {
+                    location.href = "GestionarUsuarios.html";
+                }
+            });
+        } else {
+            swal({
+                title: "Error al modificar.",
+                text: "Ha ocurrido un error al modificar, intenta de nuevo",
+                type: "danger",
+                showCancelButton: false,
+                confirmButtonColor: "#2F6885",
+                confirmButtonText: "Continuar",
+                closeOnConfirm: false,
+            }, function (isConfirm) {
+                if (isConfirm) {
+
+                    console.log(respuesta.data);
+                }
+            });
+        }
+
+    }).fail(error => {
+
+        console.log(error);
+
+    });
 }
 
+let CargarImagenEditar = () => {
+
+    let formData = new FormData();
+    let files = $('#fileFotografia')[0].files[0];
+    formData.append('Img_Usuario', files);
+
+    $.ajax({
+        url: `${URL}/Usuarios/CargarImagenUsuario`,
+        type: 'post',
+        data: formData,
+        contentType: false,
+        processData: false,
+    }).done(respuesta => {
+        let imagen = respuesta.data.pathArchivo;
+        EditarUsuario(imagen);
+    }).fail(error => {
+        console.log(error);
+    });
+}
 
 $(function () {
 
@@ -293,8 +330,15 @@ $(function () {
 
         submitHandler: function () {
 
-            EditarUsuario();
-
+            // Validar si se cambia la imagen.
+            let files = $('#fileFotografia')[0].files[0];
+            
+            if(typeof(files) != "undefined"){
+                CargarImagenEditar();
+            }else{
+                let imagen = $('#fileFotografia').attr("imagen");
+                EditarUsuario(imagen);
+            }
         },
         rules: {
             txtTipoDocumento: "required",
@@ -338,9 +382,9 @@ $(function () {
 
                             UsuarioForm = $("#txtUsuario").val();
 
-                            if(UsuarioBD == UsuarioForm ){
-                                UsuarioValido = true; 
-                            }else{
+                            if (UsuarioBD == UsuarioForm) {
+                                UsuarioValido = true;
+                            } else {
                                 UsuarioValido = false;
                                 return UsuarioForm;
                             }
@@ -378,5 +422,5 @@ $(function () {
             }
         }
     });
-    
+
 })

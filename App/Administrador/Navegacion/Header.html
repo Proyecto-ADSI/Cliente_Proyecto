@@ -168,19 +168,24 @@
             <!-- Profile -->
             <!-- ============================================================== -->
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false"><img src="../../../assets/images/users/profile.png"
-                        alt="user" class="profile-pic" /></a>
-                <div class="dropdown-menu dropdown-menu-right scale-up" id="Mini-Menu">
+                <a id="ImgUsuarioHeader1" class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <button class="btn btn btn-outline-info">
+                        <i class="fa fa-bookmark-o"></i>
+                    </button>
+                   
+                </a>
+                <div class="dropdown-menu dropdown-menu-right scale-up">
                     <ul class="dropdown-user">
                         <li>
                             <div class="dw-user-box">
-                                <div class="u-img"><img src="../../../assets/images/users/profile.png" alt="user">
+                                <div class="u-img" id="ImgUsuarioHeader2">
+                                    <img src="../../../assets/images/users/profile.png" alt="user">
                                 </div>
                                 <div class="u-text">
-                                    <h4>Steave Jobs</h4>
-                                    <p class="text-muted">varun@gmail.com</p><a href="../Usuarios/Perfil.html"
-                                        class="btn btn-rounded btn-info btn-sm" id="VerPerfil">Ver mi perfil</a>
+                                    <h4 id="txtNombre_Usuario_Header"></h4>
+                                    <p id="txtEmail_Header" class="text-muted" ></p>
+                                    <a href="../Usuarios/Perfil.html" class="btn btn-rounded btn-danger btn-sm">Ver mi perfil</a>
                                 </div>
                             </div>
                         </li>
@@ -197,7 +202,24 @@
     </div>
 </nav>
 
+<!-- Cargar datos de sesión -->
+<script>
 
+    // Imagen
+    let rutaImagen2 = localStorage.getItem("Imagen");
+    let img2 = document.createElement("IMG");
+    img2.src = `../../../assets/images/usuarios/${rutaImagen2}`;
+    // $('#ImgUsuarioHeader1').append(img2); 
+    $('#ImgUsuarioHeader2').html(img2); 
+
+    // Usuario
+    let usuario_header = localStorage.getItem("Usuario");
+    $('#txtNombre_Usuario_Header').html(usuario_header);
+
+    // Email
+    let email_header = localStorage.getItem("Email");
+    $('#txtEmail_Header').html(email_header);
+</script>
 
 <!--Custom JavaScript -->
 <script src="../../../js/custom.min.js"></script>
