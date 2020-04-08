@@ -99,10 +99,8 @@ let CargarImagenRegistro = () => {
         data: formData,
         contentType: false,
         processData: false,
-    }).done(respuesta=>{
-        let res  = JSON.parse(respuesta);
-        let imagen = res.pathArchivo;
-        console.log(imagen);
+    }).done(res =>{
+        let imagen = res.data.pathArchivo;
         RegistrarUsuario(imagen); 
     }).fail(error =>{
         console.log(error);
