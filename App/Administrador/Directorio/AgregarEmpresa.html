@@ -9,31 +9,35 @@
     <meta name="author" content="">
     <link rel="icon" type="image/png" sizes="16x16" href="../../../assets/images/favicon.png">
     <title>CallPhone Soft</title>
+    <!-- CSS -->
     <link href="../../../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../../assets/plugins/dropify/dist/css/dropify.min.css">
-    <link rel="stylesheet" href="../../../css/MyStyle.css">
-    <link rel="stylesheet" href="../../../css/style.css">
+    <link href="../../../css/MyStyle.css" rel="stylesheet">
+    <link href="../../../css/style.css" rel="stylesheet">
     <link href="../../../css/colors/megna-dark.css" id="theme" rel="stylesheet">
-    <!-- css para selects -->
-    <link href="../../../assets/plugins/select2/dist/css/select2.min.css" rel="stylesheet" type="text/css" />
 
-    <!-- Select -->
-    <link href="../../../assets/plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
-
+    <!-- ============================================================== -->
+    <!-- CSS Plugins -->
+    <!-- ============================================================== -->
+    <!-- Wizard -->
+    <link href="../../../assets/plugins/wizard/steps.css" rel="stylesheet">
+    <!-- Switch -->
+    <link href="../../../assets/plugins/bootstrap-switch/bootstrap-switch.min.css" rel="stylesheet">
     <!-- TouchSpin -->
     <link href="../../../assets/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />
-
-    <!-- JQuery Steps -->
-    <link href="../../../assets/plugins/wizard/steps.css" rel="stylesheet">
-
-    <!-- Sweetalert -->
-    <link href="../../../assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
-
     <!-- Date picker plugins css -->
     <link href="../../../assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet"
         type="text/css" />
-</head>
+    <!-- Material Date picker  -->
+    <link href="../../../assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css"
+        rel="stylesheet">
+    <!-- Select 2 -->
+    <link href="../../../assets/plugins/select2/dist/css/select2.min.css" rel="stylesheet" type="text/css" />
+    <!-- Bootstrap select -->
+    <link href="../../../assets/plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
+    <!-- tagsinput -->
+    <link href="../../../assets/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.css" rel="stylesheet" />
 
+</head>
 
 <body class="fix-sidebar fix-header card-no-border">
     <div class="preloader">
@@ -45,51 +49,45 @@
         <!-- ============================================================== -->
         <!-- Topbar header - style you can find in pages.scss -->
         <!-- ============================================================== -->
-
         <!-- ============================================================== -->
         <!-- Topbar header (Menú Horizontal) - style you can find in pages.scss -->
         <!-- ============================================================== -->
-        <header class="topbar" id="Navegacion_Header_Coor"></header>
-
-
-        <aside class="left-sidebar" id="Navegacion_Aside_Coor"></aside>
+        <header class="topbar" id="Navegacion_Header"></header>
+        <!-- ============================================================== -->
+        <!-- End Topbar header -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar (Menú Vertical Izquierdo) - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <aside class="left-sidebar" id="Navegacion_Aside"></aside>
         <!-- ============================================================== -->
         <!-- End Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
 
         <div class="page-wrapper">
 
-            <!-- Titulo página -->
-            <div class="row page-titles">
+             <!-- Titulo página -->
+             <div class="row page-titles">
                 <div class="col-lg-12 text-center">
                     <h1 class="m-t-30">Eskatemp S.A.S</h1>
                     <h5 class="text-muted m-b-30"><i class="ti-pin"></i>Solución Integral</h5>
                 </div>
             </div>
-
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
-                        <div class="card" id="Card-Form-Agregar-Empresa">
+                        <div class="card">
                             <div class="card-body wizard-content">
-                                <h3 class="card-title">Registro clientes</h3>
-                                <hr>
-                                <form id="FormRegistroClientes" class="Form_Registro_Clientes wizard-circle">
+                                <h4 class="card-title">
+                                    Registro de clientes:
+                                </h4>
+                                <hr class="m-t-10 m-b-20">
+                                <form action="#" class="tab-wizard wizard-circle">
                                     <!-- Step 1 -->
                                     <h6>Información de contacto</h6>
                                     <section>
-                                        <h3 class="box-title">Empresa</h3>
                                         <hr class="m-t-0 m-b-20">
                                         <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label class="control-label">NIT:
-
-                                                    </label>
-                                                    <input type="text" id="txtNIT" name="txtNIT" class="form-control"
-                                                        placeholder="12345678-9" >
-                                                </div>
-                                            </div>
 
                                             <div class="col-md-4">
                                                 <div class="form-group">
@@ -110,8 +108,36 @@
                                                         name="txtTelefono" placeholder="4123456">
                                                 </div>
                                             </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="control-label">
+                                                        NIT:
+                                                    </label>
+                                                    <input type="text" id="txtNIT" name="txtNIT" class="form-control"
+                                                        placeholder="12345678-9">
+                                                </div>
+                                            </div>
                                         </div>
-                                        <h3 class="box-title">Ubicación</h3>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="int1">Encargado:</label>
+                                                    <input type="text" class="form-control" id="txtEncargado"
+                                                        name="txtEncargado" placeholder="Jhon Doe">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="int1">Extensión o celular:</label>
+                                                    <input type="text" class="form-control" id="txtTelefono_Contacto"
+                                                        name="txtTelefono_Contacto" placeholder="3123456789 | 4123456">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h4 class="box-title d-inline-block">Ubicación:</h4>
+                                        <input name="Validacion_Ubicacion" type="radio" class="with-gap"
+                                            id="Validacion_Ubicacion2">
+                                        <label for="Validacion_Ubicacion2">Colombia/Antioquia/Medellín/Barrio</label>
                                         <hr class="m-t-0 m-b-20">
                                         <div class="row">
                                             <div class="col-md-4">
@@ -148,7 +174,6 @@
                                                     </select>
                                                 </div>
                                             </div>
-
                                         </div>
                                         <!-- /Row -->
                                         <div class="row">
@@ -185,131 +210,325 @@
                                     <!-- Step 2 -->
                                     <h6>Datos básicos líneas</h6>
                                     <section>
+                                        <hr class="m-t-0 m-b-20">
                                         <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label class="control-label">Operador</label>
-                                                    <select name="txtOperador" id="txtOperador"
-                                                        class="select2 form-control custom-select"
-                                                        style="width: 100%; height:36px;">
-                                                        <option selected disabled>Seleccione...</option>
-                                                        <option value="1">Movistar</option>
-                                                    </select>
+                                            <div class="col-md-8">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        <div class="form-group">
+                                                            <div class="bt-switch">
+                                                                <label for="location1">¿Corporativo?</label>
+                                                                <input type="checkbox" data-on-color="success"
+                                                                    data-off-color="danger" data-on-text="Si"
+                                                                    data-off-text="No">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Operador del
+                                                                <strong>cliente</strong></label>
+                                                            <select name="txtOperador" id="txtOperador"
+                                                                class="select2 form-control custom-select">
+                                                                <option selected disabled>Seleccione...</option>
+                                                                <option value="1">Movistar</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        <div class="form-group">
+                                                            <label class="control-label">
+                                                                Calificación del operador
+                                                            </label>
+                                                            <select name="txtOperador" id="txtOperador"
+                                                                class="select2 form-control custom-select">
+                                                                <option selected disabled>Seleccione...</option>
+                                                                <option value="1">1</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label for="int1">Encargado:</label>
-                                                    <input type="text" class="form-control" id="txtEncargado"
-                                                        name="txtEncargado" placeholder="Jhon Doe">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label for="int1">Teléfono de contacto:</label>
-                                                    <input type="text" class="form-control" id="txtTelefono_Contacto"
-                                                        name="txtTelefono_Contacto" placeholder="3123456789 | 4123456">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label for="int1">Extensión:</label>
-                                                    <input type="number" class="form-control" id="txtExtension"
-                                                        name="txtExtension" placeholder="123">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label for="int1 ">Número de líneas:</label>
-                                                    <input type="number" class="form-control" id="txtNumero_Lineas"
-                                                        name="txtNumero_Lineas" placeholder="10">
+                                                <div class="row">
+                                                    <div class="col-md-5">
+                                                        <div class="form-group">
+                                                            <label for="int1 ">Total de <strong>líneas:</strong>
+                                                            </label>
+                                                            <input type="number" class="form-control"
+                                                                id="txtNumero_Lineas" name="txtNumero_Lineas"
+                                                                placeholder="10">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        <div class="form-group">
+                                                            <label class="control-label">
+                                                                Pago <strong>mensual total:</strong>
+                                                            </label>
+                                                            <input id="txtValor_Mensual" type="text"
+                                                                name="txtValor_Mensual" class=" form-control"
+                                                                placeholder="100000"
+                                                                data-bts-button-down-class="btn btn-secondary btn-outline"
+                                                                data-bts-button-up-class="btn btn-secondary btn-outline">
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label class="control-label">
+                                                        Razones:
+                                                    </label>
+                                                    <select class="Select_Razones select2-multiple m-b-10"
+                                                        style="width: 100%" multiple="multiple"
+                                                        data-placeholder="Seleccione o escriba">
+                                                        <option value="AK">Mala señal</option>
+                                                        <option value="HI">Mala atención</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h4 class="box-title">Detalle individual de las líneas</h4>
+                                        <hr class="m-t-0 m-b-20">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="int1 "> Número de líneas:</label>
+                                                    <input type="number" class="form-control" id="txtNumero_Lineas"
+                                                        name="txtNumero_Lineas" placeholder="10">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label class="control-label">
                                                         Pago <strong>mensual:</strong>
                                                     </label>
-                                                    <input id="txtValor_Mensual" type="text" name="txtValor_Mensual"
-                                                        class=" form-control" placeholder="100000"
-                                                        data-bts-button-down-class="btn btn-secondary btn-outline"
-                                                        data-bts-button-up-class="btn btn-secondary btn-outline">
+                                                    <div class="input-group">
+                                                        <input id="txtValor_Mensual2" type="text"
+                                                            name="txtValor_Mensual2" class=" form-control"
+                                                            placeholder="100000">
+                                                        <div class="input-group-append">
+                                                            <span class="input-group-text">COP</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group m-t-20">
+                                                    <input name="group1" type="radio" class="with-gap" id="radio_3">
+                                                    <label for="radio_3">Por X líneas </label>
+                                                    <input name="group1" type="radio" class="with-gap" id="radio_4">
+                                                    <label for="radio_4">Por cada línea </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="jobTitle2 ">Navegación:</label>
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control" id="txtNavegacion"
+                                                            name="txtNavegacion" placeholder="1">
+                                                        <div class="input-group-append">
+                                                            <select name="txtOperador" id="txtOperador"
+                                                                class="select2 form-control custom-select">
+                                                                <option selected value="1">GB</option>
+                                                                <option value="2">MG</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
                                                 <div class="form-group">
-                                                    <label for="int1 ">Cantidad de minutos:</label>
+                                                    <label for="int1 ">Minutos:</label>
+                                                    <input type="checkbox" id="basic_checkbox_1"
+                                                        class="MyStyle_Checkbox">
+                                                    <label for="basic_checkbox_1">Ilimitados</label>
                                                     <input type="text" class="form-control" id="txtMinutos"
-                                                        name="txtMinutos" placeholder="300 minutos todo operador">
+                                                        name="txtMinutos" placeholder="300">
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
                                                 <div class="form-group">
-                                                    <label for="jobTitle2 ">Cantidad navegación:</label>
-                                                    <input type="text" class="form-control" id="txtNavegacion"
-                                                        name="txtNavegacion" placeholder="1 gb">
+                                                    <input type="checkbox" id="basic_checkbox_2"
+                                                        class="MyStyle_Checkbox">
+                                                    <label for="basic_checkbox_2">Todo operador</label>
+                                                    <input type="text" class="form-control" name="" id=""
+                                                        placeholder="Otro:">
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
+                                                <div class="form-group m-t-20">
+                                                    <input type="checkbox" id="checkbox_mensajes"
+                                                        class="MyStyle_Checkbox">
+                                                    <label for="checkbox_mensajes">Mensajes de texto</label>
+
+                                                    <input type="checkbox" id="checkbox_llamadas"
+                                                        class="MyStyle_Checkbox">
+                                                    <label for="checkbox_llamadas">Llamadas internacionales</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 ">
+                                                <div class="form-group m-t-20">
+                                                    <input type="checkbox" id="checkbox_redes" class="MyStyle_Checkbox">
+                                                    <label for="checkbox_redes">Redes sociales</label>
+
+                                                    <input type="checkbox" id="checkbox_roaming"
+                                                        class="MyStyle_Checkbox">
+                                                    <label for="checkbox_roaming">Roaming internacional</label>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr class="m-t-0 m-b-20">
+                                        <div class="row m-b-20">
+                                            <div class="col-md-10">
+                                                <h4 class="box-title">Información de líneas del cliente:</h4>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <button type="button" class="btn btn-info">Guardar líneas</button>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                
+                                                <div class="table-responsive">
+                                                    <table class="table color-table info-table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>#</th>
+                                                                <th>Número líneas</th>
+                                                                <th>Pago mensual</th>
+                                                                <th>Navegación</th>
+                                                                <th>Minutos</th>
+                                                                <th>Otros</th>
+                                                                <th>Opciones</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="TablaDocumento">
+                                                            <tr>
+                                                                <td>1.</td>
+                                                                <td>5</td>
+                                                                <td>100,000 <span class="label label-info">En total</span> </td>
+                                                                <td>5</td>
+                                                                <td>300 todo operador</td>
+                                                                <td>
+                                                                    <input type="radio" class="with-gap" id="radio_tbl" checked>
+                                                                    <label for="radio_tbl1">Mensajes</label>
+                                                                    <input type="radio" class="with-gap" id="radio_tbl" checked>
+                                                                    <label for="radio_tbl">Redes</label>
+                                                                    <input type="radio" class="with-gap" id="radio_tbl" checked>
+                                                                    <label for="radio_tbl1">Llamadas</label>
+                                                                    <input type="radio" class="with-gap" id="radio_tbl" checked>
+                                                                    <label for="radio_tbl">Roaming</label>
+                                                                </td>
+                                                                <td>
+                                                                    <i class="fa fa-pencil text-inverse m-r-10"
+                                                                        data-toggle="modal" data-target="#ModificarDocumento"
+                                                                        style="cursor:pointer;"></i>
+                                                                    <i class="fa fa-close text-danger"
+                                                                        style="cursor:pointer;"></i>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>2.</td>
+                                                                <td>2</td>
+                                                                <td>80,000 <span class="label label-info">Por línea</span> </td>
+                                                                <td>10</td>
+                                                                <td>Ilimitados</td>
+                                                                <td>
+                                                                    <input type="radio" class="with-gap" id="radio_tbl" checked>
+                                                                    <label for="radio_tbl1">Mensajes</label>
+                                                                    <input type="radio" class="with-gap" id="radio_tbl" checked>
+                                                                    <label for="radio_tbl">Redes</label>
+        
+                                                                </td>
+                                                                <td>
+                                                                    <i class="fa fa-pencil text-inverse m-r-10"
+                                                                        data-toggle="modal" data-target="#ModificarDocumento"
+                                                                        style="cursor:pointer;"></i>
+                                                                    <i class="fa fa-close text-danger"
+                                                                        style="cursor:pointer;"></i>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                        <tfoot>
+                                                            <tr>
+                                                                <td>
+                                                                    <h5 class="box-title">Total:</h5>
+                                                                </td>
+                                                                <td>7</td>
+                                                                <td>260,000</td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                            </tr>
+                                                        </tfoot>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                    <!-- Step 3 -->
+                                    <h6>Plan corporativo</h6>
+                                    <section>
+                                        <hr class="m-t-0 m-b-20">
+                                        <div class="row">
+                                            <div class="col-md-3">
                                                 <div class="form-group">
-                                                    <label for="jobTitle2 ">Llamadas internacionales:</label>
-                                                    <input type="text" class="form-control" id="txtLlamadas_Inter"
-                                                        name="txtLlamadas_Inter" placeholder="200 minutos">
+                                                    <label for="location1">¿Claúsula permanencia?</label>
+                                                    <div class="switch">
+                                                        <label>
+                                                            <strong> NO</strong>
+                                                            <input type="checkbox">
+                                                            <span class="lever"></span>
+                                                            <strong>SI</strong>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <div class="form-group">
+                                                    <label for="txtFecha_inicio">Fecha del corporativo:</label>
+                                                    <div class="input-daterange input-group" id="Fecha_Corporativo">
+                                                        <span class="input-group-addon">Inicio</span>
+                                                        <input type="text" class="input-sm form-control"
+                                                            name="txtFecha_inicio" id="txtFecha_inicio"
+                                                            placeholder="yyyy/mm/dd" />
+                                                        <span class="input-group-addon">Fin</span>
+                                                        <input type="text" class="input-sm form-control"
+                                                            name="txtFecha_fin" id="txtFecha_fin"
+                                                            placeholder="yyyy/mm/dd" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <div class="form-group">
+                                                    <div class="bt-switch">
+                                                        <label for="location1">¿Documentos?</label>
+                                                        <input type="checkbox" data-on-color="success"
+                                                            data-off-color="danger" data-on-text="Si"
+                                                            data-off-text="No">
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-4">
+                                            <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label for="jobTitle2 ">Mensajes de texto:</label>
-                                                    <input type="text" class="form-control" id="txtMensajes"
-                                                        name="txtMensajes" placeholder="300 mensajes">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label for="jobTitle2 ">Aplicaciones:</label>
-                                                    <input type="text" class="form-control" id="txtApps" name="txtApps"
-                                                        placeholder="Facebook y WhatsApp">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label for="jobTitle2 ">Roaming internacional:</label>
-                                                    <input type="text" class="form-control" id="txtRoaming"
-                                                        name="txtRoaming" placeholder="Si/No">
+                                                    <label for="participants1">Descripción del corporativo</label>
+                                                    <textarea name="txtDescripcion" id="txtDescripcion" rows="5"
+                                                        class="form-control"
+                                                        placeholder="Ingresa una descripción"></textarea>
                                                 </div>
                                             </div>
                                         </div>
                                     </section>
                                     <!-- Step 4 -->
-                                    <h6>Plan Corporativo</h6>
+                                    <h6>Documentos</h6>
                                     <section>
+                                        <hr class="m-t-0 m-b-20">
                                         <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="txtFecha_inicio">Fecha del corporativo:</label>
-                                                    <div class="input-daterange input-group" id="Fecha_DatePicker">
-                                                        <span class="input-group-addon">Inicio</span>
-                                                        <input type="text" class="input-sm form-control"
-                                                            name="txtFecha_inicio" id="txtFecha_inicio" />
-                                                        <span class="input-group-addon">Fin</span>
-                                                        <input type="text" class="input-sm form-control"
-                                                            name="txtFecha_fin" id="txtFecha_fin" />
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="participants1">Descripción del corporativo</label>
-                                                    <textarea name="txtDescripcion" id="txtDescripcion" rows="10"
-                                                        class="form-control"
-                                                        placeholder="Ingresa una descripción"></textarea>
-                                                </div>
-                                            </div>
-
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Cámara de comercio</label>
@@ -331,7 +550,8 @@
                                                             data-dismiss="fileinput">Eliminar</a>
                                                     </div>
                                                 </div>
-
+                                            </div>
+                                            <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Cédula de ciudadanía:</label>
                                                     <div class="fileinput fileinput-new input-group"
@@ -351,7 +571,8 @@
                                                             data-dismiss="fileinput">Eliminar</a>
                                                     </div>
                                                 </div>
-
+                                            </div>
+                                            <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Soporte de ingresos:</label>
                                                     <div class="fileinput fileinput-new input-group"
@@ -371,7 +592,8 @@
                                                             data-dismiss="fileinput">Eliminar</a>
                                                     </div>
                                                 </div>
-
+                                            </div>
+                                            <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Detalles plan corporativo:</label>
                                                     <div class="fileinput fileinput-new input-group"
@@ -391,65 +613,86 @@
                                                             data-dismiss="fileinput">Eliminar</a>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div>  
                                         </div>
                                     </section>
                                 </form>
+                               
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <script src="../../../assets/plugins/jquery/jquery.min.js"></script>
-        <!-- Navegación -->
-        <script src="../../../js/Navegacion/CoordinadorNavegacion.js"></script>
+            <!-- JQuery -->
+            <script src="../../../assets/plugins/jquery/jquery.min.js"></script>
 
-        <!-- Wizard -->
-        <script src="../../../assets/plugins/wizard/jquery.steps.js"></script>
+            <!-- Navegación -->
+            <script src="../../../js/Navegacion/Navegacion_Admin.js"></script>
 
-        <!-- JQuery Validate  -->
-        <script src="../../../assets/plugins/wizard/jquery.validate.min.js"></script>
-        <script src="../../../assets/plugins/jquery-validation-1.19.1/additional-methods.js"></script>
-        <script src="../../../assets/plugins/jquery-validation-1.19.1/messages_es.js"></script>
-        <script src="../../../js/ValidacionesExtra.js"></script>
+            <!-- Bootstrap tether Core JavaScript -->
+            <script src="../../../assets/plugins/bootstrap/js/popper.min.js"></script>
 
-        <!-- Bootstrap tether Core JavaScript -->
-        <script src="../../../assets/plugins/bootstrap/js/popper.min.js"></script>
+            <script src="../../../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 
-        <script src="../../../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+            <script src="../../../js/jquery.slimscroll.js"></script>
 
-        <script src="../../../js/jquery.slimscroll.js"></script>
+            <!-- <script src="../../js/waves.js"></script> -->
+            <!--Menu sidebar -->
+            <script src="../../../js/sidebarmenu.js"></script>
 
-        <!-- <script src="../../js/waves.js"></script> -->
-        <!--Menu sidebar -->
-        <script src="../../../js/sidebarmenu.js"></script>
-        <!--stickey kit -->
-        <script src="../../../assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
 
-        <script src="../../../js/custom.min.js"></script>
+            <!--Custom JavaScript -->
+            <script src="../../../js/custom.min.js"></script>
 
-        <!-- <script src="../../../assets/plugins/bootstrap-select/bootstrap-select.min.js" type="text/javascript"></script> -->
+            <!-- ============================================================== -->
+            <!-- JS Plugins -->
+            <!-- ============================================================== -->
 
-        <!--plugin select2-->
-        <script src="../../../assets/plugins/select2/dist/js/select2.full.min.js" type="text/javascript"></script>
-        <script src="../../../js/jasny-bootstrap.js"></script>
+            <!--stickey kit -->
+            <script src="../../../assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+            <!-- <script src="../../../assets/plugins/sparkline/jquery.sparkline.min.js"></script> -->
+            
+            <script src="../../../assets/plugins/moment/min/moment-with-locales.min.js"></script>
 
-        <!-- TouchSpin -->
-        <script type="text/javascript"
-            src="../../../assets/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
+            <!-- Select -->
+            <script src="../../../assets/plugins/bootstrap-select/bootstrap-select.min.js"
+                type="text/javascript"></script>
 
-        <!-- Date Picker -->
-        <script src="../../../assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
-        <script src="../../../assets/plugins/bootstrap-datepicker/bootstrap-datepicker.es.min.js"></script>
+            <!--plugin select2-->
+            <script src="../../../assets/plugins/select2/dist/js/select2.full.min.js" type="text/javascript"></script>
+            <script src="../../../js/jasny-bootstrap.js"></script>
 
-        <!-- Sweetalert -->
-        <script src="../../../assets/plugins/sweetalert/sweetalert.min.js"></script>
-        <script src="../../../assets/plugins/sweetalert/jquery.sweet-alert.custom.js"></script>
+            <!-- Wizard -->
+            <script src="../../../assets/plugins/wizard/jquery.steps.js"></script>
+            <script src="../../../assets/plugins/wizard/jquery.validate.min.js"></script>
+            <script src="../../../assets/plugins/wizard/steps.js"></script>
 
-        <!-- Controladores JS -->
-        <script src="../../../Controllers/Clientes/RegistrarClientes.js"></script>
+            <!-- bt-switch -->
+            <script src="../../../assets/plugins/bootstrap-switch/bootstrap-switch.min.js"></script>
+            <script src="../../../js/bt-switch.js"></script>
+
+            <!-- TouchSpin -->
+            <script type="text/javascript"
+                src="../../../assets/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
+
+            <!-- Date Picker -->
+            <script src="../../../assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+
+            <!--Material Date picker -->
+            <script
+                src="../../../assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+
+            <!-- Clock Plugin JavaScript -->
+            <script src="../../../assets/plugins/clockpicker/dist/jquery-clockpicker.min.js"></script>
+
+            <!-- tagsinput -->
+            <script src="../../../assets/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
+
+            <!-- ============================================================== -->
+            <!-- Controladores JS -->
+            <!-- ============================================================== -->
+            <script src="../../../Controllers/Clientes/RegistrarClientes.js"></script>
 </body>
 
 </html>

@@ -245,7 +245,15 @@ $(function () {
         
         submitHandler: function (form,event) {
 
-            CargarImagenRegistro();
+            // Validar si se envía imagen.
+            
+            let files = $('#fileFotografia')[0].files;
+
+            if(files.length == 0){
+                RegistrarUsuario("defect.jpg");
+            }else{
+                CargarImagenRegistro();
+            }
         },
         rules: {
             txtTipoDocumento: "required",

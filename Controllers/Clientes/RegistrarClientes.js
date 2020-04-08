@@ -469,8 +469,8 @@ $(function () {
             }
         });
 
-    // DatePicker fecha
-    $("#Fecha_DatePicker").datepicker({
+    // Rango Fecha corporativo
+    $("#Fecha_Corporativo").datepicker({
         language: "es",
         format: 'yyyy/mm/dd',
         autoclose: true,
@@ -485,6 +485,12 @@ $(function () {
         maxboostedstep: 10000000,
         postfix: 'COP'
     });
+
+    //  Select razones
+    $(".Select_Razones").select2({
+        tags: true,
+        tokenSeparators: [","]
+     });
 
     $("#txtPais").change(function(){
 
