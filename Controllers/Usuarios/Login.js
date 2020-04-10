@@ -25,12 +25,12 @@ let Login = () => {
         if (respuesta.data.ok) {
 
              // Crear Sesión 
-            localStorage.Usuario = respuesta.data.Usuario;
-            localStorage.Id_Usuario = respuesta.data.Id_Usuario;
-            localStorage.Id_Rol = respuesta.data.Id_Rol;
-            localStorage.Rol = respuesta.data.Rol;
-            localStorage.Email = respuesta.data.Email;
-            localStorage.Imagen = respuesta.data.Imagen
+            sessionStorage.Usuario = respuesta.data.Usuario;
+            sessionStorage.Id_Usuario = respuesta.data.Id_Usuario;
+            sessionStorage.Id_Rol = respuesta.data.Id_Rol;
+            sessionStorage.Rol = respuesta.data.Rol;
+            sessionStorage.Email = respuesta.data.Email;
+            sessionStorage.Imagen = respuesta.data.Imagen
 
             let Rol = parseInt(respuesta.data.Id_Rol);
             //Redireccionamiento

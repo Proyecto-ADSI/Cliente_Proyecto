@@ -77,16 +77,16 @@
 <script>
 
     // Imagen
-    let rutaImagen = localStorage.getItem("Imagen");
+    let rutaImagen = sessionStorage.getItem("Imagen");
     let img = document.createElement("IMG");
     img.src = `../../../assets/images/usuarios/${rutaImagen}`;
     $('#ImgUsuarioAside').html(img); 
 
     // Usuario
-    let usuario = localStorage.getItem("Usuario");
+    let usuario = sessionStorage.getItem("Usuario");
     $('#txtNombre_Usuario').html(usuario);
 
     // Rol
-    let rol = localStorage.getItem("Rol");
+    let rol = sessionStorage.getItem("Rol");
     $('#txtRol_Usuario').html(rol);
 </script>

@@ -27,6 +27,7 @@ ObtenerCliente = (Id_Cliente, Modal) => {
 $(function () {
 
   DataTable =  $('#ClientesDataTable').DataTable({
+        cache: true,
         ajax: {
             url: `${URL}/Cliente`,
             error: function (error) {
