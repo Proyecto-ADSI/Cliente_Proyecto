@@ -205,3 +205,12 @@
 .select2-search__field{
     width: 100% !important;
 }
+
+/* Switch Tema */
+.MyStyle_Tema_Switch{
+    padding: 9px 15px;
+}
+
+.MyStyle_Tema_Switch > div{
+    display: inline-block;
+}

@@ -190,8 +190,25 @@
                             </div>
                         </li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="../Panel Control/Panel.html"><i class="ti-settings"></i> Configuración del sistema</a></li>
-                        <li role="separator" class="divider"></li>
+                        <li>
+                            <a href="../Panel Control/Panel.html">
+                                <i class="ti-settings"></i> Configuración del sistema
+                            </a>
+                        </li>
+                        <li>
+                            <div class="MyStyle_Tema_Switch">
+                                <div>
+                                    <i class="fa fa-power-off"></i>Tema Oscuro     
+                                </div> 
+                                <div id="switch_input" class="switch" data-theme="Blanco">
+                                    <label>
+                                        <input type="checkbox">
+                                        <span class="lever"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </li>
+                         <li role="separator" class="divider"></li>
                         <li><a href="../../Login/Login.html"><i class="fa fa-power-off"></i> 
                             Cerrar Sesión</a>
                         </li>
@@ -204,6 +221,16 @@
 
 <!-- Cargar datos de sesión -->
 <script>
+
+    var temaSeleccionado =  localStorage.getItem('Tema_Aplicacion');
+    if(temaSeleccionado){
+        $('#Tema').attr({href: '/css/colors/Tema_'+temaSeleccionado+'.css'});
+        $('#Style_Tema').attr({href: '/css/style_'+temaSeleccionado+'.css'});
+
+        if(temaSeleccionado === "Oscuro"){
+            $('#switch_input input').trigger('click');
+        }
+    }
 
     // Imagen
     let rutaImagen2 = sessionStorage.getItem("Imagen");
