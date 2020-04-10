@@ -83,10 +83,10 @@
     $('#ImgUsuarioAside').html(img); 
 
     // Usuario
-    let usuario = localStorage.getItem("Usuario");
+    let usuario = sessionStorage.getItem("Usuario");
     $('#txtNombre_Usuario').html(usuario);
 
     // Rol
-    let rol = localStorage.getItem("Rol");
+    let rol = sessionStorage.getItem("Rol");
     $('#txtRol_Usuario').html(rol);
 </script>
