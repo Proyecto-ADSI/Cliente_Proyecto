@@ -249,8 +249,8 @@ EditarUsuario = (imagen) => {
         Rol: parseInt($("#txtRol").val())
     };
 
-    if (datos.Id_Usuario == parseInt(localStorage.getItem("Id_Usuario"))) {
-        localStorage.Imagen = imagen;
+    if (datos.Id_Usuario == parseInt(sessionStorage.getItem("Id_Usuario"))) {
+        sessionStorage.Imagen = imagen;
     };
 
 
