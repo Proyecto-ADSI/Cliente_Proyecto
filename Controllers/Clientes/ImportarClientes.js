@@ -39,7 +39,39 @@ let ImportarClientes = () => {
         processData: false,
     }).done(respuesta=>{
 
-        console.log(respuesta);
+        if(respuesta.data.Importacion){
+
+            if(respuesta.data.Errores){
+                
+                // Manipular errores de importación.
+
+            }else{
+
+                $('.importarClientes').modal('hide');
+
+                swal({
+                    title: "Importación de clientes satisfactoria.",
+                    type: "success",
+                    showCancelButton: false,
+                    confirmButtonColor: "#2F6885",
+                    confirmButtonText: "Continuar",
+                    closeOnConfirm: true,
+                });
+            }
+            
+
+        }else{
+            swal({
+                title: "Error al importar clientes.",
+                text: "Ha ocurrido un error al importar, intenta de nuevo",
+                type: "error",
+                showCancelButton: false,
+                confirmButtonColor: "#2F6885",
+                confirmButtonText: "Continuar",
+                closeOnConfirm: true,
+            });
+        }
+        
 
     }).fail(error =>{
         console.log(error);
