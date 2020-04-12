@@ -214,3 +214,20 @@
 .MyStyle_Tema_Switch > div{
     display: inline-block;
 }
+
+.MyStyle_Color_Comparativo  thead  th.op1{
+    background-color: #379b79;
+    color: #ffffff;
+}
+
+.MyStyle_Color_Comparativo  thead  th.op2{
+    background-color: #be3434;
+    color: #ffffff;
+}
+
+#Tabla_Detalle_Lineas tr td [type="radio"]:not(:checked) + label, [type="radio"]:checked + label{
+    font-size: 0.8rem !important;
+}
+.MyStyle_Cargo_Detalle_Linea{
+    width: 8rem !important;
+}
