@@ -54,30 +54,7 @@ let RegistrarDepartamento = () => {
     });
 }
 
- ListarPais1 = () =>{
 
-
-    $.ajax({
-        url: `${URL}/Pais`,
-        dataType: 'json',
-        type: 'GET',
-    }).done(respuesta =>{
-        $("#SelectPais").empty();
-        $("#SelectPais").append(`
-
-        <option selected disabled value="">Seleccione el país</option>
-
-            `);
-        for(let item of respuesta.data){
-            $("#SelectPais").append(`
-                <option value='${item.Id_Pais}'>${item.Nombre_Pais}</option> 
-              ` 
-            );
-        }
-    }).fail(error =>{
-        console.log(error);
-    });
-}
 
 $(function (){
 
@@ -116,8 +93,3 @@ $(function (){
         
     });
 })
-
-
-$(function(){
-    ListarPais1();
- });

@@ -9,7 +9,16 @@ Id_Paiss = null;
         type: 'GET',
     }).done(respuesta =>{
         $('#SelectPaisEdit').empty();
+        $("#SelectPaisEdit").append(`
+
+        <option selected disabled value="">Seleccione el país</option>
+
+            `);
+        
             for (let item of respuesta.data) {
+
+                let Estado_Pais = item.Estado;
+
                 if (item.Id_Pais == Id_Paiss) {
                     var $opcion = $('<option />', {
                         text: `${item.Nombre_Pais}`,
@@ -22,7 +31,13 @@ Id_Paiss = null;
                         value: `${item.Id_Pais}`
                     })
                 }
-                $('#SelectPaisEdit').append($opcion);
+
+                if (Estado_Pais == 1) {
+                    $('#SelectPaisEdit').append($opcion);
+                }
+                else if(Estado_Pais == 0){
+                    $('#SelectPaisEdit').append(``);
+                }
             }
         // $("#SelectPaisEdit").append(`
 

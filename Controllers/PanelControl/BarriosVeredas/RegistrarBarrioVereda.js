@@ -89,29 +89,6 @@ let ListarSubTipo1 = () => {
     });
 };
 
-let ListarMunicipio1 = () => {
-  $.ajax({
-    url: `${URL}/Municipio`,
-    dataType: "json",
-    type: "GET",
-  })
-    .done((respuesta) => {
-      $("#SelectMunicipio1").empty();
-      $("#SelectMunicipio1").append(`
-
-        <option selected disabled value="">Seleccione un municipio</option>
-
-            `);
-      for (let item of respuesta.data) {
-        $("#SelectMunicipio1").append(`
-                <option value='${item.Id_Municipio}'>${item.Nombre_Municipio}</option> 
-              `);
-      }
-    })
-    .fail((error) => {
-      console.log(error);
-    });
-};
 
 $(function () {
   $("#FormBarrioVereda").validate({
@@ -164,7 +141,3 @@ $(function () {
   });
 });
 
-$(function () {
-  ListarSubTipo1();
-  ListarMunicipio1();
-});
