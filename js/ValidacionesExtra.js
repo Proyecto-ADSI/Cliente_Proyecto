@@ -11,6 +11,10 @@ $.validator.addMethod("SoloNumeros", function(value,element){
     return this.optional(element) || /^[\d]+$/.test(value);
 },"Ingrese un número de celular válido");
 
+$.validator.addMethod("SoloHoras", function(value,element){
+    return this.optional(element) || /^[\d:]+$/.test(value);
+},"Ingrese una hora valida");
+
 $.validator.addMethod("SoloNumeros2", function(value,element){
     return this.optional(element) || /^[1-9]\d*/.test(value);
 },"No se permite 0 al inicio ni caracteres especiales y alfabéticos.");

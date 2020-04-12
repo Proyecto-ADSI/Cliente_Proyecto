@@ -56,30 +56,6 @@ let RegistrarMunicipio = () => {
     });
 }
 
-let ListarDepartamento1 = () =>{
-
-
-    $.ajax({
-        url: `${URL}/Departamento`,
-        dataType: 'json',
-        type: 'GET',
-    }).done(respuesta =>{
-        $("#SelectDepartamento").empty();
-        $("#SelectDepartamento").append(`
-
-        <option selected disabled value="">Seleccione un departamento</option>
-
-            `);
-        for(let item of respuesta.data){
-            $("#SelectDepartamento").append(`
-                <option value='${item.Id_Departamento}'>${item.Nombre_Departamento}</option> 
-              ` 
-            );
-        }
-    }).fail(error =>{
-        console.log(error);
-    });
-}
 
 $(function (){
 
@@ -120,6 +96,3 @@ $(function (){
 })
 
 
-$(function(){
-    ListarDepartamento1();
- });

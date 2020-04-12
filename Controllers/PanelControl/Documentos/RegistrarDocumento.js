@@ -5,7 +5,6 @@ let RegistrarDocumento = () => {
     let datos = {
         Nombre: $("#TxtDocumento").val(),
         Estado: parseInt(1),
-     
     };
 
     $.ajax({
