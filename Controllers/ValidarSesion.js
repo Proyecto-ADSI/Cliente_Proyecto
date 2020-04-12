@@ -1,6 +1,6 @@
 window.onload = function(){
 
-    this.console.log(window.location.pathname);
+    // this.console.log(window.location.pathname);
    
     // if(sessionStorage.Id_Usuario){
 
