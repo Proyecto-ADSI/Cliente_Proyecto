@@ -10,28 +10,6 @@ $(document).ready(function () {
     }
   }
 
-
-  // $("*[data-theme]").click(function (e) {
-  //   e.preventDefault();
-  //   var currentStyle = $(this).attr('data-theme');
-  //   store('theme', currentStyle);
-  //   $('#theme').attr({ href: 'css/colors/' + currentStyle + '.css' })
-  // });
-
-  
-//  var temaSeleccionado =  localStorage.getItem('Tema_Aplicacion');
-//     if(temaSeleccionado){
-//         $('#Tema').attr({href: '/css/colors/Tema_'+temaSeleccionado+'.css'});
-//         $('#Style_Tema').attr({href: '/css/style_'+temaSeleccionado+'.css'});
-
-//         if(temaSeleccionado === "Oscuro"){
-//             let input = $('#switch_input input');
-            
-//             console.log(input);
-//         }
-//     }
-
-
   $(document).on('change', '#switch_input', function (e) {
 
     let input = $(this).children('label').children('input');
@@ -57,24 +35,3 @@ $(document).ready(function () {
   });
 
 });
-
-/*
-$(document).ready(function(){
-    $("*[data-theme]").click(function(e){
-      e.preventDefault();
-        var currentStyle = $(this).attr('data-theme');
-        store('theme', currentStyle);
-        $('#theme').attr({href: 'css/colors/'+currentStyle+'.css'})
-    });
-
-    var currentTheme = get('theme');
-    if(currentTheme)
-    {
-      $('#theme').attr({href: 'css/colors/'+currentTheme+'.css'});
-    }
-    // color selector
-$('#themecolors').on('click', 'a', function(){
-        $('#themecolors li a').removeClass('working');
-        $(this).addClass('working')
-      });
-});*/

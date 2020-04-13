@@ -49,6 +49,8 @@ let ImportarClientes = () => {
 
                 $('.importarClientes').modal('hide');
 
+                DataTable.ajax.reload();
+                
                 swal({
                     title: "Importación de clientes satisfactoria.",
                     type: "success",
@@ -57,6 +59,8 @@ let ImportarClientes = () => {
                     confirmButtonText: "Continuar",
                     closeOnConfirm: true,
                 });
+
+               
             }
             
 

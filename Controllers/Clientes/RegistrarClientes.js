@@ -19,13 +19,13 @@ $(function () {
             stepDoc = form.steps("getStep", 3);
             form.steps("remove", 2);
             form.steps("remove", 2);
-            
+
             // Inicializar selects del formulario
             CargarDatosUbicacion();
             CargarOperadores();
             // select calificacion
             // Select razones.
-            
+
         },
         onStepChanging: function (event, currentIndex, newIndex) {
             return currentIndex > newIndex || !(3 === newIndex && Number($("#age-2").val()) < 18) && (currentIndex < newIndex && (form.find(".body:eq(" + newIndex + ") label.error").remove(), form.find(".body:eq(" + newIndex + ") .error").removeClass("error")), form.validate().settings.ignore = ":disabled,:hidden", form.valid())
@@ -35,6 +35,7 @@ $(function () {
         },
         onFinished: function (event, currentIndex) {
 
+            sessionStorage.removeItem('DetalleLineas');
             RegistrarCliente();
         }
     }),
@@ -121,7 +122,7 @@ $(function () {
             }
         });
 
-// Inicializar elementos:
+    // Inicializar elementos:
 
     // Rango Fecha corporativo
     $("#Fecha_Corporativo").datepicker({
@@ -155,7 +156,7 @@ $(function () {
     });
 
 
-// Enlazar eventos: 
+    // Enlazar eventos: 
 
     // Estado del switch Plan corporativo
     $('.switch_corporativo').on('switchChange.bootstrapSwitch', function (event, state) {
@@ -251,64 +252,69 @@ $(function () {
         CargarBarrios_Veredas(arrayBarrios_Veredas);
     });
 
-    $("#btnGuardarDetalleLineas").click(function (){
+    $("#btnGuardarDetalleLineas").click(function () {
 
-    //     let DetalleLineas = [];
-    //     if(sessionStorage.DetalleLineas){
-    //         DetalleLineas = JSON.parse(sessionStorage.getItem("DetalleLineas"));
-    //     }
-        
-    //     let minutos = "";
-    //     if($('input:checkbox[name=txtDetalle_Validacion_Ilimitados]').is(":checked")){
-    //         minutos += "Ilimitados ";
-    //     }else{
-    //         minutos += $('#txtDetalle_Minutos').val();
-    //     }
-    //     if($('input:checkbox[name=txtDetalle_Minutos_TO]').is(":checked")){
-    //         minutos +=  " todo operador "
-    //     }
-    //     minutos += $('#txtDetalle_Minutos_Otro').val();
-        
-        
-    //     let arrayDetalleLinea = {
-    //         id: uuid.v4(),
-    //         cantidadLineas: $('#txtDetalle_Cantidad_Lineas').val(),
-    //         valorMensual: $('#txtDetalle_Valor_Mensual').val(),
-    //         valValorLienas: $('input:radio[name=detalleLineasRadios]:checked').val(),
-    //         navegacion: $('#txtDetalleNavegacion').val() +' '+ $('#txtDetalleUnidad').val(),
-    //         minutos: minutos,
-    //         mensajes: $('input:checkbox[name=txtDetalle_Mensajes]').is(":checked"),
-    //         llamadas: $('input:checkbox[name=txtDetalle_Llamadas]').is(":checked"),
-    //         redes: $('input:checkbox[name=txtDetalle_Redes]').is(":checked"),
-    //         roaming: $('input:checkbox[name=txtDetalle_Roaming]').is(":checked")
-    //    };
+       $('#txtDetalleId').val() == "0" ? RegistrarDetalleLinea() : EditarDetalleLinea();
 
-    //     DetalleLineas.push(arrayDetalleLinea);
+        $('#DetallesLineasEditar').on('click', function (element) {
 
-    //     sessionStorage.DetalleLineas = JSON.stringify(DetalleLineas);
+            let idLinea = $(this).attr("id_linea");
+            let DetalleLineas = JSON.parse(sessionStorage.getItem("DetalleLineas"));
 
-        ListarDetalleLineas();
+            DetalleLineas.forEach(function(valor,indice,array){
 
-        $('#DetallesLineasEditar').on('click',function(element){
-            
-            console.log($(this).attr("id_linea"))
-        })
+                if(valor.id == idLinea){
+                    $('#txtDetalleId').val(valor.id);
+                    $('#txtDetalle_Cantidad_Lineas').val(valor.cantidadLineas);
+                    $('#txtDetalle_Valor_Mensual').val(valor.valorMensual);
+                    valor.valValorLienas == "1" ? $('#txtDetalle_radio').prop("checked", true) :  $('#txtDetalle_radio2').prop("checked", true);
+                    $('#txtDetalleNavegacion').val(valor.navegacion);
+                    // $('#txtDetalleUnidad').val(),
+                    valor.minIlimitados ? $('input:checkbox[name=txtDetalle_Validacion_Ilimitados]').prop('checked',true) : $('#txtDetalle_Minutos').val(valor.minutos);
+                    valor.todoOperador ?  $('input:checkbox[name=txtDetalle_Minutos_TO]').prop('checked',true) : "" ;
+                    valor.minOtro != "" ?  $('#txtDetalle_Minutos_Otro').val(valor.minOtro) : $('#txtDetalle_Minutos_Otro').val("");
+                    valor.mensajes ? $('input:checkbox[name=txtDetalle_Mensajes]').prop('checked',true) : "";
+                    valor.redes ? $('input:checkbox[name=txtDetalle_Redes]').prop('checked',true) : "";
+                    valor.llamadas ? $('input:checkbox[name=txtDetalle_Llamadas]').prop('checked',true) : "";
+                    valor.roaming ? $('input:checkbox[name=txtDetalle_Roaming]').prop('checked',true) : "";
+                }
+            });
+
+        });
+
+        $('#DetallesLineasEliminar').on('click', function (element) {
+
+            let idLinea = $(this).attr("id_linea");
+            let DetalleLineas = JSON.parse(sessionStorage.getItem("DetalleLineas"));
+
+            DetalleLineas.forEach(function(valor,indice,array){
+
+                if(valor.id == idLinea){
+                    
+                    DetalleLineas.splice(indice,1);
+
+                    
+                }
+            });
+            sessionStorage.DetalleLineas = JSON.stringify(DetalleLineas);
+            ListarDetalleLineas();
+        });
     });
 
-    
+
 
     // Validación minutos ilimitados.
-    $('input:checkbox[name=txtDetalle_Validacion_Ilimitados]').change(function(){
-        
-        if($(this).is(":checked")) {
+    $('input:checkbox[name=txtDetalle_Validacion_Ilimitados]').change(function () {
+
+        if ($(this).is(":checked")) {
             $('#txtDetalle_Minutos').prop('disabled', true);
 
-        }else{
+        } else {
             $('#txtDetalle_Minutos').prop('disabled', false);
         }
     });
 
-  
+
 });
 
 // FUNCIONES:
@@ -627,29 +633,63 @@ let CargarOperadores = () => {
 
 }
 
+// Detalle Líneas
+
+let RegistrarDetalleLinea = () => {
+
+        let DetalleLineas = [];
+        if(sessionStorage.DetalleLineas){
+            DetalleLineas = JSON.parse(sessionStorage.getItem("DetalleLineas"));
+        }
+
+        let arrayDetalleLinea = {
+            id: uuid.v4(),
+            cantidadLineas: $('#txtDetalle_Cantidad_Lineas').val(),
+            valorMensual: $('#txtDetalle_Valor_Mensual').val(),
+            valValorLineas: $('input:radio[name=detalleLineasRadios]:checked').val(),
+            navegacion: $('#txtDetalleNavegacion').val(),
+            unidad: $('#txtDetalleUnidad').val(),
+            minutos: $('#txtDetalle_Minutos').val(),
+            minIlimitados: $('input:checkbox[name=txtDetalle_Validacion_Ilimitados]').is(":checked"),
+            todoOperador: $('input:checkbox[name=txtDetalle_Minutos_TO]').is(":checked"),
+            minOtro: $('#txtDetalle_Minutos_Otro').val(),
+            mensajes: $('input:checkbox[name=txtDetalle_Mensajes]').is(":checked"),
+            llamadas: $('input:checkbox[name=txtDetalle_Llamadas]').is(":checked"),
+            redes: $('input:checkbox[name=txtDetalle_Redes]').is(":checked"),
+            roaming: $('input:checkbox[name=txtDetalle_Roaming]').is(":checked")
+       };
+
+        DetalleLineas.push(arrayDetalleLinea);
+
+        sessionStorage.DetalleLineas = JSON.stringify(DetalleLineas);
+
+        LimpiarDetalleLinea();
+        ListarDetalleLineas();
+}
+
 let ListarDetalleLineas = () => {
-    
-    if(sessionStorage.DetalleLineas){
+
+    if (sessionStorage.DetalleLineas) {
 
         DetalleLineas = JSON.parse(sessionStorage.getItem("DetalleLineas"));
 
         $('#TblRegistroDetalleLineas').empty();
         let contador = 0;
-        for(let item of DetalleLineas){
+        for (let item of DetalleLineas) {
             contador++;
-            
+
             $('#TblRegistroDetalleLineas').append(`
             
                 <tr>
                     <td>${contador}</td>
                     <td>${item.cantidadLineas}</td>
-                    <td>${item.valorMensual} <span class="label label-info">${parseInt(item.valValorLienas) == 1 ? "En total" : "Por línea" }</span></td>
-                    <td>${item.navegacion}</td>
-                    <td>${item.minutos}</td>
+                    <td>${item.valorMensual} <span class="label label-info">${parseInt(item.valValorLienas) == 1 ? "En total" : "Por línea"}</span></td>
+                    <td>${item.navegacion+ ' '+item.unidad}</td>
+                    <td>${item.minIlimitados ? "Ilimitados " : item.minutos}${item.todoOperador ? " todo operador " : ""} ${item.minOtro != "" ? item.minOtro : ""}</td>
                     <td>
-                        ${item.mensajes ? '<input type="radio" class="with-gap" id="radio_tbl" checked> <label for="radio_tbl1">Mensajes</label>' : "" }
+                        ${item.mensajes ? '<input type="radio" class="with-gap" id="radio_tbl" checked> <label for="radio_tbl1">Mensajes</label>' : ""}
 
-                        ${item.redes ? '<input type="radio" class="with-gap" id="radio_tbl" checked><label for="radio_tbl">Redes</label>' : "" }
+                        ${item.redes ? '<input type="radio" class="with-gap" id="radio_tbl" checked><label for="radio_tbl">Redes</label>' : ""}
                         
                         ${item.llamadas ? '<input type="radio" class="with-gap" id="radio_tbl" checked>  <label for="radio_tbl1">Llamadas</label>' : ""}
 
@@ -670,6 +710,69 @@ let ListarDetalleLineas = () => {
             `);
         }
     }
+}
+
+
+let EditarDetalleLinea = () => {
+
+    let idLinea = $('#txtDetalleId').val();
+    let DetalleLineas = JSON.parse(sessionStorage.getItem("DetalleLineas"));
+  
+    DetalleLineas.forEach(function(valor,indice,array){
+
+        if(valor.id == idLinea){
+
+            DetalleLineas.splice(indice,1);
+        }
+    });
+
+        let arrayDetalleLinea = {
+            id: $('#txtDetalleId').val(),
+            cantidadLineas: $('#txtDetalle_Cantidad_Lineas').val(),
+            valorMensual: $('#txtDetalle_Valor_Mensual').val(),
+            valValorLineas: $('input:radio[name=detalleLineasRadios]:checked').val(),
+            navegacion: $('#txtDetalleNavegacion').val(),
+            unidad: $('#txtDetalleUnidad').val(),
+            minutos: $('#txtDetalle_Minutos').val(),
+            minIlimitados: $('input:checkbox[name=txtDetalle_Validacion_Ilimitados]').is(":checked"),
+            todoOperador: $('input:checkbox[name=txtDetalle_Minutos_TO]').is(":checked"),
+            minOtro: $('#txtDetalle_Minutos_Otro').val(),
+            mensajes: $('input:checkbox[name=txtDetalle_Mensajes]').is(":checked"),
+            llamadas: $('input:checkbox[name=txtDetalle_Llamadas]').is(":checked"),
+            redes: $('input:checkbox[name=txtDetalle_Redes]').is(":checked"),
+            roaming: $('input:checkbox[name=txtDetalle_Roaming]').is(":checked")
+       };
+
+        DetalleLineas.push(arrayDetalleLinea);
+
+        sessionStorage.DetalleLineas = JSON.stringify(DetalleLineas);
+
+        LimpiarDetalleLinea();
+        ListarDetalleLineas();
+}
+
+let LimpiarDetalleLinea = () => {
+
+    $('#txtDetalleId').val(0)
+    $('#txtDetalle_Cantidad_Lineas').val("");
+    $('#txtDetalle_Valor_Mensual').val("");
+    $('input:radio[name=detalleLineasRadios]:checked').prop('checked',false);
+    $('#txtDetalleNavegacion').val("");
+    // $('#txtDetalleUnidad').val(),
+    $('#txtDetalle_Minutos').val("");
+    if($('input:checkbox[name=txtDetalle_Validacion_Ilimitados]').is(":checked")){
+        $('input:checkbox[name=txtDetalle_Validacion_Ilimitados]').prop('checked',false);
+    }else{
+        $('#txtDetalle_Minutos').prop('disabled', false);
+        $('#txtDetalle_Minutos').val("");
+    }
+    $('input:checkbox[name=txtDetalle_Minutos_TO]').prop('checked',false);
+    $('#txtDetalle_Minutos_Otro').val("");
+    $('input:checkbox[name=txtDetalle_Mensajes]').prop('checked',false);
+    $('input:checkbox[name=txtDetalle_Llamadas]').prop('checked',false);
+    $('input:checkbox[name=txtDetalle_Redes]').prop('checked',false);
+    $('input:checkbox[name=txtDetalle_Roaming]').prop('checked',false);
+    
 }
 
 
