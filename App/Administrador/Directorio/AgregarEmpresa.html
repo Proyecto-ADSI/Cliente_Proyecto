@@ -226,7 +226,7 @@
                                                                 Operador del <strong>cliente</strong>
                                                             </label>
                                                             <select name="txtOperador" id="txtOperador"
-                                                                class="select2 form-control custom-select">
+                                                                class="select2 form-control custom-select valDetalle">
                                                                 <option selected disabled>Seleccione...</option>
                                                                
                                                             </select>
@@ -238,7 +238,7 @@
                                                                 Calificación del operador
                                                             </label>
                                                             <select name="txtCalificacion" id="txtCalificacion"
-                                                                class="select2 form-control custom-select">
+                                                                class="select2 form-control custom-select valDetalle">
                                                                 <option selected disabled>Seleccione...</option>
                                                                 <option value="1">1</option>
                                                             </select>
@@ -250,9 +250,9 @@
                                                         <div class="form-group">
                                                             <label for="int1 ">Total de <strong>líneas:</strong>
                                                             </label>
-                                                            <input type="number" class="form-control"
+                                                            <input type="number" class="form-control valDetalle"
                                                                 id="txtCantidad_Total_Lineas" name="txtCantidad_Total_Lineas"
-                                                                placeholder="10">
+                                                                placeholder="Cantidad: 10">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-5">
@@ -261,8 +261,8 @@
                                                                 Pago <strong>mensual total:</strong>
                                                             </label>
                                                             <input id="txtValor_Total_Mensual" type="text"
-                                                                name="txtValor_Total_Mensual" class=" form-control"
-                                                                placeholder="100000"
+                                                                name="txtValor_Total_Mensual" class=" form-control valDetalle"
+                                                                placeholder="Valor: $100,000"
                                                                 data-bts-button-down-class="btn btn-secondary btn-outline"
                                                                 data-bts-button-up-class="btn btn-secondary btn-outline">
                                                         </div>
@@ -274,11 +274,11 @@
                                                     <label class="control-label">
                                                         Razones:
                                                     </label>
-                                                    <select class="Select_Razones select2-multiple m-b-10"
+                                                    <select id="Select_Razones" class="Select_Razones select2-multiple m-b-10 valDetalle"
                                                         style="width: 100%" multiple="multiple"
                                                         data-placeholder="Seleccione o escriba">
-                                                        <option value="AK">Mala señal</option>
-                                                        <option value="HI">Mala atención</option>
+                                                        <option value="1">Mala señal</option>
+                                                        <option value="2">Mala atención</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -290,7 +290,7 @@
                                             <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="int1 "> Número de líneas:</label>
-                                                    <input type="number" class="form-control" id="txtDetalle_Cantidad_Lineas"
+                                                    <input type="number" class="form-control detalleLinea" id="txtDetalle_Cantidad_Lineas"
                                                         name="txtDetalle_Cantidad_Lineas" placeholder="10">
                                                 </div>
                                             </div>
@@ -301,7 +301,7 @@
                                                     </label>
                                                     <div class="input-group">
                                                         <input id="txtDetalle_Valor_Mensual" type="text"
-                                                            name="txtDetalle_Valor_Mensual" class=" form-control"
+                                                            name="txtDetalle_Valor_Mensual" class="form-control detalleLinea"
                                                             placeholder="100000">
                                                         <div class="input-group-append">
                                                             <span class="input-group-text">COP</span>
@@ -310,10 +310,10 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
-                                                <div class="form-group m-t-20">
-                                                    <input name="detalleLineasRadios" type="radio" class="with-gap" id="txtDetalle_radio" value="1">
+                                                <div class="form-group m-t-20 has-danger">
+                                                    <input name="detalleLineasRadios" type="radio" class="with-gap detalleLinea" id="txtDetalle_radio" value="1">
                                                     <label id="lblDetalle_radio" for="txtDetalle_radio">En total </label>
-                                                    <input name="detalleLineasRadios" type="radio" class="with-gap" id="txtDetalle_radio2" value="2">
+                                                    <input name="detalleLineasRadios" type="radio" class="with-gap detalleLinea" id="txtDetalle_radio2" value="2">
                                                     <label id="lblDetalle_radio2" for="txtDetalle_radio2">Por cada línea </label>
                                                 </div>
                                             </div>
@@ -321,7 +321,7 @@
                                                 <div class="form-group">
                                                     <label for="jobTitle2 ">Navegación:</label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="txtDetalleNavegacion"
+                                                        <input type="text" class="form-control detalleLinea" id="txtDetalleNavegacion"
                                                             name="txtDetalleNavegacion" placeholder="1">
                                                         <div class="input-group-append">
                                                             <select name="txtDetalleUnidad" id="txtDetalleUnidad"
@@ -339,39 +339,39 @@
                                                 <div class="form-group">
                                                     <label for="int1 ">Minutos:</label>
                                                     <input type="checkbox" id="txtDetalle_Validacion_Ilimitados" name="txtDetalle_Validacion_Ilimitados"
-                                                        class="MyStyle_Checkbox">
+                                                        class="MyStyle_Checkbox detalleLinea">
                                                     <label for="txtDetalle_Validacion_Ilimitados">Ilimitados</label>
-                                                    <input type="text" class="form-control" id="txtDetalle_Minutos"
+                                                    <input type="text" class="form-control detalleLinea" id="txtDetalle_Minutos"
                                                         name="txtDetalle_Minutos" placeholder="300">
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
                                                 <div class="form-group">
                                                     <input type="checkbox" id="txtDetalle_Minutos_TO" name="txtDetalle_Minutos_TO"
-                                                        class="MyStyle_Checkbox">
+                                                        class="MyStyle_Checkbox detalleLinea">
                                                     <label for="txtDetalle_Minutos_TO">Todo operador</label>
-                                                    <input type="text" class="form-control" name="txtDetalle_Minutos_Otro" id="txtDetalle_Minutos_Otro"
+                                                    <input type="text" class="form-control detalleLinea" name="txtDetalle_Minutos_Otro" id="txtDetalle_Minutos_Otro"
                                                         placeholder="Otro:">
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
                                                 <div class="form-group m-t-20">
                                                     <input type="checkbox" id="checkbox_mensajes" name="txtDetalle_Mensajes"
-                                                        class="MyStyle_Checkbox">
+                                                        class="MyStyle_Checkbox detalleLinea">
                                                     <label for="checkbox_mensajes">Mensajes de texto</label>
 
                                                     <input type="checkbox" id="checkbox_llamadas" name="txtDetalle_Llamadas"
-                                                        class="MyStyle_Checkbox">
+                                                        class="MyStyle_Checkbox detalleLinea">
                                                     <label for="checkbox_llamadas">Llamadas internacionales</label>
                                                 </div>
                                             </div>
                                             <div class="col-md-3 ">
                                                 <div class="form-group m-t-20">
-                                                    <input type="checkbox" id="checkbox_redes" name="txtDetalle_Redes" class="MyStyle_Checkbox">
+                                                    <input type="checkbox" id="checkbox_redes" name="txtDetalle_Redes" class="MyStyle_Checkbox detalleLinea">
                                                     <label for="checkbox_redes">Redes sociales</label>
 
                                                     <input type="checkbox" id="checkbox_roaming" name="txtDetalle_Roaming"
-                                                        class="MyStyle_Checkbox">
+                                                        class="MyStyle_Checkbox detalleLinea">
                                                     <label for="checkbox_roaming">Roaming internacional</label>
 
                                                 </div>
@@ -404,18 +404,8 @@
                                                         <tbody id="TblRegistroDetalleLineas">
                                                          
                                                         </tbody>
-                                                        <tfoot>
-                                                            <tr>
-                                                                <td>
-                                                                    <h5 class="box-title">Total:</h5>
-                                                                </td>
-                                                                <td>7</td>
-                                                                <td>260,000</td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                            </tr>
+                                                        <tfoot id="tFootRegistroDetalleCliente">
+                                                            
                                                         </tfoot>
                                                     </table>
                                                 </div>
@@ -430,7 +420,7 @@
                                             <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="location1">¿Claúsula permanencia?</label>
-                                                    <div class="switch">
+                                                    <div id="switchClausula" class="switch">
                                                         <label>
                                                             <strong> NO</strong>
                                                             <input type="checkbox">
@@ -457,12 +447,8 @@
                                             </div>
                                             <div class="col-md-1">
                                                 <div class="form-group">
-                                                    <div class="bt-switch">
-                                                        <label for="location1">¿Documentos?</label>
-                                                        <input type="checkbox" data-on-color="success"
-                                                            data-off-color="danger" data-on-text="Si"
-                                                            data-off-text="No">
-                                                    </div>
+                                                    <label for="location1">¿Documentos?</label>
+                                                    <input type="checkbox" class="switch_doc">
                                                 </div>
                                             </div>
                                         </div>
@@ -625,7 +611,7 @@
 
             <!-- bt-switch -->
             <script src="../../../assets/plugins/bootstrap-switch/bootstrap-switch.min.js"></script>
-            <script src="../../../js/bt-switch.js"></script>
+            <!-- <script src="../../../js/bt-switch.js"></script> -->
 
             <!-- TouchSpin -->
             <script type="text/javascript"
