@@ -37,6 +37,8 @@
     <link href="../../../assets/plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
     <!-- tagsinput -->
     <link href="../../../assets/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.css" rel="stylesheet" />
+    <!-- Sweetalert -->
+    <link href="../../../assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
     
 </head>
 
@@ -245,7 +247,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="row">
+                                                <!-- <div class="row">
                                                     <div class="col-md-5">
                                                         <div class="form-group">
                                                             <label for="int1 ">Total de <strong>líneas:</strong>
@@ -262,12 +264,12 @@
                                                             </label>
                                                             <input id="txtValor_Total_Mensual" type="text"
                                                                 name="txtValor_Total_Mensual" class=" form-control valDetalle"
-                                                                placeholder="Valor: $100,000"
+                                                                placeholder="Valor: $100000"
                                                                 data-bts-button-down-class="btn btn-secondary btn-outline"
                                                                 data-bts-button-up-class="btn btn-secondary btn-outline">
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
@@ -277,13 +279,13 @@
                                                     <select id="Select_Razones" class="Select_Razones select2-multiple m-b-10 valDetalle"
                                                         style="width: 100%" multiple="multiple"
                                                         data-placeholder="Seleccione o escriba">
-                                                        <option value="1">Mala señal</option>
-                                                        <option value="2">Mala atención</option>
+                                                        <option value="Mala señal">Mala señal</option>
+                                                        <option value="Mala atención">Mala atención</option>
                                                     </select>
                                                 </div>
                                             </div>
                                         </div>
-                                        <h4 class="box-title">Detalle individual de las líneas</h4>
+                                        <h4 class="box-title font-weight-bold">Detalle de las líneas:</h4>
                                         <hr class="m-t-0 m-b-20">
                                         <div class="row">
                                             <input type="hidden" id="txtDetalleId" value="0">
@@ -291,7 +293,7 @@
                                                 <div class="form-group">
                                                     <label for="int1 "> Número de líneas:</label>
                                                     <input type="number" class="form-control detalleLinea" id="txtDetalle_Cantidad_Lineas"
-                                                        name="txtDetalle_Cantidad_Lineas" placeholder="10">
+                                                        name="txtDetalle_Cantidad_Lineas" placeholder="Cantidad: 10">
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
@@ -302,7 +304,7 @@
                                                     <div class="input-group">
                                                         <input id="txtDetalle_Valor_Mensual" type="text"
                                                             name="txtDetalle_Valor_Mensual" class="form-control detalleLinea"
-                                                            placeholder="100000">
+                                                            placeholder="Valor: $100000">
                                                         <div class="input-group-append">
                                                             <span class="input-group-text">COP</span>
                                                         </div>
@@ -379,11 +381,14 @@
                                         </div>
                                         <hr class="m-t-0 m-b-20">
                                         <div class="row m-b-20">
-                                            <div class="col-md-10">
-                                                <h4 class="box-title">Información de líneas del cliente:</h4>
+                                            <div class="col-md-8">
+                                                <h4 class="box-title font-weight-bold">Información de líneas del cliente:</h4>
                                             </div>
                                             <div class="col-md-2">
-                                                <button type="button" id="btnGuardarDetalleLineas" class="btn btn-info">Guardar líneas</button>
+                                                <button type="button" id="btnLimpiar" class="btn btn-outline-primary">Limpiar formulario</button>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <button type="button" id="btnGuardarDetalleLineas" class="btn btn-outline-info">Guardar líneas</button>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -393,11 +398,12 @@
                                                         <thead>
                                                             <tr>
                                                                 <th>#</th>
-                                                                <th>Número líneas</th>
+                                                                <th>Cantidad</th>
                                                                 <th>Pago mensual</th>
-                                                                <th>Navegación</th>
+                                                                <th>Datos</th>
                                                                 <th>Minutos</th>
                                                                 <th>Otros</th>
+                                                                <th>Tipo</th>
                                                                 <th>Opciones</th>
                                                             </tr>
                                                         </thead>
@@ -556,7 +562,6 @@
                                         </div>
                                     </section>
                                 </form>
-                               
                             </div>
                         </div>
                     </div>
@@ -632,6 +637,11 @@
 
             <!-- uuid -->
             <script src="../../../assets/plugins/uuid/uuid.min.js"></script>
+
+            <!-- Sweetalert -->
+            <script src="../../../assets/plugins/sweetalert/sweetalert.min.js"></script>
+            <script src="../../../assets/plugins/sweetalert/jquery.sweet-alert.custom.js"></script>
+
             <!-- Tema -->
             <script src="../../../assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
             

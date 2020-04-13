@@ -26,9 +26,9 @@ $(function () {
             // select calificacion
             // Select razones.
 
-            // if(sessionStorage.DetalleLineas){
-            //     sessionStorage.removeItem("DetalleLineas");
-            // }
+            if(sessionStorage.DetalleLineas){
+                sessionStorage.removeItem("DetalleLineas");
+            }
 
         },
         onStepChanging: function (event, currentIndex, newIndex) {
@@ -39,7 +39,9 @@ $(function () {
         },
         onFinished: function (event, currentIndex) {
 
-           
+            if(sessionStorage.DatosUbicacion){
+                sessionStorage.removeItem("DatosUbicacion");
+            }
             RegistrarCliente();
         }
     }),
@@ -131,8 +133,6 @@ $(function () {
     // Inicializar elementos:
 
 
-  
-
     // TouchSpin    
     $("#txtValor_Total_Mensual").TouchSpin({
         min: 0,
@@ -197,8 +197,6 @@ $(function () {
           
         }
     });
-
-    
 
     $("#txtPais").change(function () {
 
@@ -280,6 +278,13 @@ $(function () {
         CargarBarrios_Veredas(arrayBarrios_Veredas);
     });
 
+    $("#btnLimpiar").click(function () {
+
+        LimpiarDetalleLinea();
+
+    });
+
+
     $("#btnGuardarDetalleLineas").click(function () {
 
         form.validate().settings.ignore = ":disabled,:hidden, .valDetalle";
@@ -352,11 +357,15 @@ let RegistrarCliente = () => {
 
     // Array Lineas
     let arrayLineas = [];
+
+    let Cantidad_Total_Lineas = 0;
+    let Valor_Total_Mensual = 0;
+
     if(sessionStorage.DetalleLineas){
         
         let DetalleLineas = JSON.parse(sessionStorage.DetalleLineas);
         
-        
+
         for(let lineaItem of DetalleLineas){
 
             let minutos = "";
@@ -375,18 +384,37 @@ let RegistrarCliente = () => {
                 minutos += "," + lineaItem.minOtro
             }
 
-            let linea = {
-                minutos: minutos,
-                navegacion: lineaItem.navegacion + " " + lineaItem.unidad,
-                mensajes: lineaItem.mensajes,
-                redes: lineaItem.redes,
-                llamadas: lineaItem.llamadas,
-                roaming: lineaItem.roaming
+            // Establecer valor total mensual de las lineas.
+            if(lineaItem.valValorLineas == "1"){
+                
+                Valor_Total_Mensual += parseInt(lineaItem.valorMensual);
+
+            }else if(lineaItem.valValorLineas == "2"){
+                
+                Valor_Total_Mensual += (parseInt(lineaItem.valorMensual) * parseInt(lineaItem.cantidadLineas));
+
             }
 
-           arrayLineas.push(linea);
+            for(let i = 1; i <= parseInt(lineaItem.cantidadLineas); i++){
+
+                let linea = {
+                    minutos: minutos,
+                    navegacion: lineaItem.navegacion + " " + lineaItem.unidad,
+                    mensajes: lineaItem.mensajes ? 1 : 0,
+                    redes: lineaItem.redes ? 1 : 0,
+                    llamadas: lineaItem.llamadas ? 1 : 0,
+                    roaming: lineaItem.roaming ? 1 : 0,
+                    cargo: lineaItem.valorMensual
+                }
+    
+               arrayLineas.push(linea);
+            }            
         }
+
+        Cantidad_Total_Lineas = arrayLineas.length;
     }
+
+    console.log(Valor_Total_Mensual);
 
     let arrayRazones = $("#Select_Razones").val();
     let stringRazones = "";
@@ -407,10 +435,10 @@ let RegistrarCliente = () => {
         Direccion: $("#txtDireccion").val(),
         //DBL
         Id_Operador: parseInt($("#txtOperador").val()),
-        Id_Calificacion_Operador: $("#txtCalificacion").val(),
+        Id_Calificacion_Operador: parseInt($("#txtCalificacion").val()),
         Razones: stringRazones,
-        Cantidad_Lineas: parseInt($("#txtCantidad_Total_Lineas").val()),
-        Valor_Mensual: $("#txtValor_Total_Mensual").val(),
+        Cantidad_Lineas: Cantidad_Total_Lineas,
+        Valor_Mensual: Valor_Total_Mensual.toString(),
         DetalleLineas: arrayLineas       
     };
 
@@ -420,25 +448,55 @@ let RegistrarCliente = () => {
         let switchClausula = $('#switchClausula').children('label').children('input');
 
         Object.defineProperties(datos,{
-            "Validacion_PLan_C":{value: true},
-            "Clausula":{value: switchClausula[0].checked},
-            "Fecha_Inicio":{value: $("#txtFecha_inicio").val()},
-            "Fecha_Fin":{value: $("#txtFecha_fin").val()},
-            "Descripcion":{value: $("#txtDescripcion").val()}
+            "Validacion_PLan_C":{
+                value: true,
+                enumerable: true
+            },
+            "Clausula":{
+                value: switchClausula[0].checked ? 1 : 0,
+                enumerable: true
+            },
+            "Fecha_Inicio":{
+                value: $("#txtFecha_inicio").val(),
+                enumerable: true
+            },
+            "Fecha_Fin":{
+                value: $("#txtFecha_fin").val(),
+                enumerable: true
+            },
+            "Descripcion":{
+                value: $("#txtDescripcion").val(),
+                enumerable: true
+            }
         });
     }
 
     if($('.switch_doc').bootstrapSwitch('state')){
 
         Object.defineProperties(datos,{
-            "Validacion_Doc_S":{value: true},
-            "Camara_Comercio":{value: $("#txtCamara_Comercio").val()},
-            "Cedula_RL":{value: $("#txtCedula").val()},
-            "Soporte_Ingresos":{value:$("#txtSoporte").val()},
-            "Detalles_Plan_Corporativo":{value: $("#txtDetalles").val()}
+            "Validacion_Doc_S":{
+                value: true,
+                enumerable: true
+            },
+            "Camara_Comercio":{
+                value: $("#txtCamara_Comercio").val(),
+                enumerable: true
+            },
+            "Cedula_RL":{
+                value: $("#txtCedula").val(),
+                enumerable: true
+            },
+            "Soporte_Ingresos":{
+                value:$("#txtSoporte").val(),
+                enumerable: true
+            },
+            "Detalles_Plan_Corporativo":{
+                value: $("#txtDetalles").val(),
+                enumerable: true
+            }
         });
     }
-    
+
     $.ajax({
         url: `${URL}/Cliente`,
         dataType: 'json',
@@ -451,7 +509,7 @@ let RegistrarCliente = () => {
     }).done(respuesta => {
 
         console.log(respuesta)
-        // La api devuelve un booleando
+
         if (respuesta.data.ok) {
 
             swal({
@@ -503,7 +561,6 @@ let RegistrarCliente = () => {
     });
 
 }
-
 
 
 let CargarDatosUbicacion = () => {
@@ -698,7 +755,7 @@ let ListarDetalleLineas = () => {
                         <i class="fa fa-dollar"></i>
                         <div class="float-right">${item.valorMensual}</div> 
                     </td>
-                    <td>${item.navegacion+ ' '+item.unidad}<span class="label label-info">${parseInt(item.valValorLienas) == 1 ? "En total" : "Por línea"}</span></td>
+                    <td>${item.navegacion+ ' '+item.unidad}</td>
                     <td>${item.minIlimitados ? "Ilimitados " : item.minutos}${item.todoOperador ? " todo operador " : ""} ${item.minOtro != "" ? item.minOtro : ""}</td>
                     <td>
                         ${item.mensajes ? '<input type="radio" class="with-gap" id="radio_tbl" checked> <label for="radio_tbl1">Mensajes</label>' : ""}
@@ -709,6 +766,9 @@ let ListarDetalleLineas = () => {
 
                         ${item.roaming ? '<input type="radio" class="with-gap" id="radio_tbl" checked> <label for="radio_tbl">Roaming</label>' : ""}
                         
+                    </td>
+                    <td>
+                        <span class="label label-info">${parseInt(item.valValorLineas) == 1 ? "En total" : "Por línea"}</span>
                     </td>
                     <td>
                         
@@ -736,6 +796,7 @@ let ListarDetalleLineas = () => {
                     <i class="fa fa-dollar"></i>
                     <div class="float-right">${Valor_Mensual}</div> 
                 </td>
+                <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
