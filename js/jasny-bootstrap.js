@@ -107,8 +107,6 @@
       
       this.$element.trigger('change.bs.fileinput')
     }
-
-    console.log(this.$element);
   },
 
   Fileinput.prototype.clear = function(e) {

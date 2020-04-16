@@ -67,9 +67,6 @@ CargarDatosModalDetalles = (datos) => {
         document.getElementById("txtValor_Mensual2").innerHTML = Informacion.Valor_Total_Mensual;
     }
     
-    
-    
-
     let Id_Plan_Corporativo = parseInt(Informacion.Id_Plan_Corporativo);
 
     if(Id_Plan_Corporativo > 0 ){
@@ -95,14 +92,12 @@ CargarDatosModalDetalles = (datos) => {
         $("#Menu_Doc").css("display","none");
         $("#Menu_Comp").css("display","none");
     }
-
    // Mostrar Modal con formulario para editar
    $('.ModalDetalles').modal('show');
 
 }
 
 MostrarModalEditar = () =>{
-    
     $('.ModalDetalles').modal('hide');
     ObtenerCliente(Id_Cliente,2);
 }
