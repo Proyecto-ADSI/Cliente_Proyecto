@@ -67,9 +67,6 @@ CargarDatosModalDetalles = (datos) => {
         document.getElementById("txtValor_Mensual2").innerHTML = Informacion.Valor_Total_Mensual;
     }
     
-    
-    
-
     let Id_Plan_Corporativo = parseInt(Informacion.Id_Plan_Corporativo);
 
     if(Id_Plan_Corporativo > 0 ){
