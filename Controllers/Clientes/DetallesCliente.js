@@ -92,7 +92,6 @@ CargarDatosModalDetalles = (datos) => {
         $("#Menu_Doc").css("display","none");
         $("#Menu_Comp").css("display","none");
     }
-
    // Mostrar Modal con formulario para editar
    $('.ModalDetalles').modal('show');
 
