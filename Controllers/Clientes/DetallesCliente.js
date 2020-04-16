@@ -98,7 +98,6 @@ CargarDatosModalDetalles = (datos) => {
 }
 
 MostrarModalEditar = () =>{
-    
     $('.ModalDetalles').modal('hide');
     ObtenerCliente(Id_Cliente,2);
 }
