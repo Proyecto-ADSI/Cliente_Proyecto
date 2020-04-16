@@ -19,7 +19,7 @@ let ListarDocumento = () => {
             <td>${item.Nombre}</td>
             <td class="text-nowrap">
                     <i class="fa fa-pencil text-inverse m-r-10" id="EditarDocumento" data-toggle="modal" data-target="#ModificarDocumento" onclick="ObtenerDocumento(${item.Id_Documento})" style="cursor:pointer;"></i>
-                    <i class="fa fa-close text-danger" style="cursor:pointer;"></i>  
+                    <i class="fa fa-close text-danger" onclick="EliminarDocumento(${item.Id_Documento})" style="cursor:pointer;"></i>  
                     <input type="checkbox"  id='Documento${item.Id_Documento}' class="js-switch"/>
             </td>
         </tr>

@@ -8284,3 +8284,27 @@ a.list-group-item:hover {
 #morris-donut-chart svg text tspan {
   fill: rgba(255, 255, 255, 0.5) !important;
   font-size: 10px !important; }
+
+ 
+  /* ::-webkit-scrollbar{
+    width: 17px;
+  }
+  ::-webkit-scrollbar-track{
+    border: 7px solid #383f48;
+    box-shadow: inset 0 0 2.5px 2px rgba(255, 255, 255,0.4);
+  }
+  ::-webkit-scrollbar-thumb{
+    background:linear-gradient(
+       45deg,
+       #00897b,
+       #383f48
+    );
+    border-radius: 4px;
+  } */
+
+  /* .simplebar-scrollbar:before{
+    background-color: ligthen(#00897b, 30%);
+  }
+  .simplebar-scrollbar{
+    margin-right: 2px;
+  } */

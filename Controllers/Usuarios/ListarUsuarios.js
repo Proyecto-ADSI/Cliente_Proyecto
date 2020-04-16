@@ -50,15 +50,15 @@ $(function () {
                     `
                     <input type="checkbox" id="switch_cliente" class="js-switch" />
                     
-                    <button id="btnDetalles" class="btn btn btn-outline-primary">
+                    <button id="btnDetalles" class="btn btn-warning">
                         <i class="fa fa-eye"></i>
                     </button>
 
-                    <button id="btnEditar" class="btn btn-outline-info">
+                    <button id="btnEditar" class="btn btn-info">
                         <i class="fa fa-pencil"></i>
                     </button>
                     
-                    <button id="btnEliminar" class="btn btn-outline-danger">
+                    <button id="btnEliminar" class="btn btn-danger">
                         <i class="fa fa-close"></i> 
                     </button>
             `}
