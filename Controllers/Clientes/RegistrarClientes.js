@@ -1,8 +1,10 @@
 //API
-
-const URL = 'http://localhost:8081'
+const URL = 'http://localhost:8081';
+// Iterador registrar línea.
+var id = 0; 
 
 $(function () {
+
     var stepPlanCorp;
     var stepDoc;
     var form = $("#Form_Registro_Clientes").show();
@@ -26,9 +28,9 @@ $(function () {
             // select calificacion
             // Select razones.
 
-            if(sessionStorage.DetalleLineas){
-                sessionStorage.removeItem("DetalleLineas");
-            }
+            // if(sessionStorage.DetalleLineas){
+            //     sessionStorage.removeItem("DetalleLineas");
+            // }
 
         },
         onStepChanging: function (event, currentIndex, newIndex) {
@@ -45,7 +47,7 @@ $(function () {
             RegistrarCliente();
         }
     }),
-        form.validate({
+    form.validate({
             ignore: "input[type=hidden]",
             successClass: "text-success",
             errorClass: "form-control-feedback",
@@ -101,23 +103,24 @@ $(function () {
                 // txtSubTipo: "required",
                 // txtNombre_Lugar: "required",
                 // txtDireccion: "required",
-                // txtOperador: "required",
+                
                 // txtCantidad_Total_Lineas: {
                 //     required: true,
                 //     SoloNumeros: true,
                 // },
-                txtValor_Total_Mensual: {
-                    SoloNumeros: true
-                },
-                txtDetalle_Cantidad_Lineas:{
-                    required: true,
-                    SoloNumeros: true
-                },
-                txtDetalle_Valor_Mensual:{
-                    required: true,
-                    SoloNumeros: true
-                },
-                detalleLineasRadios: "required",
+                txtOperador: "required",
+                // txtValor_Total_Mensual: {
+                //     SoloNumeros: true
+                // },
+                // txtDetalle_Cantidad_Lineas:{
+                //     required: true,
+                //     SoloNumeros: true
+                // },
+                // txtDetalle_Valor_Mensual:{
+                //     required: true,
+                //     SoloNumeros: true
+                // },
+                // detalleLineasRadios: "required",
                 txtDetalleNavegacion: {
                    SoloNumeros: true
                 },
@@ -128,7 +131,7 @@ $(function () {
                     SoloAlfanumericos: true
                 }
             }
-        });
+    });
 
     // Inicializar elementos:
 
@@ -291,7 +294,102 @@ $(function () {
         if(form.valid()){
             
             $('#txtDetalleId').val() == "0" ? RegistrarDetalleLinea() : EditarDetalleLinea();
-           
+            
+
+            // Detalles líneas
+
+            $(document).on('click','#DetallesLineasDetalle', function () {
+
+                let idLinea = $(this).attr("id_linea");
+                let DetalleLineas = JSON.parse(sessionStorage.getItem("DetalleLineas"));
+    
+                 DetalleLineas.forEach(function(linea,indice,array){
+                    
+                    console.log(linea)
+
+                        if(linea.id == idLinea){
+
+                            let minutos = "";
+
+                            if(linea.minIlimitados){
+                                minutos += "Ilimitados";
+                            }else{
+                                minutos += linea.minutos;
+                            }
+
+                            if(linea.todoOperador){
+                                minutos += ",todo operador";
+                            }
+
+                            if(linea.minOtro != ""){
+                                minutos += "," + linea.minOtro
+                            }
+
+                            let Valor_Total_Mensual = 0;
+                            // Establecer valor total mensual de las lineas.
+                            if(linea.valValorLineas == "1"){
+                                
+                                Valor_Total_Mensual += parseInt(linea.valorMensual);
+
+                            }else if(linea.valValorLineas == "2"){
+                                
+                                Valor_Total_Mensual += (parseInt(linea.valorMensual) * parseInt(linea.cantidadLineas));
+
+                            }
+
+                        $('#tbodyModalLinea').append( `
+
+                        <tr>
+                            <td>Cantidad líneas</td>
+                            <td>
+                                ${linea.cantidadLineas}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Pago mensual</td>
+                            <td>
+                                <i class="fa fa-dollar"></i>
+                                <div class="float-right">${Valor_Total_Mensual}</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Navegación</td>
+                            <td>
+                               ${linea.navegacion + ' ' + linea.unidad}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Minutos</td>
+                            <td>
+                                ${minutos}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Otros</td>
+                            <td>
+
+                            ${linea.mensajes ? '<input type="radio" class="with-gap" id="radio_tbl" checked> <label for="radio_tbl1">Mensajes</label>' : ""}
+
+                            ${linea.redes ? '<input type="radio" class="with-gap" id="radio_tbl" checked><label for="radio_tbl">Redes</label>' : ""}
+                            
+                            ${linea.llamadas ? '<input type="radio" class="with-gap" id="radio_tbl" checked>  <label for="radio_tbl1">Llamadas</label>' : ""}
+    
+                            ${linea.roaming ? '<input type="radio" class="with-gap" id="radio_tbl" checked> <label for="radio_tbl">Roaming</label>' : ""}
+                            </td>
+                        </tr>
+
+
+                        `
+                        );
+                        
+                        $('#LineasModal').modal("show");
+                    }
+                });
+            })
+
+
+            // Editar linea
+
             $(document).on('click','#DetallesLineasEditar', function () {
                  let idLinea = $(this).attr("id_linea");
                  let DetalleLineas = JSON.parse(sessionStorage.getItem("DetalleLineas"));
@@ -305,7 +403,7 @@ $(function () {
                          valor.valValorLineas == "1" ? $('#txtDetalle_radio').prop("checked", true) :  $('#txtDetalle_radio2').prop("checked", true);
                          $('#txtDetalleNavegacion').val(valor.navegacion);
                          // $('#txtDetalleUnidad').val(),
-                         valor.minIlimitados ? $('input:checkbox[name=txtDetalle_Validacion_Ilimitados]').prop('checked',true) : $('#txtDetalle_Minutos').val(valor.minutos);
+                         valor.minIlimitados ? $('input:checkbox[name=txtDetalle_Validacion_Ilimitados]').trigger('click') : $('#txtDetalle_Minutos').val(valor.minutos);
                          valor.todoOperador ?  $('input:checkbox[name=txtDetalle_Minutos_TO]').prop('checked',true) : "" ;
                          valor.minOtro != "" ?  $('#txtDetalle_Minutos_Otro').val(valor.minOtro) : $('#txtDetalle_Minutos_Otro').val("");
                          valor.mensajes ? $('input:checkbox[name=txtDetalle_Mensajes]').prop('checked',true) : "";
@@ -316,6 +414,9 @@ $(function () {
                  });
     
             });
+
+
+            // Eliminar línea.
 
             $(document).on('click','#DetallesLineasEliminar', function () {
 
@@ -365,7 +466,7 @@ let RegistrarCliente = () => {
         
         let DetalleLineas = JSON.parse(sessionStorage.DetalleLineas);
         
-
+        let GrupoLineas = 0;
         for(let lineaItem of DetalleLineas){
 
             let minutos = "";
@@ -395,6 +496,7 @@ let RegistrarCliente = () => {
 
             }
 
+            GrupoLineas++;
             for(let i = 1; i <= parseInt(lineaItem.cantidadLineas); i++){
 
                 let linea = {
@@ -404,7 +506,8 @@ let RegistrarCliente = () => {
                     redes: lineaItem.redes ? 1 : 0,
                     llamadas: lineaItem.llamadas ? 1 : 0,
                     roaming: lineaItem.roaming ? 1 : 0,
-                    cargo: lineaItem.valorMensual
+                    cargo: lineaItem.valorMensual,
+                    grupo: GrupoLineas
                 }
     
                arrayLineas.push(linea);
@@ -414,8 +517,6 @@ let RegistrarCliente = () => {
         Cantidad_Total_Lineas = arrayLineas.length;
     }
 
-    console.log(Valor_Total_Mensual);
-
     let arrayRazones = $("#Select_Razones").val();
     let stringRazones = "";
 
@@ -424,7 +525,7 @@ let RegistrarCliente = () => {
     }
 
     let datos =
-    {
+    {   
         // Cliente
         Razon_Social: $("#txtRazonSocial").val(),
         Telefono: $("#txtTelefono").val(),
@@ -439,7 +540,11 @@ let RegistrarCliente = () => {
         Razones: stringRazones,
         Cantidad_Lineas: Cantidad_Total_Lineas,
         Valor_Mensual: Valor_Total_Mensual.toString(),
-        DetalleLineas: arrayLineas       
+        DetalleLineas: arrayLineas,
+        
+        // Validacion
+        Validacion_PLan_C: false,
+        Validacion_Doc_S: false
     };
 
     
@@ -447,11 +552,9 @@ let RegistrarCliente = () => {
 
         let switchClausula = $('#switchClausula').children('label').children('input');
 
+        datos.Validacion_PLan_C = true
+
         Object.defineProperties(datos,{
-            "Validacion_PLan_C":{
-                value: true,
-                enumerable: true
-            },
             "Clausula":{
                 value: switchClausula[0].checked ? 1 : 0,
                 enumerable: true
@@ -473,12 +576,10 @@ let RegistrarCliente = () => {
 
     if($('.switch_doc').bootstrapSwitch('state')){
 
+        datos.Validacion_Doc_S = true;
+
         Object.defineProperties(datos,{
-            "Validacion_Doc_S":{
-                value: true,
-                enumerable: true
-            },
-            "Camara_Comercio":{
+           "Camara_Comercio":{
                 value: $("#txtCamara_Comercio").val(),
                 enumerable: true
             },
@@ -496,7 +597,7 @@ let RegistrarCliente = () => {
             }
         });
     }
-
+    
     $.ajax({
         url: `${URL}/Cliente`,
         dataType: 'json',
@@ -694,31 +795,31 @@ let CargarOperadores = () => {
 
 let RegistrarDetalleLinea = () => {
 
-        let DetalleLineas = [];
-        if(sessionStorage.DetalleLineas){
-            DetalleLineas = JSON.parse(sessionStorage.getItem("DetalleLineas"));
-        }
+    //     let DetalleLineas = [];
+    //     if(sessionStorage.DetalleLineas){
+    //         DetalleLineas = JSON.parse(sessionStorage.getItem("DetalleLineas"));
+    //     }
 
-        let arrayDetalleLinea = {
-            id: uuid.v4(),
-            cantidadLineas: $('#txtDetalle_Cantidad_Lineas').val(),
-            valorMensual: $('#txtDetalle_Valor_Mensual').val(),
-            valValorLineas: $('input:radio[name=detalleLineasRadios]:checked').val(),
-            navegacion: $('#txtDetalleNavegacion').val(),
-            unidad: $('#txtDetalleUnidad').val(),
-            minutos: $('#txtDetalle_Minutos').val(),
-            minIlimitados: $('input:checkbox[name=txtDetalle_Validacion_Ilimitados]').is(":checked"),
-            todoOperador: $('input:checkbox[name=txtDetalle_Minutos_TO]').is(":checked"),
-            minOtro: $('#txtDetalle_Minutos_Otro').val(),
-            mensajes: $('input:checkbox[name=txtDetalle_Mensajes]').is(":checked"),
-            llamadas: $('input:checkbox[name=txtDetalle_Llamadas]').is(":checked"),
-            redes: $('input:checkbox[name=txtDetalle_Redes]').is(":checked"),
-            roaming: $('input:checkbox[name=txtDetalle_Roaming]').is(":checked")
-       };
+    //     let arrayDetalleLinea = {
+    //         id: uuid.v4(),
+    //         cantidadLineas: $('#txtDetalle_Cantidad_Lineas').val(),
+    //         valorMensual: $('#txtDetalle_Valor_Mensual').val(),
+    //         valValorLineas: $('input:radio[name=detalleLineasRadios]:checked').val(),
+    //         navegacion: $('#txtDetalleNavegacion').val(),
+    //         unidad: $('#txtDetalleUnidad').val(),
+    //         minutos: $('#txtDetalle_Minutos').val(),
+    //         minIlimitados: $('input:checkbox[name=txtDetalle_Validacion_Ilimitados]').is(":checked"),
+    //         todoOperador: $('input:checkbox[name=txtDetalle_Minutos_TO]').is(":checked"),
+    //         minOtro: $('#txtDetalle_Minutos_Otro').val(),
+    //         mensajes: $('input:checkbox[name=txtDetalle_Mensajes]').is(":checked"),
+    //         llamadas: $('input:checkbox[name=txtDetalle_Llamadas]').is(":checked"),
+    //         redes: $('input:checkbox[name=txtDetalle_Redes]').is(":checked"),
+    //         roaming: $('input:checkbox[name=txtDetalle_Roaming]').is(":checked")
+    //    };
 
-        DetalleLineas.push(arrayDetalleLinea);
+    //     DetalleLineas.push(arrayDetalleLinea);
 
-        sessionStorage.DetalleLineas = JSON.stringify(DetalleLineas);
+    //     sessionStorage.DetalleLineas = JSON.stringify(DetalleLineas);
 
         LimpiarDetalleLinea();
         ListarDetalleLineas();
@@ -771,7 +872,11 @@ let ListarDetalleLineas = () => {
                         <span class="label label-info">${parseInt(item.valValorLineas) == 1 ? "En total" : "Por línea"}</span>
                     </td>
                     <td>
-                        
+
+                        <button type="button" id="DetallesLineasDetalle" id_linea="${item.id}"  class="btn btn-outline-primary btn-sm">
+                            <i class="fa  fa-eye"></i>
+                        </button>
+
                         <button type="button" id="DetallesLineasEditar" id_linea="${item.id}" class="btn btn-outline-info btn-sm">
                             <i class="fa fa-pencil"></i>
                         </button>
@@ -870,12 +975,29 @@ let LimpiarDetalleLinea = () => {
     
 }
 
+function AgregarInput(){
+    id++;
+    let objTo = document.getElementById('ModalNumerosLineas');
+    let divtest = document.createElement("div");
+    divtest.setAttribute("class", "form-group removeclass" + id);
+    divtest.innerHTML  = `
+        <div class="row form-group">
+            <div class="col-md-12">
+                <div class="input-group">
+                    <input class="form-control txtNumeroLinea" type="text" placeholder="Ingresa un número">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-danger" type="button" onclick="Eliminarinput(${id})">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `
+    objTo.appendChild(divtest);
+}
 
-
-
-
-
-
-
-
-
+function Eliminarinput(id){
+    console.log(id)
+    $('.removeclass' + id).remove();
+}

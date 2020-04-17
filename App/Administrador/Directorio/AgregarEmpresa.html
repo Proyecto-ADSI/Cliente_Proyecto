@@ -417,6 +417,83 @@
                                                 </div>
                                             </div>
                                         </div>
+
+                                        <!-- Modal líneas -->
+                                        <div class="modal fade" id="LineasModal" role="dialog">
+                                            <div class="modal-dialog " style="max-width: 800px">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h2 class="modal-title font-weight-bold">Registro de número de líneas:</h2>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="row m-t-10 m-b-10">
+                                                            <div class="col-md-6">
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <h3 class="text-center font-weight-bold">
+                                                                            <i class="fa fa-phone m-r-5"></i> Información
+                                                                        </h3>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <div class="table-responsive">
+                                                                            <table id="ClientesDataTable" class="table table-bordered table-striped MyStyle_Color-Table">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th style="min-width: 200px;">Concepto</th>
+                                                                                        <th>Valor</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody id="tbodyModalLinea">
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="row m-b-20">
+                                                                    <div class="col-md-10">
+                                                                        <h3 class="text-center font-weight-bold">
+                                                                            <i class="fa fa-phone m-r-5"></i> Números de líneas
+                                                                        </h3>
+                                                                    </div>
+                                                                    <div class="col-md-2">
+                                                                        <div class="input-group-append">
+                                                                            <button type="button" class="btn btn-outline-success" onclick="AgregarInput();">
+                                                                                <i class="fa fa-plus"></i>
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div id="ModalNumerosLineas">
+                                                                    <div class="form-group removeclass0">
+                                                                        <div class="row form-group">
+                                                                            <div class="col-md-12">
+                                                                                <div class="input-group">
+                                                                                    <input class="form-control txtNumeroLinea" type="text" placeholder="Ingresa un número">
+                                                                                    <div class="input-group-append">
+                                                                                        <button class="btn btn-outline-danger" type="button" onclick="Eliminarinput(0)">
+                                                                                            <i class="fa fa-minus"></i>
+                                                                                        </button>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
+                                                        <button type="button" class="btn btn-outline-info" data-dismiss="modal">Guardar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </section>
                                     <!-- Step 3 -->
                                     <h6>Plan corporativo</h6>

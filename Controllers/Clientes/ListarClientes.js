@@ -14,7 +14,8 @@ ObtenerCliente = (Id_Cliente, Modal) => {
 
             } else if (Modal == 2) {
 
-                CargarDatosModalEditar(datos);
+                sessionStorage.DatosEditarCliente = JSON.stringify(datos.data);
+                location.href = "EditarEmpresa.html"
             } 
 
         },
@@ -181,10 +182,4 @@ $(document).on("click", "#btnEliminar", function () {
     Id_Cliente = parseInt(fila.find('td:eq(0)').text());
 
     EliminarCliente(Id_Cliente);
-
-
 });
-
-
-
-
