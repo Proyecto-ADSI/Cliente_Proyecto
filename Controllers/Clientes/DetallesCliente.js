@@ -37,7 +37,7 @@ CargarDatosModalDetalles = (datos) => {
             $("#Tbody_detalle_Lineas").append(`
 
                 <tr>
-                    <td>${infoLinea.Linea}</td>
+                    <td>${infoLinea.Linea == "0" ? 'No registrada' : infoLinea.Linea} </td>
                     <td>${infoLinea.Minutos}</td>
                     <td>${infoLinea.Navegacion}</td>
                     <td>

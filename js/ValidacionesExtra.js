@@ -9,7 +9,11 @@ $.validator.addMethod("SoloAlfanumericos", function(value,element){
 
 $.validator.addMethod("SoloNumeros", function(value,element){
     return this.optional(element) || /^[\d]+$/.test(value);
-},"Ingrese un número de celular válido");
+},"Ingrese un número válido");
+
+$.validator.addMethod("ValidarCelular", function(value,element){
+    return this.optional(element) || /^3[\d]+$/.test(value);
+},"Ingrese un número de célular válido");
 
 $.validator.addMethod("SoloHoras", function(value,element){
     return this.optional(element) || /^[\d:]+$/.test(value);
@@ -32,7 +36,28 @@ $.validator.addMethod("ValidarNIT", function(value,element){
     // return this.optional(element) || /^([\d]+[-][\d]?$)|([\d]$)/.test(value);
 },"Ingrese un NIT válido");
 
+$.validator.addMethod("ValidarCantidadLineas", function(value,element){
 
+    let boolValiacion = true;
+    let id_linea = $(element).attr("id_linea");
+    let DetalleLineas = JSON.parse(sessionStorage.getItem("DetalleLineas"));
+
+    if(typeof id_linea !== "undefined"){
+
+        for(let linea of DetalleLineas){
+
+            if(linea.id == id_linea){
+                console.log(parseInt(linea.cantidadLineas));
+                if(value < parseInt(linea.cantidadLineas)){
+                    boolValiacion = false;
+                }
+            }
+        }
+    }
+
+    return boolValiacion;   
+
+},"No se puede disminuir la cantidad, consulte el detalle.");
 
 // $.validator.addMethod("ValidarDirecion", function(value,element){
 //     return this.optional(element) || /^[\w]+[#\s][\w]{2,5}[-\s][\d]{2,5}$/.test(value);

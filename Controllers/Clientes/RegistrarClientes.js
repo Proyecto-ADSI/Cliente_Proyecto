@@ -28,9 +28,9 @@ $(function () {
             // select calificacion
             // Select razones.
 
-            // if(sessionStorage.DetalleLineas){
-            //     sessionStorage.removeItem("DetalleLineas");
-            // }
+            if(sessionStorage.DetalleLineas){
+                sessionStorage.removeItem("DetalleLineas");
+            }
 
         },
         onStepChanging: function (event, currentIndex, newIndex) {
@@ -393,8 +393,9 @@ $(function () {
                             
                             $('.txtNumeroLinea').each(function() {
                                 $(this).rules('add', {
-                                    required: true,
-                                    SoloNumeros: true
+                                    ValidarCelular: true,
+                                    minlength: 10,
+                                    maxlength: 10
                                 });
                             });
 

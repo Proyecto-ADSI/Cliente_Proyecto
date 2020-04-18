@@ -11,13 +11,14 @@ var Id_DBL;
 var Id_Plan_Corporativo;
 var Id_Documentos;
 
-
+var id = 0; 
+var form = null;
 
 $(function(){
 
     var stepPlanCorp;
     var stepDoc;
-    var form = $("#Form_Editar_Clientes").show();
+    form = $("#Form_Editar_Clientes").show();
 
     form.steps({
         headerTag: "h6",
@@ -64,7 +65,7 @@ $(function(){
             errorElement: "div",
             errorPlacement: function (error, element) {
 
-                if (element[0].id == "txtDetalle_Valor_Mensual") {
+                if (element[0].id == "txtDetalle_Valor_Mensual" || element[0].name == "txtNumeroLinea") {
                     error.insertAfter(element.parent(".input-group"));
                 } else if(element[0].name == "detalleLineasRadios" ) {
 
@@ -124,7 +125,8 @@ $(function(){
                 // },
                 txtDetalle_Cantidad_Lineas:{
                     required: true,
-                    SoloNumeros: true
+                    SoloNumeros: true,
+                    ValidarCantidadLineas: true
                 },
                 txtDetalle_Valor_Mensual:{
                     required: true,
@@ -144,15 +146,6 @@ $(function(){
     });
 
     // // Inicializar elementos:
-
-    // // TouchSpin    
-    // $("#txtValor_Total_Mensual").TouchSpin({
-    //     min: 0,
-    //     max: 1000000000,
-    //     stepinterval: 50,
-    //     maxboostedstep: 10000000,
-    //     postfix: 'COP'
-    // });
 
     //  Select razones
     $(".Select_Razones").select2({
@@ -314,6 +307,119 @@ $(function(){
         }
     });
 
+    // Detalles líneas
+
+    $(document).on('click','#DetallesLineasDetalle', function () {
+
+        let idLinea = $(this).attr("id_linea");
+        let DetalleLineas = JSON.parse(sessionStorage.getItem("DetalleLineas"));
+
+         DetalleLineas.forEach(function(linea,indice,array){
+        
+                if(linea.id == idLinea){
+
+                    let minutos = "";
+
+                    if(linea.minIlimitados){
+                        minutos += "Ilimitados";
+                    }else{
+                        minutos += linea.minutos;
+                    }
+
+                    if(linea.todoOperador){
+                        minutos += ",todo operador";
+                    }
+
+                    if(linea.minOtro != ""){
+                        minutos += "," + linea.minOtro
+                    }
+
+                    let Valor_Total_Mensual = 0;
+                    // Establecer valor total mensual de las lineas.
+                    if(linea.valValorLineas == "1"){
+                        
+                        Valor_Total_Mensual += parseInt(linea.valorMensual);
+
+                    }else if(linea.valValorLineas == "2"){
+                        
+                        Valor_Total_Mensual += (parseInt(linea.valorMensual) * parseInt(linea.cantidadLineas));
+
+                    }
+                
+                    $('#tbodyModalLinea').empty();
+                    $('#tbodyModalLinea').append( `
+                    <tr id="txtIdLineasModalNumeros" style="display:none" >
+                        <td>${linea.id}</td>
+                    </tr>
+                        <tr>
+                            <td> Cantidad líneas </td>
+                            <td><p id="txtIncrementarLineas" class="float-right"> ${linea.cantidadLineas}</p></td>
+                        </tr>
+                        <tr>
+                            <td><h5 class="text-danger font-weight-bold text-uppercase">Pago mensual</h5></td>
+                            <td>
+                                <i class="fa fa-dollar text-danger"></i>
+                                <h5 class="float-right text-danger font-weight-bold">
+                                    ${Valor_Total_Mensual}
+                                </h5>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Navegación</td>
+                            <td>
+                            ${linea.navegacion + ' ' + linea.unidad}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Minutos</td>
+                            <td>
+                                ${minutos}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Otros</td>
+                            <td>
+
+                            ${linea.mensajes ? '<input type="radio" class="with-gap" id="radio_tbl" checked> <label for="radio_tbl1">Mensajes</label>' : ""}
+
+                            ${linea.redes ? '<input type="radio" class="with-gap" id="radio_tbl" checked><label for="radio_tbl">Redes</label>' : ""}
+                            
+                            ${linea.llamadas ? '<input type="radio" class="with-gap" id="radio_tbl" checked>  <label for="radio_tbl1">Llamadas</label>' : ""}
+    
+                            ${linea.roaming ? '<input type="radio" class="with-gap" id="radio_tbl" checked> <label for="radio_tbl">Roaming</label>' : ""}
+                            </td>
+                        </tr>
+
+
+                        `
+                    );
+                    
+                    $('#ModalNumerosLineas').empty();
+                    if(typeof linea.NumerosLineas !== "undefined"){
+                        
+                        if(typeof linea.id_lineas !== "undefined"){
+                            AgregarInput(linea.NumerosLineas.length,linea.NumerosLineas,linea.id_lineas);
+                        }else{
+                            AgregarInput(linea.NumerosLineas.length,linea.NumerosLineas);
+                        }
+
+                    }else{
+                        AgregarInput(linea.cantidadLineas,0,0,false);
+                    }
+                    
+                    $('.txtNumeroLinea').each(function() {
+                        $(this).rules('add', {
+                            ValidarCelular: true,
+                            minlength: 10,
+                            maxlength: 10
+                        });
+                    });
+
+                $('#LineasModal').modal("show");
+            }
+        });
+    });
+
     $(document).on('click','#DetallesLineasEditar', function () {
         let idLinea = $(this).attr("id_linea");
         let DetalleLineas = JSON.parse(sessionStorage.getItem("DetalleLineas"));
@@ -321,22 +427,11 @@ $(function(){
         DetalleLineas.forEach(function(valor,indice,array){
 
             if(valor.id == idLinea){
-        
-                $('#txtId_Lineas').empty();
-                if(typeof valor.id_lineas !== "undefined"){
-                    for (let id of valor.id_lineas) {
-
-                        let $opcion = $('<option />', {
-                            text: `${id}`,
-                            value: `${id}`
-                        });
-                        $('#txtId_Lineas').append($opcion);
-                    }
-                }
                 
                 $('#txtDetalleId').val(valor.id);
                 $('#txtDetalleId').attr("grupo",valor.grupo);
                 $('#txtDetalle_Cantidad_Lineas').val(valor.cantidadLineas);
+                $('#txtDetalle_Cantidad_Lineas').attr("id_linea",valor.id);
                 $('#txtDetalle_Valor_Mensual').val(valor.valorMensual);
                 valor.valValorLineas == "1" ? $('#txtDetalle_radio').prop("checked", true) :  $('#txtDetalle_radio2').prop("checked", true);
                 $('#txtDetalleNavegacion').val(valor.navegacion);
@@ -417,6 +512,8 @@ $(function(){
                     if(linea.grupo === lineaBD.Grupo){
                         linea.cantidadLineas += 1;
                         linea.id_lineas.push(lineaBD.Id_Linea);
+                        linea.NumerosLineas.push(lineaBD.Linea);
+                        
                         control = true;
                     }
                 }
@@ -465,6 +562,7 @@ let EditarCliente = () => {
 
     let Cantidad_Total_Lineas = 0;
     let Valor_Total_Mensual = 0;
+    let GrupoLineas = 0;
 
     if(sessionStorage.DetalleLineas){
         
@@ -500,100 +598,24 @@ let EditarCliente = () => {
 
             }
 
-            if(typeof lineaItem.id_lineas !== "undefined"){
+            GrupoLineas++;
+            for(let i = 1; i <= parseInt(lineaItem.cantidadLineas); i++){
 
-                if(parseInt(lineaItem.cantidadLineas) === lineaItem.id_lineas.length){
-
-                    for(let id of lineaItem.id_lineas){
-
-                        let linea = {
-                            id: id,
-                            grupo: lineaItem.grupo,
-                            minutos: minutos,
-                            navegacion: lineaItem.navegacion + " " + lineaItem.unidad,
-                            mensajes: lineaItem.mensajes ? 1 : 0,
-                            redes: lineaItem.redes ? 1 : 0,
-                            llamadas: lineaItem.llamadas ? 1 : 0,
-                            roaming: lineaItem.roaming ? 1 : 0,
-                            cargo: lineaItem.valorMensual
-                        }
-    
-                        arrayLineas.push(linea);
-                    }
-                }else if(parseInt(lineaItem.cantidadLineas) < lineaItem.id_lineas.length ){
-
-                    for(let i = 1; i <= parseInt(lineaItem.cantidadLineas); i++){
-
-                        let linea = {
-                            id: lineaItem.id_lineas[i],
-                            minutos: minutos,
-                            navegacion: lineaItem.navegacion + " " + lineaItem.unidad,
-                            mensajes: lineaItem.mensajes ? 1 : 0,
-                            redes: lineaItem.redes ? 1 : 0,
-                            llamadas: lineaItem.llamadas ? 1 : 0,
-                            roaming: lineaItem.roaming ? 1 : 0,
-                            cargo: lineaItem.valorMensual
-                        }
-
-                        arrayLineas.push(linea);
-                    }
-                    
-                }else if(parseInt(lineaItem.cantidadLineas) > lineaItem.id_lineas.length ){
-
-                    let lineasAdicionales = parseInt(lineaItem.cantidadLineas) -lineaItem.id_lineas.length;
-
-                    for(let id of lineaItem.id_lineas){
-
-                        let linea = {
-                            id: id,
-                            minutos: minutos,
-                            navegacion: lineaItem.navegacion + " " + lineaItem.unidad,
-                            mensajes: lineaItem.mensajes ? 1 : 0,
-                            redes: lineaItem.redes ? 1 : 0,
-                            llamadas: lineaItem.llamadas ? 1 : 0,
-                            roaming: lineaItem.roaming ? 1 : 0,
-                            cargo: lineaItem.valorMensual
-                        }
-    
-                        arrayLineas.push(linea);
-                    }
-
-                    for(let i = 1; i <= lineasAdicionales; i++){
-
-                        let linea = {
-                            minutos: minutos,
-                            navegacion: lineaItem.navegacion + " " + lineaItem.unidad,
-                            mensajes: lineaItem.mensajes ? 1 : 0,
-                            redes: lineaItem.redes ? 1 : 0,
-                            llamadas: lineaItem.llamadas ? 1 : 0,
-                            roaming: lineaItem.roaming ? 1 : 0,
-                            cargo: lineaItem.valorMensual
-                        }
-        
-                        arrayLineas.push(linea);
-                    }
-
+                let linea = {
+                    id: parseInt(lineaItem.id_lineas[i-1]),
+                    numero: lineaItem.NumerosLineas[i-1],
+                    minutos: minutos,
+                    navegacion: lineaItem.navegacion + " " + lineaItem.unidad,
+                    mensajes: lineaItem.mensajes ? 1 : 0,
+                    redes: lineaItem.redes ? 1 : 0,
+                    llamadas: lineaItem.llamadas ? 1 : 0,
+                    roaming: lineaItem.roaming ? 1 : 0,
+                    cargo: lineaItem.valorMensual,
+                    grupo: GrupoLineas
                 }
 
-            }else{
-
-                for(let i = 1; i <= parseInt(lineaItem.cantidadLineas); i++){
-
-                    let linea = {
-                        minutos: minutos,
-                        navegacion: lineaItem.navegacion + " " + lineaItem.unidad,
-                        mensajes: lineaItem.mensajes ? 1 : 0,
-                        redes: lineaItem.redes ? 1 : 0,
-                        llamadas: lineaItem.llamadas ? 1 : 0,
-                        roaming: lineaItem.roaming ? 1 : 0,
-                        cargo: lineaItem.valorMensual
-                    }
-    
-                    arrayLineas.push(linea);
-                }  
-                
+                arrayLineas.push(linea);
             }
-
                       
         }
 
@@ -693,66 +715,66 @@ let EditarCliente = () => {
 
     console.log(datos);
 
-    // $.ajax({
-    //     url: `${URL}/Cliente`,
-    //     type: 'put',
-    //     dataType: 'json',
-    //     data: JSON.stringify(datos),
-    //     contentType: 'application/json',
-    //     processData: false
-    // }).done(respuesta => {
+    $.ajax({
+        url: `${URL}/Cliente`,
+        type: 'put',
+        dataType: 'json',
+        data: JSON.stringify(datos),
+        contentType: 'application/json',
+        processData: false
+    }).done(respuesta => {
 
-    //     console.log(respuesta)
+        console.log(respuesta)
 
-    //     if (respuesta.data.ok) {
+        if (respuesta.data.ok) {
 
-    //         swal({
-    //             title: "Cliente registrado correctamente.",
-    //             type: "success",
-    //             showCancelButton: false,
-    //             confirmButtonColor: "#2F6885",
-    //             confirmButtonText: "Continuar",
-    //             closeOnConfirm: false,
-    //         }, function (isConfirm) {
-    //             if (isConfirm) {
-    //                  sessionStorage.removeItem('DetalleLineas');
-    //                 location.href = "Directorio.html";
-    //             }
-    //         });
-    //     } else {
-    //         swal({
-    //             title: "Error al registrar.",
-    //             text: "Ha ocurrido un error al registrar, intenta de nuevo",
-    //             type: "error",
-    //             showCancelButton: false,
-    //             confirmButtonColor: "#2F6885",
-    //             confirmButtonText: "Continuar",
-    //             closeOnConfirm: false,
-    //         }, function (isConfirm) {
-    //             if (isConfirm) {
-    //                 location.href = "AgregarEmpresa.html";
-    //                 console.log(respuesta.data);
-    //             }
-    //         });
-    //     }
+            swal({
+                title: "Cliente registrado correctamente.",
+                type: "success",
+                showCancelButton: false,
+                confirmButtonColor: "#2F6885",
+                confirmButtonText: "Continuar",
+                closeOnConfirm: false,
+            }, function (isConfirm) {
+                if (isConfirm) {
+                     sessionStorage.removeItem('DetalleLineas');
+                    location.href = "Directorio.html";
+                }
+            });
+        } else {
+            swal({
+                title: "Error al registrar.",
+                text: "Ha ocurrido un error al registrar, intenta de nuevo",
+                type: "error",
+                showCancelButton: false,
+                confirmButtonColor: "#2F6885",
+                confirmButtonText: "Continuar",
+                closeOnConfirm: false,
+            }, function (isConfirm) {
+                if (isConfirm) {
+                    location.href = "AgregarEmpresa.html";
+                    console.log(respuesta.data);
+                }
+            });
+        }
 
-    // }).fail(error => {
+    }).fail(error => {
 
-    //     swal({
-    //         title: "Error al registrar.",
-    //         text: "Ha ocurrido un error al registrar, intenta de nuevo",
-    //         type: "error",
-    //         showCancelButton: false,
-    //         confirmButtonColor: "#2F6885",
-    //         confirmButtonText: "Continuar",
-    //         closeOnConfirm: false,
-    //     }, function (isConfirm) {
-    //         if (isConfirm) {
-    //             location.href = "AgregarEmpresa.html";
-    //             console.log(error);
-    //         }
-    //     });
-    // });
+        swal({
+            title: "Error al registrar.",
+            text: "Ha ocurrido un error al registrar, intenta de nuevo",
+            type: "error",
+            showCancelButton: false,
+            confirmButtonColor: "#2F6885",
+            confirmButtonText: "Continuar",
+            closeOnConfirm: false,
+        }, function (isConfirm) {
+            if (isConfirm) {
+                location.href = "AgregarEmpresa.html";
+                console.log(error);
+            }
+        });
+    });
 
 }
 
@@ -802,12 +824,13 @@ let CrearLineaSession = (lineaBD) => {
         }
     }
 
-    arrayId = [lineaBD.Id_Linea];
-
+    let arrayId = [lineaBD.Id_Linea];
+    let arrayNumeros = [lineaBD.Linea];
     let linea = {
         id: uuid.v4(),
         grupo: lineaBD.Grupo,
         id_lineas: arrayId,
+        NumerosLineas: arrayNumeros,
         cantidadLineas: 1,
         valorMensual: lineaBD.Cargo_Basico,
         valValorLineas: "2",
@@ -822,7 +845,6 @@ let CrearLineaSession = (lineaBD) => {
         redes: lineaBD.Redes_Sociales === "1" ? true : false ,
         roaming: lineaBD.Roaming === "1" ? true : false ,
     };
-
 
     return linea;
 }
@@ -999,9 +1021,20 @@ let RegistrarDetalleLinea = () => {
             DetalleLineas = JSON.parse(sessionStorage.getItem("DetalleLineas"));
         }
 
+        let arrayIds = [];
+        let arrayNumeros = [];
+        let cantidadLineas = parseInt($('#txtDetalle_Cantidad_Lineas').val());
+        for(let i = 1; i <= cantidadLineas; i++){
+
+            arrayIds.push("0");
+            arrayNumeros.push("0");
+        }
+        
         let arrayDetalleLinea = {
             id: uuid.v4(),
             cantidadLineas: $('#txtDetalle_Cantidad_Lineas').val(),
+            id_lineas: arrayIds,
+            NumerosLineas: arrayNumeros,
             valorMensual: $('#txtDetalle_Valor_Mensual').val(),
             valValorLineas: $('input:radio[name=detalleLineasRadios]:checked').val(),
             navegacion: $('#txtDetalleNavegacion').val(),
@@ -1070,7 +1103,10 @@ let ListarDetalleLineas = () => {
                         <span class="label label-info">${parseInt(item.valValorLineas) == 1 ? "En total" : "Por línea"}</span>
                     </td>
                     <td>
-                        
+                        <button type="button" id="DetallesLineasDetalle" id_linea="${item.id}"  class="btn btn-outline-primary btn-sm">
+                            <i class="fa  fa-eye"></i>
+                        </button>
+
                         <button type="button" id="DetallesLineasEditar" id_linea="${item.id}" class="btn btn-outline-info btn-sm">
                             <i class="fa fa-pencil"></i>
                         </button>
@@ -1111,54 +1147,40 @@ let EditarDetalleLinea = () => {
 
     let idLinea = $('#txtDetalleId').val();
     let DetalleLineas = JSON.parse(sessionStorage.getItem("DetalleLineas"));
-  
-    DetalleLineas.forEach(function(valor,indice,array){
+     
+    for(let linea of DetalleLineas){
 
-        if(valor.id == idLinea){
+        if(linea.id == idLinea){
 
-            DetalleLineas.splice(indice,1);
-        }
-    });
+            let lineasNuevas = parseInt($('#txtDetalle_Cantidad_Lineas').val()) - parseInt(linea.cantidadLineas);
 
-        let arrayDetalleLinea = {
-            id: $('#txtDetalleId').val(),
-            grupo: $('#txtDetalleId').attr("grupo"),
-            cantidadLineas: $('#txtDetalle_Cantidad_Lineas').val(),
-            valorMensual: $('#txtDetalle_Valor_Mensual').val(),
-            valValorLineas: $('input:radio[name=detalleLineasRadios]:checked').val(),
-            navegacion: $('#txtDetalleNavegacion').val(),
-            unidad: $('#txtDetalleUnidad').val(),
-            minutos: $('#txtDetalle_Minutos').val(),
-            minIlimitados: $('input:checkbox[name=txtDetalle_Validacion_Ilimitados]').is(":checked"),
-            todoOperador: $('input:checkbox[name=txtDetalle_Minutos_TO]').is(":checked"),
-            minOtro: $('#txtDetalle_Minutos_Otro').val(),
-            mensajes: $('input:checkbox[name=txtDetalle_Mensajes]').is(":checked"),
-            llamadas: $('input:checkbox[name=txtDetalle_Llamadas]').is(":checked"),
-            redes: $('input:checkbox[name=txtDetalle_Redes]').is(":checked"),
-            roaming: $('input:checkbox[name=txtDetalle_Roaming]').is(":checked")
-       };
+            for(let i = 0; i < lineasNuevas; i++){
 
-        if ($('#txtId_Lineas').val() !== null) {
-            
-            let arrayId = [];
-
-            for(let option of $('#txtId_Lineas')[0]){
-                arrayId.push(option.value);
+                linea.id_lineas.push("0");
+                linea.NumerosLineas.push("0");
             }
-        
-            Object.defineProperty(arrayDetalleLinea,'id_lineas',{
-                value: arrayId,
-                enumerable: true
-            });
 
-        } 
+            // Editar información de línea.
+            linea.cantidadLineas = $('#txtDetalle_Cantidad_Lineas').val();
+            linea.valorMensual = $('#txtDetalle_Valor_Mensual').val();
+            linea.valValorLineas = $('input:radio[name=detalleLineasRadios]:checked').val();
+            linea.navegacion = $('#txtDetalleNavegacion').val();
+            linea.unidad = $('#txtDetalleUnidad').val();
+            linea.minutos = $('#txtDetalle_Minutos').val();
+            linea.minIlimitados = $('input:checkbox[name=txtDetalle_Validacion_Ilimitados]').is(":checked");
+            linea.todoOperador = $('input:checkbox[name=txtDetalle_Minutos_TO]').is(":checked");
+            linea.minOtro = $('#txtDetalle_Minutos_Otro').val();
+            linea.mensajes = $('input:checkbox[name=txtDetalle_Mensajes]').is(":checked");
+            linea.llamadas = $('input:checkbox[name=txtDetalle_Llamadas]').is(":checked");
+            linea.redes = $('input:checkbox[name=txtDetalle_Redes]').is(":checked");
+            linea.roaming = $('input:checkbox[name=txtDetalle_Roaming]').is(":checked");           
 
-        DetalleLineas.push(arrayDetalleLinea);
+            sessionStorage.DetalleLineas = JSON.stringify(DetalleLineas);
+        }
+    }
 
-        sessionStorage.DetalleLineas = JSON.stringify(DetalleLineas);
-
-        LimpiarDetalleLinea();
-        ListarDetalleLineas();
+    LimpiarDetalleLinea();
+    ListarDetalleLineas();
 }
 
 let LimpiarDetalleLinea = () => {
@@ -1186,7 +1208,248 @@ let LimpiarDetalleLinea = () => {
 }
 
 
+// Números
 
+function AgregarInput(cantidad,numeros,ids,click){
+
+    for(let i = 1; i <= cantidad; i++ ){
+
+        id++;
+        let objTo = document.getElementById('ModalNumerosLineas');
+        let divtest = document.createElement("div");
+        divtest.setAttribute("class", "form-group removeclass" + id);
+
+        if(Array.isArray(numeros)){
+
+            if(Array.isArray(ids)){
+                
+                if(numeros[i-1] == "0" ){
+
+                    if(ids[i-1] == "0"){
+                    
+                    divtest.innerHTML  = `
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">
+                                        <i class="fa fa-mobile"></i>
+                                    </span>
+                                </div>
+                                <input type="text" class="form-control txtNumeroLinea" name="txtNumeroLinea" 
+                                placeholder="Ingresa un número" id_linea_numero="0">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-danger" type="button" onclick="Eliminarinput(${id})">
+                                        <i class="fa fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    `
+                    }else{
+
+                    divtest.innerHTML  = `
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">
+                                        <i class="fa fa-mobile"></i>
+                                    </span>
+                                </div>
+                                <input type="text" class="form-control txtNumeroLinea" name="txtNumeroLinea" 
+                                placeholder="Ingresa un número" id_linea_numero="${ids[i-1]}">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-danger" type="button" onclick="Eliminarinput(${id})">
+                                        <i class="fa fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    `
+
+                    }
+
+                    
+                }else{
+
+                    if(ids[i-1] == "0"){
+
+                        divtest.innerHTML  = `
+                        <div class="row form-group">
+                            <div class="col-md-12">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1">
+                                            <i class="fa fa-mobile"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control txtNumeroLinea" name="txtNumeroLinea" 
+                                    placeholder="Ingresa un número" value="${numeros[i-1]}" id_linea_numero="0">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-danger" type="button" onclick="Eliminarinput(${id})">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        `
+                    }else{
+                        divtest.innerHTML  = `
+                        <div class="row form-group">
+                            <div class="col-md-12">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1">
+                                            <i class="fa fa-mobile"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control txtNumeroLinea" name="txtNumeroLinea" 
+                                    placeholder="Ingresa un número" value="${numeros[i-1]}" id_linea_numero="${ids[i-1]}">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-danger" type="button" onclick="Eliminarinput(${id})">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        `
+
+
+                    }                    
+                }
+            }
+            
+        }else{
+
+            if(click){
+                let cantidadLineas = parseInt($("#txtIncrementarLineas").html());
+                cantidadLineas++;
+                $("#txtIncrementarLineas").html(cantidadLineas);
+            }
+           
+            divtest.innerHTML  = `
+                <div class="row form-group">
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">
+                                    <i class="fa fa-mobile"></i>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control txtNumeroLinea" name="txtNumeroLinea" 
+                            placeholder="Ingresa un número" id_linea_numero="0">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-danger" type="button" onclick="Eliminarinput(${id})">
+                                    <i class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `
+            
+        }
+    
+        objTo.appendChild(divtest);    
+    }    
+}
+
+function Eliminarinput(id){
+    let cantidadLineas = parseInt($("#txtIncrementarLineas").html());
+    cantidadLineas--;
+    $("#txtIncrementarLineas").html(cantidadLineas);
+    $('.removeclass' + id).remove();
+}
+
+function RegistrarNumeros(){
+
+    if(ValidarNumerosLineas()){
+
+        let DetalleLineas = JSON.parse(sessionStorage.getItem("DetalleLineas"));
+        let idLinea = $('#txtIdLineasModalNumeros td').html();
+        let arrayInputs = $('input:text[name="txtNumeroLinea"]');
+        let arrayNumeros = [];
+        let arrayIds = [];
+        DetalleLineas.forEach(function(linea,indice,array){
+    
+            if(linea.id == idLinea){
+    
+                linea.cantidadLineas = parseInt($("#txtIncrementarLineas").html());
+    
+                for(let numero of arrayInputs){
+                    let numVal = $(numero).val() == "" ? "0" : $(numero).val();
+                    arrayNumeros.push(numVal);
+                    arrayIds.push($(numero).attr('id_linea_numero'));
+                }
+                
+
+                Object.defineProperty(linea,'NumerosLineas',{
+                    value: arrayNumeros,
+                    enumerable: true
+                });
+
+                Object.defineProperty(linea,'id_lineas',{
+                    value: arrayIds,
+                    enumerable: true
+                });
+    
+                sessionStorage.DetalleLineas = JSON.stringify(DetalleLineas);
+    
+                swal({
+                    title: "Números registrados correctamente.",
+                    type: "success",
+                    showCancelButton: false,
+                    confirmButtonColor: "#2F6885",
+                    confirmButtonText: "Continuar",
+                    closeOnConfirm: true,
+                }, function (isConfirm) {
+                    if (isConfirm) {
+                        ListarDetalleLineas();
+                        $('#LineasModal').modal('hide');
+                    }
+                });
+            }
+        });
+    }    
+}
+
+function ValidarNumerosLineas(){
+
+    let valid = true;
+
+    if($('input:text[name="txtNumeroLinea"]').length > 0){
+
+        $('input:text[name="txtNumeroLinea"]').each(function(index, element){
+
+            let validacion = form.validate().element(element);
+     
+            if (validacion === false) { 
+                 valid = validacion;
+             }
+         });
+
+    }else{
+
+        valid = false;
+
+        swal({
+            title: "Error al registrar números.",
+            text: "Debes registrar por lo menos una línea.",
+            type: "error",
+            showCancelButton: false,
+            confirmButtonColor: "#2F6885",
+            confirmButtonText: "Continuar",
+            closeOnConfirm: true,
+        });
+    }
+    
+    return valid;
+}
 
 
 
