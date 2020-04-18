@@ -404,7 +404,7 @@
                                                                 <th>Minutos</th>
                                                                 <th>Otros</th>
                                                                 <th>Tipo</th>
-                                                                <th>Opciones</th>
+                                                                <th style="min-width: 150px;">Opciones</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody id="TblRegistroDetalleLineas">
@@ -432,7 +432,7 @@
                                                                 <div class="row">
                                                                     <div class="col-md-12">
                                                                         <h3 class="text-center font-weight-bold">
-                                                                            <i class="fa fa-phone m-r-5"></i> Información
+                                                                            <i class="fa fa-file-text-o m-r-5"></i> Información
                                                                         </h3>
                                                                     </div>
                                                                 </div>
@@ -457,12 +457,12 @@
                                                                 <div class="row m-b-20">
                                                                     <div class="col-md-10">
                                                                         <h3 class="text-center font-weight-bold">
-                                                                            <i class="fa fa-phone m-r-5"></i> Números de líneas
+                                                                            <i class="fa fa-list m-r-5"></i> Números de líneas
                                                                         </h3>
                                                                     </div>
                                                                     <div class="col-md-2">
                                                                         <div class="input-group-append">
-                                                                            <button type="button" class="btn btn-outline-success" onclick="AgregarInput();">
+                                                                            <button type="button" class="btn btn-outline-success" onclick="AgregarInput(1,0,true);">
                                                                                 <i class="fa fa-plus"></i>
                                                                             </button>
                                                                         </div>
@@ -473,7 +473,7 @@
                                                                         <div class="row form-group">
                                                                             <div class="col-md-12">
                                                                                 <div class="input-group">
-                                                                                    <input class="form-control txtNumeroLinea" type="text" placeholder="Ingresa un número">
+                                                                                    <input type="text" class="form-control" name="txtNumeroLinea"  placeholder="Ingresa un número">
                                                                                     <div class="input-group-append">
                                                                                         <button class="btn btn-outline-danger" type="button" onclick="Eliminarinput(0)">
                                                                                             <i class="fa fa-minus"></i>
@@ -489,7 +489,7 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
-                                                        <button type="button" class="btn btn-outline-info" data-dismiss="modal">Guardar</button>
+                                                        <button type="button" class="btn btn-outline-info" onclick="RegistrarNumeros();">Guardar</button>
                                                     </div>
                                                 </div>
                                             </div>

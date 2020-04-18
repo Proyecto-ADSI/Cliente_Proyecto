@@ -2,12 +2,12 @@
 const URL = 'http://localhost:8081';
 // Iterador registrar línea.
 var id = 0; 
-
+var form = null;
 $(function () {
 
     var stepPlanCorp;
     var stepDoc;
-    var form = $("#Form_Registro_Clientes").show();
+    form = $("#Form_Registro_Clientes").show();
 
     form.steps({
         headerTag: "h6",
@@ -54,7 +54,7 @@ $(function () {
             errorElement: "div",
             errorPlacement: function (error, element) {
 
-                if (element[0].id == "txtDetalle_Valor_Mensual") {
+                if (element[0].id == "txtDetalle_Valor_Mensual" || element[0].name == "txtNumeroLinea") {
                     error.insertAfter(element.parent(".input-group"));
                 } else if(element[0].name == "detalleLineasRadios" ) {
 
@@ -74,17 +74,17 @@ $(function () {
                 $(element).addClass("form-control-success").removeClass("form-control-danger");
             },
             rules: {
-                // txtRazonSocial:{
-                //     required: true,
-                //     minlength: 5,
-                //     SoloAlfanumericos: true
-                // },
-                // txtTelefono: {
-                //     required: true,
-                //     SoloNumeros: true,
-                //     minlength: 5,
-                //     maxlength: 10,
-                // },
+                txtRazonSocial:{
+                    required: true,
+                    minlength: 5,
+                    SoloAlfanumericos: true
+                },
+                txtTelefono: {
+                    required: true,
+                    SoloNumeros: true,
+                    minlength: 5,
+                    maxlength: 10,
+                },
                 txtNIT: {
                     ValidarNIT: true,
                     minlength: 5
@@ -104,46 +104,34 @@ $(function () {
                 // txtNombre_Lugar: "required",
                 // txtDireccion: "required",
                 
-                // txtCantidad_Total_Lineas: {
-                //     required: true,
-                //     SoloNumeros: true,
-                // },
+                txtCantidad_Total_Lineas: {
+                    required: true,
+                    SoloNumeros: true,
+                },
                 txtOperador: "required",
-                // txtValor_Total_Mensual: {
-                //     SoloNumeros: true
-                // },
-                // txtDetalle_Cantidad_Lineas:{
-                //     required: true,
-                //     SoloNumeros: true
-                // },
-                // txtDetalle_Valor_Mensual:{
-                //     required: true,
-                //     SoloNumeros: true
-                // },
-                // detalleLineasRadios: "required",
-                txtDetalleNavegacion: {
-                   SoloNumeros: true
+                txtValor_Total_Mensual: {
+                    SoloNumeros: true
                 },
-                txtDetalle_Minutos: {
-                    SoloAlfanumericos: true
+                txtDetalle_Cantidad_Lineas:{
+                    required: true,
+                    SoloNumeros: true
                 },
-                txtDetalle_Minutos_Otro:{
-                    SoloAlfanumericos: true
-                }
+                txtDetalle_Valor_Mensual:{
+                    required: true,
+                    SoloNumeros: true
+                },
+                detalleLineasRadios: "required",
+                
             }
     });
 
+    // $.validator.addClassRules("txtNumeroLinea",{
+    //     required: true,
+    //     SoloNumeros: true
+    // });
+
     // Inicializar elementos:
 
-
-    // TouchSpin    
-    $("#txtValor_Total_Mensual").TouchSpin({
-        min: 0,
-        max: 1000000000,
-        stepinterval: 50,
-        maxboostedstep: 10000000,
-        postfix: 'COP'
-    });
 
     //  Select razones
     $(".Select_Razones").select2({
@@ -304,9 +292,7 @@ $(function () {
                 let DetalleLineas = JSON.parse(sessionStorage.getItem("DetalleLineas"));
     
                  DetalleLineas.forEach(function(linea,indice,array){
-                    
-                    console.log(linea)
-
+                
                         if(linea.id == idLinea){
 
                             let minutos = "";
@@ -336,57 +322,86 @@ $(function () {
                                 Valor_Total_Mensual += (parseInt(linea.valorMensual) * parseInt(linea.cantidadLineas));
 
                             }
-
-                        $('#tbodyModalLinea').append( `
-
-                        <tr>
-                            <td>Cantidad líneas</td>
-                            <td>
-                                ${linea.cantidadLineas}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Pago mensual</td>
-                            <td>
-                                <i class="fa fa-dollar"></i>
-                                <div class="float-right">${Valor_Total_Mensual}</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Navegación</td>
-                            <td>
-                               ${linea.navegacion + ' ' + linea.unidad}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Minutos</td>
-                            <td>
-                                ${minutos}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Otros</td>
-                            <td>
-
-                            ${linea.mensajes ? '<input type="radio" class="with-gap" id="radio_tbl" checked> <label for="radio_tbl1">Mensajes</label>' : ""}
-
-                            ${linea.redes ? '<input type="radio" class="with-gap" id="radio_tbl" checked><label for="radio_tbl">Redes</label>' : ""}
-                            
-                            ${linea.llamadas ? '<input type="radio" class="with-gap" id="radio_tbl" checked>  <label for="radio_tbl1">Llamadas</label>' : ""}
-    
-                            ${linea.roaming ? '<input type="radio" class="with-gap" id="radio_tbl" checked> <label for="radio_tbl">Roaming</label>' : ""}
-                            </td>
-                        </tr>
-
-
-                        `
-                        );
                         
+                            $('#tbodyModalLinea').empty();
+                            $('#tbodyModalLinea').append( `
+                            <tr id="txtIdLineasModalNumeros" style="display:none" >
+                                <td>${linea.id}</td>
+                            </tr>
+                                <tr>
+                                    <td> Cantidad líneas </td>
+                                    <td><p id="txtIncrementarLineas" class="float-right"> ${linea.cantidadLineas}</p></td>
+                                </tr>
+                                <tr>
+                                    <td><h5 class="text-danger font-weight-bold text-uppercase">Pago mensual</h5></td>
+                                    <td>
+                                        <i class="fa fa-dollar text-danger"></i>
+                                        <h5 class="float-right text-danger font-weight-bold">
+                                            ${Valor_Total_Mensual}
+                                        </h5>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Navegación</td>
+                                    <td>
+                                    ${linea.navegacion + ' ' + linea.unidad}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Minutos</td>
+                                    <td>
+                                        ${minutos}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Otros</td>
+                                    <td>
+
+                                    ${linea.mensajes ? '<input type="radio" class="with-gap" id="radio_tbl" checked> <label for="radio_tbl1">Mensajes</label>' : ""}
+
+                                    ${linea.redes ? '<input type="radio" class="with-gap" id="radio_tbl" checked><label for="radio_tbl">Redes</label>' : ""}
+                                    
+                                    ${linea.llamadas ? '<input type="radio" class="with-gap" id="radio_tbl" checked>  <label for="radio_tbl1">Llamadas</label>' : ""}
+            
+                                    ${linea.roaming ? '<input type="radio" class="with-gap" id="radio_tbl" checked> <label for="radio_tbl">Roaming</label>' : ""}
+                                    </td>
+                                </tr>
+
+
+                                `
+                            );
+
+                            // TouchSpin    
+                            // $("#txtIncrementarLineas").TouchSpin({
+                            //     min: 0,
+                            //     max: 1000000000,
+                            //     stepinterval: 50,
+                            //     maxboostedstep: 10000000,
+                            // });
+                            
+                            if(typeof linea.NumerosLineas !== "undefined"){
+
+                                $('#ModalNumerosLineas').empty();
+
+                                AgregarInput(linea.NumerosLineas.length,linea.NumerosLineas);
+
+                            }else{
+                                
+                                $('#ModalNumerosLineas').empty();
+                                AgregarInput(linea.cantidadLineas,0,false);
+                            }
+                            
+                            $('.txtNumeroLinea').each(function() {
+                                $(this).rules('add', {
+                                    required: true,
+                                    SoloNumeros: true
+                                });
+                            });
+
                         $('#LineasModal').modal("show");
                     }
                 });
-            })
-
+            });
 
             // Editar linea
 
@@ -395,7 +410,7 @@ $(function () {
                  let DetalleLineas = JSON.parse(sessionStorage.getItem("DetalleLineas"));
     
                  DetalleLineas.forEach(function(valor,indice,array){
-    
+                    // console.log(valor);
                      if(valor.id == idLinea){
                          $('#txtDetalleId').val(valor.id);
                          $('#txtDetalle_Cantidad_Lineas').val(valor.cantidadLineas);
@@ -403,7 +418,15 @@ $(function () {
                          valor.valValorLineas == "1" ? $('#txtDetalle_radio').prop("checked", true) :  $('#txtDetalle_radio2').prop("checked", true);
                          $('#txtDetalleNavegacion').val(valor.navegacion);
                          // $('#txtDetalleUnidad').val(),
-                         valor.minIlimitados ? $('input:checkbox[name=txtDetalle_Validacion_Ilimitados]').trigger('click') : $('#txtDetalle_Minutos').val(valor.minutos);
+
+                        if(valor.minIlimitados){
+                            if(!$('input:checkbox[name=txtDetalle_Validacion_Ilimitados]').is(":checked")){
+                                $('input:checkbox[name=txtDetalle_Validacion_Ilimitados]').trigger('click')
+                            }
+                        }else{
+
+                            $('#txtDetalle_Minutos').val(valor.minutos)
+                        }
                          valor.todoOperador ?  $('input:checkbox[name=txtDetalle_Minutos_TO]').prop('checked',true) : "" ;
                          valor.minOtro != "" ?  $('#txtDetalle_Minutos_Otro').val(valor.minOtro) : $('#txtDetalle_Minutos_Otro').val("");
                          valor.mensajes ? $('input:checkbox[name=txtDetalle_Mensajes]').prop('checked',true) : "";
@@ -497,7 +520,7 @@ let RegistrarCliente = () => {
             }
 
             GrupoLineas++;
-            for(let i = 1; i <= parseInt(lineaItem.cantidadLineas); i++){
+            for(let i = 0; i < parseInt(lineaItem.cantidadLineas); i++){
 
                 let linea = {
                     minutos: minutos,
@@ -509,7 +532,15 @@ let RegistrarCliente = () => {
                     cargo: lineaItem.valorMensual,
                     grupo: GrupoLineas
                 }
-    
+                
+                if(typeof lineaItem.NumerosLineas !== "undefined"){
+
+                    Object.defineProperty(linea,'numero',{
+                        value: lineaItem.NumerosLineas[i],
+                        enumerable: true
+                    });
+                }
+
                arrayLineas.push(linea);
             }            
         }
@@ -597,6 +628,8 @@ let RegistrarCliente = () => {
             }
         });
     }
+
+    console.log(datos);
     
     $.ajax({
         url: `${URL}/Cliente`,
@@ -795,31 +828,31 @@ let CargarOperadores = () => {
 
 let RegistrarDetalleLinea = () => {
 
-    //     let DetalleLineas = [];
-    //     if(sessionStorage.DetalleLineas){
-    //         DetalleLineas = JSON.parse(sessionStorage.getItem("DetalleLineas"));
-    //     }
+        let DetalleLineas = [];
+        if(sessionStorage.DetalleLineas){
+            DetalleLineas = JSON.parse(sessionStorage.getItem("DetalleLineas"));
+        }
 
-    //     let arrayDetalleLinea = {
-    //         id: uuid.v4(),
-    //         cantidadLineas: $('#txtDetalle_Cantidad_Lineas').val(),
-    //         valorMensual: $('#txtDetalle_Valor_Mensual').val(),
-    //         valValorLineas: $('input:radio[name=detalleLineasRadios]:checked').val(),
-    //         navegacion: $('#txtDetalleNavegacion').val(),
-    //         unidad: $('#txtDetalleUnidad').val(),
-    //         minutos: $('#txtDetalle_Minutos').val(),
-    //         minIlimitados: $('input:checkbox[name=txtDetalle_Validacion_Ilimitados]').is(":checked"),
-    //         todoOperador: $('input:checkbox[name=txtDetalle_Minutos_TO]').is(":checked"),
-    //         minOtro: $('#txtDetalle_Minutos_Otro').val(),
-    //         mensajes: $('input:checkbox[name=txtDetalle_Mensajes]').is(":checked"),
-    //         llamadas: $('input:checkbox[name=txtDetalle_Llamadas]').is(":checked"),
-    //         redes: $('input:checkbox[name=txtDetalle_Redes]').is(":checked"),
-    //         roaming: $('input:checkbox[name=txtDetalle_Roaming]').is(":checked")
-    //    };
+        let arrayDetalleLinea = {
+            id: uuid.v4(),
+            cantidadLineas: $('#txtDetalle_Cantidad_Lineas').val(),
+            valorMensual: $('#txtDetalle_Valor_Mensual').val(),
+            valValorLineas: $('input:radio[name=detalleLineasRadios]:checked').val(),
+            navegacion: $('#txtDetalleNavegacion').val(),
+            unidad: $('#txtDetalleUnidad').val(),
+            minutos: $('#txtDetalle_Minutos').val(),
+            minIlimitados: $('input:checkbox[name=txtDetalle_Validacion_Ilimitados]').is(":checked"),
+            todoOperador: $('input:checkbox[name=txtDetalle_Minutos_TO]').is(":checked"),
+            minOtro: $('#txtDetalle_Minutos_Otro').val(),
+            mensajes: $('input:checkbox[name=txtDetalle_Mensajes]').is(":checked"),
+            llamadas: $('input:checkbox[name=txtDetalle_Llamadas]').is(":checked"),
+            redes: $('input:checkbox[name=txtDetalle_Redes]').is(":checked"),
+            roaming: $('input:checkbox[name=txtDetalle_Roaming]').is(":checked")
+       };
 
-    //     DetalleLineas.push(arrayDetalleLinea);
+        DetalleLineas.push(arrayDetalleLinea);
 
-    //     sessionStorage.DetalleLineas = JSON.stringify(DetalleLineas);
+        sessionStorage.DetalleLineas = JSON.stringify(DetalleLineas);
 
         LimpiarDetalleLinea();
         ListarDetalleLineas();
@@ -975,29 +1008,154 @@ let LimpiarDetalleLinea = () => {
     
 }
 
-function AgregarInput(){
-    id++;
-    let objTo = document.getElementById('ModalNumerosLineas');
-    let divtest = document.createElement("div");
-    divtest.setAttribute("class", "form-group removeclass" + id);
-    divtest.innerHTML  = `
-        <div class="row form-group">
-            <div class="col-md-12">
-                <div class="input-group">
-                    <input class="form-control txtNumeroLinea" type="text" placeholder="Ingresa un número">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-danger" type="button" onclick="Eliminarinput(${id})">
-                            <i class="fa fa-minus"></i>
-                        </button>
+
+// Números de líneas
+
+function AgregarInput(cantidad,numeros,click){
+
+    for(let i = 1; i <= cantidad; i++ ){
+
+        id++;
+        let objTo = document.getElementById('ModalNumerosLineas');
+        let divtest = document.createElement("div");
+        divtest.setAttribute("class", "form-group removeclass" + id);
+
+        if(Array.isArray(numeros)){
+
+            divtest.innerHTML  = `
+            <div class="row form-group">
+                <div class="col-md-12">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">
+                                <i class="fa fa-mobile"></i>
+                            </span>
+                        </div>
+                        <input type="text" class="form-control txtNumeroLinea" name="txtNumeroLinea" placeholder="Ingresa un número" value="${numeros[i-1]}">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-danger" type="button" onclick="Eliminarinput(${id})">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    `
-    objTo.appendChild(divtest);
+        `
+        }else{
+
+            if(click){
+                let cantidadLineas = parseInt($("#txtIncrementarLineas").html());
+                cantidadLineas++;
+                $("#txtIncrementarLineas").html(cantidadLineas);
+            }
+           
+            divtest.innerHTML  = `
+                <div class="row form-group">
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">
+                                    <i class="fa fa-mobile"></i>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control txtNumeroLinea" name="txtNumeroLinea" placeholder="Ingresa un número">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-danger" type="button" onclick="Eliminarinput(${id})">
+                                    <i class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `
+            
+        }
+    
+        objTo.appendChild(divtest);    
+    }    
 }
 
 function Eliminarinput(id){
-    console.log(id)
+    let cantidadLineas = parseInt($("#txtIncrementarLineas").html());
+    cantidadLineas--;
+    $("#txtIncrementarLineas").html(cantidadLineas);
     $('.removeclass' + id).remove();
+}
+
+function RegistrarNumeros(){
+
+    if(ValidarNumerosLineas()){
+
+        let DetalleLineas = JSON.parse(sessionStorage.getItem("DetalleLineas"));
+        let idLinea = $('#txtIdLineasModalNumeros td').html();
+        let arrayInputs = $('input:text[name="txtNumeroLinea"]');
+        let arrayNumeros = [];
+
+        DetalleLineas.forEach(function(linea,indice,array){
+    
+            if(linea.id == idLinea){
+    
+                linea.cantidadLineas = parseInt($("#txtIncrementarLineas").html());
+    
+                for(let numero of arrayInputs){
+                    
+                    arrayNumeros.push($(numero).val());
+                }
+    
+                Object.defineProperty(linea,'NumerosLineas',{
+                    value: arrayNumeros,
+                    enumerable: true
+                });
+    
+                sessionStorage.DetalleLineas = JSON.stringify(DetalleLineas);
+    
+                swal({
+                    title: "Números registrados correctamente.",
+                    type: "success",
+                    showCancelButton: false,
+                    confirmButtonColor: "#2F6885",
+                    confirmButtonText: "Continuar",
+                    closeOnConfirm: true,
+                }, function (isConfirm) {
+                    if (isConfirm) {
+                        ListarDetalleLineas();
+                        $('#LineasModal').modal('hide');
+                    }
+                });
+            }
+        });
+    }    
+}
+
+function ValidarNumerosLineas(){
+
+    let valid = true;
+
+    if($('input:text[name="txtNumeroLinea"]').length > 0){
+
+        $('input:text[name="txtNumeroLinea"]').each(function(index, element){
+
+            let validacion = form.validate().element(element);
+     
+            if (validacion === false) { 
+                 valid = validacion;
+             }
+         });
+
+    }else{
+
+        valid = false;
+
+        swal({
+            title: "Error al registrar números.",
+            text: "Debes registrar por lo menos una línea.",
+            type: "error",
+            showCancelButton: false,
+            confirmButtonColor: "#2F6885",
+            confirmButtonText: "Continuar",
+            closeOnConfirm: true,
+        });
+    }
+    
+    return valid;
 }

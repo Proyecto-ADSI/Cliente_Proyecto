@@ -41,14 +41,15 @@ CargarDatosModalDetalles = (datos) => {
                     <td>${infoLinea.Minutos}</td>
                     <td>${infoLinea.Navegacion}</td>
                     <td>
-                        <input type="radio" class="with-gap" id="radio_tbl" ${infoLinea.Mensajes == "1" ? "checked" : ""}>
-                        <label for="radio_tbl1">Mensajes</label>
-                        <input type="radio" class="with-gap" id="radio_tbl" ${infoLinea.Redes_Sociales == "1" ? "checked" : ""} >
-                        <label for="radio_tbl">Redes</label>
-                        <input type="radio" class="with-gap" id="radio_tbl" ${infoLinea.Llamadas_Inter == "1" ? "checked" : ""} >
-                        <label for="radio_tbl1">Llamadas Inter</label>
-                        <input type="radio" class="with-gap" id="radio_tbl" ${infoLinea.Roaming == "1" ? "checked" : ""} >
-                        <label for="radio_tbl">Roaming</label>
+                    ${infoLinea.Mensajes == "1" ? '<input type="radio" class="with-gap" id="radio_tbl" checked><label for="radio_tbl1">Mensajes</label>' : ""}
+                        
+                    ${infoLinea.Redes_Sociales == "1" ? '<input type="radio" class="with-gap" id="radio_tbl" checked><label for="radio_tbl">Redes</label>' : ""} 
+                    
+                    ${infoLinea.Llamadas_Inter == "1" ? '<input type="radio" class="with-gap" id="radio_tbl" checked><label for="radio_tbl1">Llamadas Inter</label>': ""}
+                         
+                    ${infoLinea.Roaming == "1" ? '<input type="radio" class="with-gap" id="radio_tbl" checked><label for="radio_tbl">Roaming</label>': ""} 
+                         
+                        
                     </td>
                     <td>
                         <i class="fa fa-dollar"></i>
