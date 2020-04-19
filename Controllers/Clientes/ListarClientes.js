@@ -148,8 +148,6 @@ $(document).on("click", ".switchery ", function () {
     let switchElem = fila.find('.js-switch')[0];
     let Id_Cliente_Estado = parseInt(fila.find('td:eq(0)').text());
 
-    
-
     // Cambiar Estado Cliente
     let Estado;
     if(switchElem.checked){
@@ -161,11 +159,13 @@ $(document).on("click", ".switchery ", function () {
     } 
 
     $.ajax({
-        url: `${URL}/Usuarios/CambiarEstado/${Id_Cliente_Estado}/${Estado}`,
+        url: `${URL}/Cliente/CambiarEstado/${Id_Cliente_Estado}/${Estado}`,
         type: 'get',
         datatype: 'json',
         success: function (datos) {
-            
+            if(datos.data.ok){
+                Recargar_CE_DataTable();
+            }
         },
         error: function (error) {
             console.log(error);
@@ -183,3 +183,8 @@ $(document).on("click", "#btnEliminar", function () {
 
     EliminarCliente(Id_Cliente);
 });
+
+
+Recargar_CE_DataTable = () => {
+    DataTable.ajax.reload();   
+}
