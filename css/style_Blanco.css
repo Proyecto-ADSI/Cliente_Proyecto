@@ -3914,6 +3914,15 @@ Notification page Jquery toaster
 .alert-rounded {
   border-radius: 60px; }
 
+.jq-toast-heading{
+  font-weight: bold;
+  font-size: large !important;
+}
+.jq-toast-body{
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  font-size: medium !important;
+}
 /*******************
 list and media
 ******************/

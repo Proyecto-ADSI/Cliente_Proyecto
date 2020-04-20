@@ -169,8 +169,10 @@ $(function(){
 
         if (state) {
             form.steps("insert", 2, stepPlanCorp);
-           
-
+            if(Id_Plan_Corporativo > 0){
+                CargarInformacionPlan();
+            }
+            
             // Rango Fecha corporativo
             $("#Fecha_Corporativo").datepicker({
                 language: "es",
@@ -192,14 +194,42 @@ $(function(){
 
                 if(state){
                     form.steps("insert", 3, stepDoc);
+                    if(Id_Documentos > 0){
+                        CargarInformacionDocumentos();
+                    }
+                    
                 }else{
                     form.steps("remove", 3);
+                    $.toast({
+                        heading: '¡Alerta!',
+                        text: '<p class="jq-toast-body">Se eliminarán los documentos registrados del cliente.</p>',
+                        position: 'top-right',
+                        bgColor: '#00897b',
+                        textColor: 'white',
+                        loaderBg:'#383f48',
+                        icon: 'warning',
+                        hideAfter: 5000, 
+                        stack: false,
+                        showHideTransition: 'slide'
+                      });
                 }
             });
-
         } else {
             form.steps("remove", 2);
-          
+            form.steps("remove", 2);
+
+            $.toast({
+                heading: '¡Alerta!',
+                text: '<p class="jq-toast-body">Se eliminará la información registrada del plan corporativo y documentos del cliente.</p>',
+                position: 'top-right',
+                bgColor: '#00897b',
+                textColor: 'white',
+                loaderBg:'#272c33',
+                icon: 'warning',
+                hideAfter: 5000, 
+                stack: false,
+                showHideTransition: 'slide'
+              });
         }
     });
 
@@ -471,9 +501,21 @@ $(function(){
     // ************************************ Llenar formulario ********************************************************
     Id_Cliente = Informacion.Id_Cliente;
     Id_DBL = Informacion.Id_DBL;
-    Id_Plan_Corporativo = Informacion.Id_Plan_Corporativo;
-    Id_Documentos = Informacion.Id_Documentos;
 
+    if(typeof Informacion.Id_Plan_Corporativo !== "undefined"){
+        Id_Plan_Corporativo = parseInt(Informacion.Id_Plan_Corporativo);
+
+    }else{
+        Id_Plan_Corporativo = 0;
+    }
+
+    if(typeof Informacion.Id_Documentos !== "undefined"){
+        Id_Documentos = parseInt(Informacion.Id_Documentos);
+
+    }else{
+        Id_Documentos = 0;
+    }
+    
     // Información de contacto.
     $("#txtRazonSocial").val(Informacion.Razon_Social);
     $("#txtTelefono").val(Informacion.Telefono);
@@ -530,22 +572,32 @@ $(function(){
         ListarDetalleLineas();
     }
 
-    // Plan Corporativo
-    if(parseInt(Informacion.Id_Plan_Corporativo) > 0){
-        $('.switch_corporativo').trigger('click');
+    let CargarInformacionPlan = () =>{
         let Fecha_Inicio = new Date(Informacion.Fecha_Inicio.replace(/-/g, '\/'));
         $("#Fecha_Corporativo").children('#txtFecha_inicio').datepicker("setUTCDate", Fecha_Inicio);
         let Fecha_Fin = new Date(Informacion.Fecha_Fin.replace(/-/g, '\/'));
         $("#Fecha_Corporativo").children('#txtFecha_fin').datepicker("setUTCDate", Fecha_Fin);
         $("#txtDescripcion").val(Informacion.Descripcion);
+    }
+
+    // Plan Corporativo
+    if(parseInt(Informacion.Id_Plan_Corporativo) > 0){
+        $('.switch_corporativo').trigger('click');
+        CargarInformacionPlan();
     } 
 
-    if(parseInt(Informacion.Id_Documentos) > 0){
-        $('.switch_doc').trigger('click');
+    // Documentos
+
+    let CargarInformacionDocumentos = () =>{
         $("#txtCamara_Comercio").closest('.fileinput').children('.form-control').children('span').text(Informacion.Camara_Comercio);
         $("#txtCedula").closest('.fileinput').children('.form-control').children('span').text(Informacion.Cedula_RL);
         $("#txtSoporte").closest('.fileinput').children('.form-control').children('span').text(Informacion.Soporte_Ingresos);
         $("#txtDetalles").closest('.fileinput').children('.form-control').children('span').text(Informacion.Detalles_Plan_Corporativo);
+    }
+
+    if(parseInt(Informacion.Id_Documentos) > 0){
+        $('.switch_doc').trigger('click');
+        CargarInformacionDocumentos();
     }
 
 });
@@ -553,6 +605,7 @@ $(function(){
 
 
 // FUNCIONES:
+
 
 let EditarCliente = () => {
 
@@ -654,18 +707,35 @@ let EditarCliente = () => {
         Validacion_Doc_S: false
     };
 
-    
+    if(Id_Plan_Corporativo > 0){
+        Object.defineProperty(datos,'Id_Plan_Corporativo',{
+            value: Id_Plan_Corporativo,
+            enumerable: true
+        });
+    }
+
+    if(Id_Documentos > 0){
+        Object.defineProperty(datos,'Id_Documentos',{
+            value: Id_Documentos,
+            enumerable: true
+        });
+    }
+
     if($('.switch_corporativo').bootstrapSwitch('state')){
 
         let switchClausula = $('#switchClausula').children('label').children('input');
 
-        datos.Validacion_PLan_C = true
+        datos.Validacion_PLan_C = true;
+
+        // Validar si existe la propiedad en el objeto.
+        if(datos.hasOwnProperty('Id_Plan_Corporativo') == false){
+            Object.defineProperty(datos,'Id_Plan_Corporativo',{
+                value: Id_Plan_Corporativo,
+                enumerable: true
+            });
+        }
 
         Object.defineProperties(datos,{
-            "Id_Plan_Corporativo":{
-                value: parseInt(Id_Plan_Corporativo),
-                enumerable: true
-            },
             "Clausula":{
                 value: switchClausula[0].checked ? 1 : 0,
                 enumerable: true
@@ -689,11 +759,15 @@ let EditarCliente = () => {
 
         datos.Validacion_Doc_S = true;
 
-        Object.defineProperties(datos,{
-            "Id_Documentos":{
-                value: parseInt(Id_Documentos),
+        // Validar si existe la propiedad en el objeto.
+        if(datos.hasOwnProperty('Id_Documentos') == false){
+            Object.defineProperty(datos,'Id_Documentos',{
+                value: Id_Documentos,
                 enumerable: true
-            },
+            });
+        }
+
+        Object.defineProperties(datos,{
            "Camara_Comercio":{
                 value: $("#txtCamara_Comercio").val(),
                 enumerable: true
