@@ -73,16 +73,12 @@
 
 /* Registro */
 .MyStyle_Card_Header{
-    background: #154360!important;
-    border-color: #154360 !important;
+    background: #00897b!important;
+    border-color:#00897b !important;
 }
 
 .MyStyle_File_Card{
     padding-top: 0 !important;
-}
-
-.MyStyle_Btn_Registro_Usuarios{
-    /* text-align: center; */
 }
 
 /* .form-horizontal label {
@@ -102,7 +98,7 @@
 
 /* Tabla Llamadas */
 .MyStyle_Color-Table thead tr th{
-    background-color: #154360 !important;
+    background-color: #00897b !important;
     color: #ffffff !important;
 
 }
@@ -130,10 +126,6 @@
 
 .MyStyle_Guion{
     margin-top: 290%;
-}
-
-.MyStyle_Card_Filtro{
-    background-color: #f2f4f8 !important;
 }
 
 .MyStyle_Card_Detalle{

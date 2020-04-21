@@ -16,14 +16,15 @@
     <!-- Mis Estilos -->
     <link rel="stylesheet" href="../../../css/MyStyle.css">
     <!-- Custom CSS -->
-    <link  href="../../../css/style_Blanco.css" id="Style_Tema" rel="stylesheet">
+    <link href="../../../css/style_Blanco.css" id="Style_Tema" rel="stylesheet">
     <!-- Tema de la plantilla -->
     <link href="../../../css/colors/Tema_Blanco.css" id="Tema" rel="stylesheet">
 
- 
+
 
     <!-- DataTable -->
-    <link rel="stylesheet" href="../../../assets/plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet"
+        href="../../../assets/plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
 
     <!-- JQuery Steps -->
     <link href="../../../assets/plugins/wizard/steps.css" rel="stylesheet">
@@ -117,53 +118,47 @@
                     </div>
                     <div class="card-body" id="Card-Body-Filtrar-Directorio">
                         <!-- <h6 class="card-subtitle"> Filtro:</h6> -->
-                        <div class="card MyStyle_Card_Filtro card-outline-primary">
-                            <div class="card-header">
+                        <div class="card">
+                            <div class="card-header MyStyle_Card_Header">
                                 <h4 class="m-b-0 text-white">Filtro:</h4>
                             </div>
                             <div class="card-body" id="Card-Body-Filtrar-Directorio2">
                                 <form class="" action="" method="POST">
-
-                                    <div class="col-12">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <label class="m-t-30">NIT</label>
-                                                <input type="text" class="form-control" id="Nit" placeholder="123...">
-                                            </div>
-
-                                            <div class="col-md-4">
-                                                <label class="m-t-30">Razón social</label>
-                                                <input type="text" class="form-control" id="RazonSocial"
-                                                    placeholder="Nombre">
-                                            </div>
-
-                                            <div class="col-md-4">
-                                                <label class="m-t-30">Teléfono</label>
-                                                <input type="text" class="form-control" id="Telefono"
-                                                    placeholder="1234567...">
-                                            </div>
+                                    <div class="row">
+                                        <div class="form-group col-md-4">
+                                            <label class="font-weight-bold">NIT</label>
+                                            <input type="text" class="form-control" id="Nit" placeholder="123...">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label class="font-weight-bold">Razón social</label>
+                                            <input type="text" class="form-control" id="RazonSocial"
+                                                placeholder="Nombre">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label class="font-weight-bold">Teléfono</label>
+                                            <input type="text" class="form-control" id="Telefono"
+                                                placeholder="1234567...">
                                         </div>
                                     </div>
-
                                     <div class="row">
-
-                                        <div class="col-md-4" style="margin-left: 1rem;">
-                                            <label class="m-t-30">Operador</label>
-                                            <select class="selectpicker form-control" style="width: 100%;">
-                                                <option disabled selected>Seleccione...</option>
+                                        <div class="form-group col-md-4">
+                                            <label class="font-weight-bold"> Operador</label>
+                                            <select name="txtCalificacion" id="txtCalificacion"
+                                                class="select2 form-control custom-select">
+                                                <option selected disabled>Seleccione...</option>
                                                 <option>Claro</option>
                                                 <option>Movistar</option>
                                             </select>
                                         </div>
-                                        <div class="col-md-4">
-                                            <label class="m-t-30">Corporativo</label>
-                                            <select class="selectpicker form-control" style="width: 100%;">
-                                                <option disabled selected>Seleccione...</option>
+                                        <div class=" form-group col-md-4">
+                                            <label class="font-weight-bold"> Corporativo </label>
+                                            <select name="txtCalificacion" id="txtCalificacion"
+                                                class="select2 form-control custom-select">
+                                                <option selected disabled>Seleccione...</option>
                                                 <option>Sí</option>
                                                 <option>No</option>
                                             </select>
                                         </div>
-
 
                                     </div>
                                     <div class="row">
@@ -172,7 +167,7 @@
                                                 style="margin-left: 1rem;">
                                                 <button type="submit" class="btn btn-info"><i class="fas fa-search"></i>
                                                     Consultar</button>
-                                                <button class="btn btn-warning" style="margin-left: 1.7rem;"><i
+                                                <button class="btn btn-primary" style="margin-left: 1.7rem;"><i
                                                         class="fas fa-filter"></i> Filtro avanzado </button>
                                             </div>
                                         </div>
@@ -182,12 +177,12 @@
                         </div>
                         <!-- Fin Card Filtro -->
                         <!-- Card Table -->
-                        <div class="card  card-outline-info">
-                            <div class="card-header">
+                        <div class="card">
+                            <div class="card-header MyStyle_Card_Header">
                                 <div class="row">
                                     <div class="col-md-10">
                                         <h4 class="m-b-0 text-white">Lista de Clientes:</h4>
-                                       
+
                                     </div>
                                     <div class="col-md-2">
                                         <div class="m-l-50">
@@ -197,8 +192,8 @@
                                                 Opciones
                                             </button>
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <a href="AgregarEmpresa.html" class="dropdown-item"
-                                                > <i class=" fas fa-user-plus"></i> Agregar
+                                                <a href="AgregarEmpresa.html" class="dropdown-item"> <i
+                                                        class=" fas fa-user-plus"></i> Agregar
                                                     Cliente
                                                 </a>
                                                 <button class="dropdown-item" data-toggle="modal"
@@ -229,8 +224,8 @@
                                                         <div class="card-body MyStyle_File_Card">
                                                             <div class="form-group">
                                                                 <h4 class="card-title">Archivo</h4>
-                                                                <input type="file" id="archivoClientes"
-                                                                class="dropify" data-height="100" name="archivoClientes" />
+                                                                <input type="file" id="archivoClientes" class="dropify"
+                                                                    data-height="100" name="archivoClientes" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -239,7 +234,8 @@
                                                     <button type="button" class="btn btn-danger waves-effect text-left"
                                                         data-dismiss="modal">Cerrar
                                                     </button>
-                                                    <button type="submit" class="btn btn-success waves-effect text-left">
+                                                    <button type="submit"
+                                                        class="btn btn-success waves-effect text-left">
                                                         Importar
                                                     </button>
                                                 </div>
@@ -250,9 +246,10 @@
                                 <!-- /Modal Importar clientes -->
 
                                 <!--************** DataTable ***************************** -->
-                            
+
                                 <div class="table-responsive">
-                                    <table id="ClientesDataTable" class="table table-bordered table-striped MyStyle_Color-Table">
+                                    <table id="ClientesDataTable"
+                                        class="table table-bordered table-striped MyStyle_Color-Table">
                                         <thead>
                                             <tr>
                                                 <th>Id_Cliente</th>
@@ -273,8 +270,8 @@
                     </div>
                 </div>
 
-                 <!-- Modal detalles-->
-                 <div class="modal fade ModalDetalles" role="dialog" style="display: none;">
+                <!-- Modal detalles-->
+                <div class="modal fade ModalDetalles" role="dialog" style="display: none;">
                     <div class="modal-dialog modal-lg" style="max-width: 1000px">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -288,30 +285,36 @@
                                     <div class="card-body ">
                                         <ul class="nav nav-tabs" role="tablist">
                                             <li class="nav-item">
-                                                <a id="Menu_Info" class="nav-link active" data-toggle="tab" href="#DatosBasicos" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span>
-                                                    <span class="hidden-xs-down">  Información de contacto </span>
+                                                <a id="Menu_Info" class="nav-link active" data-toggle="tab"
+                                                    href="#DatosBasicos" role="tab"><span class="hidden-sm-up"><i
+                                                            class="ti-home"></i></span>
+                                                    <span class="hidden-xs-down"> Información de contacto </span>
                                                 </a>
                                             </li>
                                             <li class="nav-item">
-                                                <a id="Menu_DBL" class="nav-link" data-toggle="tab" href="#Lineas" role="tab">
+                                                <a id="Menu_DBL" class="nav-link" data-toggle="tab" href="#Lineas"
+                                                    role="tab">
                                                     <span class="hidden-sm-up"><i class="ti-email"></i></span>
-                                                    <span class="hidden-xs-down">  Datos básicos líneas</span>
+                                                    <span class="hidden-xs-down"> Datos básicos líneas</span>
                                                 </a>
                                             </li>
-                                            <li class="nav-item"> 
-                                                <a id="Menu_Plan" class="nav-link" data-toggle="tab" href="#Corporativo" role="tab">
+                                            <li class="nav-item">
+                                                <a id="Menu_Plan" class="nav-link" data-toggle="tab" href="#Corporativo"
+                                                    role="tab">
                                                     <span class="hidden-sm-up"><i class="ti-email"></i></span>
                                                     <span class="hidden-xs-down"> Plan Corporativo </span>
                                                 </a>
                                             </li>
-                                            <li class="nav-item"> 
-                                                <a id="Menu_Doc" class="nav-link" data-toggle="tab" href="#Documentos" role="tab">
+                                            <li class="nav-item">
+                                                <a id="Menu_Doc" class="nav-link" data-toggle="tab" href="#Documentos"
+                                                    role="tab">
                                                     <span class="hidden-sm-up"><i class="ti-email"></i></span>
                                                     <span class="hidden-xs-down">Documentos</span>
                                                 </a>
                                             </li>
-                                            <li class="nav-item"> 
-                                                <a id="Menu_Comp" class="nav-link" data-toggle="tab" href="#Comparativo" role="tab">
+                                            <li class="nav-item">
+                                                <a id="Menu_Comp" class="nav-link" data-toggle="tab" href="#Comparativo"
+                                                    role="tab">
                                                     <span class="hidden-sm-up"><i class="ti-email"></i></span>
                                                     <span class="hidden-xs-down">Comparativo</span>
                                                 </a>
@@ -332,8 +335,9 @@
                                                                         <label class="font-weight-bold text-right">
                                                                             Razón Social:
                                                                         </label>
-                                                                        <p id="txtRazon_Social" class="form-control-static">
-                                                                            
+                                                                        <p id="txtRazon_Social"
+                                                                            class="form-control-static">
+
                                                                         </p>
                                                                     </div>
                                                                 </div>
@@ -343,7 +347,7 @@
                                                                             Teléfono:
                                                                         </label>
                                                                         <p id="txtTelefono" class="form-control-static">
-                                                                          
+
                                                                         </p>
                                                                     </div>
                                                                 </div>
@@ -353,7 +357,7 @@
                                                                             NIT:
                                                                         </label>
                                                                         <p id="txtNIT" class="form-control-static">
-                                                                           
+
                                                                         </p>
                                                                     </div>
                                                                 </div>
@@ -364,8 +368,9 @@
                                                                         <label class="font-weight-bold text-right">
                                                                             Encargado:
                                                                         </label>
-                                                                        <p id="txtEncargado" class="form-control-static">
-                                                                            
+                                                                        <p id="txtEncargado"
+                                                                            class="form-control-static">
+
                                                                         </p>
                                                                     </div>
                                                                 </div>
@@ -374,8 +379,9 @@
                                                                         <label class="font-weight-bold text-right">
                                                                             Extensión o celular:
                                                                         </label>
-                                                                        <p id="txtExtension_celular" class="form-control-static">
-                                                                          
+                                                                        <p id="txtExtension_celular"
+                                                                            class="form-control-static">
+
                                                                         </p>
                                                                     </div>
                                                                 </div>
@@ -389,7 +395,7 @@
                                                                             País:
                                                                         </label>
                                                                         <p id="txtPais" class="form-control-static">
-                                                                           
+
                                                                         </p>
                                                                     </div>
                                                                 </div>
@@ -398,8 +404,9 @@
                                                                         <label class="font-weight-bold text-right">
                                                                             Departamento:
                                                                         </label>
-                                                                        <p id="txtDepartamento" class="form-control-static">
-                                                                           
+                                                                        <p id="txtDepartamento"
+                                                                            class="form-control-static">
+
                                                                         </p>
                                                                     </div>
                                                                 </div>
@@ -408,8 +415,9 @@
                                                                         <label class="font-weight-bold text-right">
                                                                             Municipio:
                                                                         </label>
-                                                                        <p id="txtMunicipio" class="form-control-static">
-                                                                            
+                                                                        <p id="txtMunicipio"
+                                                                            class="form-control-static">
+
                                                                         </p>
                                                                     </div>
                                                                 </div>
@@ -420,9 +428,9 @@
                                                                         <label class="font-weight-bold text-right">
                                                                             Lugar:
                                                                         </label>
-                                                                        <label class="text-muted" id="txtTipo"></label>                         
-                                                                        <p id="txtBarrio_Vereda" >
-                                                                             
+                                                                        <label class="text-muted" id="txtTipo"></label>
+                                                                        <p id="txtBarrio_Vereda">
+
                                                                         </p>
                                                                     </div>
                                                                 </div>
@@ -431,8 +439,9 @@
                                                                         <label class="font-weight-bold text-right">
                                                                             Dirección:
                                                                         </label>
-                                                                        <p id="txtDireccion" class="form-control-static">
-                                                                            
+                                                                        <p id="txtDireccion"
+                                                                            class="form-control-static">
+
                                                                         </p>
                                                                     </div>
                                                                 </div>
@@ -440,7 +449,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>    
+                                            </div>
                                             <!-- Información Líneas -->
                                             <div class="tab-pane" id="Lineas" role="tabpanel">
                                                 <div class="card MyStyle_Card_Detalle m-b-0">
@@ -459,8 +468,9 @@
                                                                     <label class="font-weight-bold text-right">
                                                                         Operador actual:
                                                                     </label>
-                                                                    <p id="txtOperador_tbl_Lineas" class="form-control-static">
-                                                                        
+                                                                    <p id="txtOperador_tbl_Lineas"
+                                                                        class="form-control-static">
+
                                                                     </p>
                                                                 </div>
                                                             </div>
@@ -470,7 +480,7 @@
                                                                         Calificación:
                                                                     </label>
                                                                     <p id="txtCalificacion" class="form-control-static">
-                                                                        
+
                                                                     </p>
                                                                 </div>
                                                             </div>
@@ -480,7 +490,7 @@
                                                                         Razones:
                                                                     </label>
                                                                     <p id="txtRazones" class="form-control-static">
-                                                                        
+
                                                                     </p>
                                                                 </div>
                                                             </div>
@@ -491,8 +501,9 @@
                                                                     <label class="font-weight-bold text-right">
                                                                         Cantidad de líneas:
                                                                     </label>
-                                                                    <p id="txtCantidad_Lineas2" class="form-control-static">
-                                                                        
+                                                                    <p id="txtCantidad_Lineas2"
+                                                                        class="form-control-static">
+
                                                                     </p>
                                                                 </div>
                                                             </div>
@@ -501,8 +512,9 @@
                                                                     <label class="font-weight-bold text-right">
                                                                         Valor total mensual:
                                                                     </label>
-                                                                    <p id="txtValor_Mensual2" class="form-control-static">
-                                                                        
+                                                                    <p id="txtValor_Mensual2"
+                                                                        class="form-control-static">
+
                                                                     </p>
                                                                 </div>
                                                             </div>
@@ -517,24 +529,31 @@
                                                                                 <th>Minutos</th>
                                                                                 <th>Datos</th>
                                                                                 <th>Otros</th>
-                                                                                <th class="MyStyle_Cargo_Detalle_Linea">Cargo</th>
+                                                                                <th class="MyStyle_Cargo_Detalle_Linea">
+                                                                                    Cargo</th>
                                                                             </tr>
                                                                         </thead>
                                                                         <tbody id="Tbody_detalle_Lineas">
-                                                                            
+
                                                                         </tbody>
                                                                         <tfoot>
                                                                             <tr>
                                                                                 <td>
-                                                                                    <h5 class="box-title font-weight-bold d-inline-block">Total:</h5>
-                                                                                    <p id="txtCantidad_Lineas1" class="float-right font-weight-bold"></p>
+                                                                                    <h5
+                                                                                        class="box-title font-weight-bold d-inline-block">
+                                                                                        Total:</h5>
+                                                                                    <p id="txtCantidad_Lineas1"
+                                                                                        class="float-right font-weight-bold">
+                                                                                    </p>
                                                                                 </td>
                                                                                 <td></td>
                                                                                 <td></td>
                                                                                 <td></td>
                                                                                 <td>
                                                                                     <i class="fa fa-dollar"></i>
-                                                                                    <div id="txtValor_Mensual1" class="float-right font-weight-bold"></div> 
+                                                                                    <div id="txtValor_Mensual1"
+                                                                                        class="float-right font-weight-bold">
+                                                                                    </div>
                                                                                 </td>
                                                                                 <td></td>
                                                                             </tr>
@@ -558,7 +577,8 @@
                                                             <div class="row">
                                                                 <div class="col-md-3">
                                                                     <div class="form-group">
-                                                                        <label for="location1">¿Claúsula permanencia?</label>
+                                                                        <label for="location1">¿Claúsula
+                                                                            permanencia?</label>
                                                                         <div id="switch_input_clausula" class="switch">
                                                                             <label>
                                                                                 <strong> NO</strong>
@@ -574,8 +594,9 @@
                                                                         <label class="control-label text-right">
                                                                             Fecha Inicio:
                                                                         </label>
-                                                                        <p  id="txtFecha_Inicio" class="form-control-static">
-                                                                            
+                                                                        <p id="txtFecha_Inicio"
+                                                                            class="form-control-static">
+
                                                                         </p>
                                                                     </div>
                                                                 </div>
@@ -584,8 +605,9 @@
                                                                         <label class="control-label text-right">
                                                                             Fecha Fin:
                                                                         </label>
-                                                                        <p  id="txtFecha_Fin" class="form-control-static">
-                                                                            
+                                                                        <p id="txtFecha_Fin"
+                                                                            class="form-control-static">
+
                                                                         </p>
                                                                     </div>
                                                                 </div>
@@ -596,14 +618,15 @@
                                                                         <label class="control-label text-right">
                                                                             Descripción del corporativo:
                                                                         </label>
-                                                                        <p id="txtDescripcion"  class="form-control-static">
-                                                                          
+                                                                        <p id="txtDescripcion"
+                                                                            class="form-control-static">
+
                                                                         </p>
-                                                                  </div>
-                                                              </div>
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                        </div> 
-                                                    </div> 
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <!-- Documentos Corporativo -->
@@ -620,64 +643,64 @@
                                                                             Cédula Ciudadanía
                                                                         </label>
                                                                         <p class="form-control-static">
-                                                                          <button class="btn btn-outline-primary">
-                                                                              Descargar
-                                                                          </button>
+                                                                            <button class="btn btn-outline-primary">
+                                                                                Descargar
+                                                                            </button>
                                                                         </p>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label class="control-label">
-                                                                          Cámara de comercio
+                                                                            Cámara de comercio
                                                                         </label>
                                                                         <p class="form-control-static">
-                                                                          <button class="btn btn-outline-primary">
-                                                                              Descargar
-                                                                          </button>
+                                                                            <button class="btn btn-outline-primary">
+                                                                                Descargar
+                                                                            </button>
                                                                         </p>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label class="control-label text-right">
-                                                                          Soporte de ingresos
+                                                                            Soporte de ingresos
                                                                         </label>
                                                                         <p class="form-control-static">
                                                                             <button class="btn btn-outline-primary">
                                                                                 Descargar
                                                                             </button>
                                                                         </p>
-                                                                    </div>   
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label class="control-label text-right">
-                                                                          Anexos Corporativo
+                                                                            Anexos Corporativo
                                                                         </label>
                                                                         <p class="form-control-static">
                                                                             <button class="btn btn-outline-primary">
                                                                                 Descargar
                                                                             </button>
                                                                         </p>
-                                                                    </div>   
+                                                                    </div>
                                                                 </div>
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label class="control-label text-right">
-                                                                          Oferta
+                                                                            Oferta
                                                                         </label>
                                                                         <p class="form-control-static">
                                                                             <button class="btn btn-outline-primary">
                                                                                 Descargar
                                                                             </button>
                                                                         </p>
-                                                                    </div>   
+                                                                    </div>
                                                                 </div>
-                                                            </div> 
-                                                        </div> 
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -687,11 +710,12 @@
                                                     <div class="card-body">
                                                         <div class="row">
                                                             <div class="col-md-10">
-                                                                <h3 class="box-title text-center"> Comparativo de corporativos </h3>
+                                                                <h3 class="box-title text-center"> Comparativo de
+                                                                    corporativos </h3>
                                                             </div>
                                                             <div class="col-md-2">
-                                                                <button class="btn btn-outline-info" 
-                                                                data-toggle="modal" data-target="#facturaModal">
+                                                                <button class="btn btn-outline-info" data-toggle="modal"
+                                                                    data-target="#facturaModal">
                                                                     <i class="fa fa-file-text-o"></i> Factura
                                                                 </button>
                                                             </div>
@@ -699,15 +723,15 @@
                                                         <hr class="m-t-20 m-b-20">
                                                         <div class="row m-b-20">
                                                             <div class="col-md-5">
-                                                                <h1 class="text-center " >Movistar</h1>
+                                                                <h1 class="text-center ">Movistar</h1>
                                                                 <p class="text-center text-muted">Anterior</p>
                                                             </div>
                                                             <div class="col-md-2">
                                                                 <h3 class="text-center">VS</h3>
                                                             </div>
                                                             <div class="col-md-5">
-                                                               <h1 class="text-center"> Claro</h1>
-                                                               <p class="text-center text-muted">Actual</p>
+                                                                <h1 class="text-center"> Claro</h1>
+                                                                <p class="text-center text-muted">Actual</p>
                                                             </div>
                                                         </div>
                                                         <div class="row">
@@ -716,13 +740,13 @@
                                                                     <table class="table MyStyle_Color_Comparativo">
                                                                         <thead>
                                                                             <tr>
-                                                                                <th class="op1" >Línea</th>
-                                                                                <th class="op1" >Minutos</th>
-                                                                                <th class="op1" >Navegación</th>
-                                                                                <th class="op1" >Cargo</th>
-                                                                                <th class="op2" >Minutos</th>
-                                                                                <th class="op2" >Navegación</th>
-                                                                                <th class="op2" >Cargo</th>
+                                                                                <th class="op1">Línea</th>
+                                                                                <th class="op1">Minutos</th>
+                                                                                <th class="op1">Navegación</th>
+                                                                                <th class="op1">Cargo</th>
+                                                                                <th class="op2">Minutos</th>
+                                                                                <th class="op2">Navegación</th>
+                                                                                <th class="op2">Cargo</th>
                                                                             </tr>
                                                                         </thead>
                                                                         <tbody id="TablaDocumento">
@@ -751,11 +775,13 @@
                                                                                     <h5 class="box-title">Total: 2</h5>
                                                                                 </td>
                                                                                 <td colspan="2">
-                                                                                    <h5 class="box-title">Cargo básico neto:</h5>
+                                                                                    <h5 class="box-title">Cargo básico
+                                                                                        neto:</h5>
                                                                                 </td>
                                                                                 <td>130,000</td>
                                                                                 <td colspan="2">
-                                                                                    <h5 class="box-title">Cargo básico neto:</h5>
+                                                                                    <h5 class="box-title">Cargo básico
+                                                                                        neto:</h5>
                                                                                 </td>
                                                                                 <td>130,000</td>
                                                                             </tr>
@@ -763,14 +789,14 @@
                                                                     </table>
                                                                 </div>
                                                             </div>
-                                                        </div>   
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>           
+                            </div>
                             <div class="modal-footer">
                                 <div class="row">
                                     <div class="col-md-6">
@@ -804,7 +830,8 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="table-responsive">
-                                            <table id="ClientesDataTable" class="table table-bordered table-striped MyStyle_Color-Table">
+                                            <table id="ClientesDataTable"
+                                                class="table table-bordered table-striped MyStyle_Color-Table">
                                                 <thead>
                                                     <tr>
                                                         <th>Flujo financiero</th>
@@ -843,11 +870,14 @@
                                                     <tr>
                                                         <td>Reducción anual</td>
                                                         <td>
-                                                            <div class="float-right">12 <i class="fa fa-percent"></i></div>
+                                                            <div class="float-right">12 <i class="fa fa-percent"></i>
+                                                            </div>
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td><h5 class="text-danger font-weight-bold">Total ahorro</h5></td>
+                                                        <td>
+                                                            <h5 class="text-danger font-weight-bold">Total ahorro</h5>
+                                                        </td>
                                                         <td>
                                                             <i class="fa fa-dollar text-danger"></i>
                                                             <h5 class="float-right text-danger font-weight-bold">
@@ -863,7 +893,8 @@
                                                         </td>
                                                         <td>
                                                             <i class="fa fa-dollar text-danger"></i>
-                                                            <h3 class="float-right text-danger font-weight-bold text-uppercase">
+                                                            <h3
+                                                                class="float-right text-danger font-weight-bold text-uppercase">
                                                                 10.789.020
                                                             </h3>
                                                         </td>
@@ -882,29 +913,31 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
+                                <button type="button" class="btn btn-outline-danger"
+                                    data-dismiss="modal">Cerrar</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                 <!-- /Modal  Factura-->
+                <!-- /Modal  Factura-->
 
                 <!-- Modal Editar -->
-                <div class="modal fade ModalEditar" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                <div class="modal fade ModalEditar" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+                    aria-hidden="true" style="display: none;">
                     <div class="modal-dialog modal-lg" style="max-width: 1000px">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h4 class="modal-title" id="myLargeModalLabel">
                                     Editar Cliente
                                 </h4>
-                                
+
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             </div>
                             <div class="modal-body">
-                            
+
                                 <div class="card">
                                     <div class="card-body wizard-content">
-                                        
+
                                         <form id="Form_Editar_Clientes" class="wizard-circle">
                                             <!-- Step 1 -->
                                             <h6>Información de contacto</h6>
@@ -917,8 +950,8 @@
                                                             <label class="control-label">NIT:
 
                                                             </label>
-                                                            <input type="text" id="txtNIT_E" name="txtNIT_E" class="form-control"
-                                                                placeholder="12345678-9">
+                                                            <input type="text" id="txtNIT_E" name="txtNIT_E"
+                                                                class="form-control" placeholder="12345678-9">
                                                         </div>
                                                     </div>
 
@@ -927,7 +960,8 @@
                                                             <label class="control-label">Razón social:
                                                                 <span class="text-danger">*</span>
                                                             </label>
-                                                            <input type="text" name="txtRazonSocial_E" id="txtRazonSocial_E"
+                                                            <input type="text" name="txtRazonSocial_E"
+                                                                id="txtRazonSocial_E"
                                                                 class="form-control form-control-danger"
                                                                 placeholder="Empresa S.A">
                                                         </div>
@@ -952,7 +986,7 @@
                                                                 class="select2 form-control custom-select"
                                                                 style="width: 100%; height:36px;">
                                                                 <option selected disabled>Seleccione...</option>
-                                                             
+
                                                             </select>
                                                         </div>
                                                     </div>
@@ -964,7 +998,7 @@
                                                                 class="select2 form-control custom-select"
                                                                 style="width: 100%; height:36px;">
                                                                 <option selected disabled>Seleccione...</option>
-                                                               
+
                                                             </select>
                                                         </div>
                                                     </div>
@@ -976,7 +1010,7 @@
                                                                 class="select2 form-control custom-select"
                                                                 style="width: 100%; height:36px;">
                                                                 <option selected disabled>Seleccione...</option>
-                                                            
+
                                                             </select>
                                                         </div>
                                                     </div>
@@ -991,7 +1025,7 @@
                                                                 class="select2 form-control custom-select"
                                                                 style="width: 100%; height:36px;">
                                                                 <option selected disabled>Seleccione...</option>
-                                                           
+
                                                             </select>
                                                         </div>
                                                     </div>
@@ -1002,7 +1036,7 @@
                                                                 class="select2 form-control custom-select"
                                                                 style="width: 100%; height:36px;">
                                                                 <option selected disabled>Seleccione...</option>
-                                                            
+
                                                             </select>
                                                         </div>
                                                     </div>
@@ -1010,7 +1044,8 @@
                                                         <div class="form-group">
                                                             <label for="emailAddress1"> Dirección:</label>
                                                             <input type="text" class="form-control" id="txtDireccion_E"
-                                                                name="txtDireccion_E" placeholder="Calle 1 # 1 - 1"> </div>
+                                                                name="txtDireccion_E" placeholder="Calle 1 # 1 - 1">
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </section>
@@ -1039,8 +1074,10 @@
                                                     <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label for="int1">Teléfono de contacto:</label>
-                                                            <input type="text" class="form-control" id="txtTelefono_Contacto_E"
-                                                                name="txtTelefono_Contacto_E" placeholder="3123456789 | 4123456">
+                                                            <input type="text" class="form-control"
+                                                                id="txtTelefono_Contacto_E"
+                                                                name="txtTelefono_Contacto_E"
+                                                                placeholder="3123456789 | 4123456">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1048,15 +1085,17 @@
                                                     <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label for="int1">Extensión:</label>
-                                                            <input type="number" class="form-control" id="txtExtension_E"
-                                                                name="txtExtension_E" placeholder="123">
+                                                            <input type="number" class="form-control"
+                                                                id="txtExtension_E" name="txtExtension_E"
+                                                                placeholder="123">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label for="int1 ">Número de líneas:</label>
-                                                            <input type="number" class="form-control" id="txtCantidad_Lineas_E"
-                                                                name="txtCantidad_Lineas_E" placeholder="10">
+                                                            <input type="number" class="form-control"
+                                                                id="txtCantidad_Lineas_E" name="txtCantidad_Lineas_E"
+                                                                placeholder="10">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4">
@@ -1064,8 +1103,9 @@
                                                             <label class="control-label">
                                                                 Pago <strong>mensual:</strong>
                                                             </label>
-                                                            <input id="txtValor_Mensual_E" type="text" name="txtValor_Mensual_E"
-                                                                class=" form-control" placeholder="100000"
+                                                            <input id="txtValor_Mensual_E" type="text"
+                                                                name="txtValor_Mensual_E" class=" form-control"
+                                                                placeholder="100000"
                                                                 data-bts-button-down-class="btn btn-secondary btn-outline"
                                                                 data-bts-button-up-class="btn btn-secondary btn-outline">
                                                         </div>
@@ -1076,7 +1116,8 @@
                                                         <div class="form-group">
                                                             <label for="int1 ">Cantidad de minutos:</label>
                                                             <input type="text" class="form-control" id="txtMinutos_E"
-                                                                name="txtMinutos_E" placeholder="300 minutos todo operador">
+                                                                name="txtMinutos_E"
+                                                                placeholder="300 minutos todo operador">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4">
@@ -1089,8 +1130,9 @@
                                                     <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label for="jobTitle2 ">Llamadas internacionales:</label>
-                                                            <input type="text" class="form-control" id="txtLlamadas_Inter_E"
-                                                                name="txtLlamadas_Inter_E" placeholder="200 minutos">
+                                                            <input type="text" class="form-control"
+                                                                id="txtLlamadas_Inter_E" name="txtLlamadas_Inter_E"
+                                                                placeholder="200 minutos">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1105,8 +1147,8 @@
                                                     <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label for="jobTitle2 ">Aplicaciones:</label>
-                                                            <input type="text" class="form-control" id="txtApps_E" name="txtApps_E"
-                                                                placeholder="Facebook y WhatsApp">
+                                                            <input type="text" class="form-control" id="txtApps_E"
+                                                                name="txtApps_E" placeholder="Facebook y WhatsApp">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4">
@@ -1125,17 +1167,23 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="txtFecha_inicio">Fecha del corporativo:</label>
-                                                            <div class="input-daterange input-group" id="Fecha_DatePicker">
+                                                            <div class="input-daterange input-group"
+                                                                id="Fecha_DatePicker">
                                                                 <span class="input-group-addon">Inicio</span>
-                                                                <input type="text" class="input-sm form-control txtFecha_inicio_E" name="txtFecha_inicio_E" id="txtFecha_inicio_E"/>
+                                                                <input type="text"
+                                                                    class="input-sm form-control txtFecha_inicio_E"
+                                                                    name="txtFecha_inicio_E" id="txtFecha_inicio_E" />
                                                                 <span class="input-group-addon">Fin</span>
-                                                                <input type="text" class="input-sm form-control txtFecha_fin_E" name="txtFecha_fin_E" id="txtFecha_fin_E"/>
+                                                                <input type="text"
+                                                                    class="input-sm form-control txtFecha_fin_E"
+                                                                    name="txtFecha_fin_E" id="txtFecha_fin_E" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="participants1">Descripción del corporativo</label>
-                                                            <textarea name="txtDescripcion_E" id="txtDescripcion_E" rows="10"
-                                                                class="form-control"
+                                                            <label for="participants1">Descripción del
+                                                                corporativo</label>
+                                                            <textarea name="txtDescripcion_E" id="txtDescripcion_E"
+                                                                rows="10" class="form-control"
                                                                 placeholder="Ingresa una descripción"></textarea>
                                                         </div>
                                                     </div>
@@ -1143,62 +1191,90 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label class="m-r-5">Cámara de comercio: </label>
-                                                            <div id="txtCamara_Comercio_Actual" class="fileinput fileinput-new input-group" data-provides="fileinput">
+                                                            <div id="txtCamara_Comercio_Actual"
+                                                                class="fileinput fileinput-new input-group"
+                                                                data-provides="fileinput">
                                                                 <div class="form-control" data-trigger="fileinput">
                                                                     <i class="fa fa-file fileinput-exists"></i>
                                                                     <span class="fileinput-filename"></span>
                                                                 </div>
-                                                                <span class="input-group-addon btn btn-secondary btn-file MyStyle_Btn_Docs"> 
+                                                                <span
+                                                                    class="input-group-addon btn btn-secondary btn-file MyStyle_Btn_Docs">
                                                                     <span class="fileinput-new">Seleccionar</span>
                                                                     <span class="fileinput-exists">Cambiar</span>
-                                                                    <input type="file" name="txtCamara_Comercio_E" id="txtCamara_Comercio_E">
+                                                                    <input type="file" name="txtCamara_Comercio_E"
+                                                                        id="txtCamara_Comercio_E">
                                                                 </span>
-                                                                <a href="#" class="input-group-addon btn btn-secondary fileinput-exists MyStyle_Btn_Docs" data-dismiss="fileinput">Eliminar</a> </div>
+                                                                <a href="#"
+                                                                    class="input-group-addon btn btn-secondary fileinput-exists MyStyle_Btn_Docs"
+                                                                    data-dismiss="fileinput">Eliminar</a>
+                                                            </div>
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label class="m-r-5">Cédula de ciudadanía: </label>
-                                                            <div  id="txtCedula_Actual" class="fileinput fileinput-new input-group" data-provides="fileinput">
+                                                            <div id="txtCedula_Actual"
+                                                                class="fileinput fileinput-new input-group"
+                                                                data-provides="fileinput">
                                                                 <div class="form-control" data-trigger="fileinput">
                                                                     <i class="fa fa-file fileinput-exists"></i>
                                                                     <span class="fileinput-filename"></span>
                                                                 </div>
-                                                                <span class="input-group-addon btn btn-secondary btn-file MyStyle_Btn_Docs"> 
+                                                                <span
+                                                                    class="input-group-addon btn btn-secondary btn-file MyStyle_Btn_Docs">
                                                                     <span class="fileinput-new">Seleccionar</span>
                                                                     <span class="fileinput-exists">Cambiar</span>
-                                                                    <input type="file" name="txtCedula_E" id="txtCedula_E">
+                                                                    <input type="file" name="txtCedula_E"
+                                                                        id="txtCedula_E">
                                                                 </span>
-                                                                <a href="#" class="input-group-addon btn btn-secondary fileinput-exists MyStyle_Btn_Docs" data-dismiss="fileinput">Eliminar</a> </div>
+                                                                <a href="#"
+                                                                    class="input-group-addon btn btn-secondary fileinput-exists MyStyle_Btn_Docs"
+                                                                    data-dismiss="fileinput">Eliminar</a>
+                                                            </div>
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label class="m-r-5">Soporte de ingresos: </label>
-                                                            <div id="txtSoporte_Actual" class="fileinput fileinput-new input-group" data-provides="fileinput">
+                                                            <div id="txtSoporte_Actual"
+                                                                class="fileinput fileinput-new input-group"
+                                                                data-provides="fileinput">
                                                                 <div class="form-control" data-trigger="fileinput">
                                                                     <i class="fa fa-file fileinput-exists"></i>
                                                                     <span class="fileinput-filename"></span>
                                                                 </div>
-                                                                <span class="input-group-addon btn btn-secondary btn-file MyStyle_Btn_Docs"> 
+                                                                <span
+                                                                    class="input-group-addon btn btn-secondary btn-file MyStyle_Btn_Docs">
                                                                     <span class="fileinput-new">Seleccionar</span>
                                                                     <span class="fileinput-exists">Cambiar</span>
-                                                                    <input type="file" name="txtSoporte_E" id="txtSoporte_E">
+                                                                    <input type="file" name="txtSoporte_E"
+                                                                        id="txtSoporte_E">
                                                                 </span>
-                                                                <a href="#" class="input-group-addon btn btn-secondary fileinput-exists MyStyle_Btn_Docs" data-dismiss="fileinput">Eliminar</a> </div>
+                                                                <a href="#"
+                                                                    class="input-group-addon btn btn-secondary fileinput-exists MyStyle_Btn_Docs"
+                                                                    data-dismiss="fileinput">Eliminar</a>
+                                                            </div>
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label class="m-r-5">Detalles plan corporativo: </label>
-                                                            <div id="txtDetalles_Actual" class="fileinput fileinput-new input-group" data-provides="fileinput">
+                                                            <div id="txtDetalles_Actual"
+                                                                class="fileinput fileinput-new input-group"
+                                                                data-provides="fileinput">
                                                                 <div class="form-control" data-trigger="fileinput">
                                                                     <i class="fa fa-file fileinput-exists"></i>
                                                                     <span class="fileinput-filename"></span>
                                                                 </div>
-                                                                <span class="input-group-addon btn btn-secondary btn-file MyStyle_Btn_Docs"> 
+                                                                <span
+                                                                    class="input-group-addon btn btn-secondary btn-file MyStyle_Btn_Docs">
                                                                     <span class="fileinput-new">Seleccionar</span>
                                                                     <span class="fileinput-exists">Cambiar</span>
-                                                                    <input type="file" name="txtDetalles_E" id="txtDetalles_E">
+                                                                    <input type="file" name="txtDetalles_E"
+                                                                        id="txtDetalles_E">
                                                                 </span>
-                                                                <a href="#" class="input-group-addon btn btn-secondary fileinput-exists MyStyle_Btn_Docs" data-dismiss="fileinput">Eliminar</a> </div>
+                                                                <a href="#"
+                                                                    class="input-group-addon btn btn-secondary fileinput-exists MyStyle_Btn_Docs"
+                                                                    data-dismiss="fileinput">Eliminar</a>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1206,8 +1282,8 @@
                                         </form>
                                     </div>
                                 </div>
-                                
-                            </div>              
+
+                            </div>
                         </div>
                         <!-- /.modal-content -->
                     </div>
@@ -1293,11 +1369,11 @@
         <!-- Dropify (Seleccionar archivos) -->
         <script src="../../../assets/plugins/dropify/dist/js/dropify.min.js"></script>
 
-         <!--Font awesome-->
-       <script src="https://kit.fontawesome.com/8feb0255f1.js" crossorigin="anonymous"></script>
+        <!--Font awesome-->
+        <script src="https://kit.fontawesome.com/8feb0255f1.js" crossorigin="anonymous"></script>
 
-       <!-- Tema -->
-       <script src="../../../assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+        <!-- Tema -->
+        <script src="../../../assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
 
         <!-- Controladores JS -->
         <script src="../../../Controllers/Clientes/ListarClientes.js"></script>

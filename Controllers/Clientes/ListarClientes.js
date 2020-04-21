@@ -7,7 +7,7 @@ ObtenerCliente = (Id_Cliente, Modal) => {
         type: 'get',
         datatype: 'json',
         success: function (datos) {
-
+           
             if (Modal == 1) {
 
                 CargarDatosModalDetalles(datos);
@@ -99,12 +99,13 @@ $(function () {
                     s.setPosition(true, true);
                 }
             });
-
         }
     });
 
+    
     // Importar archivo de clientes.
     $('#archivoClientes').dropify();
+
 
 });
 

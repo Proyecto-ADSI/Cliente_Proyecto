@@ -19,7 +19,7 @@ CargarDatosModalDetalles = (datos) => {
     Id_EmpleadoEditar = Informacion.Id_Empleado;
     document.getElementById("txtNombreDetalle").innerHTML = Informacion.Nombre + " " + Informacion.Apellidos;
     document.getElementById("txtCorreoDetalle").innerHTML = Informacion.Correo;
-    document.getElementById("txTipoDocumentoDetalle").innerHTML = Informacion.Tipo_Documento;
+    document.getElementById("txtTipoDocumentoDetalle").innerHTML = Informacion.Tipo_Documento;
     document.getElementById("txtDocumentoDetalle").innerHTML = Informacion.Documento;
     document.getElementById("txtSexoDetalle").innerHTML = Informacion.Sexo;
     document.getElementById("txtCelularDetalle").innerHTML = Informacion.Celular;
