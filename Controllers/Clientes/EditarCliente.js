@@ -36,9 +36,6 @@ $(function(){
             // Inicializar selects del formulario
             CargarDatosUbicacion();
            
-            // select calificacion
-            // Select razones.
-
             if(sessionStorage.DetalleLineas){
                 sessionStorage.removeItem("DetalleLineas");
             }
@@ -146,12 +143,6 @@ $(function(){
     });
 
     // // Inicializar elementos:
-
-    //  Select razones
-    $(".Select_Razones").select2({
-        tags: true,
-        tokenSeparators: [","]
-    });
 
     // bootstrap-switch
     $('.switch_corporativo').bootstrapSwitch({
@@ -540,8 +531,9 @@ $(function(){
         
     }
     CargarOperadores(Informacion.Id_Operador);
-    // Select calificación.
-    // select razones.
+    CargarCalificaciones(Informacion.Id_Calificacion_Operador)
+    CargarRazones(Informacion.Razones)
+  
 
     // Detalle líneas.
     if(typeof Informacion.Detalle_Lineas !== 'undefined'){
@@ -675,7 +667,7 @@ let EditarCliente = () => {
         Cantidad_Total_Lineas = arrayLineas.length;
     }
 
-    let arrayRazones = $("#Select_Razones").val();
+    let arrayRazones = $("#txtRazones").val();
     let stringRazones = "";
 
     for(let razon of arrayRazones){
@@ -803,7 +795,7 @@ let EditarCliente = () => {
         if (respuesta.data.ok) {
 
             swal({
-                title: "Cliente registrado correctamente.",
+                title: "¡Cliente modificado correctamente!",
                 type: "success",
                 showCancelButton: false,
                 confirmButtonColor: "#2F6885",
@@ -817,18 +809,13 @@ let EditarCliente = () => {
             });
         } else {
             swal({
-                title: "Error al registrar.",
-                text: "Ha ocurrido un error al registrar, intenta de nuevo",
+                title: "¡Error al modificar!",
+                text: "Ha ocurrido un error al modificar, intenta de nuevo",
                 type: "error",
                 showCancelButton: false,
                 confirmButtonColor: "#2F6885",
                 confirmButtonText: "Continuar",
-                closeOnConfirm: false,
-            }, function (isConfirm) {
-                if (isConfirm) {
-                    location.href = "AgregarEmpresa.html";
-                    console.log(respuesta.data);
-                }
+                closeOnConfirm: true,
             });
         }
 
@@ -1084,6 +1071,125 @@ let CargarOperadores = (Id_Operador) => {
 
     })
 
+}
+
+let CargarCalificaciones = (Id_Calificacion_Operador) => {
+
+    $.ajax({
+        url: `${URL}/Calificaciones`,
+        type: 'get',
+        datatype: 'json',
+        success: function (datos) {
+            $('#txtCalificacion').empty()
+            for (let item of datos.data) {
+
+                if(item.Id_Calificacion_Operador == Id_Calificacion_Operador){
+                    var $opcion = $('<option />', {
+                        text: `${item.Calificacion}`,
+                        value: `${item.Id_Calificacion_Operador}`,
+                        selected: true
+                    });
+
+                }else{
+
+                    var $opcion = $('<option />', {
+                        text: `${item.Calificacion}`,
+                        value: `${item.Id_Calificacion_Operador}`
+                    });
+                }
+                
+                $('#txtCalificacion').append($opcion);
+            }
+        },
+        error: function (error) {
+            console.log(error);
+        }
+
+    })
+}
+
+let CargarRazones = (stringRazones) => {
+
+    let regex = /("[^"]*"|[^,]*),/g;
+    let arrayRazones = stringRazones.match(regex);
+
+    let arrayRazonesFormatiado = []
+
+    for(let razon of arrayRazones){
+
+        let nuevaRazon = razon.trim()
+        nuevaRazon = nuevaRazon.replace(/,/g, "")
+        arrayRazonesFormatiado.push(nuevaRazon);
+    }
+    
+    $.ajax({
+        url: `${URL}/Razones`,
+        type: 'get',
+        datatype: 'json',
+        success: function (datos) {
+            $('#txtRazones').empty();
+
+            let arrayRazonesBD = datos.data
+            let arrayRazonesE = []
+            let opcion = null
+
+            for(let razon of arrayRazonesFormatiado){
+
+                for (let item of arrayRazonesBD) {
+
+                    if(item.Razon === razon){
+
+                        opcion = $('<option />', {
+                            text: `${item.Razon}`,
+                            value: `${item.Razon}`,
+                            selected: true
+                        });
+
+                        arrayRazonesE.push(item)
+                    }
+                    
+                    $('#txtRazones').append(opcion);
+                
+                }
+            }
+
+            // Eliminar razones ya agregadas.
+            for(let razon of arrayRazonesE){
+
+                arrayRazonesBD.forEach(function(item,index,array){
+                
+                    if(razon.Id_Razon_Calificacion == item.Id_Razon_Calificacion){
+                        
+                        arrayRazonesBD.splice(index,1)
+                    }
+                })
+            }
+
+            // Agregar razones no seleccionadas.
+            if(arrayRazonesBD.length > 0){
+
+                for (let item of arrayRazonesBD) {
+
+                    let opcion2 = $('<option />', {
+                        text: `${item.Razon}`,
+                        value: `${item.Razon}`
+                    });
+                    
+                    $('#txtRazones').append(opcion2);
+                
+                }
+            }
+         
+            //  Select razones
+            $(".Select_Razones").select2({
+                tags: true,
+                tokenSeparators: [","]
+            });
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    })
 }
 
 // // Detalle Líneas

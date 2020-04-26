@@ -25,8 +25,8 @@ $(function () {
             // Inicializar selects del formulario
             CargarDatosUbicacion();
             CargarOperadores();
-            // select calificacion
-            // Select razones.
+            CargarCalificaciones();
+            CargarRazones();
 
             if(sessionStorage.DetalleLineas){
                 sessionStorage.removeItem("DetalleLineas");
@@ -74,17 +74,17 @@ $(function () {
                 $(element).addClass("form-control-success").removeClass("form-control-danger");
             },
             rules: {
-                txtRazonSocial:{
-                    required: true,
-                    minlength: 5,
-                    SoloAlfanumericos: true
-                },
-                txtTelefono: {
-                    required: true,
-                    SoloNumeros: true,
-                    minlength: 5,
-                    maxlength: 10,
-                },
+                // txtRazonSocial:{
+                //     required: true,
+                //     minlength: 5,
+                //     SoloAlfanumericos: true
+                // },
+                // txtTelefono: {
+                //     required: true,
+                //     SoloNumeros: true,
+                //     minlength: 5,
+                //     maxlength: 10,
+                // },
                 txtNIT: {
                     ValidarNIT: true,
                     minlength: 5
@@ -109,6 +109,7 @@ $(function () {
                     SoloNumeros: true,
                 },
                 txtOperador: "required",
+                txtCalificacion: "required",
                 txtValor_Total_Mensual: {
                     SoloNumeros: true
                 },
@@ -131,13 +132,6 @@ $(function () {
     // });
 
     // Inicializar elementos:
-
-
-    //  Select razones
-    $(".Select_Razones").select2({
-        tags: true,
-        tokenSeparators: [","]
-    });
 
     // bootstrap-switch
     $('.switch_corporativo').bootstrapSwitch({
@@ -549,7 +543,7 @@ let RegistrarCliente = () => {
         Cantidad_Total_Lineas = arrayLineas.length;
     }
 
-    let arrayRazones = $("#Select_Razones").val();
+    let arrayRazones = $("#txtRazones").val();
     let stringRazones = "";
 
     for(let razon of arrayRazones){
@@ -823,6 +817,63 @@ let CargarOperadores = () => {
 
     })
 
+}
+
+let CargarCalificaciones = () => {
+
+    $.ajax({
+        url: `${URL}/Calificaciones`,
+        type: 'get',
+        datatype: 'json',
+        success: function (datos) {
+
+            $('#txtCalificacion').empty();
+            $('#txtCalificacion').prepend("<option selected disabled >Seleccione...</option>");
+            for (let item of datos.data) {
+                let $opcion = $('<option />', {
+                    text: `${item.Calificacion}`,
+                    value: `${item.Id_Calificacion_Operador}`,
+                });
+
+                $('#txtCalificacion').append($opcion);
+            }
+        },
+        error: function (error) {
+            console.log(error);
+        }
+
+    })
+}
+
+let CargarRazones = () => {
+
+    $.ajax({
+        url: `${URL}/Razones`,
+        type: 'get',
+        datatype: 'json',
+        success: function (datos) {
+            $('#txtRazones').empty();
+
+            for (let item of datos.data) {
+                let $opcion = $('<option />', {
+                    text: `${item.Razon}`,
+                    value: `${item.Razon}`,
+                });
+
+                $('#txtRazones').append($opcion);
+            }
+
+            //  Select razones
+            $(".Select_Razones").select2({
+                tags: true,
+                tokenSeparators: [","]
+            });
+        },
+        error: function (error) {
+            console.log(error);
+        }
+
+    })
 }
 
 // Detalle Líneas

@@ -33,7 +33,10 @@ $(function () {
             url: `${URL}/Cliente`,
             error: function (error) {
                 console.log("Eror al listar clientes " + error);
-            }
+            },
+            // success: function(datos){
+            //     console.log(datos)
+            // }
         },
         aoColumns: [
             { mData: 'Id_Cliente', sClass: "MyStyle_Id_Principal_Column" },
