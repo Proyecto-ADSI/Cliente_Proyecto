@@ -16,6 +16,7 @@ let ListarRazones = () =>{
                     <td class="MyStyle_Id_Principal_Column">${item.Id_Razon_Calificacion}</td>
                     <td>${contador}</td>
                     <td>${item.Razon}</td>
+                    <td>${item.Tipo_Razon}</td>
                     <td class="text-nowrap">
                             <i class="fa fa-pencil text-inverse m-r-10 icon-edit" id="EditarRazones" data-toggle="modal" data-target="#ModificarRazones" onclick="ObtenerRazones(${item.Id_Razon_Calificacion})" style="cursor:pointer;"></i>
                             <i class="fa fa-close text-danger" onclick="EliminarRazones(${item.Id_Razon_Calificacion})" style="cursor:pointer;"></i>

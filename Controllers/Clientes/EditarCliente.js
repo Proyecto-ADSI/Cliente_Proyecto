@@ -1123,7 +1123,7 @@ let CargarRazones = (stringRazones) => {
     }
     
     $.ajax({
-        url: `${URL}/Razones`,
+        url: `${URL}/Razones/Operador`,
         type: 'get',
         datatype: 'json',
         success: function (datos) {

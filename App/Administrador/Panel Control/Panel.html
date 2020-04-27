@@ -1106,7 +1106,7 @@
                                     <!-- Razones -->
                                     <div class="tab-pane" id="razones" role="tabpanel">
                                         <div class="row">
-                                            <div class="col-6">
+                                            <div class="col-8">
                                                 <div class="card" id="Card-Razones" >
                                                     <div class="card-body">
                                                         <h4 class="card-title">Razones de calificación registradas.</h4>
@@ -1116,6 +1116,7 @@
                                                                     <tr>
                                                                         <th>#</th>
                                                                         <th>Razón</th>
+                                                                        <th>Tipo</th>
                                                                         <th>Opciones</th>
                                                                     </tr>
                                                                 </thead>
@@ -1127,7 +1128,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-6">
+                                            <div class="col-4">
                                                 <div class="card" id="Card-Operadores2" >
                                                     <div class="card-body">
                                                         <h4 class="card-title">Registro de Razones</h4>
@@ -1141,8 +1142,18 @@
                                                                                 <i class="ti-user"></i>
                                                                             </span>
                                                                         </div>
-                                                                        <input type="text" class="form-control" id="TxtRazones" name="Razones" placeholder="Ingrese texto...">
+                                                                        <input type="text" class="form-control" id="txtRazones" name="txtRazones" placeholder="Ingrese texto...">
                                                                     </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <div class="col-sm-12">
+                                                                    <label class="control-label">Tipo razón:</label>
+                                                                    <select name="txtTipo_Razon" id="txtTipo_Razon"
+                                                                        class="select2 form-control custom-select">
+                                                                        <option value="Operador">Operador</option>
+                                                                        <option value="Llamada">Llamada</option>
+                                                                    </select>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row m-b-0">
@@ -1718,6 +1729,16 @@
                                                                     <input type="text" class="form-control" id="TxtRazonesEdit" name="RazonesEdit"
                                                                         placeholder="Calificación">
                                                                 </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-12">
+                                                            <div class="form-group row">
+                                                                <label class="control-label">Tipo razón:</label>
+                                                                <select name="txtTipo_RazonEdit" id="txtTipo_RazonEdit"
+                                                                    class="select2 form-control custom-select">
+                                                                    <option value="Operador">Operador</option>
+                                                                    <option value="Llamada">Llamada</option>
+                                                                </select>
                                                             </div>
                                                         </div>
                                                     </div>

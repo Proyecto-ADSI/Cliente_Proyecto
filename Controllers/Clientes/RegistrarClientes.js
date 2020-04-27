@@ -94,7 +94,7 @@ $(function () {
                 },
                 txtExt_Tel_Contacto: {
                     SoloNumeros: true,
-                    minlength: 5,
+                    minlength: 2,
                     maxlength: 10
                 },
                 // txtPais: "required",
@@ -848,7 +848,7 @@ let CargarCalificaciones = () => {
 let CargarRazones = () => {
 
     $.ajax({
-        url: `${URL}/Razones`,
+        url: `${URL}/Razones/Operador`,
         type: 'get',
         datatype: 'json',
         success: function (datos) {

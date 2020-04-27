@@ -1,8 +1,9 @@
 let RegistrarRazones = () => {
 
     let datos = {
-        Razon: $("#TxtRazones").val(),
-    };
+        Razon: $("#txtRazones").val(),
+        Tipo_Razon: $("#txtTipo_Razon").val()
+    }
    
     $.ajax({
         url: `${URL}/Razones`,
@@ -21,7 +22,7 @@ let RegistrarRazones = () => {
                 confirmButtonText: "Ok",
               },
               function(){
-                $("#TxtRazones").val("");
+                $("#txtRazones").val("");
                 ListarRazones();
               });
         }else{
@@ -56,12 +57,14 @@ $(function (){
                 RegistrarRazones();
         },
         rules:{
-            Razones: {
+            txtRazones: {
                 required:true,
                 SoloAlfanumericos:true,
                 minlength:2,
                 maxlength:45
-            }
+            },
+            txtTipo_Razon: "required"
+
         },
         errorClass: "form-control-feedback",
         errorElement: "div",

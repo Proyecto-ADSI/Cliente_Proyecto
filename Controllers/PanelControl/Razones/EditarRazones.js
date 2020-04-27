@@ -3,6 +3,7 @@ let EditarRazones = () => {
     let datos = {
         Id_Razon_Calificacion: parseInt(Id_Razones_Operador),
         Razon: $("#TxtRazonesEdit").val(),
+        Tipo_Razon: $("#txtTipo_RazonEdit").val()
     };
     $.ajax({
         url: `${URL}/Razones`,

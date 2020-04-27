@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../assets/images/favicon.png">
+    <title>CallPhone Soft</title>
+    <!-- CSS -->
+    <link href="../../../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../css/MyStyle.css" rel="stylesheet">
+    <link  href="../../../css/style_Blanco.css" id="Style_Tema" rel="stylesheet">
+    <!-- Tema de la plantilla -->
+    <link href="../../../css/colors/Tema_Blanco.css" id="Tema" rel="stylesheet">
+
+    <!-- ============================================================== -->
+    <!-- CSS Plugins -->
+    <!-- ============================================================== -->
+    <!-- Wizard -->
+    <link href="../../../assets/plugins/wizard/steps.css" rel="stylesheet">
+    <!-- Switch -->
+    <link href="../../../assets/plugins/bootstrap-switch/bootstrap-switch.min.css" rel="stylesheet">
+    <!-- TouchSpin -->
+    <link href="../../../assets/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />
+    <!-- Date picker plugins css -->
+    <link href="../../../assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet"
+        type="text/css" />
+    <!-- Material Date picker  -->
+    <link href="../../../assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css"
+        rel="stylesheet">
+    <!-- Select 2 -->
+    <link href="../../../assets/plugins/select2/dist/css/select2.min.css" rel="stylesheet" type="text/css" />
+    <!-- Bootstrap select -->
+    <link href="../../../assets/plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
+    <!-- tagsinput -->
+    <link href="../../../assets/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.css" rel="stylesheet" />
+
+</head>
+
+<body class="fix-sidebar fix-header card-no-border">
+    <div class="preloader">
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
+    </div>
+
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Topbar header (Menú Horizontal) - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <header class="topbar" id="Navegacion_Header"></header>
+        <!-- ============================================================== -->
+        <!-- End Topbar header -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar (Menú Vertical Izquierdo) - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <aside class="left-sidebar" id="Navegacion_Aside"></aside>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+
+        <div class="page-wrapper">
+
+            <!-- Titulo página -->
+            <div class="row page-titles">
+                <div class="col-md-5 align-self-center">
+                    <h3 class="text-themecolor">Gestión de Llamadas</h3>
+                </div>
+                <div class="col-md-7 align-self-center">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)"></a>Llamadas</li>
+                        <li class="breadcrumb-item">Gestionar llamadas</li>
+                        <li class="breadcrumb-item active">Registro de llamadas</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-10">
+                        <div class="card">
+                            <div class="card-body wizard-content">
+
+                                <div class="row">
+                                    <div class="col-md-11">
+                                        <h4 class="card-title font-weight-bold">Formulario de registro de llamadas</h4>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <button type="button" data-toggle="tooltip" data-original-title="Terminar Llamada" class="btn btn-outline-danger sa-params" aria-describedby="tooltip176834">
+                                            <i class="fa fa-close"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <hr class="m-t-10 m-b-20">
+                                <form id="Form_Registro_LlamadaNP" class="wizard-circle">
+                                    <!-- Step 1 -->
+                                    <h6>Información de contacto</h6>
+                                    <section>
+                                        <hr class="m-t-0 m-b-20">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="control-label">Razón social:
+                                                        <span class="text-danger">*</span>
+                                                    </label>
+                                                    <input type="text" name="txtRazonSocial" id="txtRazonSocial" 
+                                                    class="form-control"placeholder="Empresa S.A">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="emailAddress1"> Teléfono:
+                                                        <span class="text-danger">*</span>
+                                                    </label>
+                                                    <input type="number" class="form-control" id="txtTelefono"
+                                                        name="txtTelefono" placeholder="4123456">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="control-label">
+                                                        NIT:
+                                                    </label>
+                                                    <input type="text" id="txtNIT" name="txtNIT" 
+                                                    class="form-control" placeholder="12345678-9">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="lastName1">¿Quién responde?</label>
+                                                    <input type="checkbox" id="Persona_Responde"
+                                                        class="MyStyle_Checkbox">
+                                                    <label for="Persona_Responde">¿Encargado?</label>
+                                                    <input type="text" class="form-control" id="txtPersona_Responde" 
+                                                    name="txtPersona_Responde" placeholder="Jhon Doe">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="int1">Encargado:</label>
+                                                    <input type="text" class="form-control" id="txtEncargado"
+                                                        name="txtEncargado" placeholder="Jhon Doe">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="int1">Extensión o celular:</label>
+                                                    <input type="text" class="form-control" id="txtTelefono_Contacto"
+                                                        name="txtTelefono_Contacto" placeholder="3123456789 | 101">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h4 class="box-title d-inline-block">Ubicación:</h4>
+                                        <input name="Validacion_Ubicacion" type="radio" class="with-gap"
+                                            id="Validacion_Ubicacion2">
+                                        <label for="Validacion_Ubicacion2">Colombia/Antioquia/Medellín/Barrio</label>
+                                        <hr class="m-t-0 m-b-20">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="control-label">País:</label>
+                                                    <select name="txtPais" id="txtPais"
+                                                        class="select2 form-control custom-select">
+                                                        <option selected disabled>Seleccione...</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+     
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="control-label">Departamento:</label>
+                                                    <select name="txtDepartamento" id="txtDepartamento"
+                                                        class="select2 form-control custom-select">
+                                                        <option selected disabled>Seleccione...</option>
+
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="control-label">Municipio:</label>
+                                                    <select name="txtMunicipio" id="txtMunicipio"
+                                                        class="select2 form-control custom-select">
+                                                        <option selected disabled>Seleccione...</option>
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /Row -->
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="control-label">Barrio o Vereda</label>
+                                                    <select name="txtSubTipo" id="txtSubTipo"
+                                                        class="select2 form-control custom-select">
+                                                        <option selected disabled>Seleccione...</option>
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="control-label">Nombre Lugar</label>
+                                                    <select name="txtNombre_Lugar" id="txtNombre_Lugar"
+                                                        class="select2 form-control custom-select">
+                                                        <option selected disabled>Seleccione...</option>
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="emailAddress1"> Dirección:</label>
+                                                    <input type="text" class="form-control" id="txtDireccion"
+                                                        name="txtDireccion" placeholder="Calle 1 # 1 - 1"> </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                    <!-- Step 2 -->
+                                    <h6>Datos básicos líneas</h6>
+                                    <section>
+                                        <hr class="m-t-0 m-b-20">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="location1">¿Corporativo?</label>
+                                                    <input type="checkbox" class="switch_corporativo">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <div class="form-group">
+                                                    <label class="control-label">Operador del
+                                                        <strong>cliente</strong></label>
+                                                    <select name="txtOperador" id="txtOperador"
+                                                        class="select2 form-control custom-select valDetalle">
+                                                        <option selected disabled>Seleccione...</option>
+                                                        
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <div class="form-group">
+                                                    <label class="control-label">
+                                                        Calificación del operador
+                                                    </label>
+                                                    <select name="txtCalificacion" id="txtCalificacion"
+                                                        class="select2 form-control custom-select valDetalle">
+                                                        <option selected disabled>Seleccione...</option>
+                                                       
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">       
+                                            <div class="col-md-10">
+                                                <div class="form-group">
+                                                    <label class="control-label">
+                                                        Razones:
+                                                    </label>
+                                                    <select id="txtRazones" class="select2-multiple m-b-10 valDetalle"
+                                                        style="width: 100%" multiple="multiple"
+                                                        data-placeholder="Seleccione o escriba">
+                                                        
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div id="ValidacionCita" class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="location1">¿Pacta cita?</label>
+                                                    <input type="checkbox" class="switch_cita1">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h4 class="box-title">Detalle individual de las líneas</h4>
+                                        <hr class="m-t-0 m-b-20">
+                                        <div class="row">
+                                            <input type="hidden" id="txtDetalleId" value="0">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="int1 "> Número de líneas:</label>
+                                                    <input type="number" class="form-control detalleLinea" id="txtDetalle_Cantidad_Lineas"
+                                                        name="txtDetalle_Cantidad_Lineas" placeholder="Cantidad: 10">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label class="control-label">
+                                                        Pago <strong>mensual:</strong>
+                                                    </label>
+                                                    <div class="input-group">
+                                                        <input id="txtDetalle_Valor_Mensual" type="text"
+                                                            name="txtDetalle_Valor_Mensual" class="form-control detalleLinea"
+                                                            placeholder="Valor: $100000">
+                                                        <div class="input-group-append">
+                                                            <span class="input-group-text">COP</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group m-t-20 has-danger">
+                                                    <input name="detalleLineasRadios" type="radio" class="with-gap detalleLinea" id="txtDetalle_radio" value="1">
+                                                    <label id="lblDetalle_radio" for="txtDetalle_radio">En total </label>
+                                                    <input name="detalleLineasRadios" type="radio" class="with-gap detalleLinea" id="txtDetalle_radio2" value="2">
+                                                    <label id="lblDetalle_radio2" for="txtDetalle_radio2">Por cada línea </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="jobTitle2 ">Navegación:</label>
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control detalleLinea" id="txtDetalleNavegacion"
+                                                            name="txtDetalleNavegacion" placeholder="1">
+                                                        <div class="input-group-append">
+                                                            <select name="txtDetalleUnidad" id="txtDetalleUnidad"
+                                                                class="select2 form-control custom-select">
+                                                                <option selected value="GB">GB</option>
+                                                                <option value="MG">MG</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="int1 ">Minutos:</label>
+                                                    <input type="checkbox" id="txtDetalle_Validacion_Ilimitados" name="txtDetalle_Validacion_Ilimitados"
+                                                        class="MyStyle_Checkbox detalleLinea">
+                                                    <label for="txtDetalle_Validacion_Ilimitados">Ilimitados</label>
+                                                    <input type="text" class="form-control detalleLinea" id="txtDetalle_Minutos"
+                                                        name="txtDetalle_Minutos" placeholder="300">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <input type="checkbox" id="txtDetalle_Minutos_TO" name="txtDetalle_Minutos_TO"
+                                                        class="MyStyle_Checkbox detalleLinea">
+                                                    <label for="txtDetalle_Minutos_TO">Todo operador</label>
+                                                    <input type="text" class="form-control detalleLinea" name="txtDetalle_Minutos_Otro" id="txtDetalle_Minutos_Otro"
+                                                        placeholder="Otro:">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group m-t-20">
+                                                    <input type="checkbox" id="checkbox_mensajes" name="txtDetalle_Mensajes"
+                                                        class="MyStyle_Checkbox detalleLinea">
+                                                    <label for="checkbox_mensajes">Mensajes de texto</label>
+
+                                                    <input type="checkbox" id="checkbox_llamadas" name="txtDetalle_Llamadas"
+                                                        class="MyStyle_Checkbox detalleLinea">
+                                                    <label for="checkbox_llamadas">Llamadas internacionales</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 ">
+                                                <div class="form-group m-t-20">
+                                                    <input type="checkbox" id="checkbox_redes" name="txtDetalle_Redes" class="MyStyle_Checkbox detalleLinea">
+                                                    <label for="checkbox_redes">Redes sociales</label>
+
+                                                    <input type="checkbox" id="checkbox_roaming" name="txtDetalle_Roaming"
+                                                        class="MyStyle_Checkbox detalleLinea">
+                                                    <label for="checkbox_roaming">Roaming internacional</label>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr class="m-t-0 m-b-20">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <button type="button" id="btnLimpiar" class="btn btn-outline-primary">Limpiar formulario</button>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <button type="button" id="btnGuardarDetalleLineas" class="btn btn-outline-info">Guardar líneas</button>
+                                            </div>
+                                        </div>
+                                    </section>
+                                    <!-- Step 3 -->
+                                    <h6>Plan corporativo</h6>
+                                    <section>
+                                        <hr class="m-t-0 m-b-20">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="location1">¿Claúsula permanencia?</label>
+                                                    <div class="switch">
+                                                        <label>
+                                                            <strong> NO</strong>
+                                                            <input type="checkbox">
+                                                            <span class="lever"></span>
+                                                            <strong>SI</strong>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <div class="form-group">
+                                                    <label for="txtFecha_inicio">Fecha del corporativo:</label>
+                                                    <div class="input-daterange input-group" id="Fecha_Corporativo">
+                                                        <span class="input-group-addon">Inicio</span>
+                                                        <input type="text" class="input-sm form-control"
+                                                            name="txtFecha_inicio" id="txtFecha_inicio"
+                                                            placeholder="yyyy/mm/dd" />
+                                                        <span class="input-group-addon">Fin</span>
+                                                        <input type="text" class="input-sm form-control"
+                                                            name="txtFecha_fin" id="txtFecha_fin"
+                                                            placeholder="yyyy/mm/dd" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="location1">¿Pacta cita?</label>
+                                                    <input type="checkbox" class="switch_cita2">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="participants1">Descripción del corporativo</label>
+                                                    <textarea name="txtDescripcion" id="txtDescripcion" rows="5"
+                                                        class="form-control"
+                                                        placeholder="Ingresa una descripción"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                    <!-- Step 4 -->
+                                    <h6>Cita</h6>
+                                    <section>
+                                        <hr class="m-t-0 m-b-20">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label class="control-label">
+                                                        Operador de la <strong>cita:</strong>
+                                                    </label>
+                                                    <select name="txtOperadorCita" id="txtOperadorCita"
+                                                        class="select2 form-control custom-select">
+                                                        <option selected disabled>Seleccione...</option>
+                                                        
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <div class="form-group">
+                                                    <label class="control-label">Fecha:</label>
+                                                    <input type="text" id="date-format"
+                                                        class="form-control floating-label"
+                                                        placeholder="Lunes 01 Enero 2020">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="control-label">Hora:</label>
+                                                    <input type="button" id="btnHoraCita" data-toggle="modal"
+                                                        data-target="#modalHorasCitas" class="btn btn-outline-info form-control" 
+                                                        value="Seleccione...">
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <div class="form-group">
+                                                    <label for="lastName1">¿Quién atiende la cita?</label>
+                                                    <input type="checkbox" id="Encargado_Cita_Checkbox"
+                                                        class="MyStyle_Checkbox">
+                                                    <label for="Encargado_Cita_Checkbox">¿Encargado?</label>
+                                                    <input type="text" class="form-control" id="txtEncargadoCita" name="txtEncargadoCita"
+                                                        placeholder="Nombre Completo">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="int1">Extensión o celular:</label>
+                                                    <input type="text" class="form-control" id="txtTelefono_ContactoEC"
+                                                        name="txtTelefono_ContactoEC" placeholder="3123456789 | 101">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="location1">¿Es el representante legal?</label>
+                                                    <div id="switchRL" class="switch">
+                                                        <label>
+                                                            <strong> NO</strong>
+                                                            <input type="checkbox">
+                                                            <span class="lever"></span>
+                                                            <strong>SI</strong>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <h4 class="box-title d-inline-block">Ubicación</h4>
+                                        <input name="Validacion_Ubicacion" type="radio" class="with-gap"
+                                            id="Validacion_Ubicacion1">
+                                        <label for="Validacion_Ubicacion1">Atiende en la empresa</label>
+                                        <input name="Validacion_Ubicacion" type="radio" class="with-gap"
+                                            id="Validacion_Ubicacion3">
+                                        <label for="Validacion_Ubicacion3">Colombia/Antioquia/Medellín/Barrio</label>
+
+                                        <hr class="m-t-0 m-b-20">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label class="control-label">País:</label>
+                                                    <select name="txtPaisCita" id="txtPaisCita"
+                                                        class="select2 form-control custom-select">
+                                                        <option selected disabled>Seleccione...</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label class="control-label">Departamento:</label>
+                                                    <select name="txtDepartamentoCita" id="txtDepartamentoCita"
+                                                        class="select2 form-control custom-select">
+                                                        <option selected disabled>Seleccione...</option>
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label class="control-label">Municipio:</label>
+                                                    <select name="txtMunicipioCita" id="txtMunicipioCita"
+                                                        class="select2 form-control custom-select">
+                                                        <option selected disabled>Seleccione...</option>
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label class="control-label">Barrio o Vereda:</label>
+                                                    <select name="txtSubTipoCita" id="txtSubTipoCita"
+                                                        class="select2 form-control custom-select">
+                                                        <option selected disabled>Seleccione...</option>
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /Row -->
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label class="control-label">Nombre Lugar</label>
+                                                    <select name="txtNombre_LugarCita" id="txtNombre_LugarCita"
+                                                        class="select2 form-control custom-select">
+                                                        <option selected disabled>Seleccione...</option>
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <div class="form-group">
+                                                    <label for="emailAddress1"> Dirección:</label>
+                                                    <input type="text" class="form-control" id="txtDireccionCita"
+                                                        name="txtDireccion" placeholder="Calle 1 # 1 - 1">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="Location1">Punto de referencia:</label>
+                                                    <input type="text" class="form-control" id="txtPuntoReferencia" 
+                                                    name="txtPuntoReferencia" placeholder="Centro Comercial, Iglesia, Parque, etc...">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                    <!-- Step 5 -->
+                                    <h6>Fin de llamada</h6>
+                                    <section>
+                                        <hr class="m-t-0 m-b-20">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="location1">Habeas Data</label>
+                                                            <input type="checkbox" class="switch_habeas_data">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Conclusión Llamada:</label>
+                                                            <select name="txtConclusion" id="txtConclusion"
+                                                                class="select2 form-control custom-select">
+                                                                <option disabled value="1">Efectiva</option>
+                                                                <option selected disabled value="2">No efectiva</option>
+                                                                <option disabled value="3">Llamar nuevamente</option>
+                                
+                                                            </select>
+                                                            <!-- <input type="text" class="form-control" id="txtDetalle_Cantidad_Lineas"
+                                                            name="txtDetalle_Cantidad_Lineas" value="No efectiva"> -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="control-label">
+                                                                Razones:
+                                                            </label>
+                                                            <select id="txtRazonesLlamada" class="select2-multiple m-b-10"
+                                                                style="width: 100%" multiple="multiple"
+                                                                data-placeholder="Seleccione o escriba">
+                                                                <option value="No responden">No responden</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <hr class="m-t-20 m-b-20">
+                                                <div id="ValidacionesCita" style="display: none;">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <h4 class="box-title m-b-20">Validación de información:</h4>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label for="location1">¿Factura?</label>
+                                                                <input type="checkbox" class="switch_factura">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label for="location1">Dirección:</label>
+                                                                <input type="checkbox" class="switch_direccion">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label class="d-block" for="location1">NIT:</label>
+                                                                <input type="checkbox" class="switch_nit">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <button type="button" id="btnVerificarDatos" class="btn waves-effect waves-light btn-outline-success">
+                                                                Verificar datos
+                                                            </button>
+                                                            <button type="button" id="btnEnviarCitaDespues" class="btn waves-effect waves-light btn-outline-danger">
+                                                                Enviar cita después
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div id="OpcionesLlamada">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <h4 class="box-title m-b-20">Opciones de llamada:</h4>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <button type="button" id="btnReprogramarLl" class="btn waves-effect waves-light btn-outline-success">
+                                                                Reprogramar llamada
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label for="decisions1">Observación</label>
+                                                            <textarea name="txtObservacion" id="txtObservacion" 
+                                                            rows="12" class="form-control"></textarea>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                </div>
+
+                                                <!-- <hr class="m-t-20 m-b-20">
+                                                
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <div class="bt-switch">
+                                                                <label for="location1">Dirección:</label>
+                                                                <input type="checkbox" data-on-color="success"
+                                                                    data-off-color="danger" data-on-text="Válida"
+                                                                    data-off-text="Inválida">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <div class="bt-switch">
+                                                                <label for="location1">NIT:</label>
+                                                                <input type="checkbox" data-on-color="success"
+                                                                    data-off-color="danger" data-on-text="Válido"
+                                                                    data-off-text="Inválido">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div> -->
+                                            </div>
+                                        </div>
+                                    </section>
+                                </form>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <h4 class="box-title">Observaciones:</h4>
+                                            <textarea class="form-control" id="exampleTextarea" rows="5"
+                                                placeholder="Digite para tener soporte al llenar un formulario">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa animi, magnam sint libero earum labore asperiores excepturi ipsam facilis quaerat sequi facere dolorum voluptatum quibusdam culpa soluta saepe reprehenderit qui?</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4 class="box-title">Información de líneas del cliente:</h4>
+                                        <div class="table-responsive">
+                                            <table class="table color-table info-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Cantidad</th>
+                                                        <th>Pago mensual</th>
+                                                        <th>Datos</th>
+                                                        <th>Minutos</th>
+                                                        <th>Otros</th>
+                                                        <th>Tipo</th>
+                                                        <th style="min-width: 150px;">Opciones</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="TblRegistroDetalleLineas">
+                                                 
+                                                </tbody>
+                                                <tfoot id="tFootRegistroDetalleCliente">
+                                                    
+                                                </tfoot>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="d-inline-block m-t-10 m-r-10">Empresa:</h4>
+                                <button type="button" class="btn btn-outline-info btn-circle">
+                                            <i class="fa fa-eye"></i>
+                                </button>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="content">
+                                            <i class="fa fa-check-circle-o"></i>
+                                            <span class="card-subtitle">Empresa S.A.S</span>
+                                        </div>
+                                        <div class="content">
+                                            <i class="fa fa-check-circle-o"></i>
+                                            <span class="card-subtitle">Teléfono</span>
+                                        </div>
+                                        <div class="content">
+                                            <i class="fa fa-check-circle-o"></i>
+                                            <span class="card-subtitle">Operador</span>
+                                        </div>
+                                        <div class="content">
+                                            <i class="fa fa-check-circle-o"></i>
+                                            <span class="card-subtitle">Corporativo: NO</span>
+                                        </div>
+                                        <div class="content">
+                                            <i class="fa fa-check-circle-o"></i>
+                                            <span class="card-subtitle"># Líneas</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Cita:</h4>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="content">
+                                            <input type="checkbox" id="resumenCita" class="MyStyle_Checkbox" 
+                                            readonly checked onclick="javascript: return false;">
+                                            <label for="resumenCita">Fecha y Hora</label>
+                                        </div>
+                                        <div class="content">
+                                            <input type="checkbox" id="resumenCita" class="MyStyle_Checkbox" 
+                                            readonly  onclick="javascript: return false;">
+                                            <label for="resumenCita">Dirección</label>
+                                        </div>
+                                        <div class="content">
+                                            <input type="checkbox" id="resumenCita" class="MyStyle_Checkbox" 
+                                            readonly checked onclick="javascript: return false;">
+                                            <label for="resumenCita">NIT</label>
+                                        </div>
+                                        <div class="content">
+                                            <input type="checkbox" id="resumenCita" class="MyStyle_Checkbox" 
+                                            readonly  onclick="javascript: return false;">
+                                            <label for="resumenCita">Factura</label>
+                                        </div>
+                                        <div class="content">
+                                            <input type="checkbox" id="resumenCita" class="MyStyle_Checkbox" 
+                                            readonly  onclick="javascript: return false;">
+                                            <label for="resumenCita">Habeas Data</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Horas disponibles para Cita-->
+            <div id="modalHorasCitas" class="modal fade" tabindex="-1" role="dialog"
+            aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myLargeModalLabel">
+                            Horas disponibles para agendar cita:
+                        </h4>
+                        <button type="button" class="close" data-dismiss="modal"
+                            aria-hidden="true">×</button>
+                    </div>
+                    <div class="modal-body">
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger waves-effect text-left"
+                            data-dismiss="modal">Cerrar
+                        </button>
+                        <button type="submit" class="btn btn-success waves-effect text-left">
+                            Agendar hora
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Modal Horas Cita -->
+
+            <!-- JQuery -->
+            <script src="../../../assets/plugins/jquery/jquery.min.js"></script>
+
+            <!-- Navegación -->
+            <script src="../../../js/Navegacion/Navegacion_Admin.js"></script>
+
+            <!-- Bootstrap tether Core JavaScript -->
+            <script src="../../../assets/plugins/bootstrap/js/popper.min.js"></script>
+
+            <script src="../../../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+            <script src="../../../js/jquery.slimscroll.js"></script>
+
+            <!-- <script src="../../js/waves.js"></script> -->
+            <!--Menu sidebar -->
+            <script src="../../../js/sidebarmenu.js"></script>
+
+
+            <!--Custom JavaScript -->
+            <script src="../../../js/custom.min.js"></script>
+
+            
+            <!-- ============================================================== -->
+            <!-- JS Plugins -->
+            <!-- ============================================================== -->
+
+            <!--stickey kit -->
+            <script src="../../../assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+            <!-- <script src="../../../assets/plugins/sparkline/jquery.sparkline.min.js"></script> -->
+
+            <!-- <script src="../../../assets/plugins/moment/moment.js"></script> -->
+            <script src="../../../assets/plugins/moment/min/moment-with-locales.min.js"></script>
+
+            <!-- Select -->
+            <script src="../../../assets/plugins/bootstrap-select/bootstrap-select.min.js"
+                type="text/javascript"></script>
+
+            <!--plugin select2-->
+            <script src="../../../assets/plugins/select2/dist/js/select2.full.min.js" type="text/javascript"></script>
+            <script src="../../../js/jasny-bootstrap.js"></script>
+
+            <!-- Wizard -->
+            <script src="../../../assets/plugins/wizard/jquery.steps.js"></script>
+            <script src="../../../assets/plugins/wizard/jquery.validate.min.js"></script>
+            <script src="../../../assets/plugins/jquery-validation-1.19.1/additional-methods.js"></script>
+            <script src="../../../assets/plugins/jquery-validation-1.19.1/messages_es.js"></script>
+            <script src="../../../js/ValidacionesExtra.js"></script>
+            
+            <!-- bt-switch -->
+            <script src="../../../assets/plugins/bootstrap-switch/bootstrap-switch.min.js"></script>
+            <script src="../../../js/bt-switch.js"></script>
+
+            <!-- TouchSpin -->
+            <script type="text/javascript"
+                src="../../../assets/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
+
+            <!-- Date Picker -->
+            <script src="../../../assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+
+            <!--Material Date picker -->
+            <script src="../../../assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+
+            <!-- Clock Plugin JavaScript -->
+            <script src="../../../assets/plugins/clockpicker/dist/jquery-clockpicker.min.js"></script>
+
+            <!-- tagsinput -->
+            <script src="../../../assets/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
+
+            <!-- uuid -->
+            <script src="../../../assets/plugins/uuid/uuid.min.js"></script>
+
+            <!-- Tema -->
+            <script src="../../../assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+
+            <!-- ============================================================== -->
+            <!-- Controladores JS -->
+            <!-- ============================================================== -->
+            <script src="../../../Controllers/Llamadas/RegistrarLlamadaNP.js"></script>
+</body>
+
+</html>

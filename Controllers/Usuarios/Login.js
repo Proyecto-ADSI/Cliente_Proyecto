@@ -74,10 +74,8 @@ let Login = () => {
 
     }).fail(error => {
 
-        swal("¡Error al iniciar sesión!", "Verifica los datos e intenta nuevamente", "error");
+        swal("¡Error en el servidor!", "Ponte en contacto con el administrador.", "error");
         console.log(error);
-
-
     });
 
 }

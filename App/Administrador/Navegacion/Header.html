@@ -120,7 +120,7 @@
                                     </div>
                                     <div class="face face2">
                                         <div class="content">
-                                            <a href="../Llamadas/AgregarLlamada.html" class="btn btn-outline-success">Continuar</a>
+                                            <a href="../Llamadas/RegistrarLlamadaP.html" class="btn btn-outline-success">Continuar</a>
                                         </div>
                                     </div>
                                 </div>
@@ -137,7 +137,7 @@
                                     </div>
                                     <div class="face face2">
                                         <div class="content">
-                                            <a href="../Llamadas/AgregarLlamada.html" class="btn btn-outline-success">Continuar</a>
+                                            <a href="../Llamadas/RegistrarLlamadaNP.html" class="btn btn-outline-success">Continuar</a>
                                         </div>
                                     </div>
                                 </div>
@@ -221,35 +221,34 @@
 
 <!-- Cargar datos de sesión -->
 <script>
+        var temaSeleccionado =  localStorage.getItem('Tema_Aplicacion');
+        if(temaSeleccionado){
+            $('#Tema').attr({href: '/css/colors/Tema_'+temaSeleccionado+'.css'});
+            $('#Style_Tema').attr({href: '/css/style_'+temaSeleccionado+'.css'});
 
-    var temaSeleccionado =  localStorage.getItem('Tema_Aplicacion');
-    if(temaSeleccionado){
-        $('#Tema').attr({href: '/css/colors/Tema_'+temaSeleccionado+'.css'});
-        $('#Style_Tema').attr({href: '/css/style_'+temaSeleccionado+'.css'});
-
-        if(temaSeleccionado === "Oscuro"){
-           $('#switch_input input').trigger('click');
+            if(temaSeleccionado === "Oscuro"){
+            $('#switch_input input').trigger('click');
+            }
         }
-    }
 
-    // Imagen
-    let rutaImagen2 = sessionStorage.getItem("Imagen");
-    let img2 = document.createElement("IMG");
-    img2.src = `../../../assets/images/usuarios/${rutaImagen2}`;
-    img2.className = "profile-pic";
-    $('#ImgUsuarioHeader1').append(img2);
-    
-    let img3 = document.createElement("IMG");
-    img3.src = `../../../assets/images/usuarios/${rutaImagen2}`;
-    $('#ImgUsuarioHeader2').html(img3); 
+        // Imagen
+        let rutaImagen2 = sessionStorage.getItem("Imagen");
+        let img2 = document.createElement("IMG");
+        img2.src = `../../../assets/images/usuarios/${rutaImagen2}`;
+        img2.className = "profile-pic";
+        $('#ImgUsuarioHeader1').append(img2);
+        
+        let img3 = document.createElement("IMG");
+        img3.src = `../../../assets/images/usuarios/${rutaImagen2}`;
+        $('#ImgUsuarioHeader2').html(img3); 
 
-    // Usuario
-    let usuario_header = sessionStorage.getItem("Usuario");
-    $('#txtNombre_Usuario_Header').html(usuario_header);
+        // Usuario
+        let usuario_header = sessionStorage.getItem("Usuario");
+        $('#txtNombre_Usuario_Header').html(usuario_header);
 
-    // Email
-    let email_header = sessionStorage.getItem("Email");
-    $('#txtEmail_Header').html(email_header);
+        // Email
+        let email_header = sessionStorage.getItem("Email");
+        $('#txtEmail_Header').html(email_header);    
 </script>
 
 <!--Custom JavaScript -->
