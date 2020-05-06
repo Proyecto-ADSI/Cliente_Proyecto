@@ -223,3 +223,13 @@
 .MyStyle_Cargo_Detalle_Linea{
     width: 8rem !important;
 }
+
+.btn.disabled, .btn:disabled {
+    opacity: .3 !important;
+    cursor: not-allowed !important;
+}
+
+[type="checkbox"] + label.checkbox{
+    height: 10px !important;
+    margin-left: 10px !important;
+}

@@ -69,7 +69,7 @@ let RegistrarUsuario = (imagen) => {
                 swal({
                     title: "Error al registrar.",
                     text: "Ha ocurrido un error al registrar, intenta de nuevo",
-                    type: "danger",
+                    type: "error",
                     showCancelButton: false,
                     confirmButtonColor: "#2F6885",
                     confirmButtonText: "Continuar",
@@ -229,8 +229,6 @@ ListarRoles = (datos) => {
         $('#txtRol').append($opcion);
     }
 }
-
-
 
 
 $(function () {

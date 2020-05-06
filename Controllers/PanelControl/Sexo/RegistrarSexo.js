@@ -57,7 +57,6 @@ $(function (){
     $("#FormSexo").validate({
         submitHandler: function(){
                 RegistrarSexo();
-                console.clear();
         },
         rules:{
             Sexo: {

@@ -32,6 +32,7 @@ let RegistrarBarrioVereda = () => {
             $("#TxtBarrioVereda").val("");
             $("#SelectSubTipo1").val("");
             $("#SelectMunicipio1").val("");
+            ListarBarrioVereda();
           }
         );
       } else {

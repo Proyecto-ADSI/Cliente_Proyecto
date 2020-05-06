@@ -85,10 +85,10 @@ $(document).on("click", ".SwitchBarrioVereda", function () {
             console.log(error);
         }
     });
-  });
+});
 
 
-   ListarSubTipo1 = () => {
+ListarSubTipo1 = () => {
     $.ajax({
       url: `${URL}/SubTipo`,
       dataType: "json",
@@ -113,16 +113,15 @@ $(document).on("click", ".SwitchBarrioVereda", function () {
       .fail((error) => {
         console.log(error);
       });
-  }
+}
 
 
-  let ListarMunicipio1 = () => {
+let ListarMunicipio1 = () => {
     $.ajax({
       url: `${URL}/Municipio`,
       dataType: "json",
       type: "GET",
-    })
-      .done((respuesta) => {
+    }).done((respuesta) => {
         $("#SelectMunicipio1").empty();
         $("#SelectMunicipio1").append(`
   
@@ -138,16 +137,15 @@ $(document).on("click", ".SwitchBarrioVereda", function () {
 
                 `);
         }
-      })
-      .fail((error) => {
+      }).fail((error) => {
         console.log(error);
       });
-  }
+}
 
 $(document).ready(function(){
     $('#BarriosVeredasTab').click(function(){
-        ListarBarrioVereda();
-        ListarSubTipo1();
-        ListarMunicipio1();
+        ListarBarrioVereda()
+        ListarSubTipo1()
+        ListarMunicipio1()
     });
 });

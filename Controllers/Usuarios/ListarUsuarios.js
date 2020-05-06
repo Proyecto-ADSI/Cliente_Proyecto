@@ -35,7 +35,10 @@ $(function () {
             url: `${URL}/Usuarios`,
             error: function(error){
                 console.log("Eror al listar usuarios " + error);
-            }
+            },
+            // success: function(res){
+            //     console.log(res)
+            // }
         },
         // data: datos,
         aoColumns: [

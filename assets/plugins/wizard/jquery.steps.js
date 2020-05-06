@@ -454,9 +454,21 @@ function getValidEnumValue(enumType, keyOrValue)
  * @param state {Object} The state container of the current wizard
  * @return {Boolean} Indicates whether the action executed
  **/
+var length_custom; 
 function goToNextStep(wizard, options, state)
 {
-    return paginationClick(wizard, options, state, increaseCurrentIndexBy(state, 1));
+    length_custom = $('ul.tablist li.skip').length; 
+    var newIndex = increaseCurrentIndexBy(state, 1);
+    var anchor = getStepAnchor(wizard,  newIndex),
+    parent = anchor.parent(),
+    isSkip = parent.hasClass("skip");
+    if(isSkip){
+        goToStep(wizard, options, state, newIndex + length_custom)
+    }else{
+        return paginationClick(wizard, options, state, newIndex);
+    }
+
+    // return paginationClick(wizard, options, state, increaseCurrentIndexBy(state, 1));
 }
 
 /**
@@ -471,8 +483,18 @@ function goToNextStep(wizard, options, state)
  * @return {Boolean} Indicates whether the action executed
  **/
 function goToPreviousStep(wizard, options, state)
-{
-    return paginationClick(wizard, options, state, decreaseCurrentIndexBy(state, 1));
+{   
+    var newIndex = decreaseCurrentIndexBy(state, 1);
+    var anchor = getStepAnchor(wizard,  newIndex),
+    parent = anchor.parent(),
+    isSkip = parent.hasClass("skip");
+    if(isSkip){
+        goToStep(wizard, options, state, newIndex - length_custom)
+    }else{
+        return paginationClick(wizard, options, state, newIndex);
+    }
+
+    // return paginationClick(wizard, options, state, decreaseCurrentIndexBy(state, 1));
 }
 
 /**
@@ -997,7 +1019,7 @@ function render(wizard, options, state)
         orientation = getValidEnumValue(stepsOrientation, options.stepsOrientation),
         verticalCssClass = (orientation === stepsOrientation.vertical) ? " vertical" : "",
         contentWrapper = $(wrapperTemplate.format(options.contentContainerTag, "content " + options.clearFixCssClass, wizard.html())),
-        stepsWrapper = $(wrapperTemplate.format(options.stepsContainerTag, "steps " + options.clearFixCssClass, "<ul role=\"tablist\"></ul>")),
+        stepsWrapper = $(wrapperTemplate.format(options.stepsContainerTag, "steps " + options.clearFixCssClass, "<ul role=\"tablist\" class=\"tablist\"></ul>")),
         stepTitles = contentWrapper.children(options.headerTag),
         stepContents = contentWrapper.children(options.bodyTag);
 
@@ -1469,9 +1491,18 @@ $.fn.steps.setStep = function (index, step)
  * @param count {Integer} The amount of steps that should be skipped
  * @return {Boolean} Indicates whether the action executed
  **/
-$.fn.steps.skip = function (count)
+$.fn.steps.skip = function (i)
 {
-    throw new Error("Not yet implemented!");
+    var wizard = this,
+    options = getOptions(this),
+    state = getState(this);
+    if (i < state.stepCount) {
+        var stepAnchor = getStepAnchor(wizard, i);
+        stepAnchor.parent().addClass("skip");
+        refreshSteps(wizard, options, state, i);
+    }
+
+    // throw new Error("Not yet implemented!");
 };
 
 /**

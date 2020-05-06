@@ -1,10 +1,20 @@
 //API
 const URL = 'http://localhost:8081';
 
+// Formulario
 var form = null;
+
+// Variables de control
+var Reprogramar_Llamada = false
+var Enviar_Cita_Despues = false
+var Fecha_Cita = null
+var Fecha_LP = null
+var Validacion_RegistrarCliente = true
+var TerminarLlamada = false
 
 $(function () {
 
+    iniciarCronometroLlamada()
     var stepPlanCorp;
     var stepCita;
     form = $("#Form_Registro_LlamadaNP").show();
@@ -19,33 +29,39 @@ $(function () {
             // Validacion de steps
             stepPlanCorp = form.steps("getStep", 2);
             stepCita = form.steps("getStep", 3);
+            stepFinLlamada = form.steps("getStep",4)
             form.steps("remove", 2);
             form.steps("remove", 2);
 
             // Inicializar selects del formulario
             CargarDatosUbicacion();
-            CargarOperadores();
-            CargarCalificaciones();
             CargarRazonesOperador();
             CargarRazonesLlamada();
-           
-
+            CargarOperadores();
+            CargarCalificaciones();
+            
             if(sessionStorage.DetalleLineas){
                 sessionStorage.removeItem("DetalleLineas");
             }
 
         },
         onStepChanging: function (event, currentIndex, newIndex) {
-            return currentIndex > newIndex || !(3 === newIndex && Number($("#age-2").val()) < 18) && (currentIndex < newIndex && (form.find(".body:eq(" + newIndex + ") label.error").remove(), form.find(".body:eq(" + newIndex + ") .error").removeClass("error")), form.validate().settings.ignore = ":disabled,:hidden, .detalleLinea", form.valid())
+
+            if(TerminarLlamada){
+                return true
+            }else{
+                return currentIndex > newIndex || !(3 === newIndex && Number($("#age-2").val()) < 18) && (currentIndex < newIndex && (form.find(".body:eq(" + newIndex + ") label.error").remove(), form.find(".body:eq(" + newIndex + ") .error").removeClass("error")), form.validate().settings.ignore = ":disabled,:hidden, .detalleLinea", form.valid())
+            }
+
         },
         onFinishing: function (event, currentIndex) {
             return form.validate().settings.ignore = ":disabled, .detalleLinea", form.valid()
         },
         onFinished: function (event, currentIndex) {
 
-            if(sessionStorage.DatosUbicacion){
-                sessionStorage.removeItem("DatosUbicacion");
-            }
+            // if(sessionStorage.DatosUbicacion){
+            //     sessionStorage.removeItem("DatosUbicacion");
+            // }
             RegistrarLlamadaNP();
         }
     }),
@@ -106,7 +122,7 @@ $(function () {
                 // txtNombre_Lugar: "required",
                 // txtDireccion: "required",
 
-                // txtOperador: "required",
+                txtOperador: "required",
                 // txtCalificacion: "required",
                 txtDetalle_Cantidad_Lineas:{
                     required: true,
@@ -122,6 +138,9 @@ $(function () {
     });
 
     // Inicializar elementos:
+
+        // tooltip
+        $("body").tooltip({ selector: '[data-toggle=tooltip]' });
 
         // bootstrap-switch
         
@@ -139,8 +158,6 @@ $(function () {
             offColor: "danger"
         });
 
-        
-
         $('.switch_habeas_data').bootstrapSwitch({
             onText: "SI",
             offText: "NO",
@@ -148,22 +165,80 @@ $(function () {
             offColor: "danger"
         });
 
-        
+        // Fecha reprogramar llamada
+        $('#Fecha_LP').bootstrapMaterialDatePicker({ 
+            lang : 'es',
+            format: 'dddd DD MMMM YYYY - HH:mm',
+            minDate: new Date(),
+            switchOnClick : true,
+            weekStart : 1,
+            // maxDate: moment().add(10, 'days'),
+            disabledDays: [6,7],
+            shortTime : true,
+            clearButton: true,
+            nowButton: true,
+            cancelText: "Cancelar",
+            clearText: "Limpiar",
+            nowText: "Fecha actual"
+            
+        }).on('change', function(e, date){
+
+            if(typeof date !== "undefined"){
+
+                Fecha_LP = FormatearFecha(date._d,true)
+
+                if($('.switch_cita1').bootstrapSwitch('state') === true || $('.switch_cita2').bootstrapSwitch('state') === true){
+                    Enviar_Cita_Despues = true
+                }else{
+                    Reprogramar_Llamada = true
+                    ModificarConclusionLlamada(2)
+                }
+            }else{
+                Enviar_Cita_Despues = false
+                Reprogramar_Llamada = false
+                ModificarConclusionLlamada(1)
+            }
+            
+        });
+
     // Enlazar eventos de escucha: 
+        
+        // Atajos del formulario
+        
+        $('#lbltxtValEncargado').click(function(){
+
+            let estado = $('input:checkbox[name=txtValEncargado]').is(":checked")
+            let estado2 = !estado
     
+            if(estado2){
+                let Persona_Responde = $("#txtPersona_Responde").val()
+                $("#txtEncargado").val(Persona_Responde)
+            }
+        })
+
+        $('input:radio[name=Validacion_UbicacionEmpresa]').click(function(){
+
+            let estado = $('input:radio[name=Validacion_UbicacionEmpresa]').is(":checked") 
+
+            if(estado){
+                CargarDatosUbicacionRadio(false)
+            }
+        })
+
+        
+        
+
         // Estado del switch Cita 1
         $('.switch_cita1').on('switchChange.bootstrapSwitch', function (event, state) {
 
             if(state){
                 form.steps("insert", 2, stepCita);
-                
                 InicializarFormCitas()
-                
-
-
+                ValidarBtnTerminarLlamada()
             }else{
-                form.steps("remove", 2);
-                EliminarStepCita();
+                form.steps("remove", 2)
+                EliminarStepCita()
+                ValidarBtnTerminarLlamada()
             }
         })
 
@@ -177,7 +252,8 @@ $(function () {
                 }
 
                 form.steps("insert", 2, stepPlanCorp);
-            
+
+                
 
                 // Rango Fecha corporativo
                 $("#Fecha_Corporativo").datepicker({
@@ -188,7 +264,8 @@ $(function () {
                 });
 
                 $('#ValidacionCita').attr("style","display: none")
-                
+                ValidarBtnTerminarLlamada()
+
                 $('.switch_cita2').bootstrapSwitch({
                     onText: "SI",
                     offText: "NO",
@@ -203,10 +280,11 @@ $(function () {
                     if(state){
                         form.steps("insert", 3, stepCita);
                         InicializarFormCitas()
-
+                        ValidarBtnTerminarLlamada()
                     }else{
-                        form.steps("remove", 3);
-                        EliminarStepCita();
+                        form.steps("remove", 3)
+                        EliminarStepCita()
+                        ValidarBtnTerminarLlamada()
                     }
                 });
 
@@ -218,6 +296,7 @@ $(function () {
                 
                 form.steps("remove", 2);
                 $('#ValidacionCita').removeAttr("style");
+                ValidarBtnTerminarLlamada()
             }
         });
 
@@ -246,7 +325,7 @@ $(function () {
                 }
             }
 
-            CargarDepartamentos(arrayDepartamentos);
+            CargarDepartamentos(arrayDepartamentos,false);
 
         });
 
@@ -265,51 +344,28 @@ $(function () {
                 }
             }
 
-            CargarMunicipios(arrayMunicipios);
+            CargarMunicipios(arrayMunicipios,false);
 
         });
 
 
         $("#txtMunicipio").change(function () {
 
-            let DatosUbicacion = JSON.parse(sessionStorage.getItem("DatosUbicacion"));
-            let Barrios_Veredas = DatosUbicacion.Barrios_Veredas;
             let Id_Municipio = parseInt($('#txtMunicipio option:selected').val());
             let Id_SubTipo = parseInt($('#txtSubTipo option:selected').val());
 
-            let arrayBarrios_Veredas = [];
-
-            for (let item of Barrios_Veredas) {
-
-                if (parseInt(item.Id_Municipio) === Id_Municipio) {
-                    if (parseInt(item.Id_SubTipo_Barrio_Vereda) === Id_SubTipo) {
-                        arrayBarrios_Veredas.push(item);
-                    }
-                }
-            }
-
-            CargarBarrios_Veredas(arrayBarrios_Veredas);
+            PonerBarrios_Veredas(Id_Municipio,Id_SubTipo,false);
+            
         });
 
         $("#txtSubTipo").change(function () {
 
-            let DatosUbicacion = JSON.parse(sessionStorage.getItem("DatosUbicacion"));
-            let Barrios_Veredas = DatosUbicacion.Barrios_Veredas;
             let Id_Municipio = parseInt($('#txtMunicipio option:selected').val());
             let Id_SubTipo = parseInt($('#txtSubTipo option:selected').val());
 
-            let arrayBarrios_Veredas = [];
-
-            for (let item of Barrios_Veredas) {
-
-                if (parseInt(item.Id_Municipio) === Id_Municipio) {
-                    if (parseInt(item.Id_SubTipo_Barrio_Vereda) === Id_SubTipo) {
-                        arrayBarrios_Veredas.push(item);
-                    }
-                }
-            }
-            CargarBarrios_Veredas(arrayBarrios_Veredas);
-        });
+            PonerBarrios_Veredas(Id_Municipio,Id_SubTipo,false);
+            
+        })
 
         // Botones detalle líneas
     
@@ -512,6 +568,21 @@ $(function () {
                 $('#txtDetalle_Minutos').prop('disabled', false);
             }
         });
+
+        // Terminar llamada
+        $('#btnTerminarLlamada').click(function(){
+            TerminarLlamada = true
+            form.steps("skip",1)
+            form.steps("next")
+            Validacion_RegistrarCliente = false
+        })
+
+        // Verificar Datos
+        $('#btnVerificarDatos').click(function(){
+            detenerCronometroLlamada()
+            iniciarCronometroVerificar()
+        })
+
 });
 
 // FUNCIONES:
@@ -588,26 +659,37 @@ let RegistrarLlamadaNP = () => {
         Cantidad_Total_Lineas = arrayLineas.length;
     }
 
-    let arrayRazones = $("#txtRazones").val();
-    let stringRazones = "";
+    let arrayRazones = $("#txtRazones").val()
+    let stringRazones = ""
 
-    for(let razon of arrayRazones){
-        stringRazones += razon + ", ";
+    if( typeof arrayRazones !== "undefined" ){
+        arrayRazones.forEach(function(razon,index,array){
+
+            if(index == 0){
+                stringRazones += razon
+            }else{
+                stringRazones += ", " + razon
+            }
+        })
     }
 
+
+    let Id_Estado_Llamada = parseInt($("#txtConclusion").val())
+    let txtDuracion_Llamada = "00:" + $("#txtMinutosL").text() + ":" + $("#txtSegundosL").text()
     let datos =
     {      
         // Llamada
         Id_Usuario: parseInt(sessionStorage.getItem("Id_Usuario")),
-        Persona_Responde: $("#txtPersona_Responde").val(),
+        Persona_Responde: $("#txtPersona_Responde").val() == ""? null : $("#txtPersona_Responde").val() ,
         Info_Habeas_Data: $('.switch_habeas_data').bootstrapSwitch('state') ? 1 : 0,
         Observacion: $("#txtObservacion").val(),
-        // Id_Estado_Llamada: 
-
+        Tipo_Llamada: 1,
+        Id_Estado_Llamada: Id_Estado_Llamada,
+        Duracion_Llamada: txtDuracion_Llamada,
         // Cliente
         Razon_Social: $("#txtRazonSocial").val(),
         Telefono: $("#txtTelefono").val(),
-        NIT_CDV: ($("#txtNIT").val()),
+        NIT_CDV: $("#txtNIT").val(),
         Encargado: $("#txtEncargado").val(),
         Ext_Tel_Contacto: $("#txtExt_Tel_Contacto").val(),
         Barrio_Vereda: parseInt($("#txtNombre_Lugar").val()),
@@ -621,130 +703,224 @@ let RegistrarLlamadaNP = () => {
         DetalleLineas: arrayLineas,
         
         // Validación
+        Validacion_Registro_Cliente:  Validacion_RegistrarCliente,
         Validacion_PLan_C: false,
         Validacion_Doc_S: false,
         Validacion_Cita : false
     };
 
-    
-    if($('.switch_corporativo').bootstrapSwitch('state')){
+    if(Id_Estado_Llamada == 3){
 
-        let switchClausula = $('#switchClausula').children('label').children('input');
-
-        datos.Validacion_PLan_C = true
-
-        Object.defineProperties(datos,{
-            "Clausula":{
-                value: switchClausula[0].checked ? 1 : 0,
-                enumerable: true
-            },
-            "Fecha_Inicio":{
-                value: $("#txtFecha_inicio").val(),
-                enumerable: true
-            },
-            "Fecha_Fin":{
-                value: $("#txtFecha_fin").val(),
-                enumerable: true
-            },
-            "Descripcion":{
-                value: $("#txtDescripcion").val(),
-                enumerable: true
-            }
-        });
+        Object.defineProperty(datos,'Fecha_LP',{
+            value: Fecha_LP,
+            enumerable: true
+        })
     }
 
-    if($('.switch_cita1').bootstrapSwitch('state') || $('.switch_cita2').bootstrapSwitch('state')){
+    // Validar si el cliente es válido
+    if(Validacion_RegistrarCliente){
 
-        let switchRL = $('#switchRL').children('label').children('input');
-        
-        datos.Validacion_Cita = true;
+        // Si tiene corporativo.
+        if($('.switch_corporativo').bootstrapSwitch('state')){
 
-        Object.defineProperties(datos,{
-            "Clausula":{
-                value: switchRL[0].checked ? 1 : 0,
-                enumerable: true
-            },
-           "Camara_Comercio":{
-                value: $("#txtCamara_Comercio").val(),
-                enumerable: true
-            },
-            "Cedula_RL":{
-                value: $("#txtCedula").val(),
-                enumerable: true
-            },
-            "Soporte_Ingresos":{
-                value:$("#txtSoporte").val(),
-                enumerable: true
-            },
-            "Detalles_Plan_Corporativo":{
-                value: $("#txtDetalles").val(),
-                enumerable: true
-            }
-        });
+            let switchClausula = $('#switchClausula').children('label').children('input');
+
+            datos.Validacion_PLan_C = true
+
+            Object.defineProperties(datos,{
+                "Clausula":{
+                    value: switchClausula[0].checked ? 1 : 0,
+                    enumerable: true
+                },
+                "Fecha_Inicio":{
+                    value: $("#txtFecha_inicio").val(),
+                    enumerable: true
+                },
+                "Fecha_Fin":{
+                    value: $("#txtFecha_fin").val(),
+                    enumerable: true
+                },
+                "Descripcion":{
+                    value: $("#txtDescripcion").val(),
+                    enumerable: true
+                }
+            });
+        }
+
+        // Si se agenda cita.
+        if($('.switch_cita1').bootstrapSwitch('state') === true || $('.switch_cita2').bootstrapSwitch('state') === true){
+            
+            let txtDuracion_Verificacion = "00:" + $("#txtMinutosV").text() + ":" + $("#txtSegundosV").text()
+            let switchRL = $('#switchRL').children('label').children('input');
+            datos.Validacion_Cita = true;
+            // Hora cita
+            let horaCita = "11:00:00"
+
+            // Fecha Cita
+            let fechaCita = Fecha_Cita + " " + horaCita
+            
+            // Estado Cita
+            // 2 -> sin gestionar en BD
+            let Estado_Cita = 2
+            if(Enviar_Cita_Despues){
+                // 1 -> sin confirmar en BD
+                Estado_Cita = 1
+                Object.defineProperty(datos,'Fecha_LP',{
+                    value: Fecha_LP,
+                    enumerable: true
+                })
+            } 
+
+            Object.defineProperties(datos,{
+                "Encargado_Cita":{
+                    value: $("#txtEncargado_Cita").val(),
+                    enumerable: true
+                },
+                "Ext_Tel_ContactoEC":{
+                    value: $("#txtExt_Tel_ContactoEC").val(),
+                    enumerable: true
+                },
+                "Representante_Legal":{
+                    value: switchRL[0].checked ? 1 : 0,
+                    enumerable: true
+                },
+                "Fecha_Cita":{
+                    value: fechaCita,
+                    enumerable: true
+                },
+                "Duracion_Verificacion":{
+                    value: txtDuracion_Verificacion,
+                    enumerable: true
+                },
+                "Direccion_Cita":{
+                    value:$("#txtDireccion_Cita").val(),
+                    enumerable: true
+                },
+                "Barrios_Veredas_Cita":{
+                    value: parseInt($("#txtNombre_LugarCita").val()),
+                    enumerable: true
+                },
+                "Lugar_Referencia":{
+                    value: $("#txtPuntoReferencia").val(),
+                    enumerable: true
+                },
+                "Id_Operador_Cita":{
+                    value: parseInt($("#txtOperadorCita").val()),
+                    enumerable: true
+                },
+                "Id_Estado_Cita":{
+                    value: Estado_Cita,
+                    enumerable: true
+                },
+                "Id_Estado_Cita":{
+                    value: Estado_Cita,
+                    enumerable: true
+                }
+            }) 
+        }
     }
-
-    console.log(datos);
     
-    // $.ajax({
-    //     url: `${URL}/Cliente`,
-    //     dataType: 'json',
-    //     type: 'post',
-    //     contentType: 'aplication/json',
-    //     data: JSON.stringify(datos),
-    //     processData: false
-    // }).done(respuesta => {
+    $.ajax({
+        url: `${URL}/Llamadas/LlamadaNP`,
+        dataType: 'json',
+        type: 'post',
+        contentType: 'aplication/json',
+        data: JSON.stringify(datos),
+        processData: false,
+        success: function(respuesta){
+            console.log(respuesta)
 
-    //     console.log(respuesta)
+            if (respuesta.data.ok) {
 
-    //     if (respuesta.data.ok) {
+                // Si se registra cita se envía notifiación a coordinadores y administrador
+                if(respuesta.data.okCita){
 
-    //         swal({
-    //             title: "Registro exitoso.",
-    //             type: "success",
-    //             showCancelButton: false,
-    //             confirmButtonColor: "#2F6885",
-    //             confirmButtonText: "Continuar",
-    //             closeOnConfirm: false,
-    //         }, function (isConfirm) {
-    //             if (isConfirm) {
-    //                  sessionStorage.removeItem('DetalleLineas');
-    //                 location.href = "Directorio.html";
-    //             }
-    //         });
-    //     } else {
-    //         swal({
-    //             title: "Error al registrar.",
-    //             text: "Ha ocurrido un error al registrar, intenta de nuevo",
-    //             type: "error",
-    //             showCancelButton: false,
-    //             confirmButtonColor: "#2F6885",
-    //             confirmButtonText: "Continuar",
-    //             closeOnConfirm: false,
-    //         }, function (isConfirm) {
-    //             if (isConfirm) {
-    //                 location.href = "AgregarEmpresa.html";
-    //                 console.log(respuesta.data);
-    //             }
-    //         })
-    //     }
+                    let datosNotificacion = respuesta.data.notificacion
 
-    // }).fail(error => {
+                    // Fecha
+                    let fecha = new Date()
+                    let horas = fecha.getHours()
+                    let minutos = fecha.getMinutes()
+                
+                    horas < 10 ? horas = "0" + horas : horas = horas
+                    minutos < 10 ? minutos = "0" + minutos : minutos = minutos
+                    let dd = "AM";
+                    let h = horas;
+                    if (h >= 12) {
+                      h = horas - 12;
+                      dd = "PM";
+                    }
+                    if (h == 0) {
+                      h = 12;
+                    }
+                    let tiempo = horas + ":" + minutos + " " + dd
 
-    //     swal({
-    //         title: "Error al registrar.",
-    //         text: "Ha ocurrido un error al registrar, intenta de nuevo",
-    //         type: "error",
-    //         showCancelButton: false,
-    //         confirmButtonColor: "#2F6885",
-    //         confirmButtonText: "Continuar",
-    //         closeOnConfirm: false,
-    //     }, function (isConfirm) {
-    //         if (isConfirm) {
-    //             location.href = "AgregarEmpresa.html";
-    //             console.log(error);
-    //         }
-    //     })
-    // })
+                    Object.defineProperties(datosNotificacion,{
+                        "Usuario":{
+                            value:  sessionStorage.getItem("Usuario"),
+                            enumerable: true
+                        },
+                        "Hora":{
+                            value: tiempo ,
+                            enumerable: true
+                        },
+                    })
+
+                    // Generar Notificacion.
+                    console.log(datosNotificacion)
+
+                }
+
+
+                swal({
+                    title: "Registro exitoso.",
+                    type: "success",
+                    showCancelButton: false,
+                    confirmButtonColor: "#2F6885",
+                    confirmButtonText: "Continuar",
+                    closeOnConfirm: false,
+                }, function (isConfirm) {
+                    if (isConfirm) {
+                        sessionStorage.removeItem('DetalleLineas');
+                        location.href = "Llamadas.html";
+                    }
+                })
+
+            } else {
+                swal({
+                    title: "Error al registrar.",
+                    text: "Ha ocurrido un error al registrar, intenta de nuevo",
+                    type: "error",
+                    showCancelButton: false,
+                    confirmButtonColor: "#2F6885",
+                    confirmButtonText: "Continuar",
+                    closeOnConfirm: false,
+                }, function (isConfirm) {
+                    if (isConfirm) {
+                        location.href = "Llamadas.html";
+                        console.log(respuesta.data);
+                    }
+                })
+            }
+        },
+        error: function(error){
+            console.log(error)
+            swal({
+                title: "Error al registrar.",
+                text: "Error en el servidor, contacta al administrador",
+                type: "error",
+                showCancelButton: false,
+                confirmButtonColor: "#2F6885",
+                confirmButtonText: "Continuar",
+                closeOnConfirm: false,
+            }, function (isConfirm) {
+                if (isConfirm) {
+                    location.href = "AgregarEmpresa.html";
+                    
+                }
+            })
+        }
+    })
 }
 
 let InicializarFormCitas = () =>{
@@ -763,21 +939,81 @@ let InicializarFormCitas = () =>{
         time: false,
         weekStart : 1,
         // maxDate: moment().add(10, 'days'),
-        disabledDays: [6,7]
+        disabledDays: [6,7],
+        clearButton: true,
+        nowButton: true,
+        cancelText: "Cancelar",
+        clearText: "Limpiar",
+        nowText: "Fecha actual"
 
     }).on('change', function(e, date){
 
-        let fecha =  $('#date-format').val()
-        // console.log(fecha)
-        // console.log(date._d)
-        
+        let fechaCitaInput = new Date(date._d)
+        let anio = fechaCitaInput.getFullYear()
+        let mes = fechaCitaInput.getMonth() + 1
+
+        if(mes < 10){
+            mes = "0" + mes 
+        }
+        let dia = fechaCitaInput.getDate()
+        Fecha_Cita = `${anio}-${mes}-${dia}`
     })
 
     // Ubicación cita
     let DatosUbicacion = JSON.parse(sessionStorage.getItem("DatosUbicacion"))
-    CargarPaisesCita(DatosUbicacion.Paises)
-    CargarSubTiposCita(DatosUbicacion.Subtipos)
+    CargarPaises(DatosUbicacion.Paises,true)
+    CargarSubTipos(DatosUbicacion.Subtipos,true)
+    
+    // Enlazar eventos de escucha
 
+    $('#lbltxtValEncargadoCita').click(function(){
+        let estado = $('input:checkbox[name=txtValEncargadoCita]').is(":checked")
+        let estado2 = !estado
+
+        if(estado2){
+            // Encargado
+            let Encargado = $("#txtEncargado").val()
+            $("#txtEncargado_Cita").val(Encargado)
+
+            // Extensión telefono contacto
+            let Ext_Tel_Contacto = $("#txtExt_Tel_Contacto").val()
+            $("#txtExt_Tel_ContactoEC").val(Ext_Tel_Contacto)
+        }
+    })
+
+    $('input:radio[id=Validacion_Ubicacion2]').click(function(){
+
+        let estado = $('input:radio[id=Validacion_Ubicacion2]').is(":checked") 
+
+        if(estado){
+            CargarDatosUbicacionRadio(true)
+        }
+    })
+    $('input:radio[id=ValAtiendeEmpresa]').click(function(){
+
+        let estado = $('input:radio[id=ValAtiendeEmpresa]').is(":checked") 
+        console.log("sajhdjiajsbhdjob")
+        if(estado){
+
+            // let Id_Municipio = $('#txtMunicipio').val()
+            // let Id_Barrio_Veredas = $('#txtNombre_Lugar').val()
+            // let Direccion = $('#txtDireccion').val()
+
+            // if(Id_Barrio_Veredas === null  ){
+            //     if(Id_Municipio === null ){
+            //         CompletarDatos
+            //     }
+            // }
+
+            // Enlazar select ubicacion empresa con selct ubicacion cita
+            // Si se cambia un select se debe resetear los select que dependan de ese select cambiado
+
+            DatosUbicacionEmpresa()
+            $('#txtDireccion_Cita').val(Direccion)
+        }
+    })
+
+    
     
     $("#txtPaisCita").change(function () {
 
@@ -794,9 +1030,9 @@ let InicializarFormCitas = () =>{
             }
         }
 
-        CargarDepartamentosCita(arrayDepartamentos);
+        CargarDepartamentos(arrayDepartamentos,true);
 
-    });
+    })
 
     $("#txtDepartamentoCita").change(function () {
 
@@ -813,55 +1049,26 @@ let InicializarFormCitas = () =>{
             }
         }
 
-        CargarMunicipiosCita(arrayMunicipios);
+        CargarMunicipios(arrayMunicipios,true);
 
-    });
-
+    })
 
     $("#txtMunicipioCita").change(function () {
-
-        let DatosUbicacion = JSON.parse(sessionStorage.getItem("DatosUbicacion"));
-        let Barrios_Veredas = DatosUbicacion.Barrios_Veredas;
         let Id_Municipio = parseInt($('#txtMunicipioCita option:selected').val());
         let Id_SubTipo = parseInt($('#txtSubTipoCita option:selected').val());
-
-        let arrayBarrios_Veredas = [];
-
-        for (let item of Barrios_Veredas) {
-
-            if (parseInt(item.Id_Municipio) === Id_Municipio) {
-                if (parseInt(item.Id_SubTipo_Barrio_Vereda) === Id_SubTipo) {
-                    arrayBarrios_Veredas.push(item);
-                }
-            }
-        }
-
-        CargarBarrios_VeredasCita(arrayBarrios_Veredas);
-    });
+        PonerBarrios_Veredas(Id_Municipio,Id_SubTipo,true)
+    })
 
     $("#txtSubTipoCita").change(function () {
 
-        let DatosUbicacion = JSON.parse(sessionStorage.getItem("DatosUbicacion"));
-        let Barrios_Veredas = DatosUbicacion.Barrios_Veredas;
         let Id_Municipio = parseInt($('#txtMunicipioCita option:selected').val());
         let Id_SubTipo = parseInt($('#txtSubTipoCita option:selected').val());
-
-        let arrayBarrios_Veredas = [];
-
-        for (let item of Barrios_Veredas) {
-
-            if (parseInt(item.Id_Municipio) === Id_Municipio) {
-                if (parseInt(item.Id_SubTipo_Barrio_Vereda) === Id_SubTipo) {
-                    arrayBarrios_Veredas.push(item);
-                }
-            }
-        }
-        CargarBarrios_VeredasCita(arrayBarrios_Veredas);
-    });
+        PonerBarrios_Veredas(Id_Municipio,Id_SubTipo,true)
+    })
 
     // Validaciones Cita
     $('#ValidacionesCita').removeAttr("style")
-    $('#OpcionesLlamada').attr("style","display:none")
+    $('#lbReprogramarLlamada').text("Enviar cita después:")
 
     $('.switch_factura').bootstrapSwitch({
         onText: "SI",
@@ -885,16 +1092,19 @@ let InicializarFormCitas = () =>{
     })
 
     // Conclusión llamada
-    ModificarConclusionLlamada(1)
+    ModificarConclusionLlamada(3)
+
+    $('#btnVerificarDatos').removeAttr("disabled")
 }
 
 let EliminarStepCita = () => {
 
-    $('#OpcionesLlamada').removeAttr("style")
+    $('#lbReprogramarLlamada').text("Llamar nuevamente:")
     $('#ValidacionesCita').attr("style","display:none")
 
     // Conclusión llamada
-    ModificarConclusionLlamada(2)
+    ModificarConclusionLlamada(1)
+    $('#btnVerificarDatos').prop("disabled", true)
 }
 
 let ModificarConclusionLlamada = (valSelect) =>{
@@ -916,7 +1126,48 @@ let ModificarConclusionLlamada = (valSelect) =>{
 
 
 }
- 
+
+let FormatearFecha = (fecha,tiempo) =>{
+
+    let fechaFormateada = null
+    let fechaCitaInput = new Date(fecha)
+    let anio = fechaCitaInput.getFullYear()
+    let mes = fechaCitaInput.getMonth() + 1
+    let dia = fechaCitaInput.getDate()
+
+    mes > 10 ? mes = "0" + mes : mes = mes
+    dia > 10 ? dia = "0" + dia : dia = dia
+    
+    
+
+    if(tiempo){
+
+        let horas = fechaCitaInput.getHours()
+        let minutos = fechaCitaInput.getMinutes()
+
+        horas < 10 ? horas = '0' + horas : horas = horas
+        minutos < 10 ? minutos = '0' + minutos : minutos = minutos
+
+        fechaFormateada = `${anio}-${mes}-${dia} ${horas}:${minutos}:00`
+
+    }else{
+
+        fechaFormateada = `${anio}-${mes}-${dia}`
+    }
+
+    return fechaFormateada
+}
+
+
+let ValidarBtnTerminarLlamada = () => {
+
+    if($('.switch_corporativo').bootstrapSwitch('state') == true || $('.switch_cita1').bootstrapSwitch('state') === true || $('.switch_cita2').bootstrapSwitch('state') === true){
+        $('#btnTerminarLlamada').prop("disabled", true)
+    }else{
+        $('#btnTerminarLlamada').removeAttr("disabled")
+    }
+}
+
 let CargarDatosUbicacion = () => {
 
     $.ajax({
@@ -939,80 +1190,256 @@ let CargarDatosUbicacion = () => {
 }
 
 
-let CargarPaises = (datos) => {
-    
-    $('#txtPais').empty();
-    $('#txtPais').prepend("<option selected disabled >Seleccione...</option>");
-    for (let item of datos) {
-        let $opcion = $('<option />', {
-            text: `${item.Nombre_Pais}`,
-            value: `${item.Id_Pais}`,
-        });
+let CargarPaises = (datos,Cita,Id_Pais) => {
 
-        $('#txtPais').append($opcion);
+    let selector = null
+    if(Cita){
+        selector = '#txtPaisCita'
+    }else{
+        selector = '#txtPais'
     }
+    
+    $(selector).empty()
+    if(Id_Pais){
+        for (let item of datos) {
+            let opcion = null
+            if(parseInt(item.Id_Pais) == Id_Pais){
+                opcion = $('<option />', {
+                    text: `${item.Nombre_Pais}`,
+                    value: `${item.Id_Pais}`,
+                    selected: true
+                })
+                $(selector).append(opcion);
+            }else{
+                let opcion = $('<option />', {
+                    text: `${item.Nombre_Pais}`,
+                    value: `${item.Id_Pais}`,
+                })
+                $(selector).append(opcion)
+            }
+        }
+    }else{
+
+        $(selector).prepend("<option selected disabled >Seleccione...</option>");
+        for (let item of datos) {
+            let opcion = $('<option />', {
+                text: `${item.Nombre_Pais}`,
+                value: `${item.Id_Pais}`,
+            })
+            $(selector).append(opcion)
+        }
+    }
+    
 
 }
 
-let CargarDepartamentos = (datos) => {
+let CargarDepartamentos = (datos,Cita,Id_Departamento) => {
 
-    $('#txtDepartamento').empty();
-    $('#txtDepartamento').prepend("<option selected disabled >Seleccione...</option>");
-    for (let item of datos) {
-        let $opcion = $('<option />',
-            {
+    let selector = null
+    if(Cita){
+        selector = '#txtDepartamentoCita'
+    }else{
+        selector = '#txtDepartamento'
+    }
+
+    $(selector).empty();
+    if(Id_Departamento){
+        for (let item of datos) {
+            let opcion = null
+            if(parseInt(item.Id_Departamento) == Id_Departamento){
+                opcion = $('<option />', {
+                    text: `${item.Nombre_Departamento}`,
+                    value: `${item.Id_Departamento}`,
+                    selected: true
+                })
+                $(selector).append(opcion);
+            }else{
+
+                let opcion = $('<option />', {
+                    text: `${item.Nombre_Departamento}`,
+                    value: `${item.Id_Departamento}`,
+                })
+                $(selector).append(opcion)
+            }
+        }
+    }else{
+
+        $(selector).prepend("<option selected disabled >Seleccione...</option>");
+        for (let item of datos) {
+            let opcion = $('<option />', {
                 text: `${item.Nombre_Departamento}`,
                 value: `${item.Id_Departamento}`,
             });
 
-        $('#txtDepartamento').append($opcion);
+            $(selector).append(opcion)
+        }
     }
 
 }
 
-let CargarMunicipios = (datos) => {
+let CargarMunicipios = (datos,Cita,Id_Municipio) => {
 
-    $('#txtMunicipio').empty();
-    $('#txtMunicipio').prepend("<option selected disabled >Seleccione...</option>");
-    for (let item of datos) {
-        let $opcion = $('<option />', {
-            text: `${item.Nombre_Municipio}`,
-            value: `${item.Id_Municipio}`,
-        });
+    let selector = null
+    if(Cita){
 
-        $('#txtMunicipio').append($opcion);
+        selector = '#txtMunicipioCita'
+
+    }else{
+        selector = '#txtMunicipio'
+    }
+
+    $(selector).empty();
+    if(Id_Municipio){
+        for (let item of datos) {
+            let opcion = null
+            if(parseInt(item.Id_Municipio) == Id_Municipio){
+                opcion = $('<option />', {
+                    text: `${item.Nombre_Municipio}`,
+                    value: `${item.Id_Municipio}`,
+                    selected: true
+                })
+                $(selector).append(opcion);
+            }else{
+
+                let opcion = $('<option />', {
+                    text: `${item.Nombre_Municipio}`,
+                    value: `${item.Id_Municipio}`,
+                })
+    
+                $(selector).append(opcion)
+            }
+        }
+    }else{
+
+        $(selector).prepend("<option selected disabled >Seleccione...</option>");
+        for (let item of datos) {
+            let opcion = $('<option />', {
+                text: `${item.Nombre_Municipio}`,
+                value: `${item.Id_Municipio}`,
+            })
+
+            $(selector).append(opcion)
+        }
     }
 }
 
-let CargarSubTipos = (datos) => {
+let CargarSubTipos = (datos,Cita,Id_SubTipo) => {
 
-    $('#txtSubTipo').empty();
-    $('#txtSubTipo').prepend("<option selected disabled >Seleccione...</option>");
-    for (let item of datos) {
-        let $opcion = $('<option />', {
-            text: `${item.SubTipo}`,
-            value: `${item.Id_SubTipo_Barrio_Vereda}`,
-        });
+    let selector = null
+    if(Cita){
 
-        $('#txtSubTipo').append($opcion);
+        selector = '#txtSubTipoCita'
+
+    }else{
+        selector = '#txtSubTipo'
+    }
+
+    $(selector).empty();
+    if(Id_SubTipo){
+        for (let item of datos) {
+            let opcion = null
+            if(parseInt(item.Id_SubTipo_Barrio_Vereda) == Id_SubTipo){
+                opcion = $('<option />', {
+                    text: `${item.SubTipo}`,
+                    value: `${item.Id_SubTipo_Barrio_Vereda}`,
+                    selected: true
+                })
+                $(selector).append(opcion);
+            }else{
+                let opcion = $('<option />', {
+                    text: `${item.SubTipo}`,
+                    value: `${item.Id_SubTipo_Barrio_Vereda}`,
+                })
+                $(selector).append(opcion);
+            }
+        }
+    }else{
+
+        $(selector).prepend("<option selected disabled >Seleccione...</option>")
+        for (let item of datos) {
+
+            let opcion = $('<option />', {
+                text: `${item.SubTipo}`,
+                value: `${item.Id_SubTipo_Barrio_Vereda}`,
+            })
+            $(selector).append(opcion);
+        }
     }
 
 }
 
-let CargarBarrios_Veredas = (datos) => {
+let CargarBarrios_Veredas = (datos,Cita,Id_Barrios_Veredas) => {
 
-    $('#txtNombre_Lugar').empty();
-    $('#txtNombre_Lugar').prepend("<option selected disabled >Seleccione...</option>");
-    for (let item of datos) {
-        let $opcion = $('<option />', {
-            text: `${item.Nombre_Barrio_Vereda}`,
-            value: `${item.Id_Barrios_Veredas}`,
-        });
-
-        $('#txtNombre_Lugar').append($opcion);
+    let selector = null
+    if(Cita){
+        selector = '#txtNombre_LugarCita'
+    }else{
+        selector = '#txtNombre_Lugar'
     }
 
+    $(selector).empty();
+
+    if(Id_Barrios_Veredas){
+        for (let item of datos) {
+            let opcion = null
+            if(parseInt(item.Id_Barrios_Veredas) == Id_Barrios_Veredas){
+                opcion = $('<option />', {
+                    text: `${item.Nombre_Barrio_Vereda}`,
+                    value: `${item.Id_Barrios_Veredas}`,
+                    selected: true
+                })
+                $(selector).append(opcion);
+            }else{
+                let opcion = $('<option />', {
+                    text: `${item.Nombre_Barrio_Vereda}`,
+                    value: `${item.Id_Barrios_Veredas}`,
+                })
+                $(selector).append(opcion);
+            }
+        }
+    }else{
+        
+        $(selector).prepend("<option selected disabled >Seleccione...</option>");
+        for (let item of datos) {
+            let $opcion = $('<option />', {
+                text: `${item.Nombre_Barrio_Vereda}`,
+                value: `${item.Id_Barrios_Veredas}`,
+            });
+    
+            $(selector).append($opcion);
+        }
+    }
+
+
+    
+
 }
+
+
+let PonerBarrios_Veredas = (Id_Municipio,Id_SubTipo, Cita, Id_Barrio_Veredas) => {
+
+    let DatosUbicacion = JSON.parse(sessionStorage.getItem("DatosUbicacion"));
+    let Barrios_Veredas = DatosUbicacion.Barrios_Veredas;
+    
+    let arrayBarrios_Veredas = [];
+
+    for (let item of Barrios_Veredas) {
+
+        if (parseInt(item.Id_Municipio) === Id_Municipio) {
+            if (parseInt(item.Id_SubTipo_Barrio_Vereda) === Id_SubTipo) {
+                arrayBarrios_Veredas.push(item);
+            }
+        }
+    }
+    if(Id_Barrio_Veredas){
+        CargarBarrios_Veredas(arrayBarrios_Veredas,Cita,Id_Barrio_Veredas);
+    }else{
+        CargarBarrios_Veredas(arrayBarrios_Veredas,Cita);
+    }
+}
+
+
+
 
 let CargarOperadores = () => {
 
@@ -1168,81 +1595,77 @@ let CargarOperadoresCita = (Id_Operador_Cliente) => {
 
 }
 
-let CargarPaisesCita = (datos) => {
+let CargarDatosUbicacionRadio = (cita) =>{
 
-    $('#txtPaisCita').empty();
-    $('#txtPaisCita').prepend("<option selected disabled >Seleccione...</option>");
-    for (let item of datos) {
-        let $opcion = $('<option />', {
-            text: `${item.Nombre_Pais}`,
-            value: `${item.Id_Pais}`,
-        });
+    // Arrays
+    let DatosUbicacion = JSON.parse(sessionStorage.getItem("DatosUbicacion"));
+    let Paises = DatosUbicacion.Paises
+    let Departamentos = DatosUbicacion.Departamentos
+    let Municipios = DatosUbicacion.Municipios
+    let Subtipos = DatosUbicacion.Subtipos
+    
+    // Id
+    let Id_Pais = null
+    let Id_Departamento = null
+    let Id_Municipio = null
+    let Id_SubTipo = null
 
-        $('#txtPaisCita').append($opcion);
+    for(let item of Paises){
+
+        if(item.Nombre_Pais == "Colombia"){
+            Id_Pais = parseInt(item.Id_Pais)
+        }
     }
+    for(let item of Departamentos){
+
+        if(item.Nombre_Departamento == "Antioquia"){
+            Id_Departamento = parseInt(item.Id_Departamento)
+        }
+    }
+    for(let item of Municipios){
+
+        if(item.Nombre_Municipio == "Medellín"){
+            Id_Municipio = parseInt(item.Id_Municipio)
+        }
+    }
+    for(let item of Subtipos){
+
+        if(item.SubTipo == "Barrio"){
+            Id_SubTipo = parseInt(item.Id_SubTipo_Barrio_Vereda)
+        }
+    }
+
+    // Setear valores en el select
+
+    CargarPaises(Paises,cita,Id_Pais)
+    CargarDepartamentos(Departamentos,cita,Id_Departamento)
+    CargarMunicipios(Municipios,cita,Id_Municipio)
+    CargarSubTipos(Subtipos,cita,Id_SubTipo,)
+    PonerBarrios_Veredas(Id_Municipio,Id_SubTipo,cita);
 
 }
 
-let CargarDepartamentosCita = (datos) => {
-
-    $('#txtDepartamentoCita').empty();
-    $('#txtDepartamentoCita').prepend("<option selected disabled >Seleccione...</option>");
-    for (let item of datos) {
-        let $opcion = $('<option />',
-            {
-                text: `${item.Nombre_Departamento}`,
-                value: `${item.Id_Departamento}`,
-            });
-
-        $('#txtDepartamentoCita').append($opcion);
-    }
-
+let DatosUbicacionEmpresa = () =>{
+    // Arrays
+    let DatosUbicacion = JSON.parse(sessionStorage.getItem("DatosUbicacion"));
+    let Paises = DatosUbicacion.Paises
+    let Departamentos = DatosUbicacion.Departamentos
+    let Municipios = DatosUbicacion.Municipios
+    let Subtipos = DatosUbicacion.Subtipos
+    
+    // Id
+    let Id_Pais = parseInt($('#txtPais').val())
+    let Id_Departamento = parseInt($('#txtDepartamento').val())
+    let Id_Municipio = parseInt($('#txtMunicipio').val())
+    let Id_SubTipo = parseInt($('#txtSubTipo').val())
+    let Id_Barrio_Veredas = parseInt($('#txtNombre_Lugar').val())
+    // Setear valores en el select
+    CargarPaises(Paises,true,Id_Pais)
+    CargarDepartamentos(Departamentos,true,Id_Departamento)
+    CargarMunicipios(Municipios,true,Id_Municipio)
+    CargarSubTipos(Subtipos,true,Id_SubTipo,)
+    PonerBarrios_Veredas(Id_Municipio,Id_SubTipo,true,Id_Barrio_Veredas)
 }
-
-let CargarMunicipiosCita = (datos) => {
-
-    $('#txtMunicipioCita').empty();
-    $('#txtMunicipioCita').prepend("<option selected disabled >Seleccione...</option>");
-    for (let item of datos) {
-        let $opcion = $('<option />', {
-            text: `${item.Nombre_Municipio}`,
-            value: `${item.Id_Municipio}`,
-        });
-
-        $('#txtMunicipioCita').append($opcion);
-    }
-}
-
-let CargarSubTiposCita = (datos) => {
-
-    $('#txtSubTipoCita').empty();
-    $('#txtSubTipoCita').prepend("<option selected disabled >Seleccione...</option>");
-    for (let item of datos) {
-        let $opcion = $('<option />', {
-            text: `${item.SubTipo}`,
-            value: `${item.Id_SubTipo_Barrio_Vereda}`,
-        });
-
-        $('#txtSubTipoCita').append($opcion);
-    }
-
-}
-
-let CargarBarrios_VeredasCita = (datos) => {
-
-    $('#txtNombre_LugarCita').empty();
-    $('#txtNombre_LugarCita').prepend("<option selected disabled >Seleccione...</option>");
-    for (let item of datos) {
-        let $opcion = $('<option />', {
-            text: `${item.Nombre_Barrio_Vereda}`,
-            value: `${item.Id_Barrios_Veredas}`,
-        });
-
-        $('#txtNombre_LugarCita').append($opcion);
-    }
-
-}
-
 
 
 // Detalle Líneas
@@ -1281,85 +1704,85 @@ let RegistrarDetalleLinea = () => {
 
 let ListarDetalleLineas = () => {
 
-if (sessionStorage.DetalleLineas) {
+    if (sessionStorage.DetalleLineas) {
 
-    let DetalleLineas;
-    let Cantidad_Lineas = 0;
-    let Valor_Mensual = 0;
-    let contador = 0;
-    DetalleLineas = JSON.parse(sessionStorage.getItem("DetalleLineas"));
+        let DetalleLineas;
+        let Cantidad_Lineas = 0;
+        let Valor_Mensual = 0;
+        let contador = 0;
+        DetalleLineas = JSON.parse(sessionStorage.getItem("DetalleLineas"));
 
-    $('#TblRegistroDetalleLineas').empty();
-    
-    for (let item of DetalleLineas) {
-        contador++;
-
-        Cantidad_Lineas += parseInt(item.cantidadLineas);
-
-        if(parseInt(item.valValorLineas) == 1){
-            Valor_Mensual += parseInt(item.valorMensual);
-        }else if(parseInt(item.valValorLineas) == 2){
-            Valor_Mensual += (parseInt(item.valorMensual) * parseInt(item.cantidadLineas));
-        } 
+        $('#TblRegistroDetalleLineas').empty();
         
-        $('#TblRegistroDetalleLineas').append(`
+        for (let item of DetalleLineas) {
+            contador++;
+
+            Cantidad_Lineas += parseInt(item.cantidadLineas);
+
+            if(parseInt(item.valValorLineas) == 1){
+                Valor_Mensual += parseInt(item.valorMensual);
+            }else if(parseInt(item.valValorLineas) == 2){
+                Valor_Mensual += (parseInt(item.valorMensual) * parseInt(item.cantidadLineas));
+            } 
+            
+            $('#TblRegistroDetalleLineas').append(`
+                <tr>
+                    <td>${contador}</td>
+                    <td>${item.cantidadLineas}</td>
+                    <td>
+                        <i class="fa fa-dollar"></i>
+                        <div class="float-right">${item.valorMensual}</div> 
+                    </td>
+                    <td>${item.navegacion+ ' '+item.unidad}</td>
+                    <td>${item.minIlimitados ? "Ilimitados " : item.minutos}${item.todoOperador ? " todo operador " : ""} ${item.minOtro != "" ? item.minOtro : ""}</td>
+                    <td>
+                        ${item.mensajes ? '<input type="radio" class="with-gap" id="radio_tbl" checked> <label for="radio_tbl1">Mensajes</label>' : ""}
+
+                        ${item.redes ? '<input type="radio" class="with-gap" id="radio_tbl" checked><label for="radio_tbl">Redes</label>' : ""}
+                        
+                        ${item.llamadas ? '<input type="radio" class="with-gap" id="radio_tbl" checked>  <label for="radio_tbl1">Llamadas</label>' : ""}
+
+                        ${item.roaming ? '<input type="radio" class="with-gap" id="radio_tbl" checked> <label for="radio_tbl">Roaming</label>' : ""}
+                        
+                    </td>
+                    <td>
+                        <span class="label label-info">${parseInt(item.valValorLineas) == 1 ? "En total" : "Por línea"}</span>
+                    </td>
+                    <td>
+
+                        <button type="button" id="DetallesLineasEditar" id_linea="${item.id}" class="btn btn-outline-info btn-sm">
+                            <i class="fa fa-pencil"></i>
+                        </button>
+                
+                        <button type="button" id="DetallesLineasEliminar" id_linea="${item.id}" class="btn btn-outline-danger btn-sm">
+                            <i class="fa fa-close"></i>
+                        </button>
+                    </td>
+                </tr>
+
+            `);
+        }
+
+        $("#tFootRegistroDetalleCliente").empty();
+        $("#tFootRegistroDetalleCliente").append(`
             <tr>
-                <td>${contador}</td>
-                <td>${item.cantidadLineas}</td>
+                <td>
+                    <h5 class="box-title">Total:</h5>
+                </td>
+                <td>${Cantidad_Lineas}</td>
                 <td>
                     <i class="fa fa-dollar"></i>
-                    <div class="float-right">${item.valorMensual}</div> 
+                    <div class="float-right">${Valor_Mensual}</div> 
                 </td>
-                <td>${item.navegacion+ ' '+item.unidad}</td>
-                <td>${item.minIlimitados ? "Ilimitados " : item.minutos}${item.todoOperador ? " todo operador " : ""} ${item.minOtro != "" ? item.minOtro : ""}</td>
-                <td>
-                    ${item.mensajes ? '<input type="radio" class="with-gap" id="radio_tbl" checked> <label for="radio_tbl1">Mensajes</label>' : ""}
-
-                    ${item.redes ? '<input type="radio" class="with-gap" id="radio_tbl" checked><label for="radio_tbl">Redes</label>' : ""}
-                    
-                    ${item.llamadas ? '<input type="radio" class="with-gap" id="radio_tbl" checked>  <label for="radio_tbl1">Llamadas</label>' : ""}
-
-                    ${item.roaming ? '<input type="radio" class="with-gap" id="radio_tbl" checked> <label for="radio_tbl">Roaming</label>' : ""}
-                    
-                </td>
-                <td>
-                    <span class="label label-info">${parseInt(item.valValorLineas) == 1 ? "En total" : "Por línea"}</span>
-                </td>
-                <td>
-
-                    <button type="button" id="DetallesLineasEditar" id_linea="${item.id}" class="btn btn-outline-info btn-sm">
-                        <i class="fa fa-pencil"></i>
-                    </button>
-            
-                    <button type="button" id="DetallesLineasEliminar" id_linea="${item.id}" class="btn btn-outline-danger btn-sm">
-                        <i class="fa fa-close"></i>
-                    </button>
-                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
             </tr>
-
         `);
+
     }
-
-    $("#tFootRegistroDetalleCliente").empty();
-    $("#tFootRegistroDetalleCliente").append(`
-        <tr>
-            <td>
-                <h5 class="box-title">Total:</h5>
-            </td>
-            <td>${Cantidad_Lineas}</td>
-            <td>
-                <i class="fa fa-dollar"></i>
-                <div class="float-right">${Valor_Mensual}</div> 
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-    `);
-
-}
 }
 
 

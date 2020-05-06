@@ -699,7 +699,7 @@ let CargarDatosUbicacion = () => {
         type: 'get',
         datatype: 'json',
         success: function (datos) {
-
+            console.log(datos)
             sessionStorage.DatosUbicacion = JSON.stringify(datos.data);
 
             CargarPaises(datos.data.Paises);
